@@ -25,7 +25,7 @@ npm install
 ``` 
 - to start the server locally run 
 ```
-npm run local
+npm start
 ```
 
 ## Available Scripts
