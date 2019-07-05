@@ -7,20 +7,24 @@ import './index.css';
 
 // The entire page is contained here
 class DocuPage extends React.Component{
+    state = {fullText: ""};
+    urls = {
+        ecom: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md",
+        login:"https://raw.githubusercontent.com/vippsas/vipps-login-api/master/vipps-login-api.md",
+        invoice:"https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
+    }
 
-    state = {fullText: ""}
     componentDidMount = () => {
         this.getContent();
     }
 
     getContent = () => {
-        const url = "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"
-        fetch(url)
+        fetch(this.urls[this.props.doc])
         .then(response => 
             response.text().then(rendered => this.setState({ fullText: rendered}))
         )
         .catch(error => console.log("Something went wrong..", error));
-    }
+    };
 
     render() {
         return (
@@ -34,7 +38,7 @@ class DocuPage extends React.Component{
 
 ReactDOM.render(
     <body>
-        <DocuPage/>
+        <DocuPage doc="login"/>
     </body>,
     document.getElementById('root')
 )
