@@ -1,13 +1,10 @@
 
 
-body {
-  max-width: 60rem;
-}
-
 pre code {
-  width: 50vw;
-  background-color: var(--lightvippsorange);
-  border: 1px solid #999;
+  color: white;
+  grid-area: content2 / content2 / content2 / content2;
+  width: 35vw;
+  background-color: var(--vippspurple);
   display: block;
   padding: 20px;
 }
@@ -21,30 +18,44 @@ pre {
   word-wrap: break-word;
    }
 
+
 h1, h2, h3 {
+  margin-top: 9vh;
+  margin-bottom: 3vh;
   color: var(--vippsorange);
 }
 
+
 .container {
   display: grid;
-  grid-template-columns: 20vw 80vw;
-  grid-template-rows: 5vh 95vh;
+  grid-template-columns: 20vw 40vw 40vw;
+  grid-template-rows: 5vh 90vh 5vh;
   grid-template-areas:
-    "sidebarheader content"
-    "sidebar content";
+    "sidebarheader content1 content2 "
+    "sidebar content1 content2"
+    "sidebarfooter content1 content2";
 }
 .content {
-  grid-area: content;
+  margin-right: 10vw;
+  grid-area: content1 / content1 / content2 / content2;
+  max-width: 50em;
+}
+
+
+.sidebarfooter {
+  grid-area: sidebarfooter;
 }
 
 .sidebar {
-  margin-top: 5vh;
+  margin: 2vh;
   position: fixed;
   grid-area: sidebar;
 }
 
 .sidebarheader {
-  position: fixed;
+  margin-left: auto;
+  margin-bottom: 5vh;
+  max-width: 7vw;
   grid-area: sidebarheader;
 }
 

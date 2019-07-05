@@ -2,32 +2,32 @@ import React from 'react';
 
 // Contains the menuitems and backlink
 export const Sidebar = () => (
-    <section className="Sidebar">
+    <div>
         <SidebarHeader/>
         <SidebarMenu/>
-    </section>
+    </div>
 )
 
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-    <div className="SidebarHeader">
-        <img className="Logo" src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg" alt="logo"/>
-    </div>
+        <img className="sidebarheader" src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg" alt="logo"/>
 )
 
 // Structures the sidebar content
 const SidebarMenu = () => (
     <div className="SidebarMenu">
         <SidebarNav />
+        <div className="sidebarfooter">
         <ApiLink />
+        </div>
     </div>
 )
 
 // Navigation Menu
 const SidebarNav = () => (
-    //TODO: List elements should be 
-    <div className="SidebarNav">
+    //TODO: List elements should be
+    <div className="sidebar">
         <ul className="NavListTop">
             <li className="NavElemTop">Lorem</li>
             <ul className="NavListBot">
