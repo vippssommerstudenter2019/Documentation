@@ -58,12 +58,13 @@ class StartPage extends React.Component {
 
 // The entire page is contained here
 class DocuPage extends React.Component{
-    state = {fullText: ""};
-    urls = {
-        ecom: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md",
-        login:"https://raw.githubusercontent.com/vippsas/vipps-login-api/master/vipps-login-api.md",
-        invoice:"https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
-    }
+    constructor(props) {
+        super(props);
+        this.urls = {
+            ecom: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md",
+            login:"https://raw.githubusercontent.com/vippsas/vipps-login-api/master/vipps-login-api.md",
+            invoice:"https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
+        }
 
     componentDidMount = () => {
         this.getContent();
