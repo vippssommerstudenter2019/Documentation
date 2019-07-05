@@ -28,8 +28,7 @@ class DocuPage extends React.Component{
 
     // Fetches raw content from Github and puts it in the DocuPage state 
     getContent() {
-        const url = "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"
-        return fetch(url)
+        return fetch(this.urls[this.props.doc]);
     }
 
     // Returns a HTML anchor from a given header
