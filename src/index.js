@@ -1,10 +1,62 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Sidebar } from "./sidebar.js";
-import MarkdownHTML from "./components/MarkdownHTML/MarkdownHTML.js";
-import "./vippsstyle.css";
-import "./style.css";
-import "./prism.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Sidebar } from './sidebar.js';
+import { ContentField } from './content.js';
+import { DocCard, ApiDoc } from './startpage.js';
+import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
+import './vippsstyle.css';
+import './style.css';
+
+class StartPage extends React.Component {
+    state = {location: 'startpage'}
+
+    handleDocuClick = (doc) => {
+        this.setState({location: doc})
+    };
+
+    handleStartClick = (doc) => {
+      this.setState({location: doc});
+    }
+
+    render = () => (
+        <div>
+            {this.state.location === 'startpage' ? (
+                <div className="StartPage">
+                    <div className="Cards">
+                    <DocCard img={{src:"https://www.vipps.no/media/images/ta_betalt_pa_nett.max-320x320.jpegquality-60.png", alt:"Ta betalt på nett"}}
+                            title="eCommerce"
+                            text="Get Vipps checkout on your webstore"
+                            startClick={this.handleStartClick}
+                            docuClick={this.handleDocuClick}
+                            docuLink="ecom"
+                    />
+                    <DocCard img={{src:"https://www.vipps.no/media/images/sende_regninger.max-320x320.jpegquality-60.png", alt:"Send regninger"}}
+                            title="Invoice"
+                            text="Send invoices with Vipps"
+                            startClick={this.handleStartClick}
+                            docuClick={this.handleDocuClick}
+                            docuLink="invoice"
+                    />
+                    <DocCard img={{src:"https://www.vipps.no/media/images/vipps_logginn.max-320x320.jpegquality-60.png", alt:"Logg inn"}}
+                            title="Login"
+                            text="Secure login and identification with Vipps"
+                            startClick={this.handleStartClick}
+                            docuClick={this.handleDocuClick}
+                            docuLink="login"
+                    />
+                    </div>
+                    <div className="APIcontainer">
+                        <ApiDoc apiClick=""/>
+                    </div>
+                </div>
+            ):(
+                <DocuPage doc={this.state.location}/>
+            )}
+        </div>
+    )
+}
+
+
 
 // The entire page is contained here
 class DocuPage extends React.Component {
@@ -79,23 +131,24 @@ class DocuPage extends React.Component {
     });
   }
 
-  render() {
-    console.log("Fra Lars Martins kode nr 1: " + this.state.fullText );
-    return (
-      <div className="container bold">
-        <div className="sidebar">
-          <Sidebar dataFelt={"Ett eller annet her"} />
-        </div>
-        <div className="content">
-          <MarkdownHTML
-            key={0}
-            url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
-            text={this.state.fullText}
-          />
-        </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="container bold">
+              <div className="sidebar">
+                <Sidebar headers={this.state.headers}/>
+              </div>
+              <div className="content">
+                <MarkdownHTML
+                  //url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
+                  text={this.state.fullText}
+                />
+              </div>
+            </div>
+        )
+    }
 }
 
-ReactDOM.render(<DocuPage doc="login" />, document.getElementById("root"));
+ReactDOM.render(
+    <StartPage/>,
+    document.getElementById('root')
+)

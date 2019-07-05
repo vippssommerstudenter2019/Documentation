@@ -1,56 +1,61 @@
-import React from 'react';
+import React from "react";
+import {
+  SideNav,
+  SideNavItem,
+  Collapsible,
+  CollapsibleItem
+} from "react-materialize";
+import "./materialize.css";
+import M from "materialize-css";
 
 // Contains the menuitems and backlink
-export const Sidebar = () => (
-    <div>
-        <SidebarHeader/>
-        <SidebarMenu/>
-    </div>
-)
-
+export const Sidebar = (props) => (
+  <section className="Sidebar">
+    <SidebarHeader />
+    <SidebarMenu headers={props.headers}/>
+  </section>
+);
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-        <img className="sidebarheader" src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg" alt="logo"/>
-)
+  <div className="SidebarHeader">
+    <img
+      className="Logo logoMarg"
+      src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg"
+      alt="logo"
+    />
+  </div>
+);
 
 // Structures the sidebar content
-const SidebarMenu = () => (
-    <div className="SidebarMenu">
-        <SidebarNav />
-        <div className="sidebarfooter">
-        <ApiLink />
-        </div>
-    </div>
-)
+const SidebarMenu = (props) => (
+  <div className="SidebarMenu">
+    <SidebarNav headers={props.headers}/>
+    <ApiLink />
+  </div>
+);
 
 // Navigation Menu
-const SidebarNav = () => (
+const SidebarNav = (props) => {
     //TODO: List elements should be
-    <div className="sidebar">
-        <ul className="NavListTop">
-            <li className="NavElemTop">Lorem</li>
-            <ul className="NavListBot">
-                <li className="NavElemBot">
-                    Ipsum
-                </li>
-                <li className="NavElemBot">
-                    Dolor
-                </li>
-                <li className="NavElemBot">
-                    Sit Amet
-                </li>
-            </ul>
-            <li className="NavElemTop">Ipsum</li>
-            <li className="NavElemTop">Dolor</li>
-            <li className="NavElemTop">Sit</li>
-            <li className="NavElemTop">Amet</li>
-            <li className="NavElemTop">Ferdig</li>
-        </ul>
-    </div>
-)
+    const tryHeaders = props.headers;
+    console.log(tryHeaders);
+    let cnt = 0;
+    const moreHeaders = tryHeaders.map((head) =>
+        <CollapsibleItem key={cnt++} header={Object.values(head)[0]}><ul><li className="listEl">Kompis</li></ul></CollapsibleItem>
+    );
+    return (
+        <div>
+            <SideNav className="sidebarMarg">
+            <Collapsible>
+                {moreHeaders}
+            </Collapsible>
+            </SideNav>
+        </div>
+        )
+    };
 
 // Links to full api doc
 const ApiLink = () => (
-    <button className="ApiLink">Full API Documentation</button>
-)
+  <button className="ApiLink sidebarMarg">Full API Documentation</button>
+);
