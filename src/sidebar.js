@@ -90,5 +90,5 @@ const SidebarNav = () => (
 
 // Links to full api doc
 const ApiLink = () => (
-  <button className="ApiLink">Full API Documentation</button>
+  <button className="ApiLink sidebarMarg">Full API Documentation</button>
 );
