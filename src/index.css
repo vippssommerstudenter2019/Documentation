@@ -1,10 +1,6 @@
 /*  SETUP */
 html, body {
-    height: 100vh;
-    width: 100vw; 
     background: black;
-    /*height: 1000px;
-    width: 1000px;*/
     margin: 0%;
 }
 
@@ -19,12 +15,91 @@ h2 {
     font: bold 28pt "Helvetica";
     margin: auto;
 }
+/* ----------------------------------------------- */
+/*  Frontpage  */
+
+.StartPage {
+    background: #FDF4ED;
+    height: 100vh;
+    padding: 100px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.Cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    margin: auto;
+    align-content: center;
+    
+}
+
+.APIcontainer {
+    width: 20%;
+    height: 20%;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    align-content: center;
+    font: bold 12pt helvetica;
+}
+
+.FullAPIButton {
+    border: none;
+    background: #49367E;
+    color: white;
+    height: 60px;
+    width: 250px;
+    border-radius: 30px;
+    font: bold 12pt helvetica;
+}
+
+.DocCardButtons {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 10px
+}
+
+.DocumentationLink {
+    border: none;
+    background: none;
+    font: bold 14pt helvetica;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #49367E;
+}
+
+.GetStartedButton {
+    border: none;
+    background: #49367E;
+    color: white;
+    font:  14pt helvetica;
+    border-radius: 20px;
+    height: 40px;
+    width: 50%;
+    margin: auto;
+}
+
+.DocCard {
+    background: white;
+    height: 100%;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    text-align: center;
+    align-content: center;
+    font: 12pt helvetica;
+    display: grid;
+    margin: auto;
+}
 
 .DocuPage {
     color: #ffffff;
     background: white;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
     display: grid;
     grid-template-columns: 330px auto;
 }
@@ -105,7 +180,7 @@ h2 {
 
     padding: 0px 30px 0px 30px !important;
     height: 40px;
-    border-color: white;
+    border: none;    
 }
 
 .ApiLink:hover {
