@@ -39,9 +39,12 @@ const SidebarMenu = (props) => (
 const SidebarNav = (props) => {
     //TODO: List elements should be
     const tryHeaders = props.headers;
-    console.log(tryHeaders);
     const moreHeaders = tryHeaders.map((head) =>
-        <CollapsibleItem header={Object.values(head)[0]}><ul><li class="listEl">Kompis</li></ul></CollapsibleItem>
+        <CollapsibleItem header={Object.values(head)[0]}>
+            <ul>{Object.values(head)[2].map((child) =>
+                <li class="listEl">{Object.values(child)[0]}</li>
+            )}
+            </ul></CollapsibleItem>
     );
     return (
         <div>

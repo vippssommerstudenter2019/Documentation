@@ -121,10 +121,6 @@ class DocuPage extends React.Component{
     }
 }
 
-ReactDOM.render(
-    <body>
-        <DocuPage doc="login"/>
-    </body>,
-    <StartPage/>,
+ReactDOM.render(<DocuPage doc="ecom"/>,
     document.getElementById('root')
 )
