@@ -1,6 +1,5 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown'
-import Prism from "prismjs";
 import "./prism.css"
 
 
@@ -13,13 +12,19 @@ class MarkdownHTML extends React.Component {
   }
 
   componentDidMount() {
-    fetch(this.props.url)
-      .then((response) => {
-        response.text().then((markdown) => {
-          console.log(typeof(markdown.split(/(?=# )/g)));
-          this.setState({data: markdown});
+    console.log("this is empty" + this.props.text);
+    if (!this.props.text) {
+        fetch(this.props.url)
+        .then((response) => {
+          response.text().then((markdown) => {
+            this.setState({data: markdown});
+          })
         })
-      })
+    } else {
+      const text = this.props.text;
+      console.log(text);
+      this.setState({data: this.props.text});
+    }
   }
 
   render() {

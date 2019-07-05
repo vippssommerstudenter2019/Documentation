@@ -29,6 +29,7 @@ class DocuPage extends React.Component {
     this.getContent().then(response =>
       response.text().then(text => this.filterContent(text))
     );
+    console.log("mounting");
   }
 
   // Fetches raw content from Github and puts it in the DocuPage state
@@ -50,7 +51,8 @@ class DocuPage extends React.Component {
 
   // Filters the content fetched from Github into headers and content
   filterContent(data) {
-    const originalMarkdown = (' ' + data).slice(1);
+    this.setState({ fullText: data });
+    console.log("Fra Lars Martins kode nr 1: " + data );
     const lines = data.split("\n");
     let navbarHeaders = [];
     let navbarHeader = { name: "", anchor: "", children: [] };
@@ -73,14 +75,13 @@ class DocuPage extends React.Component {
       }
     });
     this.setState({
-      fullText: originalMarkdown,
       headers: navbarHeaders.slice(1, navbarHeaders.length - 1),
       contents: content
     });
   }
 
   render() {
-    console.log("Fra Lars Martins kode nr 1: " + this.state.fullText );
+    console.log("lol" + this.state.fullText);
     return (
       <div className="container bold">
         <div className="sidebar">
