@@ -7,7 +7,6 @@ import './index.css';
 
 // The entire page is contained here
 class DocuPage extends React.Component{
-<<<<<<< HEAD
     constructor(props) {
         super(props);
         this.state = {
@@ -20,8 +19,6 @@ class DocuPage extends React.Component{
     componentDidMount() {
         this.getContent()
         .then(response => response.text().then(text => this.filterContent(text)))
-            
-            //response.text(text => this.filterContent(text)))
     }
 
     // Fetches raw content from Github and puts it in the DocuPage state 
@@ -49,7 +46,6 @@ class DocuPage extends React.Component{
                     anchor: this.makeAnchor("##", line)});
             } else if (line.startsWith("#")) {
                 navbarHeaders.push(navbarHeader);
-                console.log(navbarHeader)
                 navbarHeader = {name: "", anchor: "", children: []}
                 navbarHeader.name = line.replace("#", "").trim();
                 navbarHeader.anchor = this.makeAnchor("#", line);
@@ -58,28 +54,7 @@ class DocuPage extends React.Component{
             }
         });
         this.setState({headers: navbarHeaders.slice(1, navbarHeaders.length - 1), contents: content})
-        console.log(this.state.headers);
     }
-=======
-    state = {fullText: ""};
-    urls = {
-        ecom: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md",
-        login:"https://raw.githubusercontent.com/vippsas/vipps-login-api/master/vipps-login-api.md",
-        invoice:"https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
-    }
-
-    componentDidMount = () => {
-        this.getContent();
-    }
-
-    getContent = () => {
-        fetch(this.urls[this.props.doc])
-        .then(response => 
-            response.text().then(rendered => this.setState({ fullText: rendered}))
-        )
-        .catch(error => console.log("Something went wrong..", error));
-    };
->>>>>>> 4d0c8c56576845bdc884ed8b38039ecbd497d1f7
 
     render() {
         return (
