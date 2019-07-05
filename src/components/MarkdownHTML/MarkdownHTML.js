@@ -16,6 +16,7 @@ class MarkdownHTML extends React.Component {
     fetch(this.props.url)
       .then((response) => {
         response.text().then((markdown) => {
+          console.log(typeof(markdown.split(/(?=# )/g)));
           this.setState({data: markdown});
         })
       })
