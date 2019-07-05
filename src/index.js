@@ -9,6 +9,11 @@ import './index.css';
 class DocuPage extends React.Component{
     constructor(props) {
         super(props);
+        this.urls = {
+            ecom: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md",
+            login:"https://raw.githubusercontent.com/vippsas/vipps-login-api/master/vipps-login-api.md",
+            invoice:"https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
+        }
         this.state = {
             fullText: "",
             headers: [],
@@ -23,8 +28,7 @@ class DocuPage extends React.Component{
 
     // Fetches raw content from Github and puts it in the DocuPage state 
     getContent() {
-        const url = "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"
-        return fetch(url)
+        return fetch(this.urls[this.props.doc]);
     }
 
     // Returns a HTML anchor from a given header
@@ -59,7 +63,7 @@ class DocuPage extends React.Component{
     render() {
         return (
             <section className="DocuPage">
-                <Sidebar dataFelt={"Ett eller annet her"}/>
+                <Sidebar headers={this.state.headers}/>
                 <ContentField/>
             </section>
         )
@@ -68,7 +72,7 @@ class DocuPage extends React.Component{
 
 ReactDOM.render(
     <body>
-        <DocuPage doc="login"/>
+        <DocuPage doc="ecom"/>
     </body>,
     document.getElementById('root')
 )

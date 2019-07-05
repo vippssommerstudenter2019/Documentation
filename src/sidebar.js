@@ -9,10 +9,10 @@ import "./materialize.css";
 import M from "materialize-css";
 
 // Contains the menuitems and backlink
-export const Sidebar = () => (
+export const Sidebar = (props) => (
   <section className="Sidebar">
     <SidebarHeader />
-    <SidebarMenu />
+    <SidebarMenu headers={props.headers}/>
   </section>
 );
 
@@ -28,65 +28,31 @@ const SidebarHeader = () => (
 );
 
 // Structures the sidebar content
-const SidebarMenu = () => (
+const SidebarMenu = (props) => (
   <div className="SidebarMenu">
-    <SidebarNav />
+    <SidebarNav headers={props.headers}/>
     <ApiLink />
   </div>
 );
 
 // Navigation Menu
-const SidebarNav = () => (
-  //TODO: List elements should be
-  <div>
-    <SideNav class="sidebarMarg">
-      <Collapsible>
-        <CollapsibleItem header="Introduction">
-          <li>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-          </li>
-        </CollapsibleItem>
-        <CollapsibleItem header="Payment types">
-          <li>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-          </li>
-        </CollapsibleItem>
-        <CollapsibleItem header="Webstore payments">
-          <li>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-          </li>
-        </CollapsibleItem>
-        <CollapsibleItem header="Webstore payments">
-          <li>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-          </li>
-        </CollapsibleItem>
-        <CollapsibleItem header="Webstore payments">
-          <li>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-          </li>
-        </CollapsibleItem>
-        <CollapsibleItem header="Webstore payments">
-          <li>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-            <ul class="listEl">test</ul>
-          </li>
-        </CollapsibleItem>
-      </Collapsible>
-    </SideNav>
-  </div>
-);
+const SidebarNav = (props) => {
+    //TODO: List elements should be
+    const tryHeaders = props.headers;
+    console.log(tryHeaders);
+    const moreHeaders = tryHeaders.map((head) =>
+        <CollapsibleItem header={Object.values(head)[0]}><ul><li class="listEl">Kompis</li></ul></CollapsibleItem>
+    );
+    return (
+        <div>
+            <SideNav class="sidebarMarg">
+            <Collapsible>
+                {moreHeaders}
+            </Collapsible>
+            </SideNav>
+        </div>
+        )   
+    };
 
 // Links to full api doc
 const ApiLink = () => (
