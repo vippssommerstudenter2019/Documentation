@@ -239,3 +239,6 @@ https://stackoverflow.com/questions/9251354/css-customized-scroll-bar-in-div
     margin-left: 50px;
 }
 
+.button:focus{
+    background-color: #F6F6F9 !important;
+}
