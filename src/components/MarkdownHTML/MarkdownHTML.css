@@ -1,0 +1,74 @@
+
+
+img {
+  max-width: 10vw;
+}
+
+h1, h2, h3 {
+  margin-top: 9vh;
+  margin-bottom: 3vh;
+  color: var(--vippsorange);
+}
+
+h4, h5 {
+  margin-top: 5vh;
+  margin-bottom: 1vh;
+}
+
+
+
+.container {
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 350px 40vw 40vw;
+  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-areas:
+    "sidebarheader content1 content2 "
+    "sidebar content1 content2"
+    "sidebarfooter content1 content2";
+}
+.content {
+  margin-right: 10vw;
+  grid-area: content1 / content1 / content2 / content2;
+  max-width: 50em;
+}
+
+
+.sidebarfooter {
+  grid-area: sidebarfooter;
+}
+
+.sidebar {
+  margin: 0vh;
+  position: fixed;
+  grid-area: sidebar;
+}
+
+.sidebarheader {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  max-width: 100px;
+  grid-area: sidebarheader;
+}
+
+.sidenav {
+    box-shadow: none!important;
+}
+
+.content ul:first-of-type {
+  display: none;
+  border: 10px solid red;
+}
+
+/* Vipps-colors */
+
+
+:root {
+  --vippsorange :#FF5B24;
+  --lightvippsorange : #FDF4ED;
+  --vippspurple :#4D3280 ;
+  --vippsblue : #59CBE8 ;
+  --vippsblack :#161225 ;
+  --vippsblueberry :#49367e ;
+  }
