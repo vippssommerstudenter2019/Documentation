@@ -7,7 +7,6 @@ import {
 } from "react-materialize";
 import "./materialize.css";
 import M from "materialize-css";
-import './index.css'
 
 
 // Contains the menuitems and backlink
