@@ -7,6 +7,17 @@ import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
 import './vippsstyle.css';
 import './index.css';
 
+import {
+SideNav,
+SideNavItem,
+Collapsible,
+CollapsibleItem
+} from "react-materialize";
+import "./components/sidebar/materialize.css";
+import M from "materialize-css";
+import "./components/sidebar/sidebar.css";
+import { Link } from "react-router-dom";
+
 // TODO: startpath should be "/documentation/" and not "/"
 const StartPage = () => (
     <Router>
