@@ -68,13 +68,12 @@ class DocuPage extends React.Component{
         this.state = {
             fullText: "",
             headers: [],
-            contents: [],
         }
     }
 
     componentDidMount() {
         this.getContent()
-        .then(response => response.text().then(text => this.filterContent(text)))
+        .then(response => response.text().then(text => this.getHeaders(text)))
     }
 
     // Fetches raw content from Github and puts it in the DocuPage state 
@@ -84,15 +83,18 @@ class DocuPage extends React.Component{
 
     // Returns a HTML anchor from a given header
     makeAnchor(level, string) {
-        return "#" + string.replace(level, "").trim().replace(new RegExp(" ", 'g'),"-").toLowerCase()
+        return "#" + 
+                string.replace(level, "")
+                .trim()
+                .replace(new RegExp(" ", 'g'),"-")
+                .toLowerCase()
     }
 
     // Filters the content fetched from Github into headers and content
-    filterContent(data) {
+    getHeaders(data) {
         const lines = data.split("\n");
         let navbarHeaders = []
         let navbarHeader = {name: "", anchor: "", children: []}
-        let content = [];
         lines.forEach((line) => {
             if (line.startsWith("###")) {
                 return;
@@ -105,10 +107,10 @@ class DocuPage extends React.Component{
                 navbarHeader.name = line.replace("#", "").trim();
                 navbarHeader.anchor = this.makeAnchor("#", line);
             } else {
-                content.push(line);
+                return;
             }
         });
-        this.setState({headers: navbarHeaders.slice(1, navbarHeaders.length - 1), contents: content})
+        this.setState({headers: navbarHeaders.slice(1, navbarHeaders.length - 1)})
     }
 
     render() {

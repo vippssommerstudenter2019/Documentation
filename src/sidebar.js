@@ -38,19 +38,23 @@ const SidebarMenu = (props) => (
 // Navigation Menu
 const SidebarNav = (props) => {
     //TODO: List elements should be
-    const tryHeaders = props.headers;
-    const moreHeaders = tryHeaders.map((head) =>
+    const propHeaders = props.headers;
+    const sidebarHeaders = propHeaders.map((head) =>
         <CollapsibleItem header={Object.values(head)[0]}>
-            <ul>{Object.values(head)[2].map((child) =>
-                <li class="listEl">{Object.values(child)[0]}</li>
+            <ul>
+            {Object.values(head)[2].map((child) =>
+                <li class="listEl">
+                {Object.values(child)[0]}
+                </li>
             )}
-            </ul></CollapsibleItem>
+            </ul>
+        </CollapsibleItem>
     );
     return (
         <div>
             <SideNav class="sidebarMarg">
             <Collapsible>
-                {moreHeaders}
+                {sidebarHeaders}
             </Collapsible>
             </SideNav>
         </div>
