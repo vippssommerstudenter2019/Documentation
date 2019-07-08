@@ -7,7 +7,6 @@ import {
 } from "react-materialize";
 import "./materialize.css";
 import M from "materialize-css";
-import "./sidebar.css"
 
 
 // Contains the menuitems and backlink
@@ -20,7 +19,7 @@ export const Sidebar = (props) => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-  <div className="SidebarHeader ">
+  <div className="SidebarHeader">
     <img
       className="Logo logoMarg"
       src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg"
@@ -33,6 +32,7 @@ const SidebarHeader = () => (
 const SidebarMenu = (props) => (
   <div className="SidebarMenu">
     <SidebarNav headers={props.headers}/>
+    <ApiLink />
   </div>
 );
 
@@ -41,25 +41,24 @@ const SidebarNav = (props) => {
     //TODO: List elements should be
     const propHeaders = props.headers;
     const sidebarHeaders = propHeaders.map((head) =>
-        <CollapsibleItem header={Object.values(head)[0]}>
-            <ul>
-            {Object.values(head)[2].map((child) =>
-                <li class="listEl">
-                {Object.values(child)[0]}
-                </li>
-            )}
-            </ul>
+        <CollapsibleItem header={<a  href={Object.values(head)[1]}>{Object.values(head)[0]}</a>}>
+          <ul>
+          {Object.values(head)[2].map((child) =>
+              <li class="listEl">
+              <a href={Object.values(child)[1]}>
+              {Object.values(child)[0]}
+              </a>
+              </li>
+          )}
+          </ul>
         </CollapsibleItem>
-        
     );
     return (
         <div>
             <SideNav className="sidebarMarg">
-            <SidebarHeader />
             <Collapsible>
                 {sidebarHeaders}
             </Collapsible>
-            <ApiLink />
             </SideNav>
         </div>
         )
