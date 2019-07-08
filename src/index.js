@@ -2,60 +2,53 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Sidebar } from './components/sidebar/sidebar.js';
 import { DocCard, ApiDoc } from './components/startpage/startpage.js';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
 import './vippsstyle.css';
 import './index.css';
 
-class StartPage extends React.Component {
-    state = {location: 'startpage'}
+// TODO: startpath should be "/documentation/" and not "/"
+const StartPage = () => (
+    <Router>
+        <Switch>
+            <Route path="/" exact component={Cards}/>
+            <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
+            <Route path="/documentation/invoice/" component={props => <DocuPage doc="invoice"/>}/>
+            <Route path="/documentation/secure-login/" component={props => <DocuPage doc="login"/>}/>
+        </Switch>
+    </Router>
+)
 
-    handleDocuClick = (doc) => {
-        this.setState({location: doc})
-    };
-
-    handleStartClick = (doc) => {
-      this.setState({location: doc});
-    }
-
-    render = () => (
-        <div>
-            {this.state.location === 'startpage' ? (
-                <div className="StartPage">
-                    <div className="Cards">
-                    <DocCard img={{src:"https://www.vipps.no/media/images/ta_betalt_pa_nett.max-320x320.jpegquality-60.png", alt:"Ta betalt på nett"}}
-                            title="eCommerce"
-                            text="Get Vipps checkout on your webstore"
-                            startClick={this.handleStartClick}
-                            docuClick={this.handleDocuClick}
-                            docuLink="ecom"
-                    />
-                    <DocCard img={{src:"https://www.vipps.no/media/images/sende_regninger.max-320x320.jpegquality-60.png", alt:"Send regninger"}}
-                            title="Invoice"
-                            text="Send invoices with Vipps"
-                            startClick={this.handleStartClick}
-                            docuClick={this.handleDocuClick}
-                            docuLink="invoice"
-                    />
-                    <DocCard img={{src:"https://www.vipps.no/media/images/vipps_logginn.max-320x320.jpegquality-60.png", alt:"Logg inn"}}
-                            title="Login"
-                            text="Secure login and identification with Vipps"
-                            startClick={this.handleStartClick}
-                            docuClick={this.handleDocuClick}
-                            docuLink="login"
-                    />
-                    </div>
-                    <div className="APIcontainer">
-                        <ApiDoc apiClick=""/>
-                    </div>
-                </div>
-            ):(
-                <DocuPage doc={this.state.location}/>
-            )}
+const Cards = () => (
+    <div className="StartPage">
+            <div className="Cards">
+                <DocCard img={{src:"https://www.vipps.no/media/images/ta_betalt_pa_nett.max-320x320.jpegquality-60.png", alt:"Ta betalt på nett"}}
+                        title="eCommerce"
+                        text="Get Vipps checkout on your webstore"
+                        startLink="/"
+                        docLink="/documentation/ecommerce/"
+                        docName="ecom"
+                />
+                <DocCard img={{src:"https://www.vipps.no/media/images/sende_regninger.max-320x320.jpegquality-60.png", alt:"Send regninger"}}
+                        title="Invoice"
+                        text="Send invoices with Vipps"
+                        startLink="/"
+                        docLink="/documentation/invoice/"
+                        docName="invoice"
+                />
+                <DocCard img={{src:"https://www.vipps.no/media/images/vipps_logginn.max-320x320.jpegquality-60.png", alt:"Logg inn"}}
+                        title="Login"
+                        text="Secure login and identification with Vipps"
+                        startLink="/"
+                        docLink="/documentation/secure-login/"
+                        docName="login"
+                />
+            </div>
+            <div className="APIcontainer">
+                <ApiDoc apiLink="/"/>
+            </div>
         </div>
-    )
-}
-
-
+)
 
 // The entire page is contained here
 class DocuPage extends React.Component {
