@@ -1,6 +1,5 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown'
-import "./prism.css"
 
 
 class MarkdownHTML extends React.Component {
@@ -29,6 +28,7 @@ class MarkdownHTML extends React.Component {
   }
 
   render() {
+    console.log(<ReactMarkdown source={this.state.data} />)
     console.log("render", this.state, this.props)
     const { text, url } = this.props;
     if (text) {

@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Sidebar } from './sidebar.js';
-import { ContentField } from './content.js';
-import { DocCard, ApiDoc } from './startpage.js';
-import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js';
+import { Sidebar } from './components/sidebar/sidebar.js';
+import { DocCard, ApiDoc } from './components/startpage/startpage.js';
+import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
 import './vippsstyle.css';
-import './style.css';
-import "./materialize.css";
-import "./index.css"
-import M from "materialize-css";
+import './index.css';
 
 class StartPage extends React.Component {
     state = {location: 'startpage'}
@@ -62,41 +58,45 @@ class StartPage extends React.Component {
 
 
 // The entire page is contained here
-class DocuPage extends React.Component{
-    constructor(props) {
-        super(props);
-        this.urls = {
-            ecom: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md",
-            login:"https://raw.githubusercontent.com/vippsas/vipps-login-api/master/vipps-login-api.md",
-            invoice:"https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
-        }
-        this.state = {
-            fullText: "",
-            headers: [],
-        }
-    }
+class DocuPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.urls = {
+      ecom:
+        "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md",
+      login:
+        "https://raw.githubusercontent.com/vippsas/vipps-login-api/master/vipps-login-api.md",
+      invoice:
+        "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
+    };
+    this.state = {
+      fullText: "",
+      headers: []
+    };
+  }
 
-    componentDidMount() {
-        this.getContent()
-        .then(response => response.text().then(text => this.getHeaders(text)))
-    }
+  componentDidMount() {
+    this.getContent().then(response =>
+      response.text().then(text => this.getHeaders(text))
+    );
+  }
 
-    // Fetches raw content from Github and puts it in the DocuPage state
-    getContent() {
-        return fetch(this.urls[this.props.doc]);
-    }
+  // Fetches raw content from Github and puts it in the DocuPage state
+  getContent() {
+    return fetch(this.urls[this.props.doc]);
+  }
 
-    // Returns a HTML anchor from a given header
-    makeAnchor(level, string) {
-        return (
-          "#" +
-          string
-            .replace(level, "")
-            .trim()
-            .replace(new RegExp(" ", "g"), "-")
-            .toLowerCase()
-        );
-      }
+  // Returns a HTML anchor from a given header
+  makeAnchor(level, string) {
+    return (
+      "#" +
+      string
+        .replace(level, "")
+        .trim()
+        .replace(new RegExp(" ", "g"), "-")
+        .toLowerCase()
+    );
+  }
 
     // Filters the content fetched from Github into headers and content
     getHeaders(data) {
@@ -125,14 +125,6 @@ class DocuPage extends React.Component{
         });
     }
 
-    renderHeader(url, text, title) {
-        console.log(url);
-        console.log(text);
-        console.log(title);
-        return ("Test av funksjon")
-    }
-
-
     render() {
         return (
             <div className="container bold">
@@ -143,7 +135,6 @@ class DocuPage extends React.Component{
                 <MarkdownHTML
                   //url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
                   text={this.state.fullText} 
-                  linkTarget={this.renderHeader()}
                 />
               </div>
             </div>
