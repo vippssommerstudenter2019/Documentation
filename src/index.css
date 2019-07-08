@@ -98,35 +98,8 @@ h2 {
 }
 /* ----------------------------------------------- */
 /*  SIDEBAR  */
-.Sidebar {
-    background: white;
-    display: grid;
-    grid-template-rows: 5% auto;
-    margin-top: 20px;
-}
 
-.SidebarHeader {
-    background: white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
 
-.Logo {
-    width: 50%;
-}
-
-.SidebarMenu {
-    background: white;
-    color: #49367E;
-}
-
-.SidebarNav {
-    background:white;
-    padding: 10%;
-    margin-left: 10%;
-    text-align: left;
-}
 
 .NavListTop {
     width: 75%;
@@ -162,24 +135,6 @@ h2 {
     padding: 2% 2%;
     margin-bottom: 2%;
 }
-
-.ApiLink {
-    background: #F6F6F9;
-    color: #49367E;
-    margin: auto auto auto 50px;
-    border-radius: 20px;
-
-    padding: 0px 30px 0px 30px !important;
-    height: 40px;
-    border: none;
-}
-
-.ApiLink:hover {
-    background: #49367E;
-    color: white;
-}
-
-
 
 
 
@@ -243,67 +198,5 @@ https://stackoverflow.com/questions/9251354/css-customized-scroll-bar-in-div
     grid-column-start: 4;
 }
 
-.listEl{
-    padding: 0px 0px 0px 30px !important;
-    margin: 0px 0px 0px 20px !important;
-    text-decoration: none;
-    line-height: 32px !important;
-    font-size: 16px;
-    color: #49367E;
-    display: block;
-    background-color: white;
-    border-radius: 20px;
-    height: 32px !important;
-    width: 50%px !important;
-}
 
-.listEl:hover{
-    background: #F6F6F9;
-}
 
-.collapsible-header{
-    padding: 0px 0px 0px 30px !important;
-    text-decoration: none;
-    line-height: 40px !important;
-    font-size: 16px;
-    color: #49367E;
-    display: block;
-    background-color: white;
-    border-radius: 20px;
-
-    width: 100%;
-    border-bottom: white;
-}
-
-.collapsible-header:hover{
-    background: #F6F6F9 !important;
-}
-
-.active{
-    background-color: white !important;
-}
-
-.collapsible{
-    margin: 40px 0px 0px 0px !important;
-    border-top-color: white;
-    border-top: 0px;
-    border-bottom-color: white;
-    border-bottom: 0px;
-    border-right-color: white;
-    border-right: 0px;
-    border-left-color: white;
-    border-left: 0px;
-    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0), 0 0px 0px 0px rgba(0, 0, 0, 0), 0 0px 0px 0 rgba(0, 0, 0, 0);
-}
-
-.collapsible-body{
-    padding: 0px 0px 0px 0px !important;
-}
-
-.sidebarMarg{
-    margin-left: 50px;
-}
-
-.button:focus{
-    background-color: #F6F6F9 !important;
-}

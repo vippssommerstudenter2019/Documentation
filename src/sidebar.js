@@ -7,7 +7,8 @@ import {
 } from "react-materialize";
 import "./materialize.css";
 import M from "materialize-css";
-import './index.css'
+
+
 
 
 // Contains the menuitems and backlink
@@ -20,7 +21,7 @@ export const Sidebar = (props) => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-  <div className="SidebarHeader">
+  <div className="SidebarHeader ">
     <img
       className="Logo logoMarg"
       src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg"
@@ -33,7 +34,6 @@ const SidebarHeader = () => (
 const SidebarMenu = (props) => (
   <div className="SidebarMenu">
     <SidebarNav headers={props.headers}/>
-    <ApiLink />
   </div>
 );
 
@@ -51,13 +51,16 @@ const SidebarNav = (props) => {
             )}
             </ul>
         </CollapsibleItem>
+        
     );
     return (
         <div>
             <SideNav className="sidebarMarg">
+            <SidebarHeader />
             <Collapsible>
                 {sidebarHeaders}
             </Collapsible>
+            <ApiLink />
             </SideNav>
         </div>
         )

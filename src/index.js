@@ -8,6 +8,7 @@ import './vippsstyle.css';
 import './style.css';
 import "./materialize.css";
 import "./index.css"
+import "./sidebar.css"
 import M from "materialize-css";
 
 class StartPage extends React.Component {
