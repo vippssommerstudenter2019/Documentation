@@ -118,18 +118,6 @@ class DocuPage extends React.Component {
         });
     }
 
-    targetHeaders() {
-        console.log(<MarkdownHTML
-            //url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
-            text={this.state.fullText} 
-          />)
-        let elements = document.getElementsByTagName("p");
-        console.log(elements);
-        for (var i = 0; i < elements.length; i++) {
-            elements[i].setAttribute("name", this.makeAnchor("#", elements[i]));
-        };
-    }
-
     render() {
         return (
             <div className="container bold">
