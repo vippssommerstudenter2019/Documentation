@@ -121,8 +121,15 @@ class DocuPage extends React.Component{
         });
         this.setState({
             fullText: originalMarkdown,
-            headers: navbarHeaders.slice(1, navbarHeaders.length - 1)
+            headers: navbarHeaders.slice(1)
         });
+    }
+
+    renderHeader(url, text, title) {
+        console.log(url);
+        console.log(text);
+        console.log(title);
+        return ("Test av funksjon")
     }
 
 
@@ -135,7 +142,8 @@ class DocuPage extends React.Component{
               <div className="content">
                 <MarkdownHTML
                   //url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
-                  text={this.state.fullText}
+                  text={this.state.fullText} 
+                  linkTarget={this.renderHeader()}
                 />
               </div>
             </div>
