@@ -56,11 +56,6 @@ h4, h5 {
     box-shadow: none!important;
 }
 
-.content ul:first-of-type {
-  display: none;
-  border: 10px solid red;
-}
-
 /* Vipps-colors */
 
 
