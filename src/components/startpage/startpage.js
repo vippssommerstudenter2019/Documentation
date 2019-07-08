@@ -1,4 +1,5 @@
 import React from 'react';
+import './startpage.css'
 
 export const DocCard = (props) => (
     <div className="DocCard">
