@@ -11,6 +11,7 @@ class MarkdownHTML extends React.Component {
       data: "",
       lines: [],
     }
+    this.removeTableOfContent = this.removeTableOfContent.bind(this);
   }
 
   componentDidMount() {
@@ -30,16 +31,36 @@ class MarkdownHTML extends React.Component {
     }
   }
 
+  removeTableOfContent() {
+    console.log(this.props.text);
+    let lines = this.props.text.split('\n');
+    let markdownWithoutTableOfContent = '';
+    let withinTableOfContent = false;
+    let cnt = 0;
+    for (let line of lines) {
+      console.log("linje: " + line);
+      if (line.toLowerCase().includes("table of content")) {
+        withinTableOfContent = true;
+      }
+      else if (withinTableOfContent === true && line.startsWith('#')) {
+        markdownWithoutTableOfContent += line.toString() + '\n';
+        withinTableOfContent = false;
+      }
+      else if (withinTableOfContent === false) {
+        markdownWithoutTableOfContent += line.toString() + '\n';
+      }
+    }
+    return markdownWithoutTableOfContent;
+  }
 
 
 
 
   render() {
-    console.log("render", this.state, this.props)
     const { text, url } = this.props;
     if (text) {
       return <ReactMarkdown
-          source={text}
+          source={this.removeTableOfContent()}
           renderers={{ heading: HeadingRenderer}}            
         />;
     }
