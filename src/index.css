@@ -1,6 +1,6 @@
 /*  SETUP */
 html, body {
-    background: black;
+    background: white;
     margin: 0%;
 }
 
@@ -8,11 +8,9 @@ h1 {
     color: #FF5B24;
     margin-left: 5%;
     grid-row-start: 2;
-    font: bold 40pt "Helvetica";
 }
 h2 {
     color: #FF5B24;
-    font: bold 28pt "Helvetica";
     margin: auto;
 }
 /* ----------------------------------------------- */
@@ -32,7 +30,7 @@ h2 {
     width: 80%;
     margin: auto;
     align-content: center;
-    
+
 }
 
 .APIcontainer {
@@ -43,7 +41,6 @@ h2 {
     margin-left: auto;
     text-align: center;
     align-content: center;
-    font: bold 12pt helvetica;
 }
 
 .FullAPIButton {
@@ -53,7 +50,6 @@ h2 {
     height: 60px;
     width: 250px;
     border-radius: 30px;
-    font: bold 12pt helvetica;
 }
 
 .DocCardButtons {
@@ -65,7 +61,6 @@ h2 {
 .DocumentationLink {
     border: none;
     background: none;
-    font: bold 14pt helvetica;
     text-decoration: underline;
     cursor: pointer;
     color: #49367E;
@@ -75,7 +70,6 @@ h2 {
     border: none;
     background: #49367E;
     color: white;
-    font:  14pt helvetica;
     border-radius: 20px;
     height: 40px;
     width: 50%;
@@ -91,7 +85,6 @@ h2 {
     transition: 0.3s;
     text-align: center;
     align-content: center;
-    font: 12pt helvetica;
     display: grid;
     margin: auto;
 }
@@ -140,7 +133,6 @@ h2 {
     margin: auto;
     list-style-type: none;
     padding: 0;
-    font: 20px Helvetica;
     /* display: inline-block; */
 }
 
@@ -150,11 +142,10 @@ h2 {
     list-style-type: none;
     padding-left: 20%;
     padding-bottom: 5%;
-    font: 14px Helvetica 
 
 
     /* display: inline-block; */
-    
+
 }
 
 .NavElemTop {
@@ -180,7 +171,7 @@ h2 {
 
     padding: 0px 30px 0px 30px !important;
     height: 40px;
-    border: none;    
+    border: none;
 }
 
 .ApiLink:hover {
@@ -235,7 +226,6 @@ https://stackoverflow.com/questions/9251354/css-customized-scroll-bar-in-div
     grid-column-start: 2;
     padding: 5px;
     color: black;
-    font:  12pt "Helvetica";
     white-space: pre-wrap;
 }
 
