@@ -29,6 +29,7 @@ h4, h5 {
 }
 .content {
   margin-right: 10vw;
+  margin-left: 5vw;
   grid-area: content1 / content1 / content2 / content2;
   max-width: 50em;
 }
