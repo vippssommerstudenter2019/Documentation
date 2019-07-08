@@ -2,7 +2,7 @@ import React from "react";
 import ReactMarkdown from 'react-markdown'
 import './MarkdownHTML.css'
 import HeadingRenderer from "./HeadingRenderer.js";
-
+import CodeBlock from "./CodeBlock.js";
 
 class MarkdownHTML extends React.Component {
   constructor(props) {
@@ -61,7 +61,8 @@ class MarkdownHTML extends React.Component {
     if (text) {
       return <ReactMarkdown
           source={this.removeTableOfContent()}
-          renderers={{ heading: HeadingRenderer}}            
+          renderers={{ code: CodeBlock,
+                      heading: HeadingRenderer}}            
         />;
     }
     return <ReactMarkdown
