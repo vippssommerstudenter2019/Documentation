@@ -148,10 +148,8 @@
     background-color: #F6F6F9 !important;
 }
 
-.img{
-    max-width: 10vw !important;
-}
 
-.ul{
-    transform: translateX(0%) !important;
+
+#sidenav_2{
+    transform: none !important;
 }
