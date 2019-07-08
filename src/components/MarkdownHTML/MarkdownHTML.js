@@ -1,13 +1,13 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown'
-import "./prism.css"
-
+import './MarkdownHTML.css'
 
 class MarkdownHTML extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: ""
+      data: "",
+      lines: [],
     }
   }
 
@@ -28,14 +28,19 @@ class MarkdownHTML extends React.Component {
     }
   }
 
+
+
+
+
   render() {
     console.log("render", this.state, this.props)
     const { text, url } = this.props;
     if (text) {
-      console.log(1111)
       return <ReactMarkdown source={text} />;
     }
-    return <ReactMarkdown source={this.state.data} />;
+    return <ReactMarkdown
+            source={this.state.data}
+            linkTarget="_blank" />;
   }
 }
 

@@ -7,8 +7,7 @@ import {
 } from "react-materialize";
 import "./materialize.css";
 import M from "materialize-css";
-
-
+import "./sidebar.css"
 
 
 // Contains the menuitems and backlink
