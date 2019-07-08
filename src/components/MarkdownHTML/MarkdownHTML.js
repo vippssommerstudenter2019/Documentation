@@ -1,6 +1,8 @@
 import React from "react";
 import ReactMarkdown from 'react-markdown'
 import './MarkdownHTML.css'
+import HeadingRenderer from "./HeadingRenderer.js";
+
 
 class MarkdownHTML extends React.Component {
   constructor(props) {
@@ -36,11 +38,15 @@ class MarkdownHTML extends React.Component {
     console.log("render", this.state, this.props)
     const { text, url } = this.props;
     if (text) {
-      return <ReactMarkdown source={text} />;
+      return <ReactMarkdown
+          source={text}
+          renderers={{ heading: HeadingRenderer}}            
+        />;
     }
     return <ReactMarkdown
             source={this.state.data}
-            linkTarget="_blank" />;
+            linkTarget="_blank"
+              />;
   }
 }
 
