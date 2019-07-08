@@ -1,167 +1,71 @@
-/*  SETUP */
-html, body {
-    /* height: 100vh;
-    width: 100vh; */
-    background: black;
-    height: 1000px;
-    width: 1000px;
-    margin: 0%;
-}
-
-h1 {
-    color: #FF5B24;
-    margin-left: 5%;
-    grid-row-start: 2;
-    font: bold 40pt "Helvetica";
-}
-h2 {
-    color: #FF5B24;
-    font: bold 28pt "Helvetica";
-    margin: auto;
-}
-
-.DocuPage {
-    color: #ffffff;
-    background: white;
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 20% 80%;
-}
-/* ----------------------------------------------- */
-/*  SIDEBAR  */
-.Sidebar {
-    background: white;
-    display: grid;
-    grid-template-rows: 5% auto;
-}
-
-.SidebarHeader {
-    background: white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.Logo {
-    width: 50%;
-}
-
-.SidebarMenu {
-    background: white;
-    color: #49367E;
-}
-
-.SidebarNav {
-    background:white;
-    padding: 10%;
-    margin-left: 10%;
-    text-align: left;
-}
-
-.NavListTop {
-    width: 75%;
-    margin: auto;
-    list-style-type: none;
-    padding: 0;
-    font: 20px Helvetica;
-    /* display: inline-block; */
-}
-
-.NavListBot {
-    width: 75%;
-    margin: auto;
-    list-style-type: none;
-    padding-left: 20%;
-    padding-bottom: 5%;
-    font: 14px Helvetica 
 
 
-    /* display: inline-block; */
-    
+img {
+  max-width: 10vw;
 }
 
-.NavElemTop {
-    background: white;
-    border-radius: 15px;
-    padding: 2% 2%;
-    margin-bottom: 2%;
-
+h1, h2, h3 {
+  margin-top: 9vh;
+  margin-bottom: 3vh;
+  color: var(--vippsorange);
 }
 
-.NavElemBot {
-    background: white;
-    border-radius: 15px;
-    padding: 2% 2%;
-    margin-bottom: 2%;
-
+h4, h5 {
+  margin-top: 5vh;
+  margin-bottom: 1vh;
 }
 
-.ApiLink {
-    background: #F6F6F9;
-    color: #49367E;
-    width: 100%;
-    margin: 0 auto;
-    border-radius: 15px;
-    font: bold 12px Helvetica;
+
+
+.container {
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 350px 40vw 40vw;
+  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-areas:
+    "sidebarheader content1 content2 "
+    "sidebar content1 content2"
+    "sidebarfooter content1 content2";
 }
-/* ----------------------------------------------- */
-/* CONTENT  */
-.ContentField {
-    background: white;
+.content {
+  margin-right: 10vw;
+  grid-area: content1 / content1 / content2 / content2;
+  max-width: 50em;
 }
 
-.ContentSection {
-    background: white;
-    height: 100%;
-    width: 95%;
-    margin: auto;
+
+.sidebarfooter {
+  grid-area: sidebarfooter;
 }
 
-/*TODO Custom scrollbar breaks with a lot of browsers
-https://stackoverflow.com/questions/9251354/css-customized-scroll-bar-in-div
-*/
-.ScrollSection {
-    background: white;
-    height: 100%;
-    width: 5%;
-    display: inline-block;
+.sidebar {
+
+  margin: 2vh;
+  position: fixed;
+  grid-area: sidebar;
 }
 
-.TitleHeader {
-    background: white;
-    height: 20%;
-    width: 100%;
-    display: grid;
-    /* grid-auto-rows: 50% 5% 45%; */
+.sidebarheader {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  max-width: 100px;
+  grid-area: sidebarheader;
 }
 
-.ContentRow {
-    background: white;
-    display: grid;
-    grid-auto-columns: 5% 40% 10% 40% 5%;
-    padding: 0px 0px 100px 0px;
+.sidenav {
+    box-shadow: none!important;
 }
 
-.TextBox {
-    background: white;
-    grid-column-start: 2;
-    padding: 5px;
-    color: black;
-    font:  12pt "Helvetica";
-    white-space: pre-wrap;
-}
 
-.ImgBox {
-    background: white;
-    grid-column-start: 4;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+/* Vipps-colors */
 
-.CodeBox {
-    background: #F6F6F9;
-    color: #939393;
-    grid-column-start: 4;
-}
+
+:root {
+  --vippsorange :#FF5B24;
+  --lightvippsorange : #FDF4ED;
+  --vippspurple :#4D3280 ;
+  --vippsblue : #59CBE8 ;
+  --vippsblack :#161225 ;
+  --vippsblueberry :#49367e ;
+  }
