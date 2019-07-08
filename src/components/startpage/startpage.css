@@ -167,6 +167,7 @@ h2 {
     border-radius: 20px;
 
     padding: 0px 30px 0px 30px !important;
+    margin-top: 20px;
     height: 40px;
     border: none;
 }
@@ -242,7 +243,7 @@ https://stackoverflow.com/questions/9251354/css-customized-scroll-bar-in-div
 
 .listEl{
     padding: 0px 0px 0px 30px !important;
-    margin: 0px 0px 0px 20px !important;
+    margin: 5px 0px 5px 20px !important;
     text-decoration: none;
     line-height: 32px !important;
     font-size: 16px;
@@ -250,7 +251,6 @@ https://stackoverflow.com/questions/9251354/css-customized-scroll-bar-in-div
     display: block;
     background-color: white;
     border-radius: 20px;
-    height: 32px !important;
     width: 50%px !important;
 }
 

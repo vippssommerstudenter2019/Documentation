@@ -11,6 +11,8 @@
     background: white;
     display:flex;
     padding-left: 30px;
+    align-items: left !important;
+    justify-content: left !important;
 }
 
 .Logo {
@@ -89,6 +91,7 @@
     margin: 5px 0px 5px 20px !important;
     text-decoration: none;
     line-height: 32px !important;
+    height: auto !important;
     font-size: 16px;
     color: #49367E;
     display: block;
@@ -147,8 +150,6 @@
 .button:focus{
     background-color: #F6F6F9 !important;
 }
-
-
 
 #sidenav_2{
     transform: none !important;
