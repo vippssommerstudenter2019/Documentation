@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 // Contains all components not including sidebar
 export const ContentField = () => (
     <section className="ContentField">
@@ -28,43 +29,44 @@ const ContentSection = () => (
 https://stackoverflow.com/questions/9251354/css-customized-scroll-bar-in-div
 */
 const ScrollSection = () => (
-    <section className="ScrollSection">
+    <div className="sidebar">
 
-    </section>
-)
-
-const TitleHeader = () => (
-    <div className="TitleHeader">
-        <h1>eCommerce</h1>
     </div>
 )
 
+const TitleHeader = () => (
+    <div className="content">
+        <h1>eCommerce</h1>
+    </div>
+
+)
+
 const ContentRow = (props) => (
-    <div className="ContentRow">
+    <div className="content">
     {props.textbox}
     {props.mediabox}
     </div>
 )
 
 const TextBox = (props) => (
-    <div className="TextBox">
+    <div className="content">
         <h2>{props.header}</h2>
         <p>{props.body}</p>
-    </div>
+        </div>
 )
 
 const MediaBox = (props) => {
     let content;
     if (props.type==="img"){
         content = (
-            <div className="ImgBox">
+            <div className="content">
                 <img src={props.src}
                     alt={props.alt}/>
             </div>
         )
     } else if (props.type==="code"){
         content = (
-            <div className="CodeBox">
+            <div className="content">
                 <pre>
                     <code >
                         {props.code}

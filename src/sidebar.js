@@ -52,13 +52,13 @@ const SidebarNav = (props) => {
     );
     return (
         <div>
-            <SideNav class="sidebarMarg">
+            <SideNav className="sidebarMarg">
             <Collapsible>
                 {sidebarHeaders}
             </Collapsible>
             </SideNav>
         </div>
-        )   
+        )
     };
 
 // Links to full api doc

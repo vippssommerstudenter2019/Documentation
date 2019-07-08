@@ -15,6 +15,6 @@ export const DocCard = (props) => (
 export const ApiDoc = (props) => (
     <div className="ApiDoc">
         <p>or go straight to...</p>
-        <button className="FullAPIButton" onClick={props.apiClick}>Full API documentation</button>
+        <button className="FullAPIButton" onClick={ () => props.apiClick}>Full API documentation</button>
     </div>
 )

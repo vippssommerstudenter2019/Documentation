@@ -3,21 +3,26 @@ import ReactDOM from 'react-dom';
 import { Sidebar } from './sidebar.js';
 import { ContentField } from './content.js';
 import { DocCard, ApiDoc } from './startpage.js';
-import './index.css';
+import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js';
+import './vippsstyle.css';
+import './style.css';
+import "./materialize.css";
+import "./index.css"
+import M from "materialize-css";
 
 class StartPage extends React.Component {
     state = {location: 'startpage'}
 
     handleDocuClick = (doc) => {
-        this.setState({location:{doc}})
+        this.setState({location: doc})
     };
 
     handleStartClick = (doc) => {
-// TODO
+      this.setState({location: doc});
     }
 
     render = () => (
-        <section>
+        <div>
             {this.state.location === 'startpage' ? (
                 <div className="StartPage">
                     <div className="Cards">
@@ -50,7 +55,7 @@ class StartPage extends React.Component {
             ):(
                 <DocuPage doc={this.state.location}/>
             )}
-        </section>
+        </div>
     )
 }
 
@@ -76,22 +81,26 @@ class DocuPage extends React.Component{
         .then(response => response.text().then(text => this.getHeaders(text)))
     }
 
-    // Fetches raw content from Github and puts it in the DocuPage state 
+    // Fetches raw content from Github and puts it in the DocuPage state
     getContent() {
         return fetch(this.urls[this.props.doc]);
     }
 
     // Returns a HTML anchor from a given header
     makeAnchor(level, string) {
-        return "#" + 
-                string.replace(level, "")
-                .trim()
-                .replace(new RegExp(" ", 'g'),"-")
-                .toLowerCase()
-    }
+        return (
+          "#" +
+          string
+            .replace(level, "")
+            .trim()
+            .replace(new RegExp(" ", "g"), "-")
+            .toLowerCase()
+        );
+      }
 
     // Filters the content fetched from Github into headers and content
     getHeaders(data) {
+        const originalMarkdown = (' ' + data).slice(1);
         const lines = data.split("\n");
         let navbarHeaders = []
         let navbarHeader = {name: "", anchor: "", children: []}
@@ -110,19 +119,31 @@ class DocuPage extends React.Component{
                 return;
             }
         });
-        this.setState({headers: navbarHeaders.slice(1, navbarHeaders.length - 1)})
+        this.setState({
+            fullText: originalMarkdown,
+            headers: navbarHeaders.slice(1, navbarHeaders.length - 1)
+        });
     }
+
 
     render() {
         return (
-            <section className="DocuPage">
+            <div className="container bold">
+              <div className="sidebar">
                 <Sidebar headers={this.state.headers}/>
-                <ContentField/>
-            </section>
+              </div>
+              <div className="content">
+                <MarkdownHTML
+                  //url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
+                  text={this.state.fullText}
+                />
+              </div>
+            </div>
         )
     }
 }
 
-ReactDOM.render(<DocuPage doc="ecom"/>,
+ReactDOM.render(
+    <StartPage/>,
     document.getElementById('root')
 )
