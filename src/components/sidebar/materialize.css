@@ -6089,9 +6089,9 @@ select:focus {
   outline: 1px solid #c9f3ef;
 }
 
+/*removed focus color*/ 
 button:focus {
   outline: none;
-  background-color: #2ab7a9;
 }
 
 label {
@@ -7533,8 +7533,8 @@ input[type=range]::-ms-thumb {
   left: 0;
   top: 0;
   margin: 0;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
   height: 100%;
   height: calc(100% + 60px);
   height: -moz-calc(100%);
@@ -7545,17 +7545,17 @@ input[type=range]::-ms-thumb {
   will-change: transform;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  -webkit-transform: translateX(-105%);
-          transform: translateX(-105%);
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 .sidenav.right-aligned {
   right: 0;
-  -webkit-transform: translateX(105%);
-          transform: translateX(105%);
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
   left: auto;
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 .sidenav .collapsible {
@@ -7709,12 +7709,12 @@ input[type=range]::-ms-thumb {
 
 @media only screen and (max-width: 992px) {
   .sidenav.sidenav-fixed {
-    -webkit-transform: translateX(-105%);
-            transform: translateX(-105%);
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
   }
   .sidenav.sidenav-fixed.right-aligned {
-    -webkit-transform: translateX(105%);
-            transform: translateX(105%);
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
   }
   .sidenav > a {
     padding: 0 16px;
