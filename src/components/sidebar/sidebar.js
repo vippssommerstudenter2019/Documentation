@@ -1,7 +1,6 @@
 import React from "react";
 import {
   SideNav,
-  SideNavItem,
   Collapsible,
   CollapsibleItem
 } from "react-materialize";
@@ -9,7 +8,6 @@ import "./materialize.css";
 import M from "materialize-css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import { renderers } from "react-markdown";
 
 // Contains the menuitems and backlink
 export const Sidebar = props => (
