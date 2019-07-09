@@ -55,9 +55,9 @@ const Cards = () => (
                         docName="login"
                 />
             </div>
-            <div className="APIcontainer">
+            {/* <div className="APIcontainer">
                 <ApiDoc apiLink="/"/>
-            </div>
+            </div> */}
         </div>
 )
 
