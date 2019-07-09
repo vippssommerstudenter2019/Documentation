@@ -83,17 +83,17 @@
 }
 
 .listEl {
-  padding: 0px 0px 0px 30px !important;
+  padding: 0px 0px 0px 0px !important;
   margin: 5px 0px 5px 20px !important;
   text-decoration: none;
-  line-height: 32px !important;
-  height: auto !important;
   font-size: 16px;
   color: #49367e;
   display: block;
   background-color: white;
   border-radius: 20px;
   width: 50%px !important;
+  /*line-height: 32px !important;*/
+  
 }
 
 .listEl:hover {
@@ -150,4 +150,18 @@
 
 #sidenav_2 {
   transform: none !important;
+}
+
+li > a {
+    height: auto !important;
+    line-height: 32px !important;
+    color: #49367e !important;
+    border-radius: 20px;
+    padding: 0px 20px 0px 0px !important;
+    margin: 10px 0px 10px 0px !important;
+}
+ 
+li > a:hover {
+    background-color: #f6f6f9 !important;
+
 }

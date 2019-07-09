@@ -20,6 +20,7 @@ export const Sidebar = props => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
+  
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
