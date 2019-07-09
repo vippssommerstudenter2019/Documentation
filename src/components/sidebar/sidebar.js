@@ -4,6 +4,7 @@ import {
   Collapsible,
   CollapsibleItem
 } from "react-materialize";
+import M from "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
