@@ -87,8 +87,6 @@ class DocuPage extends React.Component {
 
   // Fetches raw content from Github and puts it in the DocuPage state
   getContent() {
-    console.log("Hva er doc?");
-    console.log(this.props.doc);
     return fetch(this.urls[this.props.doc]);
   }
 
@@ -114,7 +112,7 @@ class DocuPage extends React.Component {
             if (line.startsWith("###")) {
                 return;
             } else if (line.startsWith("##")) {
-                navbarHeader.children.push({name: line.replace("##", "").trim(), 
+                navbarHeader.children.push({name: line.replace("##", "").trim(),
                     anchor: this.makeAnchor("##", line)});
             } else if (line.startsWith("#")) {
                 navbarHeaders.push(navbarHeader);
@@ -132,19 +130,15 @@ class DocuPage extends React.Component {
     }
 
     render() {
-      console.log("Hei jeg er i render");
-      console.log(this.props.doc);
         return (
             <div className="container bold">
               <div className="sidebar">
-                {console.log("Hei jeg er i return")}
-                {console.log(this.props.doc)}
                 <Sidebar headers={this.state.headers} api={this.props.doc}/>
               </div>
               <div className="content">
                 <MarkdownHTML
                   //url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
-                  text={this.state.fullText} 
+                  text={this.state.fullText}
                 />
               </div>
             </div>
