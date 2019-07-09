@@ -9,23 +9,23 @@ import "./materialize.css";
 import M from "materialize-css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import vipps_dev from "../../img/vipps_dev.svg"
-
+import { renderers } from "react-markdown";
 
 // Contains the menuitems and backlink
 export const Sidebar = props => (
   <section className="Sidebar">
     <SidebarHeader />
-    <SidebarMenu headers={props.headers} />
+    <SidebarMenu headers={props.headers} api={props.api}/>
   </section>
 );
 
 // Header for logo and backlink
 const SidebarHeader = () => (
+
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
-      src={vipps_dev}
+      src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg"
       alt="logo"
     />
   </Link>
@@ -34,8 +34,24 @@ const SidebarHeader = () => (
 // Structures the sidebar content
 const SidebarMenu = props => (
   <div className="SidebarMenu">
-    <SidebarNav headers={props.headers} />
+    <SidebarNav headers={props.headers} api={props.api}/>
   </div>
+);
+
+// Buttons to different swaggers
+const SwaggerLink = (props) => (
+  <button className="ApiLink sidebarMarg">
+    <a href={props.document == "ecom" ? 
+  "https://vippsas.github.io/vipps-ecom-api/" : "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
+  </button>
+);
+
+const SwaggerIPPLink = () => (
+  <button className="ApiLink sidebarMarg">Swagger IPP</button>
+);
+
+const SwaggerISPLink = () => (
+  <button className="ApiLink sidebarMarg">Swagger ISP</button>
 );
 
 // Navigation Menu
@@ -55,18 +71,30 @@ const SidebarNav = props => {
       </ul>
     </CollapsibleItem>
   ));
-  return (
-    <div>
-      <SideNav className="sidebarMarg">
-        <SidebarHeader />
-        <Collapsible>{sidebarHeaders}</Collapsible>
-        <ApiLink />
-      </SideNav>
-    </div>
-  );
-};
 
-// Links to full api doc
-const ApiLink = () => (
-  <button className="ApiLink sidebarMarg">Full API Documentation</button>
-);
+  function retNavBar (normal) {
+      return (
+        <div>
+        <SideNav className="sidebarMarg">
+        <div className='static sidebarlogo'>
+          <SidebarHeader />
+          </div>
+          <div className='scrollable'>
+            <Collapsible>{sidebarHeaders}</Collapsible>
+          </div>
+          {normal ?
+          <div className='static apilink'> 
+          <SwaggerLink document={props.api}/> 
+          </div> : 
+          <div className='static apilink'>
+          <SwaggerIPPLink />
+          <SwaggerISPLink />
+          </div>}
+        </SideNav>
+      </div>
+      )
+  };
+  
+  // If documentpage is invoice then show two swagger buttons
+  return props.api == "invoice" ? retNavBar(false) : retNavBar(true);
+}
