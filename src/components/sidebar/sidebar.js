@@ -20,7 +20,7 @@ export const Sidebar = props => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-  
+
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
@@ -57,9 +57,15 @@ const SidebarNav = props => {
   return (
     <div>
       <SideNav className="sidebarMarg">
+      <div className='static sidebarlogo'>
         <SidebarHeader />
-        <Collapsible>{sidebarHeaders}</Collapsible>
+        </div>
+        <div className='scrollable'>
+          <Collapsible>{sidebarHeaders}</Collapsible>
+        </div>
+        <div className='static apilink'>
         <ApiLink />
+        </div>
       </SideNav>
     </div>
   );
