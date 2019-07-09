@@ -87,6 +87,8 @@ class DocuPage extends React.Component {
 
   // Fetches raw content from Github and puts it in the DocuPage state
   getContent() {
+    console.log("Hva er doc?");
+    console.log(this.props.doc);
     return fetch(this.urls[this.props.doc]);
   }
 
@@ -130,10 +132,14 @@ class DocuPage extends React.Component {
     }
 
     render() {
+      console.log("Hei jeg er i render");
+      console.log(this.props.doc);
         return (
             <div className="container bold">
               <div className="sidebar">
-                <Sidebar headers={this.state.headers}/>
+                {console.log("Hei jeg er i return")}
+                {console.log(this.props.doc)}
+                <Sidebar headers={this.state.headers} api={this.props.doc}/>
               </div>
               <div className="content">
                 <MarkdownHTML
