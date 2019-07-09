@@ -7,6 +7,7 @@ import {
 import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
+import vipps_docs from "../../img/vipps_docs.svg"
 
 // Contains the menuitems and backlink
 export const Sidebar = props => (
@@ -22,7 +23,7 @@ const SidebarHeader = () => (
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
-      src="https://www.vipps.no/static/vipps_theme/1.0.31/media/extra-images/vipps-logo.svg"
+      src={vipps_docs}
       alt="logo"
     />
   </Link>
