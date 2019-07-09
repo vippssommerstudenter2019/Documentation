@@ -9,6 +9,7 @@ import "./materialize.css";
 import M from "materialize-css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
+import VisibilitySensor from "react-visibility-sensor"
 
 // Contains the menuitems and backlink
 export const Sidebar = props => (
@@ -20,7 +21,6 @@ export const Sidebar = props => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-  
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"

@@ -125,7 +125,7 @@ class DocuPage extends React.Component {
         });
         this.setState({
             fullText: originalMarkdown,
-            headers: navbarHeaders.slice(1)
+            headers: navbarHeaders.slice(3)
         });
     }
 

@@ -11,7 +11,8 @@
     "react-materialize": "^3.3.3",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "react-syntax-highlighter": "^11.0.1"
+    "react-syntax-highlighter": "^11.0.1",
+    "react-visibility-sensor": "^5.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
