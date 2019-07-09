@@ -1,22 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Sidebar } from './components/sidebar/sidebar.js';
-import { DocCard, ApiDoc } from './components/startpage/startpage.js';
+import { DocCard } from './components/startpage/startpage.js';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
 import './vippsstyle.css';
 import './index.css';
-
-import {
-SideNav,
-SideNavItem,
-Collapsible,
-CollapsibleItem
-} from "react-materialize";
-import "./components/sidebar/materialize.css";
-import M from "materialize-css";
-import "./components/sidebar/sidebar.css";
-import { Link } from "react-router-dom";
 
 // TODO: startpath should be "/documentation/" and not "/"
 const StartPage = () => (

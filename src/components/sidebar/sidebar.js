@@ -1,15 +1,12 @@
 import React from "react";
 import {
   SideNav,
-  SideNavItem,
   Collapsible,
   CollapsibleItem
 } from "react-materialize";
 import "./materialize.css";
-import M from "materialize-css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import { renderers } from "react-markdown";
 
 // Contains the menuitems and backlink
 export const Sidebar = props => (
@@ -41,7 +38,7 @@ const SidebarMenu = props => (
 // Buttons to different swaggers
 const SwaggerLink = (props) => (
   <button className="ApiLink sidebarMarg">
-    <a href={props.document == "ecom" ? 
+    <a href={props.document === "ecom" ?
   "https://vippsas.github.io/vipps-ecom-api/" : "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
   </button>
 );
@@ -58,14 +55,15 @@ const SwaggerISPLink = () => (
 const SidebarNav = props => {
   //TODO: List elements should be
   const propHeaders = props.headers;
-  const sidebarHeaders = propHeaders.map(head => (
+  const sidebarHeaders = propHeaders.map((head, index) => (
     <CollapsibleItem
+      key={"Item: "+index}
       header={<a href={Object.values(head)[1]}>{Object.values(head)[0]}</a>}
     >
       <ul>
-        {Object.values(head)[2].map(child => (
-          <li class="listEl">
-            <a href={Object.values(child)[1]}>{Object.values(child)[0]}</a>
+        {Object.values(head)[2].map((child, indice) => (
+          <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
+            <a key={"a index: "+ index + ", indice: " + indice } href={Object.values(child)[1]}>{Object.values(child)[0]}</a>
           </li>
         ))}
       </ul>
@@ -83,9 +81,9 @@ const SidebarNav = props => {
             <Collapsible>{sidebarHeaders}</Collapsible>
           </div>
           {normal ?
-          <div className='static apilink'> 
-          <SwaggerLink document={props.api}/> 
-          </div> : 
+          <div className='static apilink'>
+          <SwaggerLink document={props.api}/>
+          </div> :
           <div className='static apilink'>
           <SwaggerIPPLink />
           <SwaggerISPLink />
@@ -94,7 +92,7 @@ const SidebarNav = props => {
       </div>
       )
   };
-  
+
   // If documentpage is invoice then show two swagger buttons
-  return props.api == "invoice" ? retNavBar(false) : retNavBar(true);
+  return props.api === "invoice" ? retNavBar(false) : retNavBar(true);
 }
