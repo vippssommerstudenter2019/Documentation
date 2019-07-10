@@ -1,23 +1,31 @@
-
-
 img {
   max-width: 10vw;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-top: 9vh;
   margin-bottom: 3vh;
-  color: var(--vippsorange);
+  color: var(--vippsblack);
 }
 
-h4, h5 {
+h4,
+h5 {
   margin-top: 5vh;
   margin-bottom: 1vh;
 }
 
+.DocCardTitle {
+  color: var(--vippsorange);
+}
 
+h1:first-of-type {
+  color: var(--vippsorange);
+}
 
 .container {
+  color: var(--vippsblack) !important;
   margin: 0px;
   display: grid;
   grid-template-columns: 350px 40vw 40vw;
@@ -33,13 +41,11 @@ h4, h5 {
   max-width: 50em;
 }
 
-
 .sidebarfooter {
   grid-area: sidebarfooter;
 }
 
 .sidebar {
-
   margin: 2vh;
   position: fixed;
   grid-area: sidebar;
@@ -54,18 +60,16 @@ h4, h5 {
 }
 
 .sidenav {
-    box-shadow: none!important;
+  box-shadow: none !important;
 }
-
 
 /* Vipps-colors */
 
-
 :root {
-  --vippsorange :#FF5B24;
-  --lightvippsorange : #FDF4ED;
-  --vippspurple :#4D3280 ;
-  --vippsblue : #59CBE8 ;
-  --vippsblack :#161225 ;
-  --vippsblueberry :#49367e ;
-  }
+  --vippsorange: #ff5b24;
+  --lightvippsorange: #fdf4ed;
+  --vippspurple: #4d3280;
+  --vippsblue: #59cbe8;
+  --vippsblack: #161225;
+  --vippsblueberry: #49367e;
+}
