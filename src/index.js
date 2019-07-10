@@ -13,6 +13,10 @@ const StartPage = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={Cards}/>
+            <Route path="/how-it-works/ecommerce/" exact component={props => "howitworks"}/>
+            <Route path="/how-it-works/invoice/" exact component={props => "howitworks"}/>
+            <Route path="/how-it-works/secure-login/" exact component={props => "howitworks"}/>
+
             <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
             <Route path="/documentation/invoice/" component={props => <DocuPage doc="invoice"/>}/>
             <Route path="/documentation/secure-login/" component={props => <DocuPage doc="login"/>}/>
@@ -29,7 +33,7 @@ const Cards = () => (
             <DocCard img={{src:"https://www.vipps.no/media/images/ta_betalt_pa_nett.max-320x320.jpegquality-60.png", alt:"Ta betalt på nett"}}
                     title="eCommerce"
                     text="Get Vipps checkout on your webstore"
-                    startLink="/"
+                    startLink="/how-it-works/ecommerce/"
                     docLink="/documentation/ecommerce/"
                     docName="ecom"
             />
