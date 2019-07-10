@@ -91,11 +91,11 @@ h2 {
 }
 
 .DocCardText h2 {
-  font-size: calc(8px + 0.8vh + 0.8vw) !important;
+  font-size: calc(6px + 0.8vh + 0.8vw) !important;
 }
 
 .DocCardText p {
-  font-size: calc(6px + 0.6vh + 0.4vw) !important;
+  font-size: calc(6px + 0.3vh + 0.3vw) !important;
 }
 
 .DocCardTitle {
