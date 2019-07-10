@@ -1,0 +1,102 @@
+/* Spacing
+  ========================================================================== */
+$xxs: 0.25rem; // 4px
+$xs: 0.5rem; // 8px
+$s: 1rem; // 16px
+$m: 1.5rem; // 24px
+$l: 2rem; // 32px
+$xl: 2.5rem; // 40px
+$xxl: 4rem; // 64px
+$xxxl: 5rem; // 80px
+
+// name, desktop, mobile
+$spaceamounts: (
+  (0, 0, 0),
+  (xs, $xs, $xxs),
+  (s, $s, $xs),
+  (m, $m, $s),
+  (l, $l, $m),
+  (xl, $xl, $l),
+  (xxl, $xxl, $xl),
+  (xxxl, $xxxl, $xxl)
+);
+$sides: (top, bottom, left, right);
+
+/*
+Margin/padding utiliy
+Example of usage: margin-top-xl, padding-xxl, padding-left-m
+Consider to move into base
+*/
+@each $name, $space, $mobile in $spaceamounts {
+  .margin-#{$name} {
+    margin: #{$space};
+    @include breakpoint(small only) {
+      margin: #{$mobile};
+    }
+  }
+
+  .padding-#{$name} {
+    padding: #{$space};
+  }
+
+  @each $side in $sides {
+    .margin-#{$side}-#{$name} {
+      margin-#{$side}: #{$space};
+      @include breakpoint(small only) {
+        margin-#{$side}: #{$mobile};
+      }
+    }
+
+    .padding-#{$side}-#{$name} {
+      padding-#{$side}: #{$space};
+    }
+  }
+}
+
+/* deprecated ! remove it from your templates and use the margin/padding helper
+.padding-y {
+  padding-bottom: 2rem;
+}
+
+
+
+/* States & helpers
+    ========================================================================== */
+
+.is-borderless {
+  border: none !important;
+}
+
+.is-helptext {
+  font-size: $small-font-size;
+  color: $dark-gray;
+}
+
+.is-centering-child-vertically {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.is-full-rounded {
+  border-radius: 50%;
+  border: 1px solid $medium-gray;
+}
+
+.is-warning {
+  color: get-color(alert);
+}
+
+.is-inline-blocking-children {
+  > * {
+    display: inline-block;
+  }
+}
+
+.hundred-percent-height {
+  height: 100%;
+}

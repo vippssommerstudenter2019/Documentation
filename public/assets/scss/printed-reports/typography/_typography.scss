@@ -1,0 +1,35 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group typography
+////
+
+// Base typography styles (tags only)
+//@import 'base';
+
+@import '~foundation-sites/scss/typography/base';
+
+// Typography helper classes (classes only)
+//@import 'helpers';
+
+@import '~foundation-sites/scss/typography/helpers';
+
+// Text alignment classes
+//@import 'alignment';
+
+
+@import '~foundation-sites/scss/typography/alignment';
+
+// Print styles
+
+//@import '~foundation-sites/scss/typography/print';
+@import 'print';
+
+@mixin foundation-typography {
+  @include foundation-typography-base;
+  @include foundation-typography-helpers;
+  @include foundation-text-alignment;
+  @include foundation-print-styles;
+}

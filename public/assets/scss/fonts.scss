@@ -1,0 +1,60 @@
+
+@font-face {
+  font-family: 'Vipps';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Vipps Text-Web'), local('Vipps Text-Web'),
+    url(../fonts/VippsText-Regular-Web.woff2) format('woff2'),
+    url(../fonts/VippsText-Regular-Web.woff) format('woff');
+  // Not needed until we i18n but leaving for now... unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+  font-family: 'Vipps';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Vipps Text-Web Light'), local('Vipps Text-Web Light'),
+    url(../fonts/VippsText-Light-Web.woff2) format('woff2'),
+    url(../fonts/VippsText-Light-Web.woff) format('woff');
+  // Not needed until we i18n but leaving for now... unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+  font-family: 'Vipps';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Vipps Text-Web Bold'), local('Vipps Text-Web Bold'),
+    url(../fonts/VippsText-Bold-Web.woff2) format('woff2'),
+    url(../fonts/VippsText-Bold-Web.woff) format('woff');
+  // Not needed until we i18n but leaving for now... unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+@font-face {
+  font-family: 'VippsHeader';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Vipps Display-Web'), local('Vipps Display-Web'),
+    url(../fonts/VippsDisplay-Regular-Web.woff2) format('woff2'),
+    url(../fonts/VippsDisplay-Regular-Web.woff) format('woff');
+  // Not needed until we i18n but leaving for now... unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+/* Font-size
+  ========================================================================== */
+$xsmall-font-size: 0.75rem; //12px
+$small-font-size: 0.875rem; //14px
+$medium-font-size: 1rem; //16px - Only to be used in special cases!
+$default-font-size: 1.125rem; //18px
+$large-font-size: 1.3125rem; //21px
+$xlarge-font-size: 2rem; //32px
+$xxlarge-font-size: 3rem; //48px
+$hero-font-size: 3.5rem; //56px
+
+// Mobile font-size
+$xsmall-mobile-font-size: 0.75rem; //12px
+$small-mobile-font-size: 0.8125rem; //13px
+$default-mobile-font-size: 1rem; //16px
+$large-mobile-font-size: 1.125rem; //18px
+$xlarge-mobile-font-size: 1.5rem; //24px
+$xxlarge-mobile-font-size: 2rem; //32px
+$hero-mobile-font-size: 2.5rem; //36px

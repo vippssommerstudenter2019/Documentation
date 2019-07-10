@@ -1,0 +1,116 @@
+html,
+body {
+  height: 100%;
+  margin: 16px;
+}
+
+.logo-print {
+  margin: 1rem 0 4rem 0;
+}
+
+.is-centering-child-vertically-for-print {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.sales-unit {
+  border-top: 2px solid $carbon-purple;
+}
+
+.bottom-bordered-title {
+  border-bottom: 2px solid $carbon-purple;
+}
+
+.media-object-section {
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+.table-wrapper {
+  margin-left: 1.125rem;
+  margin-right: 1.125rem;
+}
+
+tbody tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+tbody td,
+tbody th {
+  padding: 1rem 0.5rem;
+}
+
+table th,
+tr td {
+  font-size: $xsmall-font-size;
+  padding-left: 0;
+
+  &.number {
+    padding-right: 0;
+    text-align: right;
+  }
+}
+table tbody tr {
+  //white-space: nowrap;
+  &.total {
+    border-bottom: none !important;
+  }
+  &.total td {
+    font-size: $small-font-size;
+  }
+}
+
+.account-report {
+  page-break-before: avoid;
+  page-break-after: avoid;
+}
+
+
+@page {
+  @bottom-left {
+    content: 'Side ' counter(page) '/' counter(pages);
+    margin-bottom: 0.5cm;
+    font-size: 6pt;
+    font-family: 'Vipps';
+    font-style: normal;
+    font-weight: 500;
+  }
+}
+
+
+.subheader {
+  border-top: 2px solid $carbon-purple;
+}
+
+.report-footer {
+  background-color: white;
+  padding-top: 5px; // this bg + padding helps hiding the row border above on long tables
+  width: 100%;
+  position: fixed; // this gets repeated on each page, at the bottom,
+  // including on the last page contrary to doing the same with tfoot for instance
+  bottom: 0px;
+  left: 0;
+  & > div {
+    padding: 20px 0 10px 0;
+    border-top: 1px solid $carbon-purple;
+  }
+}
+
+.invoice {
+  tfoot {
+    background-color: transparent;
+  }
+  .invoice-summary {
+    // right now it seems beskrivelse is the first column and not the second like in the mocks
+    //& td:nth-child(2) {
+    //  width: 40%;
+    //  padding-right: 0.75rem;
+    //}
+    & td:first-child {
+      width: 40%;
+      padding-right: 0.75rem;
+    }
+  }
+
+}

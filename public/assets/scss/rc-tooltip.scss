@@ -1,0 +1,22 @@
+@import '~rc-tooltip/assets/bootstrap_white.css';
+
+.rc-tooltip {
+  font-size: $small-font-size;
+  opacity: 1;
+  color: white;
+  z-index: 1;
+
+  .rc-tooltip-arrow {
+    border-bottom-color: $blueberry;
+    border-top-color: $blueberry;
+    right: 10px;
+  }
+
+  .rc-tooltip-inner {
+    border-radius: 6px;
+    border-color: $blueberry;
+    background-color: $blueberry;
+    color: white;
+    padding: 0;
+  }
+}

@@ -1,0 +1,185 @@
+@import 'icons';
+
+.header-mobile {
+  height: $modal-mobile-header-height;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.modal-content {
+  @include breakpoint(small only) {
+    padding-top: calc(#{$modal-mobile-header-height} + 2rem);
+    padding-right: $s;
+    padding-left: $s;
+  }
+}
+
+.side-modal-overlay {
+  .modal {
+    box-shadow: -2px 0px 6px rgba(22, 18, 37, 0.2), -2px 0px 1px rgba(22, 18, 37, 0.0498188);
+    top: 0;
+    right: 0;
+    height: 100%;
+    max-width: 35em;
+  }
+
+  .modal.slide-in {
+    animation-duration: 0.4s;
+    animation-name: slidein;
+  }
+
+  @keyframes slidein {
+    from {
+      right: -35em;
+    }
+
+    to {
+      right: 0;
+    }
+  }
+}
+
+.overlay-modal-overlay {
+  .modal {
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    padding: 0px;
+    padding-left: 32px;
+    padding-right: 32px;
+    top: 50%;
+    left: 50%;
+    max-height: calc(100% - 40px);
+    max-width: 40em;
+    right: auto;
+    bottom: auto;
+    margin-right: calc(20px - 50%);
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 1px 4px rgba(22, 18, 37, 0.17), 0px 1px 1px rgba(22, 18, 37, 0.0498188);
+    border-radius: 20px;
+
+    @include breakpoint(small only) {
+      border-radius: 0px;
+    }
+  }
+
+  .feedback {
+    background-color: white;
+    border: 1px solid red;
+  }
+
+  .right {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+  }
+
+  .left {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+  }
+
+  .no-border {
+    padding: 0.5em;
+  }
+
+  .help {
+    h3 {
+      font-size: $global-font-size;
+    }
+  }
+}
+
+.feedback-dialog-overlay {
+  position: fixed;
+  bottom: 0px;
+  border-bottom: 0px;
+  left: 0px;
+  z-index: 100;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  pointer-events: none;
+
+  .feedback-dialog {
+    pointer-events: auto;
+    background-color: white;
+    box-shadow: 0px 1px 4px rgba(22, 18, 37, 0.17), 0px 1px 1px rgba(22, 18, 37, 0.0498188);
+    border-radius: 20px 20px 0px 0px;
+    padding: 24px;
+    padding-bottom: 32px;
+    overflow-wrap: normal;
+    text-break: normal;
+    max-height: 75%;
+
+    .close {
+      float: right;
+      position: relative;
+      top: -1rem;
+    }
+
+    textarea {
+      min-width: 100%;
+      max-height: 50vh;
+    }
+
+    @include breakpoint(small only) {
+      border-radius: 0px;
+    }
+  }
+
+  @include breakpoint(small) {
+    .grid-container {
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+}
+
+.side-modal-overlay,
+.overlay-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100; // should probably have constant
+
+  .slider {
+    background-color: $white;
+  }
+
+  .modal {
+    position: absolute;
+    background-color: $white;
+    overflow: auto;
+    width: 80%;
+    .grid-container,
+    .grid-y {
+      min-height: 100%;
+    }
+    @include breakpoint(small only) {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+      max-height: 100%;
+      max-width: 100%;
+      transform: translate(0, 0);
+    }
+  }
+}
+.body-with-modal {
+  overflow: hidden;
+
+  .app-header,
+  #main-content,
+  .footer {
+    filter: blur(2px);
+  }
+}

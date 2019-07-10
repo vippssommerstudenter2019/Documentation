@@ -1,0 +1,92 @@
+/* Colors
+  ========================================================================== */
+
+  // Main colours
+$orange: #ff5b24;
+$blueberry: #49367e;
+$black: #161225;
+$light-orange: #fff4ec;
+
+// Support colours
+$turquoise : #59CBE8;
+$shiny-blueberry: #5e3dc2;
+$rust: #9b3716;
+
+// Shades
+$tangerine: #FF985F;
+$peach: #FFB992;
+$light-peach: #FFD3BB;
+
+$dark-purple: #706b8b;
+$carbon-purple: #938fa8;
+$light-purple: #c9c6d7;
+$storm-grey: #efeef3;
+$cloud-grey: #f6f6f9;
+$fog-grey: #fcfbfe;
+$white: #fff;
+
+//Feedback
+$green: #006628;
+$light-green: #D7ECDF;
+$red: #C60000;
+$light-red: #FDE5E4;
+
+
+
+// should success, warning and alert be changed?
+$foundation-palette: (
+  primary: $orange,
+  secondary: $blueberry,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #de5059,
+);
+
+$body-background: $white;
+$body-font-color: $black;
+
+/* Color helpers
+  ========================================================================== */
+@each $name, $color in $foundation-palette {
+  .text-color-#{$name} {
+    color: $color;
+  }
+}
+
+.text-color-black {
+  color: $black;
+}
+
+.text-color-dark-purple {
+  color: $dark-purple;
+}
+
+.text-color-blueberry {
+  color: $blueberry;
+}
+
+.text-color-storm-grey {
+  color: $storm-grey;
+}
+
+.text-color-white,
+.h2.text-color-white,
+.h3.text-color-white,
+.h4.text-color-white,
+button.link.text-color-white,
+button.link.text-color-white:hover {
+  color: $white;
+  text-underline-position: under;
+
+  text-decoration-color: $white;
+}
+
+.text-color-orange,
+.h2.text-color-orange,
+.h3.text-color-orange,
+.h4.text-color-orange {
+  color: $orange;
+  text-underline-position: under;
+
+  text-decoration-color: $orange;
+}

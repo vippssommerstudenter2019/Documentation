@@ -1,0 +1,14 @@
+%icon-size-normal {
+  width: 25px;
+  height: 25px;
+}
+
+.close-icon {
+  @extend %icon-size-normal;
+  background-image: url('../images/close-icon.svg');
+}
+
+.back-icon {
+  @extend %icon-size-normal;
+  background-image: url('../images/back-icon.svg');
+}

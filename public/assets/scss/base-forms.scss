@@ -1,0 +1,233 @@
+/* Form
+  ========================================================================== */
+
+input::-moz-input-placeholder {
+  color: $input-placeholder-color;
+}
+input::-webkit-input-placeholder {
+  color: $input-placeholder-color;
+}
+input:-ms-input-placeholder {
+  color: $input-placeholder-color;
+}
+
+label input::-moz-input-placeholder {
+  color: $medium-gray;
+}
+label input::-webkit-input-placeholder {
+  color: $medium-gray;
+}
+label input:-ms-input-placeholder {
+  color: $medium-gray;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+select,
+input[type='text'],
+input[type='number'],
+input[type='tel'],
+input[type='email'] {
+  padding: 0.75rem;
+  height: 3rem;
+}
+
+label.vipps-checkbox,
+label.vipps-radio {
+  color: $black;
+  font-size: $medium-font-size;
+}
+
+.field-error {
+  margin-top: -1.4rem;
+  margin-bottom: 1rem;
+  color: $alert-color;
+  font-size: $small-font-size;
+}
+
+fieldset > .field-error {
+  margin-top: 0;
+}
+
+input:invalid[value] {
+  border: 1px solid get-color(alert);
+}
+
+input:invalid[value=''] {
+  border: 1px solid $carbon-purple;
+}
+
+input.error {
+  border: 2px solid $red;
+  background-color: scale-color($red, $lightness: 95%);
+}
+
+label > input {
+  margin-top: 0.25rem !important; //@todo That's dirty.
+}
+
+fieldset legend {
+  font-size: $small-font-size;
+  color: $dark-purple;
+  margin-bottom: 0;
+}
+
+.vipps-checkbox,
+.vipps-radio {
+  display: block;
+  position: relative;
+  padding-left: 2.5rem;
+  padding-top: 0.11rem;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 1rem;
+
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: white;
+    border: 0.0625rem solid $carbon-purple;
+  }
+
+  &[disabled] {
+    color: $carbon-purple;
+    .checkmark {
+      background-color: $storm-grey;
+      border-color: $storm-grey;
+    }
+    &:hover input ~ .checkmark {
+      background-color: $storm-grey;
+    }
+  }
+
+  &.error {
+    .checkmark {
+      border-color: $red;
+      background-color: scale-color($red, $lightness: 95%);
+    }
+  }
+
+  .label-with-description {
+    span {
+      display: inline-block;
+    }
+  }
+}
+
+input[type=checkbox],
+input[type=radio] {
+  &:focus {
+    ~ .checkmark {
+      background-color: $carbon-purple;
+    }
+  }
+}
+
+.vipps-checkbox {
+  &:hover input ~ .checkmark {
+    background-color: $carbon-purple;
+  }
+
+  & input:checked ~ .checkmark {
+    background-size: auto;
+    background: no-repeat center;
+    background-size: 1.125rem;
+    //*!important* is overriding keyboard focus styles
+    background-color: $orange !important;
+    border: none;
+  }
+
+  .checkmark {
+    background-size: 0 0;
+    border-radius: 0.3125rem;
+  }
+}
+
+.vipps-radio {
+  .checkmark {
+    border-radius: 50%;
+    background-size: 0 0;
+  }
+
+  &:hover input ~ .checkmark {
+    background-color: $carbon-purple;
+  }
+
+  input:checked ~ .checkmark {
+    //*!important* is overriding keyboard focus styles
+    background-color: $orange !important;
+    background-size: auto;
+    background: no-repeat center;
+    background-size: 1.125rem;
+    //*!important* is overriding keyboard focus styles
+    background-color: $orange !important;
+    border: none;
+  }
+
+}
+
+.errors {
+  color: $red;
+  font-size: $small-font-size;
+  span {
+    //Only displaying first error
+    display: none;
+    &:first-child {
+      display: inline-block;
+    }
+  }
+}
+
+.input-with-number-of-chars {
+  position: relative;
+  input {
+    padding-right: 50px;
+  }
+  .characters-left {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: $dark-purple;
+
+    &.over-max {
+      color: $red;
+    }
+  }
+}
+
+.phoneNumber-container {
+  position: relative;
+
+  .phoneNumber {
+    padding-left: 45px;
+    width: 200px;
+  }
+
+  .phoneNumber:focus + .countrycode {
+    padding-left: 31px;
+  }
+
+  .countrycode {
+    padding-left: 30px;
+    font-size: $medium-font-size;
+    position: absolute;
+    left: -20px;
+    top: 37px;
+  }
+}

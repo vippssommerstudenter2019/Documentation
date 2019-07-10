@@ -7,12 +7,17 @@ import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
 import './vippsstyle.css';
 import './index.css';
 import vipps_dev from "./img/vipps_dev.svg"
+import HowItWorks from "./components/howitworks/HowItWorks"
+import {eComSections, eComIntro} from "./model/eCom"
 
 // TODO: startpath should be "/documentation/" and not "/"
 const StartPage = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={Cards}/>
+            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
+            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
+            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>} />
             <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
             <Route path="/documentation/invoice/" component={props => <DocuPage doc="invoice"/>}/>
             <Route path="/documentation/secure-login/" component={props => <DocuPage doc="login"/>}/>
@@ -29,21 +34,21 @@ const Cards = () => (
             <DocCard img={{src:"https://www.vipps.no/media/images/ta_betalt_pa_nett.max-320x320.jpegquality-60.png", alt:"Ta betalt på nett"}}
                     title="eCommerce"
                     text="Get Vipps checkout on your webstore"
-                    startLink="/"
+                    startLink="/how-it-works/ecommerce/"
                     docLink="/documentation/ecommerce/"
                     docName="ecom"
             />
             <DocCard img={{src:"https://www.vipps.no/media/images/sende_regninger.max-320x320.jpegquality-60.png", alt:"Send regninger"}}
                     title="Invoice"
                     text="Send invoices with Vipps"
-                    startLink="/"
+                    startLink="/how-it-works/invoice/"
                     docLink="/documentation/invoice/"
                     docName="invoice"
             />
             <DocCard img={{src:"https://www.vipps.no/media/images/vipps_logginn.max-320x320.jpegquality-60.png", alt:"Logg inn"}}
                     title="Login"
                     text="Secure login and identification with Vipps"
-                    startLink="/"
+                    startLink="/how-it-works/secure-login/"
                     docLink="/documentation/secure-login/"
                     docName="login"
             />

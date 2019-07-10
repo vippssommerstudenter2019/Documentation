@@ -1,0 +1,451 @@
+/* Text
+  ========================================================================== */
+
+body {
+  font-family: $body-font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000;
+  font-size: $default-font-size;
+  font-weight: 300;
+}
+
+/* Font-size helper classes
+========================================================================== */
+.xsmall-font-size {
+  font-size: $xsmall-font-size;
+}
+
+.small-font-size {
+  font-size: $small-font-size;
+}
+
+.default-font-size {
+  font-size: $default-font-size;
+}
+
+.large-font-size {
+  font-size: $large-font-size;
+}
+
+.xlarge-font-size {
+  font-size: $xlarge-font-size;
+}
+
+.xxlarge-font-size {
+  font-size: $xxlarge-font-size;
+}
+
+.hero-font-size {
+  font-size: $hero-font-size;
+}
+
+/* Mobile Font-size helpers classes
+========================================================================== */
+@include breakpoint(small only) {
+  .xsmall-font-size {
+    font-size: $xsmall-mobile-font-size; //12px
+  }
+  .small-font-size {
+    font-size: $small-mobile-font-size; //13px
+  }
+  .default-font-size {
+    font-size: $default-mobile-font-size; //16px
+  }
+  .large-font-size {
+    font-size: $large-mobile-font-size; //18px
+  }
+  .xlarge-font-size {
+    font-size: $xlarge-mobile-font-size; //24px
+  }
+  .xxlarge-font-size {
+    font-size: $xxlarge-mobile-font-size; //30px
+  }
+  .hero-font-size {
+    font-size: $hero-mobile-font-size; //48px
+  }
+}
+
+/* Font-weight helpers classes
+========================================================================== */
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.font-weight-regular {
+  font-weight: 500;
+}
+
+.font-weight-header {
+  font-weight: 400;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+#skip-to-main-content {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  a:focus {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 400;
+}
+
+b,
+strong {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.normal-word-break {
+  word-break: normal;
+}
+
+.all-word-break {
+  word-break: break-all;
+}
+
+.label {
+  font-size: $small-font-size;
+  font-weight: 500;
+  color: $dark-purple;
+}
+
+@include breakpoint(small only) {
+  label,
+  .label {
+    font-size: $small-font-size;
+  }
+
+  .h3-on-small {
+    font-size: $large-font-size;
+    font-weight: $global-weight-bold;
+  }
+
+  .text-color-dark-purple-on-small {
+    color: $dark-purple;
+  }
+}
+
+/* helpers
+  ========================================================================== */
+@import 'base-helpers';
+
+/* Anchors
+  ========================================================================== */
+a {
+  font-weight: $global-weight-bold;
+  color: $secondary-color;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    color: #7a67a3;
+  }
+
+  &.white,
+  &.white:active {
+    color: $white;
+  }
+
+  &.white:hover {
+    color: $white;
+    border-bottom: 1px solid $white;
+    padding-bottom: 1px !important;
+    margin-bottom: -1px;
+  }
+
+  &.gray,
+  &.gray:active {
+    color: $medium-gray;
+  }
+
+  &.gray:hover {
+    color: $medium-gray;
+  }
+
+  &.navlink {
+    border: 0;
+  }
+
+  &.inline {
+    border-bottom: 1px solid $secondary-color;
+
+    &:hover {
+      border-bottom: 1px solid $orange;
+    }
+  }
+}
+
+/* Buttons
+  ========================================================================== */
+button {
+  cursor: pointer;
+  &.link {
+    text-decoration: underline;
+    font-weight: $global-weight-bold;
+    color: $blueberry;
+    //same as regular button
+    &:hover {
+      text-decoration-color: $orange;
+    }
+  }
+}
+
+.button {
+  font-weight: $global-weight-bold;
+  font-size: $default-font-size;
+  &:disabled {
+    //overriding disabled foundation style
+    background-color: $light-purple !important;
+  }
+
+  &.with-icon {
+    .icon {
+      background-size: 0 0;
+      &:after {
+        background-size: auto;
+        background: no-repeat center;
+        background-image: inherit;
+        content: ' ';
+        align-self: center;
+      }
+    }
+    .text {
+      float: right;
+      margin-left: rem-calc(4px);
+    }
+  }
+
+  &.tiny {
+    font-size: $xsmall-font-size;
+    background-color: $blueberry;
+    line-height: 1rem;
+    padding: rem-calc(5px) rem-calc(11px);
+    border-radius: 1rem;
+
+    &:hover,
+    &:focus {
+      background-color: scale-color($blueberry, $lightness: 25%);
+    }
+    &.with-icon {
+      .icon {
+        &:after {
+          padding-left: rem-calc(12px);
+          background-size: rem-calc(12px);
+          height: rem-calc(12px);
+          width: rem-calc(12px);
+        }
+      }
+    }
+  }
+
+  &.hollow {
+    background-color: $white;
+    border: 2px solid $storm-grey;
+    color: $blueberry;
+    &:hover,
+    &:focus {
+      background-color: $storm-grey;
+      border-color: $storm-grey;
+      color: $blueberry;
+    }
+  }
+
+  &.with-icon:not(.tiny) {
+    .icon {
+      &:after {
+        padding-left: rem-calc(22px);
+        background-size: rem-calc(22px);
+        height: rem-calc(22px);
+        width: rem-calc(22px);
+      }
+    }
+    .text {
+      margin-left: rem-calc(8px);
+    }
+  }
+  .underline {
+    border-bottom: 1px solid;
+  }
+}
+
+/* Border
+  ========================================================================== */
+.border-top-light-purple {
+  border-top: 1px solid $light-purple;
+}
+
+.border-bottom-light-purple {
+  border-bottom: solid 0.0625rem $light-purple;
+}
+
+.storm-grey-border {
+  border: 1px solid $storm-grey;
+}
+
+.border-bottom-storm-grey {
+  border-bottom: solid 0.0625rem $storm-grey;
+}
+
+/* Background
+  ========================================================================== */
+.gray-bg {
+  background-color: $cloud-grey;
+}
+
+.white-bg {
+  background-color: $white;
+}
+
+.light-orange-bg {
+  background-color: $light-orange;
+}
+
+/* Form
+  ========================================================================== */
+@import 'base-forms';
+
+/* Table
+    ========================================================================== */
+table {
+  font-size: $small-font-size;
+  thead th {
+    border-bottom: 0.125rem solid $carbon-purple;
+    font-weight: normal;
+    padding-top: 0;
+    padding-bottom: 1rem;
+
+    &.right {
+      text-align: right;
+    }
+
+    &.sort {
+      cursor: pointer;
+
+      &:after {
+        padding-left: 8px;
+        vertical-align: -20%;
+      }
+
+      &.sort-asc:after {
+        content: url('../images/vipps-sort-down.svg');
+      }
+      &.sort-desc:after {
+        content: url('../images/vipps-sort-up.svg');
+      }
+      &.sort-none:after {
+        content: url('../images/vipps-sort-unselected.svg');
+      }
+    }
+  }
+
+  tbody tr {
+    border-bottom: 0.0625rem solid $light-purple !important;
+    .right {
+      float: right;
+    }
+    .search-result .highlight {
+      background-color: $peach;
+    }
+  }
+  &.stack {
+    .table-header {
+      display: none;
+    }
+  }
+
+  @include breakpoint(medium down) {
+    tbody tr {
+      &:first-child {
+        border-top: 0.125rem solid #f6f6f9;
+      }
+    }
+
+    &.stack {
+      .table-header {
+        display: inline;
+        text-align: left;
+        color: $dark-purple;
+      }
+      .value {
+        float: right;
+      }
+
+      tbody tr {
+        td {
+          border-bottom: 0.125rem solid $cloud-grey;
+          padding: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+/* Foundation override / styling
+    ========================================================================== */
+// Add to this only if you can't modify settings to your liking !
+.sticky-container {
+  z-index: 10;
+}
+
+.sticky {
+  background-color: #fff;
+  z-index: 1;
+
+  &:not(.is-anchored) {
+    -webkit-box-shadow: 0 4px 5px 0 rgba(246, 247, 247, 1);
+    -moz-box-shadow: 0 4px 5px 0 rgba(246, 247, 247, 1);
+    box-shadow: 0 4px 5px 0 rgba(246, 247, 247, 1);
+  }
+}
+
+.badge {
+  font-size: $default-font-size;
+  min-width: 2.4em;
+  border: 2px solid $storm-grey;
+  color: $storm-grey;
+
+  &.step {
+    border: 2px solid $shiny-blueberry;
+    color: $shiny-blueberry;
+
+    &.active {
+      background-color: $shiny-blueberry;
+      border: 2px solid $shiny-blueberry;
+      color: $white;
+    }
+  }
+}
+
+/* Shared components
+    ========================================================================== */
+@import 'base-shared-components';

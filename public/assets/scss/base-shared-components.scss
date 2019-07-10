@@ -1,0 +1,452 @@
+/* Shared components
+    ========================================================================== */
+
+.avatar-image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  // todo - do we need this? Or is it enough to use the avatar-image class on the placeholders as well?
+  &.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.vipps-arrow-link {
+  display: flex;
+  background-size: 0 0;
+  justify-content: center;
+
+  &:after {
+    background-size: auto;
+    background: no-repeat center;
+    background-image: inherit;
+    content: ' ';
+    align-self: center;
+    padding-left: 2.7em;
+    background-size: 1em;
+    height: 1em;
+    width: 1em;
+  }
+}
+
+ul {
+  margin-left: 0;
+  list-style-type: none;
+}
+
+.list .list-element {
+  &:hover {
+    background-color: $fog-grey;
+  }
+}
+
+/* Header
+========================================================================== */
+$header-min-height: 96px;
+$header-min-height-small: 40px;
+
+.header {
+  $dot-size: 0.325rem;
+  $dot-padding: 0.3rem;
+  $dot-border-radius: $dot-size / 2;
+  $dot-color: $secondary-color;
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  min-height: $header-min-height;
+  @include breakpoint(small only) {
+    min-height: $header-min-height-small;
+  }
+
+  &.fixed-height {
+    // needed for MP, but not for vippsno
+    height: $header-min-height;
+    @include breakpoint(small only) {
+      height: $header-min-height-small;
+    }
+  }
+
+  @include breakpoint(small only) {
+    padding-bottom: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+  }
+
+  .desktop-business-menu-wrapper {
+    .is-dropdown-submenu-parent {
+      padding-right: 1.95rem;
+    }
+
+    .company-label {
+      margin-top: -0.6rem;
+      line-height: 0.6rem;
+      font-weight: 500;
+    }
+
+    button {
+      color: $blueberry;
+    }
+
+    &:hover button,
+    &:hover .company-label {
+      color: $shiny-blueberry;
+    }
+
+    .caret-down {
+      position: absolute;
+      top: 0;
+      right: 7px;
+    }
+
+    .vipps-business-dropdown {
+      margin-top: 10px;
+      position: absolute;
+      right: 0;
+      border: 0;
+      min-width: 250px;
+
+      .arrow-up {
+        right: 16px;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $blueberry;
+        position: absolute;
+        top: 0;
+      }
+
+      .menu-container {
+        background-color: $blueberry;
+        border-radius: 6px;
+        margin-top: 7px;
+        overflow: hidden;
+        ul {
+          margin: 0;
+        }
+        li {
+          width: 100%;
+          &:hover {
+            background-color: $shiny-blueberry;
+          }
+          a {
+            padding: 1rem;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    height: 100vh;
+    top: 40px;
+    width: 100%;
+    left: 0;
+    background: $white;
+  }
+
+  .btn-nav {
+    display: block;
+    float: right;
+    position: relative;
+    width: 2.8125rem;
+    height: 2.5rem;
+
+    @include breakpoint(small only) {
+      height: 1rem;
+      height: 100%;
+      padding: 20px 40px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    .nav-dots {
+      position: absolute;
+      right: 15px;
+      left: auto;
+      top: 23px;
+      display: block;
+      width: $dot-size;
+      height: $dot-size;
+      border-radius: $dot-border-radius;
+      background-color: $dot-color;
+      transition: all 0.2s ease-in-out;
+
+      &::before,
+      &::after {
+        position: absolute;
+        top: 0;
+        content: '';
+        width: $dot-size;
+        height: $dot-size;
+        border-radius: $dot-border-radius;
+        background-color: $dot-color;
+        transition: all 0.2s ease-in-out;
+      }
+
+      &::before {
+        transform: translateX(-0.5rem);
+        left: -$dot-padding;
+      }
+
+      &::after {
+        transform: translateX(0.5rem);
+        left: $dot-padding;
+      }
+    }
+
+    &.btn-nav--open {
+      .nav-dots {
+        background-color: transparent;
+
+        &::before,
+        &::after {
+          left: -0.3rem;
+          top: 0.0625rem;
+          height: 0.1125rem;
+          width: 1rem;
+        }
+
+        &::before {
+          transform: rotate(45deg);
+        }
+
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+  .menu {
+    a {
+      color: $secondary-color;
+      padding: 0.25rem;
+      font-weight: $global-weight-bold;
+
+      @include breakpoint(small only) {
+        font-size: $xlarge-mobile-font-size;
+        padding: 1.25rem 0.25rem;
+      }
+
+      @include breakpoint(xlarge) {
+        padding: 0.6rem 0.5rem;
+      }
+      &.is-active {
+        color: $orange;
+      }
+    }
+    .small a {
+      font-size: $xsmall-font-size;
+    }
+
+    a:hover,
+    a:active,
+    .selected a {
+      color: $shiny-blueberry;
+    }
+  }
+
+  .vipps-logo {
+    display: block;
+    max-width: 163px;
+    max-height: 100%; //IE11
+  }
+
+  .log-dl {
+    @include breakpoint(large up) {
+      align-self: flex-end;
+    }
+
+    a {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0.75rem;
+    }
+  }
+
+  .vipps-login {
+    margin: -0.65rem 0.4rem 0 0;
+    max-width: 15px;
+  }
+
+  .vipps-download {
+    margin: -0.5rem 0.4rem 0 0;
+    max-width: 17px;
+
+    @include breakpoint(medium only) {
+      max-width: 16px;
+    }
+  }
+}
+
+/* Footer
+  ========================================================================== */
+.footer {
+  background-color: $orange;
+  font-weight: $global-weight-bold;
+  color: $white;
+  margin-top: 0;
+  padding-top: $s * 2;
+  padding-bottom: $s * 3;
+  @include breakpoint(medium) {
+    padding-top: $l * 2;
+    padding-bottom: $l * 3;
+  }
+  @include breakpoint(large) {
+    padding-top: $xxl * 2;
+    padding-bottom: $xxl * 3;
+  }
+
+  .footer__logo {
+    margin-bottom: $s;
+    @include breakpoint(medium) {
+      width: 100%;
+    }
+  }
+  .footer__vision {
+    margin-bottom: $l;
+  }
+  .footer-list {
+    list-style-type: none;
+    margin: 0;
+
+    @include breakpoint(small only) {
+      float: none !important; //@todo: fugly
+    }
+  }
+  .footer-list__item {
+    margin-bottom: $s;
+    @include breakpoint(medium) {
+      margin-bottom: $xxs;
+    }
+  }
+  .footer-list__link {
+    color: $white;
+    padding-left: 2.25rem;
+    background-image: url('../images/vipps-arrow-right-white.svg');
+    background-size: 1.125rem;
+    background-position: 0;
+    background-repeat: no-repeat;
+    transition: background-position 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+      background-position: left 0.5625rem center;
+    }
+  }
+}
+
+/* Logo
+  ========================================================================== */
+// those fixes stupid IE11's mishandling of SVG size
+.vipps-logo-wrapper svg {
+  width: 120px !important;
+  height: 30px !important;
+
+  @include breakpoint(small only) {
+    width: 63px !important;
+    height: 16px !important;
+  }
+}
+
+.vipps-logo-footer-wrapper {
+  display: inline-block;
+  width: 60px;
+  height: 15px;
+}
+
+/* Searchbox
+  ========================================================================== */
+.search-box-wrapper {
+  position: relative;
+  height: 50px;
+
+  &.with-label {
+    height: 78px;
+
+    .clear-search {
+      position: absolute;
+      top: 2.5rem;
+    }
+  }
+
+  .search-box {
+    caret-color: $orange;
+    padding: 0.75rem;
+    height: 3rem;
+    padding-left: 48px;
+    padding-right: 40px;
+
+    &::-ms-clear {
+      display: none;
+    }
+
+    &:focus {
+      border: 2px solid $carbon-purple;
+      outline: none;
+    }
+
+    &[value=''] {
+      + .icon-wrapper {
+        .clear-search {
+          display: none;
+        }
+      }
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 0.75rem;
+    left: 1rem;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .clear-search {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}
+
+.searchresult .highlight {
+  background-color: $peach;
+}
+
+
+/** Card **/
+.card {
+  max-width: 512px;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid $storm-grey;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 4px rgba(22, 18, 37, 0.17), 0px 1px 1px rgba(22, 18, 37, 0.0498188);
+  border-radius: 12px;
+}
