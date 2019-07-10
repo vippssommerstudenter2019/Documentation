@@ -85,11 +85,6 @@ const SidebarNav = props => {
           <div className='scrollable'>
             <Collapsible>{sidebarHeaders}</Collapsible>
           </div>
-          {normal ?
-          <div className='static apilink'>
-          </div> :
-          <div className='static apilink'>
-          </div>}
         </SideNav>
       </div>
       )
