@@ -84,18 +84,18 @@ class DocuPage extends React.Component {
   }
 
   // Returns a HTML anchor from a given header
-  makeAnchor(level, string) {
+  makeAnchor(headerLevel, string) {
     return (
       "#" +
       string
-        .replace(level, "")
+        .replace(headerLevel, "")
         .trim()
         .replace(new RegExp(" ", "g"), "-")
         .toLowerCase()
     );
   }
 
-    // Filters the content fetched from Github into headers and content
+    // Filters the content fetched from Github into headers
     getHeaders(data) {
         const originalMarkdown = (' ' + data).slice(1);
         const lines = data.split("\n");
@@ -118,7 +118,10 @@ class DocuPage extends React.Component {
         });
         this.setState({
             fullText: originalMarkdown,
-            headers: navbarHeaders.slice(3)
+            // First element i navbarHeaders is an empty collection
+            // Second element is just the name of the documentation, not needed in navigation bar
+            // In case second header is not 'table of contents' do not exclude the second header
+            headers: navbarHeaders[2].name === "Table of contents" ? navbarHeaders.slice(3) : navbarHeaders.slice(2)
         });
     }
 

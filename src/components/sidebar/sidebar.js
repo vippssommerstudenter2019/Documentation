@@ -40,21 +40,24 @@ const SidebarMenu = props => (
 const SwaggerLink = (props) => (
   <button className="ApiLink sidebarMarg">
     <a href={props.document === "ecom" ?
-  "https://vippsas.github.io/vipps-ecom-api/" : "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
+      "https://vippsas.github.io/vipps-ecom-api/" : 
+      "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
   </button>
 );
 
-const SwaggerIPPLink = () => (
-  <button className="ApiLink sidebarMarg">Swagger IPP</button>
+const SwaggerISPLink = () => (
+  <button className="ApiLink sidebarMarg">
+    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html">Swagger ISP</a></button>
 );
 
-const SwaggerISPLink = () => (
-  <button className="ApiLink sidebarMarg">Swagger ISP</button>
+const SwaggerIPPLink = () => (
+  <button className="ApiLink sidebarMarg">
+    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html">Swagger IPP</a></button>
 );
 
 // Navigation Menu
 const SidebarNav = props => {
-  //TODO: List elements should be
+  // Generates an sidebar menu from given header datastructure passed in props
   const propHeaders = props.headers;
   const sidebarHeaders = propHeaders.map((head, index) => (
     <CollapsibleItem
@@ -64,14 +67,17 @@ const SidebarNav = props => {
       <ul>
         {Object.values(head)[2].map((child, indice) => (
           <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a key={"a index: "+ index + ", indice: " + indice } href={Object.values(child)[1]}>{Object.values(child)[0]}</a>
+            <a  key={"a index: "+ index + ", indice: " + indice } 
+                href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
           </li>
         ))}
       </ul>
     </CollapsibleItem>
   ));
 
-  function retNavBar (normal) {
+  // Returns the correct navigation bar
+  // Param: normal = false if documentation page is invoice, else true
+  function navBar (normal) {
       return (
         <div>
         <SideNav className="sidebarMarg">
@@ -95,5 +101,5 @@ const SidebarNav = props => {
   };
 
   // If documentpage is invoice then show two swagger buttons
-  return props.api === "invoice" ? retNavBar(false) : retNavBar(true);
+  return props.api === "invoice" ? navBar(false) : navBar(true);
 }
