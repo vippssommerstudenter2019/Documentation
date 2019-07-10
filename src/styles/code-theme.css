@@ -48,6 +48,7 @@
 .cm-s-vipps .CodeMirror-activeline-background { background: rbg(252, 251, 254); }
 .cm-s-vipps .CodeMirror-matchingbracket { outline:1px solid grey; color: var(--vippsrust) !important;background: #FFFFFF; }
 
+
 .react-codemirror2 {
   padding-bottom: 25px;
   background-color: var(--athensGreyLight);
