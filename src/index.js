@@ -99,6 +99,32 @@ class DocuPage extends React.Component {
         .toLowerCase()
       );
     }
+  
+      getChildren(twoOrOne) {
+        let singleSwagger = {name: "Swagger", anchor: "#swagger"};
+        let ispSwagger = {name: "Swagger ISP", anchor: "#swagger-isp"};
+        let ippSwagger = {name: "Swagger IPP", anchor: "#swagger-ipp"};
+        if(twoOrOne) {
+          return [
+            {name: "Postman", anchor: "#postman"},
+            singleSwagger,
+            {name: "FAQ", anchor: "#faq"}
+          ]
+        } else {
+          return [
+            {name: "Postman", anchor: "#postman"},
+            ispSwagger,
+            ippSwagger,
+            {name: "FAQ", anchor: "#faq"}
+          ]
+        }
+      }
+
+      addSpecialHeader(document) {
+        let devRes = {name: "Developer Resources", anchor: "#developer-resources",
+          children: document === "invoice" ? this.getChildren(false) : this.getChildren(true)}
+        return devRes;
+      }
 
     // Filters the content fetched from Github into headers
     getHeaders(data) {
@@ -121,12 +147,14 @@ class DocuPage extends React.Component {
                 return;
             }
         });
+        let sidebarHeaders = navbarHeaders[2].name === "Table of contents" ? navbarHeaders.slice(3) : navbarHeaders.slice(2);
+        sidebarHeaders.unshift(this.addSpecialHeader(this.props.doc));
         this.setState({
             fullText: originalMarkdown,
             // First element i navbarHeaders is an empty collection
             // Second element is just the name of the documentation, not needed in navigation bar
             // In case second header is not 'table of contents' do not exclude the second header
-            headers: navbarHeaders[2].name === "Table of contents" ? navbarHeaders.slice(3) : navbarHeaders.slice(2)
+            headers: sidebarHeaders
         });
     }
 
