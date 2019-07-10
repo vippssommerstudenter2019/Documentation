@@ -1,26 +1,7 @@
 @import url("vipps-style.css");
 @import url("../../node_modules/codemirror/lib/codemirror.css");
 
-/**
- * Predefined Vipps colours.
- */
-:root {
- --debug: #FF00FF;
- --vippsblack: #161225;
- --vippsblue: #59cbe8;
- --vippsgray: #6f6f6f;
- --vippspurple: #5E3DC2;
- --vippsred: #EB5858;
- --vippsrust: #9B3716;
 
- --ghost: #C9C6D7;
- --seashellPeach: #FFF4EC;
- --gallery: #F0F0F0;
- --athensGrey: #EFEEF3;
- --athensGreyLight: #F6F6F9;
- --manatee: #938FA8;
- --rum: #706B8B;
-}
 
 /**
  * Custom style for code mirror view in the Vipps design language.
@@ -47,6 +28,7 @@
 .cm-s-vipps span.cm-error		{ color: var(--debug);			}
 .cm-s-vipps .CodeMirror-activeline-background { background: rbg(252, 251, 254); }
 .cm-s-vipps .CodeMirror-matchingbracket { outline:1px solid grey; color: var(--vippsrust) !important;background: #FFFFFF; }
+
 
 .react-codemirror2 {
   padding-bottom: 25px;
