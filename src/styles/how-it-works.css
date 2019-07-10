@@ -1,0 +1,258 @@
+@import url("../../node_modules/rc-tooltip/assets/bootstrap.css");
+@import url("vipps-style.css");
+@import url("code-theme.css");
+
+.App {
+  text-align: left;
+}
+
+.content-wrapper {
+	text-align: left;
+	display: grid;
+	grid-template-columns: auto 100px 1000px 100px auto;
+	grid-template-rows: auto auto;
+	grid-template-areas:
+		". intro-area intro-area intro-area ."
+		". . step-area . .";
+}
+
+.intro-area {
+	grid-area: intro-area;
+}
+
+.step-area {
+	grid-area: step-area;
+}
+
+
+.intro-wrapper {
+	background-color: #FFF4EC;
+	margin-top: 64px;
+	margin-bottom: 64px;
+	display: grid;
+	padding: 10%;
+	border-radius: 10px;
+	grid-template-columns: 60% 40%;
+	grid-template-rows: auto;
+	grid-column-gap: 32px;
+	grid-template-areas:
+		"intro-text intro-image"
+}
+
+.intro-text {
+	grid-area: intro-text;
+	align-self: center;
+	justify-self: end; 
+}
+
+.intro-image { 
+	grid-area: intro-image;
+	align-self: center;
+	justify-self: start; 
+}
+
+.intro-title {
+	font-weight: bold;
+}
+
+.keyword-overlay {
+	max-width: 400px;
+}
+
+.rc-tooltip {
+	opacity: 1;
+	z-index: 4;
+	border-radius: 100px 25px 25px 25px;
+}
+
+.underlined-purple {
+	color: #49367e;
+	text-decoration: underline;
+}
+
+.rc-custom-link {
+	color: #FFF4EC;
+	text-decoration: underline;
+}
+
+.rc-custom-link, a:hover {
+    color: inherit; 
+}
+
+// Svg sizing
+
+.step-img-left,
+.step-img-right,
+.code-img-left,
+.code-img-right {
+	object-fit: downscale;
+	width: .01vw;
+	height: .01vw;
+	viewBox: 0vw 0vw .01vw .01vw;
+}
+
+.step-text {
+	grid-area: step-text;
+	align-self: center;
+}
+
+.step-sub-text,
+.code-title,
+.code-description,
+.code-code {
+	margin-top: 16px;
+	margin-bottom: 16px;
+}
+
+.step-img-right {
+	grid-area: img-right;
+	align-self: center;
+	justify-self: start;
+	perserveAspectRatio: xMinyMid meet;
+}
+
+.step-img-left {
+	align-self: center;
+	justify-self: end;
+	perserveAspectRatio: xMaxyMid meet;
+}
+
+.step-wrapper,
+.code-wrapper {
+	margin-top: 64px;
+	margin-bottom: 64px;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	display: grid;
+	grid-template-columns: auto 60% auto;
+	grid-column-gap: 32px;
+	font-size: 1.2vmin;
+}
+
+.step-wrapper {
+	grid-template-rows: auto;
+	grid-template-areas:
+		"img-left step-text img-right";
+}
+
+.code-img-left {
+	grid-area: img-left;
+	align-self: start;
+	justify-self: end;
+	perserveAspectRatio: xMinyMin meet;
+}
+
+.code-img-right {
+	grid-area: img-right;
+	align-self: start;
+	justify-self: start; 
+	perserveAspectRatio: xMaxyMin meet;
+}
+
+.code-title {
+	grid-area: title;
+}
+
+.code-description {
+	grid-area: desc;
+}
+
+.code-code {
+	grid-area: code;
+}
+
+.code-wrapper {
+	grid-template-rows: auto auto auto;
+	grid-template-areas:
+		". 			title	."
+		"img-left	desc	img-right"
+		"img-left	code	img-right"
+		"img-left	. 		img-right";
+}
+
+.dropdown {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	z-index: 10;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	width: 100%;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-border {
+	padding-left: 5px;
+	padding-right: 5px;
+	border-width: 2px; 
+	border-style: hidden;
+}
+
+.dropdown-border.top {
+	border-radius: 20px 20px 0px 0px;
+	padding-bottom: 5px;
+	margin-bottom: -5px;
+}
+.dropdown-border.bot {
+	border-radius: 0px 0px 20px 20px;
+}
+
+.dropdown:hover .dropdown-border.top {
+	border-top-style: solid;
+	border-left-style: solid;
+	border-right-style: solid;
+}
+
+.dropdown:hover .dropdown-border.bot {
+	border-left-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+}
+
+.dropdown:hover .dropdown-border {
+	background-color: #fbfbfb;
+	border-color: #e0e0e0;
+	border-left-style: solid;
+	border-right-style: solid;
+	justify-content: space-around;
+}
+
+.dropdown-border button {
+	display: block;
+	text-align: left;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+	border-style: solid;
+	border-width: small;
+	border-color: #e0e0e0;
+}
+
+.dropdown-icon:after {
+	float: right;
+	display: inline-block;
+	content: '';
+	height: .8em;
+	width: .8em;
+	border-style: solid;
+	border-width: 0.3em 0.3em 0 0;
+	
+	margin-left: 0.7em;
+	//margin-bottom: 0.5em;
+	margin-top: 0.25em;
+	
+	transform: rotate(-45deg);
+	vertical-align: bot;	
+}
+.dropdown-icon:after {
+    transform: rotate(-135deg);
+}
+.dropdown:hover .dropdown-icon:after {
+	transform: rotate(135deg);
+}

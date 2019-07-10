@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38px" height="48px" viewBox="0 0 38 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/64/Profil</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Header-3" transform="translate(-1294.000000, -46.000000)">
+            <g id="Icons/64/Profil" transform="translate(1280.000000, 38.000000)">
+                <rect id="Rectangle-2" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="64" height="64"></rect>
+                <g id="Profil" stroke-width="1" transform="translate(16.000000, 10.000000)">
+                    <ellipse id="Oval" fill="#49367E" cx="32.03125" cy="42" rx="3.90625" ry="4"></ellipse>
+                    <polyline id="Path-6" stroke="#FF6633" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="24 44 0 44 0 34"></polyline>
+                    <path d="M32,34 C32,26.2680135 24.836556,20 16,20 C7.163444,20 0,26.2680135 0,34" id="Oval-2" stroke="#FF6633" stroke-width="4" stroke-linecap="round"></path>
+                    <circle id="Oval-Copy-3" stroke="#FF6633" stroke-width="4" fill="#FFFFFF" cx="16" cy="7" r="7"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
