@@ -4,8 +4,8 @@ import { Sidebar } from './components/sidebar/sidebar.js';
 import { DocCard } from './components/startpage/startpage.js';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
-import './vippsstyle.css';
-import './index.css';
+import './styles/vipps-style.css';
+import './styles/index.css';
 import vipps_dev from "./img/vipps_dev.svg"
 import HowItWorks from "./components/howitworks/HowItWorks"
 import {eComSections, eComIntro} from "./model/eCom"
