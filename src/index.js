@@ -4,19 +4,22 @@ import { Sidebar } from './components/sidebar/sidebar.js';
 import { DocCard } from './components/startpage/startpage.js';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import MarkdownHTML from './components/MarkdownHTML/MarkdownHTML.js'
-import './vippsstyle.css';
-import './index.css';
+import './styles/vipps-style.css';
+import './styles/index.css';
 import vipps_dev from "./img/vipps_dev.svg"
+import HowItWorks from "./components/howitworks/HowItWorks"
+import {eComSections, eComIntro} from "./model/eCom"
+import {loginSections, loginIntro} from "./model/login"
+import {invoiceSections, invoiceIntro} from "./model/invoice"
 
 // TODO: startpath should be "/documentation/" and not "/"
 const StartPage = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={Cards}/>
-            <Route path="/how-it-works/ecommerce/" exact component={props => "howitworks"}/>
-            <Route path="/how-it-works/invoice/" exact component={props => "howitworks"}/>
-            <Route path="/how-it-works/secure-login/" exact component={props => "howitworks"}/>
-
+            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
+            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={invoiceIntro} sections={invoiceSections}/>}/>
+            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={loginIntro} sections={loginSections}/>} />
             <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
             <Route path="/documentation/invoice/" component={props => <DocuPage doc="invoice"/>}/>
             <Route path="/documentation/secure-login/" component={props => <DocuPage doc="login"/>}/>
@@ -40,14 +43,14 @@ const Cards = () => (
             <DocCard img={{src:"https://www.vipps.no/media/images/sende_regninger.max-320x320.jpegquality-60.png", alt:"Send regninger"}}
                     title="Invoice"
                     text="Send invoices with Vipps"
-                    startLink="/"
+                    startLink="/how-it-works/invoice/"
                     docLink="/documentation/invoice/"
                     docName="invoice"
             />
             <DocCard img={{src:"https://www.vipps.no/media/images/vipps_logginn.max-320x320.jpegquality-60.png", alt:"Logg inn"}}
                     title="Login"
                     text="Secure login and identification with Vipps"
-                    startLink="/"
+                    startLink="/how-it-works/secure-login/"
                     docLink="/documentation/secure-login/"
                     docName="login"
             />
@@ -99,6 +102,39 @@ class DocuPage extends React.Component {
       );
     }
 
+      // Return one or two swagger subheaders
+      getChildren(twoOrOne) {
+        let postUrlEcom = "https://github.com/vippsas/vipps-ecom-api/tree/master/tools";
+        let postUrlLogin = "https://github.com/vippsas/vipps-login-api/tree/master/tools";
+        let swaggerUrlEcom = "https://vippsas.github.io/vipps-ecom-api/";
+        let swaggerUrlLogin  = "https://vippsas.github.io/vipps-login-api/";
+        let singleSwagger = {name: "Swagger", anchor: this.props.doc === "ecom" ? swaggerUrlEcom : swaggerUrlLogin};
+        let ispSwagger = {name: "Swagger ISP", anchor: "#swagger-isp"};
+        let ippSwagger = {name: "Swagger IPP", anchor: "#swagger-ipp"};
+        let postman = {name: "Postman", anchor: this.props.doc === "ecom" ? postUrlEcom : postUrlLogin}
+        if(twoOrOne) {
+          return [
+            postman,
+            singleSwagger,
+            {name: "FAQ", anchor: "#faq"}
+          ]
+        } else {
+          return [
+            postman,
+            ispSwagger,
+            ippSwagger,
+            {name: "FAQ", anchor: "#faq"}
+          ]
+        }
+      }
+
+      // Because of design issues, we add our own header and subheaders to the sidebar
+      addSpecialHeader() {
+        let devRes = {name: "Developer resources", anchor: "#developer-resources",
+          children: this.props.doc === "invoice" ? this.getChildren(false) : this.getChildren(true)}
+        return devRes;
+      }
+
     // Filters the content fetched from Github into headers
     getHeaders(data) {
         const originalMarkdown = (' ' + data).slice(1);
@@ -120,12 +156,14 @@ class DocuPage extends React.Component {
                 return;
             }
         });
+        let sidebarHeaders = navbarHeaders[2].name === "Table of contents" ? navbarHeaders.slice(3) : navbarHeaders.slice(2);
+        sidebarHeaders.unshift(this.addSpecialHeader());
         this.setState({
             fullText: originalMarkdown,
             // First element i navbarHeaders is an empty collection
             // Second element is just the name of the documentation, not needed in navigation bar
             // In case second header is not 'table of contents' do not exclude the second header
-            headers: navbarHeaders[2].name === "Table of contents" ? navbarHeaders.slice(3) : navbarHeaders.slice(2)
+            headers: sidebarHeaders
         });
     }
 
