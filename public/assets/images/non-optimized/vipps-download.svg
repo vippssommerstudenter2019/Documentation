@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="23px" viewBox="0 0 17 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48 (47235) - http://www.bohemiancoding.com/sketch -->
+    <title>download</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="download" transform="translate(0.000000, -1.000000)">
+            <circle id="Oval-2" fill="#49367E" fill-rule="evenodd" cx="15" cy="22" r="2"></circle>
+            <path d="M8,2 L8,14.6859685" id="Path-3" stroke="#FF6634" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M11.0235,22.6859685 L1,22.6859685" id="Path-3-Copy" stroke="#FF6634" stroke-width="2" stroke-linecap="round"></path>
+            <polyline id="Path-4" stroke="#FF6634" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(7.500000, 10.500000) rotate(-225.000000) translate(-7.500000, -10.500000) " points="3 6 12 6 12 15"></polyline>
+        </g>
+    </g>
+</svg>
