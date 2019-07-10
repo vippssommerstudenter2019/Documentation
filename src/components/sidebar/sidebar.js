@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  SideNav,
-  Collapsible,
-  CollapsibleItem
-} from "react-materialize";
+import {SideNav, Collapsible, CollapsibleItem} from "react-materialize";
 import M from "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
@@ -11,7 +7,7 @@ import { Link } from "react-router-dom";
 import vipps_docs from "../../img/vipps_docs.svg"
 
 // Contains the menuitems and backlink
-export const Sidebar = props => (
+const Sidebar = props => (
   <section className="Sidebar">
     <SidebarHeader />
     <SidebarMenu headers={props.headers} api={props.api}/>
@@ -20,6 +16,7 @@ export const Sidebar = props => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
+
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
@@ -40,24 +37,21 @@ const SidebarMenu = props => (
 const SwaggerLink = (props) => (
   <button className="ApiLink sidebarMarg">
     <a href={props.document === "ecom" ?
-      "https://vippsas.github.io/vipps-ecom-api/" : 
-      "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
+  "https://vippsas.github.io/vipps-ecom-api/" : "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
   </button>
 );
 
-const SwaggerISPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html">Swagger ISP</a></button>
+const SwaggerIPPLink = () => (
+  <button className="ApiLink sidebarMarg">Swagger IPP</button>
 );
 
-const SwaggerIPPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html">Swagger IPP</a></button>
+const SwaggerISPLink = () => (
+  <button className="ApiLink sidebarMarg">Swagger ISP</button>
 );
 
 // Navigation Menu
 const SidebarNav = props => {
-  // Generates an sidebar menu from given header datastructure passed in props
+  //TODO: List elements should be
   const propHeaders = props.headers;
   const sidebarHeaders = propHeaders.map((head, index) => (
     <CollapsibleItem
@@ -67,17 +61,14 @@ const SidebarNav = props => {
       <ul>
         {Object.values(head)[2].map((child, indice) => (
           <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a  key={"a index: "+ index + ", indice: " + indice } 
-                href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
+            <a key={"a index: "+ index + ", indice: " + indice } href={Object.values(child)[1]}>{Object.values(child)[0]}</a>
           </li>
         ))}
       </ul>
     </CollapsibleItem>
   ));
 
-  // Returns the correct navigation bar
-  // Param: normal = false if documentation page is invoice, else true
-  function navBar (normal) {
+  function retNavBar (normal) {
       return (
         <div>
         <SideNav className="sidebarMarg">
@@ -101,5 +92,7 @@ const SidebarNav = props => {
   };
 
   // If documentpage is invoice then show two swagger buttons
-  return props.api === "invoice" ? navBar(false) : navBar(true);
+  return props.api === "invoice" ? retNavBar(false) : retNavBar(true);
 }
+
+export default Sidebar
