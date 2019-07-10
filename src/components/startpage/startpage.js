@@ -12,7 +12,11 @@ export const DocCard = (props) => (
             <p>{props.text}</p>
         </div>
         <div className="DocCardLinks">
-            <Link className="GetStartedLink"  to={props.startLink}>Get Started</Link>
+            <Link className="GetStartedLink"  to={props.startLink}>
+                <div className="GetStartedText">
+                    Get Started
+                </div>
+            </Link>
             <Link className="DocumentationLink"  to={props.docLink}>Documentation</Link>
         </div>
     </div>
