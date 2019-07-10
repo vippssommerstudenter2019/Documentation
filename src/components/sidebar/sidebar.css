@@ -93,7 +93,6 @@
   border-radius: 20px;
   width: 50%px !important;
   /*line-height: 32px !important;*/
-
 }
 
 .listEl:hover {
@@ -111,7 +110,6 @@
   border-radius: 20px;
   width: 100%;
   border-bottom: white;
-
 }
 
 .collapsible-header:hover {
@@ -153,28 +151,24 @@
 }
 
 li > a {
-    height: auto !important;
-    line-height: 32px !important;
-    color: #49367e !important;
-    border-radius: 20px;
-    padding: 0px 0px 0px 0px !important;
-    margin: 10px 0px 10px 0px !important;
-
+  height: auto !important;
+  line-height: 32px !important;
+  color: #49367e !important;
+  border-radius: 20px;
+  padding: 0px 0px 0px 0px !important;
+  margin: 10px 0px 10px 0px !important;
 }
 
-li > div > a{
-  display:block;
+li > div > a:hover {
+  display: block;
+  color: #49367e;
 }
 
 li > a:hover {
-    background-color: #f6f6f9 !important;
-
+  background-color: #f6f6f9 !important;
 }
 
-
 /*  Sidebar scrolling   */
-
-
 
 .sidebarlogo {
   margin-bottom: 1vh;
@@ -207,23 +201,34 @@ li > a:hover {
   background: #ededef;
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
-  box-shadow:
+ 
 }
-
 
 /* Vipps-colors */
 
-
 :root {
-  --vippsorange :#FF5B24;
-  --lightvippsorange : #FDF4ED;
-  --vippspurple :#4D3280 ;
-  --vippsblue : #59CBE8 ;
-  --vippsblack :#161225 ;
-  --vippsblueberry :#49367e ;
-  }
+  --vippsorange: #ff5b24;
+  --lightvippsorange: #fdf4ed;
+  --vippspurple: #4d3280;
+  --vippsblue: #59cbe8;
+  --vippsblack: #161225;
+  --vippsblueberry: #49367e;
+}
 
+#myDR:hover {
+  color: white;
+}
 
+#myDR {
+  display: block;
+  align-content: center;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  width: auto;
+  height: auto;
+}
 
-
-  
+a:hover {
+  color: red;
+}

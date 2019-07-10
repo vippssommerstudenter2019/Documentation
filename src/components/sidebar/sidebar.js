@@ -37,23 +37,21 @@ const SidebarMenu = props => (
 );
 
 // Buttons to different swaggers
-const SwaggerLink = (props) => (
+const DeveloperResources = () => (
   <button className="ApiLink sidebarMarg">
-    <a href={props.document === "ecom" ?
-      "https://vippsas.github.io/vipps-ecom-api/" : 
-      "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
+    Developer resources
   </button>
 );
 
-const SwaggerISPLink = () => (
+/*const SwaggerISPLink = () => (
   <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html">Swagger ISP</a></button>
+    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html" id="mySwaggerISP">Swagger ISP</a></button>
 );
 
 const SwaggerIPPLink = () => (
   <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html">Swagger IPP</a></button>
-);
+    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html" id="mySwaggerIPP">Swagger IPP</a></button>
+);*/
 
 // Navigation Menu
 const SidebarNav = props => {
@@ -89,11 +87,10 @@ const SidebarNav = props => {
           </div>
           {normal ?
           <div className='static apilink'>
-          <SwaggerLink document={props.api}/>
+          <DeveloperResources document={props.api}/>
           </div> :
           <div className='static apilink'>
-          <SwaggerIPPLink />
-          <SwaggerISPLink />
+            <DeveloperResources/>
           </div>}
         </SideNav>
       </div>
