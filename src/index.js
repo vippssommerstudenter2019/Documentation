@@ -84,16 +84,16 @@ class DocuPage extends React.Component {
   }
 
   // Returns a HTML anchor from a given header
-  makeAnchor(headerLevel, string) {
+  makeAnchor(string) {
     return (
       "#" +
       string
-        .replace(headerLevel, "")
+        .replace(new RegExp("[|&;:$%@<>()+,#]", "g"), " ")
         .trim()
         .replace(new RegExp(" ", "g"), "-")
         .toLowerCase()
-    );
-  }
+      );
+    }
 
     // Filters the content fetched from Github into headers
     getHeaders(data) {
@@ -106,12 +106,12 @@ class DocuPage extends React.Component {
                 return;
             } else if (line.startsWith("##")) {
                 navbarHeader.children.push({name: line.replace("##", "").trim(),
-                    anchor: this.makeAnchor("##", line)});
+                    anchor: this.makeAnchor(line)});
             } else if (line.startsWith("#")) {
                 navbarHeaders.push(navbarHeader);
                 navbarHeader = {name: "", anchor: "", children: []}
                 navbarHeader.name = line.replace("#", "").trim();
-                navbarHeader.anchor = this.makeAnchor("#", line);
+                navbarHeader.anchor = this.makeAnchor(line);
             } else {
                 return;
             }
