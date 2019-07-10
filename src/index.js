@@ -88,7 +88,7 @@ class DocuPage extends React.Component {
     return (
       "#" +
       string
-        .replace(new RegExp("[|&;:$%@<>()+,#]", "g"), " ")
+        .replace(new RegExp("[|&;:$%@<>()+,#']", "g"), "")
         .trim()
         .replace(new RegExp(" ", "g"), "-")
         .toLowerCase()

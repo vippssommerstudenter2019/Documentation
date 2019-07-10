@@ -7,9 +7,18 @@ const flatten = (text, child) => {
 }
 
 const HeadingRenderer = (props) => {
+  function renderString (string) {
+    return (
+      string
+        .replace(new RegExp("[|&;:$%@<>()+,#']", "g"), "")
+        .trim()
+        .replace(new RegExp(" ", "g"), "-")
+        .toLowerCase()
+      );
+  };
   var children = React.Children.toArray(props.children)
   var text = children.reduce(flatten, '')
-  var slug = text.toLowerCase().replace(/\W/g, '-')
+  var slug = renderString(text);
   return React.createElement('h' + props.level, {id: slug}, props.children)
 }
 
