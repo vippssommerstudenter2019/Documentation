@@ -9,7 +9,6 @@ import "./materialize.css";
 import M from "materialize-css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import VisibilitySensor from "react-visibility-sensor"
 
 // Contains the menuitems and backlink
 export const Sidebar = props => (
