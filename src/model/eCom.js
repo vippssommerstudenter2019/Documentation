@@ -1,79 +1,76 @@
 const eComSections = [
     {
         "id": "fetchAuthorizationTokenUsingPost",
-        "title" : "1. The customer wants to pay with Vipps",
-        "description": "A customer wants to buy something online and chooses Vipps as their payment method. For this to be possible, the merchant needs a [valid token]. The merchant needs to renew the token every [24 hours].",
+        "title": "1. Customer chooses to pay with Vipps",
+        "description": "A customer browses around on your website. As the customer has chosen an item or service to buy, the customer pushes the “betal med Vipps” button.\n\nFor this command to be possible, you need to send a request for a [valid token] from Vipps, as shown below. The token needs to be renewed every 24 hours. ",
         "img" : "../../assets/ecom-steps/Step1.svg",
         "keywords" : {
             "valid token": "A token is an object which represents the right to perform some operation. An Access token, is a system object representing the subject of access control operations. All API calls are authenticated and authorized based on the application access token (JWT bearer token) and a subscription key.",
-            "24 hours": "The access token is valid for 1 hour in Merchant Test (MT) and 24 hours in Production. This is done for various security reasons."
         }
    },
    {
        "id": "initiatePaymentV3UsingPOST",
        "title" : "2. Vipps handles the payment",
-       "description": "The merchant provides Vipps with [price and ID] for items that are being sold",
+       "description": "When pushing the button on you’re website, [initiation of payment] to Vipps should happen. This is done by sending an initiate payment request containing the information specified in the code snippet below.",
        "img": "../../assets/ecom-steps/Step2.svg",
        "keywords": {
-           "price and ID": "Price and ID is included in the Initiate request body, and no information about the customer is needed. ",
+           "initiation of payment": "",
        }
    },
    {
        "id": "customerApproval",
        "title": "3. Customer confirms in Vipps application",
-       "description": "For mobile and desktop browsers, integration is handled by Vipps using the Vipps [landing page].\nIf customer is in an application using Vipps as a service, the Vipps app is triggered using [app-switch].",
+       "description": "The customer is now being notified on a mobile device and chooses to confirm the payment in the Vipps app.\n\nFor mobile and desktop browsers, integration is handled by Vipps using the Vipps [landing page]. You need to provide Vipps with a valid [fallBackURL] so that the customer is taken back to your website. This is normally an URL to the confirmation page.",
        "img": "../../assets/ecom-steps/Step3.svg",
        "keywords": {
-           "landing page": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
-           "app-swich": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
+           "landing page": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. See more in API Documentation",
+           "fallbackURL": "A fallback or callback URL will be invoked by the API method you're calling after it's done. See documentation on how its used.",
        }
    },
-   {
-       "id": "cancelPaymentRequestUsingPUT",
-       "title": "4. Payment cancellation",
-       "description": "A reservation is [cancelled] if the user rejects the initiated payment in the Vipps app.\nAlso, due to safety reasons, a cancellation will be triggered if the user does not respond within 5 to 10 minutes.",
-       "img": "../../assets/ecom-steps/Step4.svg",
-       "keywords": {
-           "cancelled": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
-       }
-   },
+
    {
        "id": "transactionUpdateCallbackForRegularPaymentUsingPOST",
        "title": "5. Vipps reserves the amount",
-       "description": "If everything goes smoothly, an [amount is reserved] in the customers bank account. This means that the money is on hold, and can not be used or withdrawn by the customer. According to [Norwegian law], the merchant cannot capture the money before the item or service is shipped or delivered to the customer. This is to secure a safe payment! A [confirmation] of the reservation is sent to the merchant.",
+       "description": "An amount is now [reserved] in the customers bank account, and a confirmation is sent to you by Vipps, containing a status set to reserve.",
        "img": "../../assets/ecom-steps/Step5.svg",
        "keywords": {
-           "amount is reserved": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
-           "Norwegian law": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
-           "confirmation": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
+           "reserved": "",
        }
     },
     {
         "id": "merchantConfirm",
-        "title": "6. Merchant confirms order and ships the item",
-        "description": "As the customer receives the [order confirmation], the transaction is accepted and the order is processed in the merchant systems.",
+        "title": "6. You confirm order and ships the item",
+        "description": "Now, you´ll have to provide the customer with a confirmation of that you’ve been given the order and that payment is insured.\n\nNext step is delivering the service or shipping the items ordered from the customer.",
         "img": "../../assets/ecom-steps/Step6.svg",
         "keywords": {
-            "order confirmation": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
         }
     },
     {
         "id": "capturePaymentUsingPOST",
         "title": "7. The amount is withdrawn from the customers account",
-        "description": "When an item or service is shipped or delivered, the [merchant notifies Vipps] that the order is completed. This is when Vipps and the merchant can make a [capture] of the reserved amount.",
+        "description": "The customer is given the service payed for or is notified that the items are being shipped.\n\nNow, you’ll need to confirm to Vipps that the item or services is delivered, and Vipps will perform [capture]. According to [Norwegian law], you cannot capture the amount from the customer before the item or service is shipped or delivered to the customer.",
         "img": "../../assets/ecom-steps/Step7.svg",
         "keywords": {
-            "merchant notifies Vipps": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
-            "capture": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
+            "Norwegian law": "The seller may reserve the amount in the Purchaser’s account until the good is sent. This money will not be available to the Purchaser, but remain in the Purchaser’s possession.",
+            "capture": "Capture payment allows the merchant to capture the reserved amount. The API allows for both a full amount capture and a partial amount capture. See API documentation for more info.",
+        }
+    },
+    {
+        "id": "cancelPaymentRequestUsingPUT",
+        "title": "8. Cancellation of payment",
+        "description": "If the customer choose to reject the initiated payment in the Vipps app, the payment will be cancelled. This also happens if the customer does not respond within 5 to 10 minutes in the app.\n\nThe order confirmation sent to you by Vipps will contain a status set to Cancel.",
+        "img": "../../assets/ecom-steps/Step4.svg",
+        "keywords": {
+            "cancelled": "",
         }
     },
     {
         "id": "refundPaymentUsingPOST",
-        "title": "8. Refunding the customer",
-        "description": "If the item is sent in return, the merchant wants to [refund] the captured amount. To initiate a refund, the merchant request Vipps to refund and the amount will be in the customers bank account after 2-3 working days.",
+        "title": "9. Refunding the customer",
+        "description": "If the customer wants a refund, and is guaranteed to have one, you’ll have to send a refund request to Vipps. A refund can be either partial or full. You initiate the refund by sending information as serial number, amount and transaction text, as shown in the code snippet below.",
         "img": "../../assets/ecom-steps/Step8.svg",
         "keywords": {
-            "[refund]": "The Vipps landing page is mandatory, and provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way. ",
+            "refund": "The merchant can initiate a refund of the captured amount. The refund can be a partial or full. See refund in API documentation.",
         }
     }
 ];
