@@ -15,30 +15,15 @@ class MarkdownHTML extends React.Component {
   }
 
   componentDidMount() {
-    console.log("this is empty" + this.props.text);
-    if (this.props.url) {
-        fetch(this.props.url)
-        .then((response) => {
-          response.text().then((markdown) => {
-            this.setState({data: markdown});
-          })
-        })
-    } else {
-      const text = this.props.text;
-      console.log("not loading url")
-      console.log(text);
       this.setState({data: this.props.text});
     }
-  }
+
 
   removeTableOfContent() {
-    console.log(this.props.text);
     let lines = this.props.text.split('\n');
     let markdownWithoutTableOfContent = '';
     let withinTableOfContent = false;
-    let cnt = 0;
     for (let line of lines) {
-      console.log("linje: " + line);
       if (line.toLowerCase().includes("table of content")) {
         withinTableOfContent = true;
       }
@@ -57,14 +42,12 @@ class MarkdownHTML extends React.Component {
 
 
   render() {
-    console.log(<ReactMarkdown source={this.state.data} />)
-    console.log("render", this.state, this.props)
-    const { text, url } = this.props;
+    const { text } = this.props;
     if (text) {
       return <ReactMarkdown
           source={this.removeTableOfContent()}
           renderers={{ code: CodeBlock,
-                      heading: HeadingRenderer}}            
+                      heading: HeadingRenderer}}
         />;
     }
     return <ReactMarkdown
