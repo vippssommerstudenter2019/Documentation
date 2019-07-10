@@ -9,6 +9,8 @@ import './styles/index.css';
 import vipps_dev from "./img/vipps_dev.svg"
 import HowItWorks from "./components/howitworks/HowItWorks"
 import {eComSections, eComIntro} from "./model/eCom"
+import {loginSections, loginIntro} from "./model/login"
+import {invoiceSections, invoiceIntro} from "./model/invoice"
 
 // TODO: startpath should be "/documentation/" and not "/"
 const StartPage = () => (
@@ -16,8 +18,8 @@ const StartPage = () => (
         <Switch>
             <Route path="/" exact component={Cards}/>
             <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
-            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
-            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>} />
+            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={invoiceIntro} sections={invoiceSections}/>}/>
+            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={loginIntro} sections={loginSections}/>} />
             <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
             <Route path="/documentation/invoice/" component={props => <DocuPage doc="invoice"/>}/>
             <Route path="/documentation/secure-login/" component={props => <DocuPage doc="login"/>}/>
