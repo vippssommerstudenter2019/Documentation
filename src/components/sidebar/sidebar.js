@@ -37,11 +37,11 @@ const SidebarMenu = props => (
 );
 
 // Buttons to different swaggers
-const DeveloperResources = () => (
+/*const DeveloperResources = () => (
   <button className="ApiLink sidebarMarg">
-    Developer resources
+    Developer 
   </button>
-);
+);*/
 
 /*const SwaggerISPLink = () => (
   <button className="ApiLink sidebarMarg">
@@ -87,10 +87,8 @@ const SidebarNav = props => {
           </div>
           {normal ?
           <div className='static apilink'>
-          <DeveloperResources document={props.api}/>
           </div> :
           <div className='static apilink'>
-            <DeveloperResources/>
           </div>}
         </SideNav>
       </div>
