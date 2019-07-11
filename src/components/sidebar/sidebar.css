@@ -164,6 +164,12 @@ li > div > a:hover {
   color: #49367e;
 }
 
+li > div > a{
+  display:inline-block !important;
+  width:100% !important;
+  height:100% !important;
+}
+
 li > a:hover {
   background-color: #f6f6f9 !important;
 }
