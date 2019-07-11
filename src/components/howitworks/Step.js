@@ -61,9 +61,9 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 	}
 
 	return (
-		<p>
+		<div className="step-paragraph">
 			{result}
-		</p>
+		</div>
 	);
 }
 
@@ -72,7 +72,7 @@ Wrapper for future content: code + text + image
 ScrollLinking
 */
 const titleClass = "xlarge-font-size text-color-black";
-const descriptionClass = "default-font-size text-color-black";
+const descriptionClass = "step-paragraph";
 
 class Step extends Component {
 	/*
