@@ -14,7 +14,7 @@ export const DocCard = (props) => (
         <div className="DocCardLinks">
             <Link className="GetStartedLink"  to={props.startLink}>
                 <div className="GetStartedText">
-                    Get Started
+                    How it works
                 </div>
             </Link>
             <Link className="DocumentationLink"  to={props.docLink}>Documentation</Link>

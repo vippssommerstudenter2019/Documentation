@@ -20,11 +20,6 @@ pre {
   background-color: #F6F6F9 !important;
 }
 
-.token {
-  overflow-wrap: normal !important;
-  word-break: break-word !important;
-}
-
 .container {
   margin: 0px;
   display: grid;
@@ -64,6 +59,37 @@ pre {
 .sidenav {
     box-shadow: none!important;
 }
+
+.devResources {
+  width: 50%;
+}
+
+.devResources hr{
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid black;
+  /* margin: 1em 0; */
+  margin-left: 0;
+  margin-top: 1em;
+  padding: 0;
+}
+
+.devResources a:hover{
+  color: var(--vippsorange);
+}
+
+.devResources a:hover p{
+  margin-right: 0%;
+}
+
+.devResources p{
+  float: right;
+  margin-right: 5%;
+  transition: margin-right 0.05s ease-out;
+}
+
+
 
 /* Vipps-colors */
 
