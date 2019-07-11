@@ -77,7 +77,7 @@
 	background-color: #49367e;
 	color: white;
 	margin-top: 64px;
-	padding: 10%;
+	padding: 128px;
 	text-align: center;
 }
 
@@ -90,9 +90,10 @@
 	
 }
 
-.outro-image { 
-	width: 700px;
-	height: auto;
+.outro-image, 
+.outro-image img { 
+	width:  500px;
+	height: 500px;
 	margin: auto;
 }
 
