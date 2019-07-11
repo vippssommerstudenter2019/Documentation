@@ -8,7 +8,7 @@ import M from "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import vipps_docs from "../../img/vipps_docs.svg"
+import vipps_dev from "../../img/vipps_dev.svg"
 
 // Contains the menuitems and backlink
 export const Sidebar = props => (
@@ -23,7 +23,7 @@ const SidebarHeader = () => (
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
-      src={vipps_docs}
+      src={vipps_dev}
       alt="logo"
     />
   </Link>
@@ -39,7 +39,7 @@ const SidebarMenu = props => (
 // Buttons to different swaggers
 /*const DeveloperResources = () => (
   <button className="ApiLink sidebarMarg">
-    Developer 
+    Developer
   </button>
 );*/
 
@@ -65,7 +65,7 @@ const SidebarNav = props => {
       <ul>
         {Object.values(head)[2].map((child, indice) => (
           <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a  key={"a index: "+ index + ", indice: " + indice } 
+            <a  key={"a index: "+ index + ", indice: " + indice }
                 href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
           </li>
         ))}

@@ -151,6 +151,7 @@ class CodeView extends Component {
 						{(this.state.collapsed? "Expand" : " Close")} 
 					</button>
 				</div>
+				
 			</div>
 		);
 	}

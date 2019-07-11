@@ -9,6 +9,8 @@ import './styles/index.css';
 import vipps_dev from "./img/vipps_dev.svg"
 import HowItWorks from "./components/howitworks/HowItWorks"
 import {eComSections, eComIntro, eComOutro} from "./model/eCom"
+import {loginSections, loginIntro} from "./model/login"
+import {invoiceSections, invoiceIntro} from "./model/invoice"
 
 // TODO: startpath should be "/documentation/" and not "/"
 const StartPage = () => (
@@ -16,8 +18,9 @@ const StartPage = () => (
         <Switch>
             <Route path="/" exact component={Cards}/>
             <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro} />}/>
-            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
-            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>} />
+            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro}/>}/>
+            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro}/>} />
+
             <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
             <Route path="/documentation/invoice/" component={props => <DocuPage doc="invoice"/>}/>
             <Route path="/documentation/secure-login/" component={props => <DocuPage doc="login"/>}/>
@@ -71,6 +74,24 @@ class DocuPage extends React.Component {
       invoice:
         "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
     };
+    this.devResUrls = {
+      ecom: [
+        ["Postman", "https://github.com/vippsas/vipps-ecom-api/tree/master/tools"],
+        ["FAQ", "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md"],
+        ["Swagger", "https://vippsas.github.io/vipps-ecom-api/"]
+      ],
+      login: [
+        ["Postman", "https://github.com/vippsas/vipps-login-api/tree/master/tools"],
+        ["FAQ", "#faq"],
+        ["Swagger", "https://vippsas.github.io/vipps-login-api/"]
+      ],
+      invoice: [
+        ["Postman", "https://github.com/vippsas/vipps-invoice-api/tree/master/tools"],
+        ["FAQ", "#faq"],
+        ["Swagger ISP", "https://vippsas.github.io/vipps-invoice-api/isp.html"],
+        ["Swagger IPP",  "https://vippsas.github.io/vipps-invoice-api/ipp.html"]
+      ]
+    }
     this.state = {
       fullText: "",
       headers: []
@@ -99,30 +120,20 @@ class DocuPage extends React.Component {
         .toLowerCase()
       );
     }
-  
-      getChildren(twoOrOne) {
-        let singleSwagger = {name: "Swagger", anchor: "#swagger"};
-        let ispSwagger = {name: "Swagger ISP", anchor: "#swagger-isp"};
-        let ippSwagger = {name: "Swagger IPP", anchor: "#swagger-ipp"};
-        if(twoOrOne) {
-          return [
-            {name: "Postman", anchor: "#postman"},
-            singleSwagger,
-            {name: "FAQ", anchor: "#faq"}
-          ]
-        } else {
-          return [
-            {name: "Postman", anchor: "#postman"},
-            ispSwagger,
-            ippSwagger,
-            {name: "FAQ", anchor: "#faq"}
-          ]
-        }
+
+      // Return one or two swagger subheaders
+      getChildren() {
+        let childs = [];
+        this.devResUrls[this.props.doc].forEach((header) => {
+          childs.push({name: header[0], anchor: header[1]})
+        });
+        return childs;
       }
 
-      addSpecialHeader(document) {
-        let devRes = {name: "Developer Resources", anchor: "#developer-resources",
-          children: document === "invoice" ? this.getChildren(false) : this.getChildren(true)}
+      // Because of design issues, we add our own header and subheaders to the sidebar
+      addSpecialHeader() {
+        let devRes = {name: "Developer resources", anchor: "#developer-resources",
+          children: this.getChildren()};
         return devRes;
       }
 
@@ -148,7 +159,7 @@ class DocuPage extends React.Component {
             }
         });
         let sidebarHeaders = navbarHeaders[2].name === "Table of contents" ? navbarHeaders.slice(3) : navbarHeaders.slice(2);
-        sidebarHeaders.unshift(this.addSpecialHeader(this.props.doc));
+        sidebarHeaders.unshift(this.addSpecialHeader());
         this.setState({
             fullText: originalMarkdown,
             // First element i navbarHeaders is an empty collection

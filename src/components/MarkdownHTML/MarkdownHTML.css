@@ -20,6 +20,11 @@ pre {
   background-color: #F6F6F9 !important;
 }
 
+.token {
+  overflow-wrap: normal !important;
+  word-break: break-word !important;
+}
+
 .container {
   margin: 0px;
   display: grid;
@@ -71,3 +76,44 @@ pre {
   --vippsblack :#161225 ;
   --vippsblueberry :#49367e ;
   }
+
+
+tr:nth-child(even) {
+  background-color: #F6F6F9 !important;
+}
+
+th{
+  color: black !important;
+  background-color: #f6f6f9 !important;
+  padding: 8px 8px 8px 8px !important;
+}
+
+table {
+  border: 1px solid #D8D8D8;
+}
+
+table thead th {
+  border-bottom: 1px solid #D8D8D8 !important;
+  border-left: 1px solid #D8D8D8 !important;
+  border-right: 1px solid #D8D8D8 !important;
+  font-weight: 600 !important;
+}
+
+div table tbody tr {
+  border-bottom: 1px solid #D8D8D8 !important;
+}
+
+td{
+  border-left: 1px solid #D8D8D8 !important;
+  border-right: 1px solid #D8D8D8 !important;
+}
+
+h1 {
+  border-top: 1px solid #c9c6d7;
+  padding-top: 48px !important;
+  margin-top: 48px !important;
+}
+
+h1:first-child{
+  border-top: none;
+}
