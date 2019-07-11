@@ -102,3 +102,13 @@ td{
   border-left: 1px solid #D8D8D8 !important;
   border-right: 1px solid #D8D8D8 !important;
 }
+
+h1 {
+  border-top: 1px solid #c9c6d7;
+  padding-top: 48px !important;
+  margin-top: 48px !important;
+}
+
+h1:first-child{
+  border-top: none;
+}
