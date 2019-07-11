@@ -3,9 +3,9 @@ import ReactMarkdown from "react-markdown";
 import HeadingRenderer from "./HeadingRenderer.js";
 import CodeBlock from "./CodeBlock.js";
 import Sidebar from '../sidebar/sidebar.js'
-import './docupage.css'
-import './../../styles/vipps-style.css';
 import './../../styles/index.css';
+import './../../styles/vipps-style.css';
+import './docupage.css'
 import { formatDescriptionToIncludeHoverLinks } from "../howitworks/Step";
 
 class DocuPage extends React.Component {

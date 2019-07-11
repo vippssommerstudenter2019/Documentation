@@ -1,13 +1,11 @@
 
-
-img {
-  max-width: 10vw;
+h1:first-of-type {
+  color: var(--vippsorange) !important;
 }
-
 h1, h2, h3 {
   margin-top: 9vh;
   margin-bottom: 3vh;
-  color: var(--vippsorange);
+  color: var(--vippsblack) !important;
 }
 
 h4, h5 {
