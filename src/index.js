@@ -94,7 +94,7 @@ class DocuPage extends React.Component {
     }
     this.pageTitles = {
       ecom: "Vipps eCommerce API",
-      login: "ipps Login API",
+      login: "Vipps Login API",
       invoice: "Vipps Invoice API"
     }
 
