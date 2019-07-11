@@ -248,3 +248,8 @@ li > a:hover {
 a:hover {
   color: red;
 }
+
+.collapsible.popout > li {
+  -webkit-transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
