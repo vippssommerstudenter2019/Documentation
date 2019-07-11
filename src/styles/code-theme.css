@@ -1,26 +1,7 @@
 @import url("vipps-style.css");
 @import url("../../node_modules/codemirror/lib/codemirror.css");
 
-/**
- * Predefined Vipps colours.
- */
-:root {
- --debug: #FF00FF;
- --vippsblack: #161225;
- --vippsblue: #59cbe8;
- --vippsgray: #6f6f6f;
- --vippspurple: #5E3DC2;
- --vippsred: #EB5858;
- --vippsrust: #9B3716;
 
- --ghost: #C9C6D7;
- --seashellPeach: #FFF4EC;
- --gallery: #F0F0F0;
- --athensGrey: #EFEEF3;
- --athensGreyLight: #F6F6F9;
- --manatee: #938FA8;
- --rum: #706B8B;
-}
 
 /**
  * Custom style for code mirror view in the Vipps design language.
@@ -48,10 +29,9 @@
 .cm-s-vipps .CodeMirror-activeline-background { background: rbg(252, 251, 254); }
 .cm-s-vipps .CodeMirror-matchingbracket { outline:1px solid grey; color: var(--vippsrust) !important;background: #FFFFFF; }
 
+
 .react-codemirror2 {
-  padding-bottom: 25px;
   background-color: var(--athensGreyLight);
-  border-bottom: 1px solid var(--ghost);
   border-left: 1px solid var(--ghost);
   border-right: 1px solid var(--ghost);
 }
@@ -65,14 +45,15 @@
   font-family: 'PT Mono' , monospace;
   direction: ltr;
   width: 100%;
+  line-height: normal;
 }
 
 .cm-s-vipps .CodeMirror-scroll {
-	height: auto;
+	//height: auto;
 }
 
 .cm-s-vipps .CodeMirror-lines {
-  color: var(--vippsblack);
+	color: var(--vippsblack);
 }
 
 .cm-s-vipps .CodeMirror pre {
@@ -80,6 +61,7 @@
 }
 
 .cm-s-vipps .CodeMirror-linenumber {
+  margin-top: 10px;
   padding-left: 25px;
   width: 10px !important;
 }
@@ -88,8 +70,9 @@
   background: var(--athensGreyLight);
   padding-left: 5px;
   padding-right: 5px;
-  border-right-color: #00000000; 
-  border-bottom-color: #00000000; 
+  border-style: none;
+  //border-right-color: #00000000; 
+  //border-bottom-color: #00000000; 
 }
 
 .cm-s-vipps.CodeMirror pre {
@@ -122,8 +105,8 @@
 }
 
 .codeview-utility-bar-right button {
-  font-family: Vipps;
-  font-weight: lighter;
+	font-family: Vipps;
+	font-weight: lighter;
 	background-color:var(--athensGrey);
   color: var(--rum);
   
@@ -163,20 +146,18 @@
   
 .codeview-utility-bar-left button {
   font-family: Vipps;
-	margin-left: 5px;
-	margin-right: 5px;
-	font-weight: lighter;
+  //margin-left: 5px;
+  //margin-right: 5px;
+  padding: 5px;
+  font-weight: lighter;
   color: var(--manatee);
 }
 
-.codeview-utility-bar-left button.selected {
-	font-weight: bold;
-	color: var(--vippsblack);
+.codeview-utility-bar-left button:hover {
+    color: var(--rum);
 }
 
 .codeview-utility-bar-left button.selected {
-		font-weight: lighter;
-    font-family: Vipps;
     color: var(--rum);
 }
 
@@ -193,7 +174,7 @@
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
-	/*background-color: blue;*/
+	line-height: normal;
 }
 
 .codeview-collapse-content {
@@ -201,30 +182,31 @@
 	overflow: hidden;
 	height: 150px;
 	transition: height 1.5s ease-in-out;
-	/*background: red;*/
+	/* Cannot do transition with auto parametres! */
+	//transition: height 1.5s ease-in-out; 
 }
 
 .codeview-collapse-overlay {
-	z-index: 3;
+	z-index: 4;
 	display: block;
 	margin-top: -150px;
 	height: 155px;
 	padding-top: 100px;
 	border-radius: 0px 0px 5px 5px;
+	border: 0.8px solid var(--ghost);
+	border-top-style: none; 
 	
 	text-align: center;
 	line-height: 50px;
 	font-family: Vipps;
 	font-weight: lighter;
-	color: var(--vippsgray);
-	//content: 'Expand';
+	color: var(--manatee);
 	
-	background: linear-gradient(transparent, var(--vippseditorbg) 80%, var(--vippseditorbg));
+	background: linear-gradient(transparent, var(--athensGreyLight) 80%, var(--athensGreyLight));
 }
 
 .codeview-collapse-overlay:hover {
-	font-weight: bold;
-	color: var(--vippsblack);
+	color: var(--rum);
 }
 
 .codeview-collapse.expanded {
@@ -236,12 +218,11 @@
 }
 
 .codeview-collapse.expanded .codeview-collapse-overlay {
-	//content: 'Close';
-	height: 100px;
-	margin-top: -50px;
-	padding-top: 50px;
-	line-height: 20px;
-	background: linear-gradient(transparent, var(--vippseditorbg) 50%, var(--vippseditorbg));
+	height: 50px;
+	margin-top: 0px;
+	padding-top: 0px;
+	line-height: 50px;
+	background: var(--athensGreyLight); /*linear-gradient(transparent, var(--athensGreyLight) 50%, var(--athensGreyLight));*/
 }
 
 /**

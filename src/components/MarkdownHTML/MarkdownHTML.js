@@ -47,7 +47,8 @@ class MarkdownHTML extends React.Component {
       return <ReactMarkdown
           source={this.removeTableOfContent()}
           renderers={{ code: CodeBlock,
-                      heading: HeadingRenderer}}
+                      heading: HeadingRenderer
+                    }}
         />;
     }
     return <ReactMarkdown

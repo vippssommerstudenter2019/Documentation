@@ -71,3 +71,26 @@ pre {
   --vippsblack :#161225 ;
   --vippsblueberry :#49367e ;
   }
+
+
+tr:nth-child(even) {
+  background-color: #F6F6F9 !important;
+}
+
+th{
+  color: black !important;
+  background-color: #f6f6f9 !important;
+  padding: 8px 8px 8px 8px !important;
+}
+
+table {
+  border: 1px solid #D8D8D8;
+}
+
+table thead th {
+  border-bottom: 1px solid #D8D8D8 !important;
+}
+
+div table tbody tr {
+  border-bottom: 1px solid #D8D8D8 !important;
+}
