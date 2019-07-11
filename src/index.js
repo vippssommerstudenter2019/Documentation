@@ -75,44 +75,29 @@ class DocuPage extends React.Component {
         "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
     };
     this.devResUrls = {
-<<<<<<< HEAD
-      ecom : [
-=======
       ecom: [
->>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
         ["Postman", "https://github.com/vippsas/vipps-ecom-api/tree/master/tools"],
         ["FAQ", "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md"],
         ["Swagger", "https://vippsas.github.io/vipps-ecom-api/"]
       ],
-<<<<<<< HEAD
-      login : [
-=======
       login: [
->>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
         ["Postman", "https://github.com/vippsas/vipps-login-api/tree/master/tools"],
         ["FAQ", "#faq"],
         ["Swagger", "https://vippsas.github.io/vipps-login-api/"]
       ],
-<<<<<<< HEAD
-      invoice : [
-=======
       invoice: [
->>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
         ["Postman", "https://github.com/vippsas/vipps-invoice-api/tree/master/tools"],
         ["FAQ", "#faq"],
         ["Swagger ISP", "https://vippsas.github.io/vipps-invoice-api/isp.html"],
         ["Swagger IPP",  "https://vippsas.github.io/vipps-invoice-api/ipp.html"]
       ]
     }
-<<<<<<< HEAD
     this.pageTitles = {
       ecom: "Vipps eCommerce API",
       login: "Vipps Login API",
       invoice: "Vipps Invoice API"
     }
 
-=======
->>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
     this.state = {
       fullText: "",
       headers: []
