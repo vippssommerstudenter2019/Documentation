@@ -31,7 +31,7 @@ class OutroBox extends React.Component {
 							{this.props.content.description} 
 						</div>
 					</div>
-					<div className="outro-link">
+					<div className="outro-link" viewBox="0 0 100 100" >
 						<a href="https://www.vipps.no">
 							<button className="button" > 
 								eCom API Documentation

@@ -91,6 +91,10 @@
 }
 
 .outro-image { 
+	width: 600px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .outro-link {  
@@ -132,6 +136,8 @@
 /*
  * The layouts for both Step and CodeStep.
  */
+ 
+//svg scaling
 
 .step-img-left,
 .step-img-right,
