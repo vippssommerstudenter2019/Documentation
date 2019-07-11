@@ -89,8 +89,16 @@ table {
 
 table thead th {
   border-bottom: 1px solid #D8D8D8 !important;
+  border-left: 1px solid #D8D8D8 !important;
+  border-right: 1px solid #D8D8D8 !important;
+  font-weight: 600 !important;
 }
 
 div table tbody tr {
   border-bottom: 1px solid #D8D8D8 !important;
+}
+
+td{
+  border-left: 1px solid #D8D8D8 !important;
+  border-right: 1px solid #D8D8D8 !important;
 }

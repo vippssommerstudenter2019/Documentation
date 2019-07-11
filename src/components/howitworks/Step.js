@@ -28,7 +28,7 @@ export function createToolTip(text, description) {
 					</div>
 					<br/>
 					<br/>
-					<a className="rc-custom-link" href="https://www.vipps.no" target="_blank" rel="noopener noreferrer">See the API documentation for more info</a>
+					<a className="rc-custom-link" href="http://localhost:3000/documentation/ecommerce/#authentication" target="_blank" rel="noopener noreferrer">See the API documentation for more info</a>
 				</div>
 			}
 			placement="bottom">
@@ -56,11 +56,14 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 
 		result.push(input.substring(currentIndex, input.length));
 	}
+	else {
+		result.push(input.replace(/[\[\]']+/g, ''));
+	}
 
 	return (
-		<p>
+		<div className="step-paragraph">
 			{result}
-		</p>
+		</div>
 	);
 }
 
@@ -69,7 +72,7 @@ Wrapper for future content: code + text + image
 ScrollLinking
 */
 const titleClass = "xlarge-font-size text-color-black";
-const descriptionClass = "default-font-size text-color-black";
+const descriptionClass = "step-paragraph";
 
 class Step extends Component {
 	/*
