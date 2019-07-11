@@ -12,31 +12,31 @@ class MarkdownHTML extends React.Component {
       data: "",
       lines: [],
     }
-    this.removeTableOfContent = this.removeTableOfContent.bind(this);
+    this.removeTableOfContent = this.filterMarkdown.bind(this);
   }
 
   componentDidMount() {
       this.setState({data: this.props.text});
     }
 
-
-  removeTableOfContent() {
+    // Filters out table of content and first heading + paragraph
+  filterMarkdown() {
     let lines = this.props.text.split('\n');
-    let markdownWithoutTableOfContent = '';
-    let withinTableOfContent = false;
+    let filtered_markdown = '';
+    let filter_out = false;
     for (let line of lines) {
-      if (line.toLowerCase().includes("table of content")) {
-        withinTableOfContent = true;
+      if (line.startsWith('# ') && (line.toLowerCase().includes("table of content")  || line.toLowerCase().includes(this.props.pageTitle.toLowerCase()))) {
+        filter_out = true;
       }
-      else if (withinTableOfContent === true && line.startsWith('#')) {
-        markdownWithoutTableOfContent += line.toString() + '\n';
-        withinTableOfContent = false;
+      else if (filter_out === true && line.startsWith('#')) {
+        filtered_markdown += line.toString() + '\n';
+        filter_out = false;
       }
-      else if (withinTableOfContent === false) {
-        markdownWithoutTableOfContent += line.toString() + '\n';
+      else if (filter_out === false) {
+        filtered_markdown += line.toString() + '\n';
       }
     }
-    return markdownWithoutTableOfContent;
+    return filtered_markdown;
   }
 
   devResUrls = () => (
@@ -68,14 +68,12 @@ class MarkdownHTML extends React.Component {
     if (text) {
       return (
         <div>
-          <div>
-            <h1 id="developer-resources">
-              Documentation - {this.props.pageTitle}
-            </h1>
-            {this.devResUrls()}
-          </div>
+          <h1 id="developer-resources">
+            Documentation - {this.props.pageTitle}
+          </h1>
+          {this.devResUrls()}
           <ReactMarkdown
-                source={this.removeTableOfContent()}
+                source={this.filterMarkdown()}
                 renderers={{ code: CodeBlock,
                             heading: HeadingRenderer
                           }}
