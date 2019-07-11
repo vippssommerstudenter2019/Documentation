@@ -1,4 +1,9 @@
 /* SIDEBAR */
+
+.scrollable ul {
+  margin-top: 0 !important;
+}
+
 .Sidebar {
   background: white;
   display: grid;
@@ -15,8 +20,9 @@
 }
 
 .Logo {
-  width: 100px;
+  width: 75%;
   margin-top: 30px;
+  margin-bottom: 24px;
 }
 
 .SidebarMenu {
@@ -93,7 +99,6 @@
   border-radius: 20px;
   width: 50%px !important;
   /*line-height: 32px !important;*/
-
 }
 
 .listEl:hover {
@@ -111,7 +116,6 @@
   border-radius: 20px;
   width: 100%;
   border-bottom: white;
-
 }
 
 .collapsible-header:hover {
@@ -123,7 +127,6 @@
 }
 
 .collapsible {
-  margin: 40px 0px 0px 0px !important;
   border-top-color: white;
   border-top: 0px;
   border-bottom-color: white;
@@ -153,40 +156,62 @@
 }
 
 li > a {
-    height: auto !important;
-    line-height: 32px !important;
-    color: #49367e !important;
-    border-radius: 20px;
-    padding: 0px 0px 0px 0px !important;
-    margin: 10px 0px 10px 0px !important;
+  height: auto !important;
+  line-height: 32px !important;
+  color: #49367e !important;
+  border-radius: 20px;
+  padding: 0px 0px 0px 0px !important;
+  margin: 10px 0px 10px 0px !important;
+}
 
+li > div > a:hover {
+  display: block;
+  color: #49367e;
 }
 
 li > div > a{
-  display:block;
+  display:inline-block !important;
+  width:100% !important;
+  height:100% !important;
 }
 
 li > a:hover {
-    background-color: #f6f6f9 !important;
-
+  background-color: #f6f6f9 !important;
 }
-
 
 /*  Sidebar scrolling   */
 
 
-
-.sidebarlogo {
-  margin-bottom: 1vh;
-  height: 7vh;
-  position: static;
+.collapsible-header a {
+  opacity: 0.99;
 }
 
+
 .scrollable {
-  right: 10vw;
+  width: 100%;
+  position: absolute;
   overflow-y: scroll;
   height: 82vh;
 }
+
+.fadeout-top {
+  margin-top: 0px;
+  width: 100%;
+  height: 12px;
+  background-image: linear-gradient(to top, transparent 1%, white 100%);
+  position: absolute;
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+}
+
+.fadeout-bottom {
+  width: 100%;
+  margin-top: calc(82vh - 12px);
+  height: 12px;
+  background-image: linear-gradient(to bottom, transparent 1%, white 100%);
+  position: relative;
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+}
+
 
 .apilink {
   height: 10vh;
@@ -195,6 +220,7 @@ li > a:hover {
 }
 
 .scrollable::-webkit-scrollbar {
+  z-index: 0;
   width: 30px;
 }
 
@@ -204,26 +230,41 @@ li > a:hover {
 
 .scrollable::-webkit-scrollbar-thumb {
   width: 5px;
-  background: #ededef;
+  background: #F6F6F9;
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
-  box-shadow:
 }
-
 
 /* Vipps-colors */
 
-
 :root {
-  --vippsorange :#FF5B24;
-  --lightvippsorange : #FDF4ED;
-  --vippspurple :#4D3280 ;
-  --vippsblue : #59CBE8 ;
-  --vippsblack :#161225 ;
-  --vippsblueberry :#49367e ;
-  }
+  --vippsorange: #ff5b24;
+  --lightvippsorange: #fdf4ed;
+  --vippspurple: #4d3280;
+  --vippsblue: #59cbe8;
+  --vippsblack: #161225;
+  --vippsblueberry: #49367e;
+}
 
+#myDR:hover {
+  color: white;
+}
 
+#myDR {
+  display: block;
+  align-content: center;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  width: auto;
+  height: auto;
+}
 
+a:hover {
+  color: red;
+}
 
-  
+.collapsible.popout > li {
+  -webkit-transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

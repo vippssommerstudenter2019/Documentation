@@ -4,7 +4,7 @@ import M from "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import vipps_docs from "../../img/vipps_docs.svg"
+import vipps_dev from "../../img/vipps_dev.svg"
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
@@ -20,7 +20,7 @@ const SidebarHeader = () => (
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
-      src={vipps_docs}
+      src={vipps_dev}
       alt="logo"
     />
   </Link>
@@ -34,20 +34,21 @@ const SidebarMenu = props => (
 );
 
 // Buttons to different swaggers
-const SwaggerLink = (props) => (
+/*const DeveloperResources = () => (
   <button className="ApiLink sidebarMarg">
-    <a href={props.document === "ecom" ?
-  "https://vippsas.github.io/vipps-ecom-api/" : "https://vippsas.github.io/vipps-login-api/"}>Swagger</a>
+    Developer
   </button>
+);*/
+
+/*const SwaggerISPLink = () => (
+  <button className="ApiLink sidebarMarg">
+    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html" id="mySwaggerISP">Swagger ISP</a></button>
 );
 
 const SwaggerIPPLink = () => (
-  <button className="ApiLink sidebarMarg">Swagger IPP</button>
-);
-
-const SwaggerISPLink = () => (
-  <button className="ApiLink sidebarMarg">Swagger ISP</button>
-);
+  <button className="ApiLink sidebarMarg">
+    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html" id="mySwaggerIPP">Swagger IPP</a></button>
+);*/
 
 // Navigation Menu
 const SidebarNav = props => {
@@ -61,7 +62,8 @@ const SidebarNav = props => {
       <ul>
         {Object.values(head)[2].map((child, indice) => (
           <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a key={"a index: "+ index + ", indice: " + indice } href={Object.values(child)[1]}>{Object.values(child)[0]}</a>
+            <a  key={"a index: "+ index + ", indice: " + indice }
+                href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
           </li>
         ))}
       </ul>
@@ -75,17 +77,13 @@ const SidebarNav = props => {
         <div className='static sidebarlogo'>
           <SidebarHeader />
           </div>
-          <div className='scrollable'>
+            <div className='scrollable'>
             <Collapsible>{sidebarHeaders}</Collapsible>
           </div>
-          {normal ?
-          <div className='static apilink'>
-          <SwaggerLink document={props.api}/>
-          </div> :
-          <div className='static apilink'>
-          <SwaggerIPPLink />
-          <SwaggerISPLink />
-          </div>}
+          <div className='fadeout-top'>
+          </div>
+          <div className='fadeout-bottom'>
+          </div>
         </SideNav>
       </div>
       )

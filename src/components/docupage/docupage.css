@@ -1,0 +1,160 @@
+
+
+img {
+  max-width: 10vw;
+}
+
+h1, h2, h3 {
+  margin-top: 9vh;
+  margin-bottom: 3vh;
+  color: var(--vippsorange);
+}
+
+h4, h5 {
+  margin-top: 5vh;
+  margin-bottom: 1vh;
+}
+
+pre, code {
+  padding: 10px !important;
+  background-color: #F6F6F9 !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap !important;
+  white-space: -o-pre-wrap !important;
+  word-wrap: break-word !important;
+}
+
+.Container {
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 350px 40vw 40vw;
+  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-areas:
+    "sidebarheader content1 content2 "
+    "sidebar content1 content2"
+    "sidebarfooter content1 content2";
+}
+.Content {
+  margin-right: 10vw;
+  margin-left: 5vw;
+  grid-area: content1 / content1 / content2 / content2;
+  max-width: 50em;
+}
+
+
+.sidebarfooter {
+  grid-area: sidebarfooter;
+}
+
+.sidebar {
+  margin: 0vh;
+  position: fixed;
+  grid-area: sidebar;
+}
+
+.sidebarheader {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  max-width: 100px;
+  grid-area: sidebarheader;
+}
+
+.sidenav {
+    box-shadow: none!important;
+}
+
+.devResources {
+  width: 50%;
+}
+
+.devResources hr{
+  display: block;
+  height: 2px;
+  border: 0;
+  border-top: 1px solid black;
+  /* margin: 1em 0; */
+  margin-left: 0;
+  margin-top: 1em;
+  padding: 0;
+}
+
+.devResources a:hover{
+  color: var(--vippsorange);
+}
+
+.devResources a:hover p{
+  margin-right: 0%;
+}
+
+.devResources p{
+  float: right;
+  margin-right: 5%;
+  transition: margin-right 0.05s ease-out;
+}
+
+
+
+/* Vipps-colors */
+
+
+:root {
+  --vippsorange :#FF5B24;
+  --lightvippsorange : #FDF4ED;
+  --vippspurple :#4D3280 ;
+  --vippsblue : #59CBE8 ;
+  --vippsblack :#161225 ;
+  --vippsblueberry :#49367e ;
+  }
+
+
+tr:nth-child(even) {
+  background-color: #F6F6F9 !important;
+}
+
+th{
+  color: black !important;
+  background-color: #f6f6f9 !important;
+  padding: 8px 8px 8px 8px !important;
+}
+
+table {
+  border: 1px solid #D8D8D8;
+}
+
+table thead th {
+  border-bottom: 1px solid #D8D8D8 !important;
+  border-left: 1px solid #D8D8D8 !important;
+  border-right: 1px solid #D8D8D8 !important;
+  font-weight: 600 !important;
+}
+
+div table tbody tr {
+  border-bottom: 1px solid #D8D8D8 !important;
+}
+
+td{
+  border-left: 1px solid #D8D8D8 !important;
+  border-right: 1px solid #D8D8D8 !important;
+}
+
+h1 {
+  border-top: 1px solid #c9c6d7;
+  padding-top: 48px !important;
+  margin-top: 48px !important;
+}
+
+h1:first-child{
+  border-top: none;
+}
+
+p {
+  font-size: 16px !important;
+}
+
+ul > li {
+  font-size: 16px !important;
+  font-family: Arial, sans-serif;
+}

@@ -7,10 +7,23 @@ const flatten = (text, child) => {
 }
 
 const HeadingRenderer = (props) => {
+  function renderString (string) {
+    return (
+      string
+        .replace(new RegExp("[|&;:$%@<>()+,#']", "g"), "")
+        .trim()
+        .replace(new RegExp(" ", "g"), "-")
+        .toLowerCase()
+      );
+  };
   var children = React.Children.toArray(props.children)
   var text = children.reduce(flatten, '')
-  var slug = text.toLowerCase().replace(/\W/g, '-')
-  return React.createElement('h' + props.level, {id: slug}, props.children)
+  var slug = renderString(text);
+  if (props.level == 1 || props.level == 2) {
+    return React.createElement('h' + props.level, {id: slug}, props.children)
+  } else {
+    return React.createElement('h' + props.level, {id: "h" + props.level + slug}, props.children)
+  }
 }
 
 export default HeadingRenderer;

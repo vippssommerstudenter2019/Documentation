@@ -1,4 +1,7 @@
 /* SETUP */
+.DocCardImg img {
+  max-width: 10vw;
+}
 
 h1 {
   color: #ff5b24;
@@ -17,11 +20,11 @@ h2 {
   height: 100vh;
   padding: 25px;
   display: grid;
-  grid-template-columns: 26% 10% 26% 10% 26%;
+  grid-template-columns: 20% 16% 26% 16% 20%;
   grid-template-rows: auto;
   grid-template-areas:
     "logo . . . ."
-    "cards cards cards cards cards"
+    ". cards cards cards ."
     ". . . . ."
     ". . . . .";
 }
@@ -33,32 +36,33 @@ h2 {
 
 .VippsDev img {
   position: absolute;
-  max-width: 100% !important;
+  width: 20vw !important;
   bottom: 0;
-  left: 20%;
+  left: 5vw;
 }
 
 .Cards {
   display: grid;
   grid-area: cards;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 30vw 30vw 30vw;
   justify-content: space-evenly;
 
 }
 
 .DocCard {
     background: white;
-    height: 45vh;
+    height: 30vw;
     width: 20vw;
-    min-width: 300px;
+    min-height: 375px;
+    min-width: 250px;
     padding: 10%;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 7.5% 7.5% 7.5% 7.5% / 5% 5% 5% 5%;
+    box-shadow: 0.1vh 0.5vh 1vh rgba(0, 0, 0, 0.3);
     transition: 0.3s;
     display: grid;
-    grid-template-rows: 20vh 10vh 10vh;
+    grid-template-rows: 45% 35% 20%;
     grid-template-columns: auto;
-    grid-template-areas: 
+    grid-template-areas:
         "img"
         "text"
         "buttons";
@@ -69,16 +73,33 @@ h2 {
 
 .DocCardImg {
     grid-area: img;
+    height: 100%;
     margin: auto;
+    min-height: 120px;
+    min-width: 120px;
+}
+
+.DocCardImg img {
+  min-height: 120px;
+  min-width: 120px;
 }
 
 
 .DocCardText {
     grid-area: text;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 100%;
+    width: 100%
 }
 
+.DocCardText h2 {
+  font-size: calc(6px + 0.8vh + 0.8vw) !important;
+}
+
+.DocCardText p {
+  font-size: calc(6px + 0.3vh + 0.3vw) !important;
+}
 
 .DocCardTitle {
     margin-top: 0 !important;
@@ -86,29 +107,44 @@ h2 {
 }
 
 .DocCardLinks {
-    grid-area: buttons;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    margin: auto;
-  }
-  
-  .DocumentationLink {
-    border: none;
-    background: none;
-    text-decoration: underline;
-    cursor: pointer;
-    color: #49367e;
-  }
-  
-  .GetStartedLink {
-    border: none;
-    background: #49367e;
-    color: white;
-    border-radius: 30px;
-    padding: 15px;
-    height: 60px;
-    width: 200px;
-  }
+  grid-area: buttons;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+  font-size: calc(4px + 0.6vh + 0.4vw) !important;
+}
+
+.DocumentationLink {
+  border: none;
+  background: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #49367e;
+}
+
+.GetStartedLink {
+  border: none;
+  background: #49367e;
+  color: white;
+  border-radius: 10% 10% 10% 10% / 50% 50% 50% 50%;
+  height: 100%;
+  width: 90%;
+
+}
+
+.GetStartedText {
+  /* height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-content: center; */
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 
 .APIcontainer {
   grid-area: link;
@@ -138,87 +174,7 @@ h2 {
   grid-template-columns: 330px auto;
 }
 /* ----------------------------------------------- */
-/* SIDEBAR */
-.Sidebar {
-  background: white;
-  display: grid;
-  grid-template-rows: 5% auto;
-  margin-top: 20px;
-}
 
-.SidebarHeader {
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Logo {
-  width: 50%;
-}
-
-.SidebarMenu {
-  background: white;
-  color: #49367e;
-}
-
-.SidebarNav {
-  background: white;
-  padding: 10%;
-  margin-left: 10%;
-  text-align: left;
-}
-
-.NavListTop {
-  width: 75%;
-  margin: auto;
-  list-style-type: none;
-  padding: 0;
-  /* display: inline-block; */
-}
-
-.NavListBot {
-  width: 75%;
-  margin: auto;
-  list-style-type: none;
-  padding-left: 20%;
-  padding-bottom: 5%;
-
-  /* display: inline-block; */
-}
-
-.NavElemTop {
-  background: white;
-  border-radius: 15px;
-  padding: 2% 2%;
-  margin-bottom: 2%;
-}
-
-.NavElemBot {
-  background: white;
-  border-radius: 15px;
-  padding: 2% 2%;
-  margin-bottom: 2%;
-}
-
-.ApiLink {
-  background: #f6f6f9;
-  color: #49367e;
-  margin: auto auto auto 50px;
-  border-radius: 20px;
-
-  padding: 0px 30px 0px 30px !important;
-  margin-top: 20px;
-  height: 40px;
-  border: none;
-}
-
-.ApiLink:hover {
-  background: #49367e;
-  color: white;
-}
-
-/* ----------------------------------------------- */
 /* CONTENT */
 .ContentField {
   background: white;
