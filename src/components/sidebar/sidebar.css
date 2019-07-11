@@ -1,4 +1,13 @@
 /* SIDEBAR */
+
+.scrollable {
+  margin-top: 15px !important;
+}
+
+.scrollable ul {
+  margin-top: 0 !important;
+}
+
 .Sidebar {
   background: white;
   display: grid;
@@ -207,7 +216,6 @@ li > a:hover {
   background: #ededef;
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
- 
 }
 
 /* Vipps-colors */
