@@ -18,9 +18,8 @@ class OutroBox extends React.Component {
 		*/
         return (
 				<div className="outro-wrapper">
-					<div className="outro-image">
-						<img src={this.props.content.imgPath} alt="Woman Using ecom"/>
-					</div>
+					<img className="outro-image" src={this.props.content.imgPath} alt="Springing into action!"/>
+
 					<div className="outro-text" >
 						<div className="xxlarge-font-size">
 							<div className="outro-title">
@@ -31,7 +30,7 @@ class OutroBox extends React.Component {
 							{this.props.content.description} 
 						</div>
 					</div>
-					<div className="outro-link" viewBox="0 0 100 100" >
+					<div className="outro-link" >
 						<a href="https://www.vipps.no">
 							<button className="button" > 
 								eCom API Documentation

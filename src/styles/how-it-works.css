@@ -73,7 +73,7 @@
 .outro-wrapper {
 	display: block;
 	width: auto;
-	height: 980;
+	height: 600;
 	background-color: #49367e;
 	color: white;
 	margin-top: 64px;
@@ -91,10 +91,9 @@
 }
 
 .outro-image { 
-	width: 600px;
+	width: 700px;
 	height: auto;
-	margin-left: auto;
-	margin-right: auto;
+	margin: auto;
 }
 
 .outro-link {  
@@ -136,18 +135,6 @@
 /*
  * The layouts for both Step and CodeStep.
  */
- 
-//svg scaling
-
-.step-img-left,
-.step-img-right,
-.code-img-left,
-.code-img-right {
-	object-fit: downscale;
-	width: .01vw;
-	height: .01vw;
-	viewBox: 0vw 0vw .01vw .01vw;
-}
 
 .step-text {
 	grid-area: step-text;
@@ -166,13 +153,11 @@
 	grid-area: img-right;
 	align-self: center;
 	justify-self: start;
-	perserveAspectRatio: xMinyMid meet;
 }
 
 .step-img-left {
 	align-self: center;
 	justify-self: end;
-	perserveAspectRatio: xMaxyMid meet;
 }
 
 .step-wrapper,
@@ -197,14 +182,12 @@
 	grid-area: img-left;
 	align-self: start;
 	justify-self: end;
-	perserveAspectRatio: xMinyMin meet;
 }
 
 .code-img-right {
 	grid-area: img-right;
 	align-self: start;
 	justify-self: start; 
-	perserveAspectRatio: xMaxyMin meet;
 }
 
 .code-title {
