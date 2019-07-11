@@ -39,6 +39,7 @@ h1:first-of-type {
   margin-right: 10vw;
   grid-area: content1 / content1 / content2 / content2;
   max-width: 50em;
+  overflow-x: scroll !important;
 }
 
 .sidebarfooter {

@@ -20,6 +20,11 @@ pre {
   background-color: #F6F6F9 !important;
 }
 
+.token {
+  overflow-wrap: normal !important;
+  word-break: break-word !important;
+}
+
 .container {
   margin: 0px;
   display: grid;

@@ -19,7 +19,11 @@ const HeadingRenderer = (props) => {
   var children = React.Children.toArray(props.children)
   var text = children.reduce(flatten, '')
   var slug = renderString(text);
-  return React.createElement('h' + props.level, {id: slug}, props.children)
+  if (props.level == 1 || props.level == 2) {
+    return React.createElement('h' + props.level, {id: slug}, props.children)
+  } else {
+    return React.createElement('h' + props.level, {id: "h" + props.level + slug}, props.children)
+  }
 }
 
 export default HeadingRenderer;
