@@ -20,6 +20,11 @@ pre {
   background-color: #F6F6F9 !important;
 }
 
+.token {
+  overflow-wrap: normal !important;
+  word-break: break-word !important;
+}
+
 .container {
   margin: 0px;
   display: grid;
@@ -132,4 +137,14 @@ div table tbody tr {
 td{
   border-left: 1px solid #D8D8D8 !important;
   border-right: 1px solid #D8D8D8 !important;
+}
+
+h1 {
+  border-top: 1px solid #c9c6d7;
+  padding-top: 48px !important;
+  margin-top: 48px !important;
+}
+
+h1:first-child{
+  border-top: none;
 }

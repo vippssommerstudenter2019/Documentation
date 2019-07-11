@@ -1,4 +1,13 @@
 /* SIDEBAR */
+
+.scrollable {
+  margin-top: 15px !important;
+}
+
+.scrollable ul {
+  margin-top: 0 !important;
+}
+
 .Sidebar {
   background: white;
   display: grid;
@@ -15,7 +24,7 @@
 }
 
 .Logo {
-  width: 100px;
+  width: 75%;
   margin-top: 30px;
 }
 
@@ -186,6 +195,8 @@ li > a:hover {
   right: 10vw;
   overflow-y: scroll;
   height: 82vh;
+  border-top: 1px solid #c9c6d7 !important;
+  border-bottom: 1px solid #c9c6d7 !important;
 }
 
 .apilink {
@@ -207,7 +218,6 @@ li > a:hover {
   background: #ededef;
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
- 
 }
 
 /* Vipps-colors */

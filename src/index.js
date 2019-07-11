@@ -74,29 +74,44 @@ class DocuPage extends React.Component {
         "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
     };
     this.devResUrls = {
+<<<<<<< HEAD
       ecom : [
+=======
+      ecom: [
+>>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
         ["Postman", "https://github.com/vippsas/vipps-ecom-api/tree/master/tools"],
         ["FAQ", "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md"],
         ["Swagger", "https://vippsas.github.io/vipps-ecom-api/"]
       ],
+<<<<<<< HEAD
       login : [
+=======
+      login: [
+>>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
         ["Postman", "https://github.com/vippsas/vipps-login-api/tree/master/tools"],
         ["FAQ", "#faq"],
         ["Swagger", "https://vippsas.github.io/vipps-login-api/"]
       ],
+<<<<<<< HEAD
       invoice : [
+=======
+      invoice: [
+>>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
         ["Postman", "https://github.com/vippsas/vipps-invoice-api/tree/master/tools"],
         ["FAQ", "#faq"],
         ["Swagger ISP", "https://vippsas.github.io/vipps-invoice-api/isp.html"],
         ["Swagger IPP",  "https://vippsas.github.io/vipps-invoice-api/ipp.html"]
       ]
     }
+<<<<<<< HEAD
     this.pageTitles = {
       ecom: "Vipps eCommerce API",
       login: "Vipps Login API",
       invoice: "Vipps Invoice API"
     }
 
+=======
+>>>>>>> fe59b341e8c000cc696f3a5c82973d3bce649f1f
     this.state = {
       fullText: "",
       headers: []
@@ -127,40 +142,18 @@ class DocuPage extends React.Component {
     }
 
       // Return one or two swagger subheaders
-      getChildren(twoOrOne) {
-        let postUrlEcom = "https://github.com/vippsas/vipps-ecom-api/tree/master/tools";
-        let postUrlInvoice = "https://github.com/vippsas/vipps-invoice-api/tree/master/tools";
-        let postUrlLogin = "https://github.com/vippsas/vipps-login-api/tree/master/tools";
-        let swaggerUrlEcom = "https://vippsas.github.io/vipps-ecom-api/";
-        let swaggerUrlLogin  = "https://vippsas.github.io/vipps-login-api/";
-        let singleSwagger = {name: "Swagger", anchor: this.props.doc === "ecom" ? swaggerUrlEcom : swaggerUrlLogin};
-        let ispSwagger = {name: "Swagger ISP", anchor: "https://vippsas.github.io/vipps-invoice-api/isp.html"};
-        let ippSwagger = {name: "Swagger IPP", anchor: "https://vippsas.github.io/vipps-invoice-api/ipp.html"};
-        let postman = {name: "Postman", anchor: this.props.doc === "ecom" ? postUrlEcom : postUrlLogin}
-        let faqEcom = "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md";
-        let faq = {name: "FAQ", anchor: this.props.doc === "ecom" ? faqEcom : "#faq"}
-        let faqInvoice = "";
-        let faqLogin = "";
-        if(twoOrOne) {
-          return [
-            postman,
-            singleSwagger,
-            faq,
-          ]
-        } else {
-          return [
-            {name: "Postman", anchor: postUrlInvoice},
-            ispSwagger,
-            ippSwagger,
-            {name: "FAQ", anchor: "#faq"}
-          ]
-        }
+      getChildren() {
+        let childs = [];
+        this.devResUrls[this.props.doc].forEach((header) => {
+          childs.push({name: header[0], anchor: header[1]})
+        });
+        return childs;
       }
 
       // Because of design issues, we add our own header and subheaders to the sidebar
       addSpecialHeader() {
         let devRes = {name: "Developer resources", anchor: "#developer-resources",
-          children: this.props.doc === "invoice" ? this.getChildren(false) : this.getChildren(true)}
+          children: this.getChildren()};
         return devRes;
       }
 
