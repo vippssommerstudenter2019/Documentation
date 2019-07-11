@@ -85,9 +85,9 @@ const SidebarNav = props => {
             <div className='scrollable'>
             <Collapsible>{sidebarHeaders}</Collapsible>
           </div>
-          <div className='fadeout-bottom'>
-          </div>
           <div className='fadeout-top'>
+          </div>
+          <div className='fadeout-bottom'>
           </div>
         </SideNav>
       </div>

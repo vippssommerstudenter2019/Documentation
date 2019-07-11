@@ -195,6 +195,7 @@ li > a:hover {
 }
 
 .fadeout-top {
+  margin-top: 0px;
   width: 100%;
   height: 12px;
   background-image: linear-gradient(to top, transparent 1%, white 100%);
@@ -229,7 +230,7 @@ li > a:hover {
 
 .scrollable::-webkit-scrollbar-thumb {
   width: 5px;
-  background: #ededef;
+  background: #F6F6F9;
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
 }
@@ -261,4 +262,9 @@ li > a:hover {
 
 a:hover {
   color: red;
+}
+
+.collapsible.popout > li {
+  -webkit-transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
