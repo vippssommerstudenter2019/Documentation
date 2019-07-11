@@ -15,9 +15,15 @@ h4, h5 {
   margin-bottom: 1vh;
 }
 
-pre {
+pre, code {
   padding: 10px !important;
   background-color: #F6F6F9 !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap !important;
+  white-space: -o-pre-wrap !important;
+  word-wrap: break-word !important;
 }
 
 .container {
