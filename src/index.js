@@ -73,6 +73,30 @@ class DocuPage extends React.Component {
       invoice:
         "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
     };
+    this.devResUrls = {
+      ecom : [
+        ["Postman", "https://github.com/vippsas/vipps-ecom-api/tree/master/tools"],
+        ["FAQ", "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md"],
+        ["Swagger", "https://vippsas.github.io/vipps-ecom-api/"]
+      ],
+      login : [
+        ["Postman", "https://github.com/vippsas/vipps-login-api/tree/master/tools"],
+        ["FAQ", "#faq"],
+        ["Swagger", "https://vippsas.github.io/vipps-login-api/"]
+      ],
+      invoice : [
+        ["Postman", "https://github.com/vippsas/vipps-invoice-api/tree/master/tools"],
+        ["FAQ", "#faq"],
+        ["Swagger ISP", "https://vippsas.github.io/vipps-invoice-api/isp.html"],
+        ["Swagger IPP",  "https://vippsas.github.io/vipps-invoice-api/ipp.html"]
+      ]
+    }
+    this.pageTitles = {
+      ecom: "Vipps eCommerce API",
+      login: "Vipps Login API",
+      invoice: "Vipps Invoice API"
+    }
+
     this.state = {
       fullText: "",
       headers: []
@@ -180,8 +204,9 @@ class DocuPage extends React.Component {
               </div>
               <div className="content">
                 <MarkdownHTML
-                  //url={"https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/vipps-ecom-api.md"}
                   text={this.state.fullText}
+                  pageTitle={this.pageTitles[this.props.doc]}
+                  devResUrls={this.devResUrls[this.props.doc]}
                 />
               </div>
             </div>
