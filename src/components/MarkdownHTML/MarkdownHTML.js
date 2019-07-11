@@ -25,7 +25,7 @@ class MarkdownHTML extends React.Component {
     let filtered_markdown = '';
     let filter_out = false;
     for (let line of lines) {
-      if (line.startsWith('# ') && (line.toLowerCase().includes("table of content")  || line.toLowerCase().includes(this.props.pageTitle.toLowerCase()))) {
+      if ((line.startsWith('# ') && line.toLowerCase().includes(this.props.pageTitle.toLowerCase())) || line.toLowerCase().includes("table of content")  ) {
         filter_out = true;
       }
       else if (filter_out === true && line.startsWith('#')) {
