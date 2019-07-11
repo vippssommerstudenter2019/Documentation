@@ -105,22 +105,27 @@ class DocuPage extends React.Component {
       // Return one or two swagger subheaders
       getChildren(twoOrOne) {
         let postUrlEcom = "https://github.com/vippsas/vipps-ecom-api/tree/master/tools";
+        let postUrlInvoice = "https://github.com/vippsas/vipps-invoice-api/tree/master/tools";
         let postUrlLogin = "https://github.com/vippsas/vipps-login-api/tree/master/tools";
         let swaggerUrlEcom = "https://vippsas.github.io/vipps-ecom-api/";
         let swaggerUrlLogin  = "https://vippsas.github.io/vipps-login-api/";
         let singleSwagger = {name: "Swagger", anchor: this.props.doc === "ecom" ? swaggerUrlEcom : swaggerUrlLogin};
-        let ispSwagger = {name: "Swagger ISP", anchor: "#swagger-isp"};
-        let ippSwagger = {name: "Swagger IPP", anchor: "#swagger-ipp"};
+        let ispSwagger = {name: "Swagger ISP", anchor: "https://vippsas.github.io/vipps-invoice-api/isp.html"};
+        let ippSwagger = {name: "Swagger IPP", anchor: "https://vippsas.github.io/vipps-invoice-api/ipp.html"};
         let postman = {name: "Postman", anchor: this.props.doc === "ecom" ? postUrlEcom : postUrlLogin}
+        let faqEcom = "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md";
+        let faq = {name: "FAQ", anchor: this.props.doc === "ecom" ? faqEcom : "#faq"}
+        let faqInvoice = "";
+        let faqLogin = "";
         if(twoOrOne) {
           return [
             postman,
             singleSwagger,
-            {name: "FAQ", anchor: "#faq"}
+            faq,
           ]
         } else {
           return [
-            postman,
+            {name: "Postman", anchor: postUrlInvoice},
             ispSwagger,
             ippSwagger,
             {name: "FAQ", anchor: "#faq"}
