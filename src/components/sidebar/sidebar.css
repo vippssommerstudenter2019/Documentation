@@ -186,6 +186,8 @@ li > a:hover {
   right: 10vw;
   overflow-y: scroll;
   height: 82vh;
+  border-top: 1px solid #c9c6d7 !important;
+  border-bottom: 1px solid #c9c6d7 !important;
 }
 
 .apilink {
