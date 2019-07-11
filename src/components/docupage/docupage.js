@@ -42,6 +42,7 @@ class DocuPage extends React.Component {
       }
 
       this.state = {
+        markdownWithoutTableOfContent: "",
         fullText: "",
         headers: []
       };
@@ -49,8 +50,8 @@ class DocuPage extends React.Component {
 
     componentDidMount() {
       this.getContent().then(response =>
-        response.text().then(text => this.getHeaders(text))
-      );
+        response.text().then(text => this.getHeaders(this.removeTableOfContent(text))
+      ));
     }
 
     // Fetches raw content from Github and puts it in the DocuPage state
@@ -69,6 +70,24 @@ class DocuPage extends React.Component {
           .toLowerCase()
         );
       }
+
+      removeTableOfContent(data) {
+  let lines = data.split("\n");
+  let markdownWithoutTableOfContent = "";
+  let withinTableOfContent = false;
+  for (let line of lines) {
+    if (line.toLowerCase().includes("table of content")) {
+      withinTableOfContent = true;
+    } else if (withinTableOfContent === true && line.startsWith("#")) {
+      markdownWithoutTableOfContent += line.toString() + "\n";
+      withinTableOfContent = false;
+    } else if (withinTableOfContent === false) {
+      markdownWithoutTableOfContent += line.toString() + "\n";
+    }
+  }
+  return markdownWithoutTableOfContent;
+}
+
 
         // Return one or two swagger subheaders
         getChildren() {
@@ -131,7 +150,7 @@ class DocuPage extends React.Component {
               source={this.state.fullText}
               renderers={{ code: CodeBlock,
                           heading: HeadingRenderer}}
-                      />;
+                      />
             </div>
 
           </div>
