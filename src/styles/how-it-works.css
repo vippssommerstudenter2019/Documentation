@@ -98,8 +98,8 @@
 	display: block;
 	width: auto;
 	height: 600;
-	background-color: #49367e;
-	color: white;
+	background-color: var(--seashellPeach);
+	color: var(--vippsblack);
 	margin-top: 64px;
 	padding: 128px;
 	text-align: center;
