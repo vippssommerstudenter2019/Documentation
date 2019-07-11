@@ -29,14 +29,19 @@
   text-align: left;
 }
 
+/* 
+ * The main wrapper for the content of the application
+ * Apllication content does not include the vipps header or footer
+ */
 .content-wrapper {
 	text-align: left;
 	display: grid;
 	grid-template-columns: auto 100px 1000px 100px auto;
-	grid-template-rows: auto auto;
+	grid-template-rows: auto auto auto;
 	grid-template-areas:
-		". intro-area intro-area intro-area ."
-		". . step-area . .";
+		".			intro-area	intro-area	intro-area	."
+		".			. 			step-area	.			."
+		"outro-area	outro-area	outro-area	outro-area	outro-area";
 }
 
 .intro-area {
@@ -47,7 +52,13 @@
 	grid-area: step-area;
 }
 
+.outro-area {
+	grid-area: outro-area;
+}
 
+/*
+ *The layout for the intro elements
+ */
 .intro-wrapper {
 	display: grid;
 	grid-template-columns: 60% 40%;
@@ -80,6 +91,48 @@
 	font-weight: bold;
 }
 
+/*
+ *The layout for the outro elements
+ */
+.outro-wrapper {
+	display: block;
+	width: auto;
+	height: 600;
+	background-color: #49367e;
+	color: white;
+	margin-top: 64px;
+	padding: 128px;
+	text-align: center;
+}
+
+.outro-text {
+	margin: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 800px;
+	overflow-y: auto;
+	
+}
+
+.outro-image, 
+.outro-image img { 
+	width:  500px;
+	height: 500px;
+	margin: auto;
+}
+
+.outro-link {  
+	margin-top: 50px;
+}
+
+.outro-title {
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+
+/*
+ * The styling for text links and popups.
+ */
 .keyword-overlay {
 	max-width: 400px;
 }
@@ -104,17 +157,9 @@
     color: inherit; 
 }
 
-// Svg sizing
-
-.step-img-left,
-.step-img-right,
-.code-img-left,
-.code-img-right {
-	object-fit: downscale;
-	width: .01vw;
-	height: .01vw;
-	viewBox: 0vw 0vw .01vw .01vw;
-}
+/*
+ * The layouts for both Step and CodeStep.
+ */
 
 .step-text {
 	grid-area: step-text;
@@ -133,13 +178,11 @@
 	grid-area: img-right;
 	align-self: center;
 	justify-self: start;
-	perserveAspectRatio: xMinyMid meet;
 }
 
 .step-img-left {
 	align-self: center;
 	justify-self: end;
-	perserveAspectRatio: xMaxyMid meet;
 }
 
 .step-wrapper,
@@ -171,14 +214,12 @@
 	grid-area: img-left;
 	align-self: start;
 	justify-self: end;
-	perserveAspectRatio: xMinyMin meet;
 }
 
 .code-img-right {
 	grid-area: img-right;
 	align-self: start;
 	justify-self: start; 
-	perserveAspectRatio: xMaxyMin meet;
 }
 
 .code-title {

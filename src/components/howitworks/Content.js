@@ -23,14 +23,10 @@ class Content extends React.Component {
     }
 	
 	languageCallback(language) {
-		//console.log("LangLog:1 ", language);
 		if (language === this.props.activeLanguage) return;
 		const languages = this.state.languages.slice();
-		//console.log("LangLog:2 ", language);
 		for (let i in languages) {
-			//console.log(languages[i], language)
 			if (language === languages[i]) {
-				//console.log("LangLog:3 ", language);
 				this.setState({activeLanguage: language});
 				break;
 			}
@@ -111,7 +107,7 @@ class Content extends React.Component {
         Array.from(sections, (val, index) => { return items.push(this.contentFromSection(val, index)); });
 
         return (
-            <div> 
+            <div className={this.props.className} > 
 		        {items}
             </div>
         );
