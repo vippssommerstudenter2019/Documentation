@@ -214,7 +214,7 @@
 	font-weight: lighter;
 	color: var(--manatee);
 	
-	background: linear-gradient(transparent, var(--athensGreyLight) 80%, var(--athensGreyLight));
+	background: linear-gradient(rgba(255,255,255,0), var(--athensGreyLight) 80%, var(--athensGreyLight));
 }
 
 .codeview-collapse-overlay:hover {
