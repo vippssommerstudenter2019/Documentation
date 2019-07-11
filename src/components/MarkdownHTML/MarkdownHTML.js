@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import './MarkdownHTML.css'
 import HeadingRenderer from "./HeadingRenderer.js";
 import CodeBlock from "./CodeBlock.js";
+import { formatDescriptionToIncludeHoverLinks } from "../howitworks/Step";
 
 class MarkdownHTML extends React.Component {
   constructor(props) {
@@ -38,18 +39,48 @@ class MarkdownHTML extends React.Component {
     return markdownWithoutTableOfContent;
   }
 
+  devResUrls = () => (
+    <div className="devResources">
+      <h2>
+        Developer resources
+      </h2>
+      <hr/>
+      {this.props.devResUrls.map(
+        (element) => (
+          <div>
+            <a href={element[1]}>
+              <div>
+                {element[0]}
+                <p>{String.fromCharCode(10132)}</p>
+              </div>
+            </a>
+            <hr/>
+          </div>
+        )
+      )}
+    </div>
+  )
 
 
 
   render() {
     const { text } = this.props;
     if (text) {
-      return <ReactMarkdown
-          source={this.removeTableOfContent()}
-          renderers={{ code: CodeBlock,
-                      heading: HeadingRenderer
-                    }}
-        />;
+      return (
+        <div>
+          <div>
+            <h1 id="developer-resources">
+              Documentation - {this.props.pageTitle}
+            </h1>
+            {this.devResUrls()}
+          </div>
+          <ReactMarkdown
+                source={this.removeTableOfContent()}
+                renderers={{ code: CodeBlock,
+                            heading: HeadingRenderer
+                          }}
+            />;
+        </div>)
     }
     return <ReactMarkdown
             source={this.state.data}
