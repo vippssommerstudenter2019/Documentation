@@ -85,4 +85,10 @@ const eComIntro = {
     "imgPath": "../../assets/images/womanWithPhone.svg"
 };
 
-export { eComSections, eComIntro };
+const eComOutro = {
+    "title": "Great! Now you know how the payment process works",
+    "description": "You're ready to move forward to the documentation",
+    "imgPath": "../../assets/images/jumpingMan.svg"
+};
+
+export { eComSections, eComIntro, eComOutro };

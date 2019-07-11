@@ -8,14 +8,14 @@ import './styles/vipps-style.css';
 import './styles/index.css';
 import vipps_dev from "./img/vipps_dev.svg"
 import HowItWorks from "./components/howitworks/HowItWorks"
-import {eComSections, eComIntro} from "./model/eCom"
+import {eComSections, eComIntro, eComOutro} from "./model/eCom"
 
 // TODO: startpath should be "/documentation/" and not "/"
 const StartPage = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={Cards}/>
-            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
+            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro} />}/>
             <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>}/>
             <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections}/>} />
             <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
