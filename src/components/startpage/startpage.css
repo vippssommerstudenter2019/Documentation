@@ -231,16 +231,16 @@ h2 {
 }
 
 .listEl {
-  padding: 0px 0px 0px 30px !important;
-  margin: 5px 0px 5px 20px !important;
+  padding: 0px 0px 0px 30px ;
+  margin: 0px 0px 0px 20px ;
   text-decoration: none;
-  line-height: 32px !important;
+  line-height: 32px ;
   font-size: 16px;
   color: #49367e;
   display: block;
   background-color: white;
   border-radius: 20px;
-  width: 50%px !important;
+  width: 50%px ;
 }
 
 .listEl:hover {
