@@ -3,13 +3,15 @@
   max-width: 10vw;
 }
 
+.DocCardImg h2 {
+  color: var(--vippsorange) !important;
+}
+
 h1 {
-  color: #ff5b24;
   margin-left: 5%;
   grid-row-start: 2;
 }
 h2 {
-  color: #ff5b24;
   margin: auto;
 }
 /* ----------------------------------------------- */
@@ -46,37 +48,36 @@ h2 {
   grid-area: cards;
   grid-template-columns: 30vw 30vw 30vw;
   justify-content: space-evenly;
-
 }
 
 .DocCard {
-    background: white;
-    height: 30vw;
-    width: 20vw;
-    min-height: 375px;
-    min-width: 250px;
-    padding: 10%;
-    border-radius: 7.5% 7.5% 7.5% 7.5% / 5% 5% 5% 5%;
-    box-shadow: 0.1vh 0.5vh 1vh rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
-    display: grid;
-    grid-template-rows: 45% 35% 20%;
-    grid-template-columns: auto;
-    grid-template-areas:
-        "img"
-        "text"
-        "buttons";
-    place-self: center;
-    justify-items: center;
-    text-align: center;
-  }
+  background: white;
+  height: 30vw;
+  width: 20vw;
+  min-height: 375px;
+  min-width: 250px;
+  padding: 10%;
+  border-radius: 7.5% 7.5% 7.5% 7.5% / 5% 5% 5% 5%;
+  box-shadow: 0.1vh 0.5vh 1vh rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
+  display: grid;
+  grid-template-rows: 45% 35% 20%;
+  grid-template-columns: auto;
+  grid-template-areas:
+    "img"
+    "text"
+    "buttons";
+  place-self: center;
+  justify-items: center;
+  text-align: center;
+}
 
 .DocCardImg {
-    grid-area: img;
-    height: 100%;
-    margin: auto;
-    min-height: 120px;
-    min-width: 120px;
+  grid-area: img;
+  height: 100%;
+  margin: auto;
+  min-height: 120px;
+  min-width: 120px;
 }
 
 .DocCardImg img {
@@ -84,13 +85,12 @@ h2 {
   min-width: 120px;
 }
 
-
 .DocCardText {
-    grid-area: text;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    height: 100%;
-    width: 100%
+  grid-area: text;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: 100%;
+  width: 100%;
 }
 
 .DocCardText h2 {
@@ -102,8 +102,8 @@ h2 {
 }
 
 .DocCardTitle {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .DocCardLinks {
@@ -132,7 +132,6 @@ h2 {
   border-radius: 10% 10% 10% 10% / 50% 50% 50% 50%;
   height: 100%;
   width: 90%;
-
 }
 
 .GetStartedText {
@@ -144,7 +143,6 @@ h2 {
   top: 50%;
   transform: translateY(-50%);
 }
-
 
 .APIcontainer {
   grid-area: link;
@@ -163,8 +161,6 @@ h2 {
   width: 275px;
   border-radius: 30px;
 }
-
-
 
 .DocuPage {
   color: #ffffff;

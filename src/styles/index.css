@@ -1,5 +1,3 @@
-
-
 h1,
 h2,
 h3 {
@@ -31,10 +29,6 @@ h5 {
 }
 
 .DocCardTitle {
-  color: var(--vippsorange);
-}
-
-h1:first-of-type {
   color: var(--vippsorange);
 }
 
@@ -80,6 +74,7 @@ h1:first-of-type {
 /* Vipps-colors */
 
 :root {
+  --lightgrey: #f6f6f9;
   --vippsorange: #ff5b24;
   --lightvippsorange: #fdf4ed;
   --vippspurple: #4d3280;
