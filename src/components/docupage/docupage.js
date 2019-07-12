@@ -56,15 +56,17 @@ class DocuPage extends React.Component {
     };
 
     this.state = {
-      editedText: "",
-      fullText: "",
+      content: "",
       headers: []
     };
   }
 
   componentDidMount() {
     this.getContent().then(response =>
-      response.text().then(text => this.filterMarkdown(text, this.props.doc))
+      response.text().then(fullText => 
+        this.displayContent(fullText).then(
+          this.goToAnchor
+        ))
     );
   }
 
@@ -72,6 +74,27 @@ class DocuPage extends React.Component {
   getContent() {
     return fetch(this.urls[this.props.doc]);
   }
+
+  async displayContent(fullText) {
+    const content = this.filterMarkdown(fullText, this.props.doc);
+    const headers = this.getHeaders(content);
+    this.setState({
+      content: content,
+      headers: headers
+    })
+  }
+
+  goToAnchor() { 
+    const hash = window.document.location.hash;
+    if (hash !="") {
+        setTimeout(function() {
+            if (window.location.hash) {
+                window.scrollTo(0, 0);
+                window.location.href = hash;
+            }
+        }, 1);
+    }
+}
 
   // Returns a HTML anchor from a given header
   makeAnchor(string) {
@@ -105,10 +128,7 @@ class DocuPage extends React.Component {
   }
 
   // Filters the content fetched from Github into headers
-  getHeaders() {
-    const data = this.state.editedText;
-    console.log(this.state);
-    const originalMarkdown = (" " + data).slice(1);
+  getHeaders(data) {
     const lines = data.split("\n");
     let navbarHeaders = [];
     let navbarHeader = { name: "", anchor: "", children: [] };
@@ -134,13 +154,7 @@ class DocuPage extends React.Component {
         ? navbarHeaders.slice(3)
         : navbarHeaders.slice(2);
     sidebarHeaders.unshift(this.addSpecialHeader());
-    this.setState({
-      fullText: originalMarkdown,
-      // First element i navbarHeaders is an empty collection
-      // Second element is just the name of the documentation, not needed in navigation bar
-      // In case second header is not 'table of contents' do not exclude the second header
-      headers: sidebarHeaders
-    });
+    return sidebarHeaders;
   }
 
   // Filters out table of content and first heading + paragraph
@@ -162,12 +176,13 @@ class DocuPage extends React.Component {
         filtered_markdown += line.toString() + "\n";
       }
     }
-    this.setState(
-      {
-        editedText: filtered_markdown
-      },
-      this.getHeaders
-    );
+    // this.setState(
+    //   {
+    //     editedText: filtered_markdown
+    //   },
+    //   this.getHeaders
+    // );
+    return filtered_markdown;
   }
 
   resourceSection = doc => (
@@ -202,7 +217,7 @@ class DocuPage extends React.Component {
           {this.resourceSection(doc)}
           <div className="Content">
             <ReactMarkdown
-              source={this.state.editedText}
+              source={this.state.content}
               renderers={{ code: CodeBlock, heading: HeadingRenderer }}
             />
           </div>
