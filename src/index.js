@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DocuPage from './components/docupage/DocuPage.js'
+import DocuPage from './components/docupage/docupage.js'
 import { Sidebar } from './components/sidebar/sidebar.js';
 import { DocCard } from './components/startpage/startpage.js';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
