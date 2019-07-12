@@ -1,9 +1,11 @@
-h1:first-of-type {
+#developer-resources {
+  margin-top: 0 !important;
   color: var(--vippsorange) !important;
 }
 h1,
 h2,
 h3 {
+  margin-left: 0 !important;
   margin-top: 9vh;
   margin-bottom: 3vh;
   color: var(--vippsblack) !important;
@@ -15,10 +17,19 @@ h5 {
   margin-bottom: 1vh;
 }
 
+table code {
+  background-color: inherit !important;
+  padding: 0 !important;
+}
+
+.token {
+  background-color: var(--lightgrey) !important;
+}
+
 pre,
 code {
   padding: 10px !important;
-  background-color: #f6f6f9 !important;
+  background-color: var(--lightgrey) !important;
   overflow-x: auto !important;
   white-space: pre-wrap !important;
   white-space: -moz-pre-wrap !important;
@@ -29,6 +40,7 @@ code {
 
 .Container {
   margin: 0px;
+  margin-left: 40px;
   display: grid;
   grid-template-columns: 350px 40vw 40vw;
   grid-template-rows: 5vh 90vh 5vh;
@@ -65,7 +77,10 @@ code {
 }
 
 .devResources {
-  width: 50%;
+  grid-column-start: content1 !important;
+  grid-column-end: content2 !important;
+  grid-row-start: content1 !important;
+  grid-row-end: content1 !important;
 }
 
 .devResources hr {
@@ -74,7 +89,7 @@ code {
   border: 0;
   border-top: 1px solid black;
   /* margin: 1em 0; */
-  margin-left: 0;
+  margin-left: inherit;
   margin-top: 1em;
   padding: 0;
 }
@@ -105,12 +120,12 @@ code {
 }
 
 tr:nth-child(even) {
-  background-color: #f6f6f9 !important;
+  background-color: var(--lightgrey) !important;
 }
 
 th {
   color: black !important;
-  background-color: #f6f6f9 !important;
+  background-color: var(--lightgrey) !important;
   padding: 8px 8px 8px 8px !important;
 }
 
@@ -152,3 +167,5 @@ ul > li {
   font-size: 16px !important;
   font-family: Arial, sans-serif;
 }
+
+/* TODO: Mediaqueries */
