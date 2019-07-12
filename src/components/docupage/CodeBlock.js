@@ -16,9 +16,11 @@ class CodeBlock extends PureComponent {
   render() {
     const { language, value } = this.props;
     return (
+      <dev className="codeblock">
       <SyntaxHighlighter language={language} style={ coy }>
         {value}
       </SyntaxHighlighter>
+      </dev>
     );
   }
 }
