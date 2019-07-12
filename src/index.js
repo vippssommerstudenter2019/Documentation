@@ -78,18 +78,18 @@ class DocuPage extends React.Component {
       ecom: [
         ["Postman", "https://github.com/vippsas/vipps-ecom-api/tree/master/tools"],
         ["FAQ", "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md"],
-        ["Swagger", "https://vippsas.github.io/vipps-ecom-api/"]
+        ["Swagger - API endpoints", "https://vippsas.github.io/vipps-ecom-api/"]
       ],
       login: [
         ["Postman", "https://github.com/vippsas/vipps-login-api/tree/master/tools"],
         ["FAQ", "#faq"],
-        ["Swagger", "https://vippsas.github.io/vipps-login-api/"]
+        ["Swagger - API endpoints", "https://vippsas.github.io/vipps-login-api/"]
       ],
       invoice: [
         ["Postman", "https://github.com/vippsas/vipps-invoice-api/tree/master/tools"],
         ["FAQ", "#faq"],
-        ["Swagger ISP", "https://vippsas.github.io/vipps-invoice-api/isp.html"],
-        ["Swagger IPP",  "https://vippsas.github.io/vipps-invoice-api/ipp.html"]
+        ["Swagger ISP - API endpoints", "https://vippsas.github.io/vipps-invoice-api/isp.html"],
+        ["Swagger IPP - API endpoints",  "https://vippsas.github.io/vipps-invoice-api/ipp.html"]
       ]
     }
     this.pageTitles = {
