@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  SideNav,
-  Collapsible,
-  CollapsibleItem
-} from "react-materialize";
+import {SideNav, Collapsible, CollapsibleItem} from "react-materialize";
 import M from "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
@@ -11,7 +7,7 @@ import { Link } from "react-router-dom";
 import vipps_dev from "../../img/vipps_dev.svg"
 
 // Contains the menuitems and backlink
-export const Sidebar = props => (
+const Sidebar = props => (
   <section className="Sidebar">
     <SidebarHeader />
     <SidebarMenu headers={props.headers} api={props.api}/>
@@ -20,6 +16,7 @@ export const Sidebar = props => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
+
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
@@ -55,7 +52,7 @@ const SwaggerIPPLink = () => (
 
 // Navigation Menu
 const SidebarNav = props => {
-  // Generates an sidebar menu from given header datastructure passed in props
+  //TODO: List elements should be
   const propHeaders = props.headers;
   const sidebarHeaders = propHeaders.map((head, index) => (
     <CollapsibleItem
@@ -73,9 +70,7 @@ const SidebarNav = props => {
     </CollapsibleItem>
   ));
 
-  // Returns the correct navigation bar
-  // Param: normal = false if documentation page is invoice, else true
-  function navBar (normal) {
+  function retNavBar (normal) {
       return (
         <div>
         <SideNav className="sidebarMarg">
@@ -95,5 +90,7 @@ const SidebarNav = props => {
   };
 
   // If documentpage is invoice then show two swagger buttons
-  return props.api === "invoice" ? navBar(false) : navBar(true);
+  return props.api === "invoice" ? retNavBar(false) : retNavBar(true);
 }
+
+export default Sidebar
