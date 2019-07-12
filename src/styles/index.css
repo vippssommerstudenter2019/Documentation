@@ -32,10 +32,6 @@ h5 {
   color: var(--vippsorange);
 }
 
-h1:first-of-type {
-  color: var(--vippsorange);
-}
-
 .container {
   color: var(--vippsblack) !important;
   margin: 0px;

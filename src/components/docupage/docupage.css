@@ -8,7 +8,7 @@ h3 {
   margin-left: 0 !important;
   margin-top: 9vh;
   margin-bottom: 3vh;
-  color: var(--vippsblack) !important;
+  color: var(--vippsblack);
 }
 
 h4,
