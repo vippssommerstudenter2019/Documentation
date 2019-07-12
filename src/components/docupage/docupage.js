@@ -133,14 +133,12 @@ class DocuPage extends React.Component {
         <div className="Sidebar">
           <Sidebar headers={this.state.headers} api={this.props.doc} />
         </div>
-        <div>
+        <div className="Content">
           <DeveloperResources devURLs={this.devURLs} pageTitle={this.pageTitle}/>
-          <div className="Content">
-            <ReactMarkdown
-              source={this.state.content}
-              renderers={{ code: CodeBlock, heading: HeadingRenderer }}
-            />
-          </div>
+          <ReactMarkdown
+            source={this.state.content}
+            renderers={{ code: CodeBlock, heading: HeadingRenderer }}
+          />
         </div>
       </div>
     );
