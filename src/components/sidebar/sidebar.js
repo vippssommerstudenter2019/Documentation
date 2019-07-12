@@ -16,7 +16,6 @@ const Sidebar = props => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-
   <Link to="/" className="SidebarHeader ">
     <img
       className="Logo logoMarg"
@@ -33,28 +32,9 @@ const SidebarMenu = props => (
   </div>
 );
 
-// Buttons to different swaggers
-/*const DeveloperResources = () => (
-  <button className="ApiLink sidebarMarg">
-    Developer
-  </button>
-);*/
-
-/*const SwaggerISPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html" id="mySwaggerISP">Swagger ISP</a></button>
-);
-
-const SwaggerIPPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html" id="mySwaggerIPP">Swagger IPP</a></button>
-);*/
-
 // Navigation Menu
 const SidebarNav = props => {
-  //TODO: List elements should be
-  const propHeaders = props.headers;
-  const sidebarHeaders = propHeaders.map((head, index) => (
+  const sidebarHeaders = props.headers.map((head, index) => (
     <CollapsibleItem
       key={"Item: "+index}
       header={<a href={Object.values(head)[1]}>{Object.values(head)[0]}</a>}
@@ -70,7 +50,7 @@ const SidebarNav = props => {
     </CollapsibleItem>
   ));
 
-  function retNavBar (normal) {
+  function retNavBar () {
       return (
         <div>
         <SideNav className="sidebarMarg">
@@ -79,18 +59,15 @@ const SidebarNav = props => {
           </div>
             <div className='scrollable'>
             <Collapsible accordion={false}>{sidebarHeaders}</Collapsible>
-          </div>
-          <div className='fadeout-top'>
-          </div>
-          <div className='fadeout-bottom'>
-          </div>
+            </div>
+          <div className='fadeout-top'/>
+          <div className='fadeout-bottom'/>
         </SideNav>
       </div>
       )
   };
 
-  // If documentpage is invoice then show two swagger buttons
-  return props.api === "invoice" ? retNavBar(false) : retNavBar(true);
+  return retNavBar()
 }
 
 export default Sidebar
