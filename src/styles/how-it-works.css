@@ -159,154 +159,77 @@
 
 /*
  * The layouts for both Step and CodeStep.
- */
-.step-wrapper,
-.code-wrapper {
-	max-width: 1000px;
-	margin-top: 64px;
-	margin-bottom: 64px;
-	padding-top: 32px;
-	padding-bottom: 32px;
-	display: grid;
-	grid-template-columns: 60% 40%;
-	grid-column-gap: 32px;
-	font-size: 1.2vmin;
-}
-.step-wrapper {
-	grid-template-rows: auto;
-	grid-template-areas:
-		"step-text img-right";
-}
-
-.step-sub-text,
-.code-title,
-.code-description,
-.code-code {
-	margin-top: 16px;
-	margin-bottom: 16px;
-}
-
-.step-text {
-	grid-area: step-text;
-	align-self: center;
-}
-
-.step-img {
-	grid-area: img;
-	align-self: center;
-	justify-self: start;
-}
-
-.step-paragraph {
-	font-family: 'Arial', sans-serif;
-	font-size: 1.3rem;
-	line-height: 1.9rem;
-	letter-spacing: .01rem;
-}
-
-.code-img-left {
-	grid-area: img-left;
-	align-self: start;
-	justify-self: end;
-}
-
-.code-img-right {
-	grid-area: img-right;
-	align-self: start;
-	justify-self: start; 
-}
-
-.code-title {
-	grid-area: title;
-}
-
-.code-description {
-	grid-area: desc;
-}
-
-.code-code {
-	grid-area: code;
-}
-
-.code-wrapper {
-	grid-template-rows: auto auto auto;
-	grid-template-areas:
-		". 			title	."
-		"img-left	desc	img-right"
-		"img-left	code	img-right"
-		"img-left	. 		img-right";
-}
-
-/*
  * Step.js -> 2.0 styling
  */
 
-.step2-wrapper {
+.step-wrapper {
 	max-width: 1000px;
-	min-height: 500px;
 	height: auto;
+	overflow: auto;
 	margin-top: 128px;
 	margin-bottom: 128px;
 }
 
-.step2-left {
+.step-left {
 	float: left;
 	width: 55%;
 	height: 100%;
-	padding-right: 16px;
+	padding: 16px;
 }
 
-.step2-right {
+.step-right {
 	float: right;
 	width: 45%;
 	height: 100%;
-	padding-left: 16px;
+	padding: 16px;
 }
 
-.step2-title,
-.step2-description,
-.step2-json,
-.step2-status {
-	margin-bottom: 32px;
+.step-img,
+.step-title,
+.step-description,
+.step-json,
+.step-box {
+	margin-top: 16px;
+	margin-bottom: 16px;
 }
 
-.step2-description {
+.step-description {
 	font-family: 'Arial', sans-serif;
 	font-size: 1.3rem;
 	line-height: 1.9rem;
 	letter-spacing: .01rem;
 }
 
-.step2-status {
+.step-img {
+	display: block;
+	width: 100%;
+	height: 250px;
+	padding: 16px;
+}
+
+.step-img img {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+
+.step-box {
 	display: block;
 	height: auto;
 	width: 100%;
 	padding: 5px;
-	overflow-x: none;
-	overflow-y: auto;
 	border-radius: 5px;
 	border: 0.8px solid var(--ghost);
 	background-color: var(--athensGreyLight);
 }
 
-.step2-status table {
+.step-box table {
 	margin: auto;
 	border: none;
 }
 
-.step2-status-id {
-	text-align: middle;
-	background-color: var(--ghost);
-}
-
-.step2-json {
-	display: block;
-	height: auto;
-	width: 100%;
-	word-wrap: normal;
-	border-radius: 5px;
-	border: 0.8px solid var(--ghost);
-	background-color: var(--athensGreyLight);
+.step-box.step-description {
+	word-wrap: break-word;
 }
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Step2, Step, CodeStep} from "./Step";
+import {Step} from "./Step";
 
 const propTypes = {
     sections: PropTypes.array.isRequired,
@@ -71,7 +71,7 @@ class Content extends React.Component {
 		if (JSON.stringify(swagger).indexOf(id) >= 0) {
             const code = swagger["data"][id]["code"][language];
             return (
-                <Step2 
+                <Step
 					key={id} 
 					scrollId={id} 
 					title={title} 
@@ -79,37 +79,8 @@ class Content extends React.Component {
 					statusCodes={languages}
 					head={code}
 					body={code}
+                    keywords={keywords}
 					imagelink={imagelink}
-                    keywords={keywords}
-				/>
-            );
-        } else {
-            return (
-                <Step2
-					key={id} 
-					scrollId={id} 
-					title={title} 
-					description={description}
-                    keywords={keywords}
-				/>
-            );
-        }
-
-        if (JSON.stringify(swagger).indexOf(id) >= 0) {
-            const code = swagger["data"][id]["code"][language];
-            return (
-                <CodeStep 
-					key={id} 
-					scrollId={id} 
-					title={title} 
-					description={description} 
-					language={language}
-					languages={languages}
-					langcall={langcall}
-					code={code} 
-					imagelink={imagelink}
-                    position={position}
-                    keywords={keywords}
 				/>
             );
         } else {
@@ -118,10 +89,9 @@ class Content extends React.Component {
 					key={id} 
 					scrollId={id} 
 					title={title} 
-					description={description} 
-					imagelink={imagelink}
-					position={position}
+					description={description}
                     keywords={keywords}
+					imagelink={imagelink}
 				/>
             );
         }

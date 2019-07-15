@@ -67,109 +67,17 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 	);
 }
 
-/*
-Wrapper for future content: code + text + image
-ScrollLinking
-*/
-const titleClass = "xlarge-font-size text-color-black";
-const descriptionClass = "step-paragraph";
-
 class Step extends Component {
-	/*
-		Supportet / Needed Props:
-			title		->	the Title of the step
-			description	->	the Description of the step
-			scrollId	->	the scroll ref-id
-		*	s_language	->	the language of the displayed code
-		*	s_code	 	->	the actual code, .. in the correct language
-		*	imagelink	->	a relevant image
-		*	position 	->	the position of the image [ 'left' / 'right' ]
-			
-		* optional
-	*/
-
-	render() {
-		return (
-			<div className="step-wrapper" id={this.props.scrollId}>
-				<div className="step-text" vertical-align="center">
-
-					<div className="step-sub-text">
-						<b>
-							<div className={titleClass}>{this.props.title}</div>
-						</b>
-					</div>
-
-					<div className="step-sub-text">
-						<div className={descriptionClass}>
-							<div>
-								{this.props.description}
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<div className="step-img" vertical-align="center">
-					<img src={this.props.imagelink} alt={this.props.title}/>
-				</div>
-
-			</div>
-		);
-	}
-}
-
-class CodeStep extends Component {
-
-	render() {
-		const imgflt = "code-img-" + ((this.props.position === 'left')? "right" : "left");
-		const langcall = this.props.langcall;
-    
-		return (
-			<div className="code-wrapper" id={this.props.scrollId}>
-
-				<div className="code-title">
-					<b>
-						<div className={titleClass}>{this.props.title}</div>
-					</b>
-				</div>
-
-				<div className="code-description" >
-
-					<div className={descriptionClass}>
-						{formatDescriptionToIncludeHoverLinks(this.props.description, this.props.keywords)}
-					</div>
-					
-				</div>
-
-				<div className="code-code" >
-					<CodeView 
-						languages={this.props.languages}
-						language={this.props.language} 
-						langcall={langcall}
-						code={this.props.code} 
-					/>
-				</div>
-
-				<div className={imgflt}>
-					<img src={this.props.imagelink} alt={this.props.title}/>
-				</div>
-
-			</div>
-		);
-	}
-}
-
-class Step2 extends Component {
-	leftSide() {
+	leftPart() {
 		let items = [];
 		if (this.props.title) items.push(
-			<div className="step2-title xlarge-font-size text-color-black">
+			<div className="step-title xlarge-font-size text-color-black">
 				{this.props.title}
 			</div>
 		);
 		
 		if (this.props.description) items.push(
-			<div className="step2-description"> 
+			<div className="step-description"> 
 				{formatDescriptionToIncludeHoverLinks(this.props.description, this.props.keywords)} 
 			</div>
 		);
@@ -177,58 +85,71 @@ class Step2 extends Component {
 		if (this.props.statusCodes){
 			let codes = [];
 			Array.from(this.props.statusCodes, (v, i) => {
+				// Momentarily solution for Status Codes
 				codes.push(
 					<tr>
-						<th className="step2-status-id" > {i} </th>
-						<th className="step2-status-name" > {v} </th>
+						<th> {i} </th>
+						<th> {v} </th>
 					</tr>
 				);
 				return v;
 			});
 			items.push(
-				<div className="step2-status">
+				<div className="step-box">
 					<table>
 						{codes}
 					</table>
 				</div>
 			);
 		}
-		return items;
+		return (
+			<div className="step-left">
+				{items}
+			</div>
+		);
 	}
 	
-	rightSide() {	
+	rightPart() {	
 		let items = [];
+		if (this.props.imagelink) items.push(
+			<div className="step-img">
+				<img src={this.props.imagelink} alt={this.props.title}/>
+			</div>
+		);
+		// Momentarily solution for jsons!
 		if (this.props.head) items.push(
-			<div className="step2-json step2-description">
+			<div className="step-box step-description">
 				{this.props.head}
 			</div>
 		);
 		
 		if (this.props.body) items.push(
-			<div className="step2-json step2-description">
+			<div className="step-box step-description">
 				{this.props.body}
 			</div>
 		);
-		return items;
+		return (
+			<div className="step-right">
+				{items}
+			</div>
+		);
+	}
+	
+	imgPart() {
+		
 	}
 		
 	render() {
 		return (
-			<div className="step2-wrapper">
-				<div className="step2-left">
-					{this.leftSide()}
-				</div>
-				<div className="step2-right">
-					{this.rightSide()}
-				</div>
+			<div className="step-wrapper">
+				{this.leftPart()}
+				{this.rightPart()}
 			</div>
 		);
 	}
 }
 
 export {
-	Step2, 
-	Step,
-	CodeStep,
+	Step
 };
 
