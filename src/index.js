@@ -17,7 +17,10 @@ const StartPage = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={Cards}/>
-            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro} />}/>
+      <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json" 
+                                                                                   intro={eComIntro} 
+                                                                                   sections={eComSections} 
+                                                                                   outro={eComOutro} />}/>
             <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro}/>}/>
             <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro}/>} />
 
