@@ -90,7 +90,7 @@ class Step extends Component {
 
 	render() {
 		const imgflt = "step-img-" + ((this.props.position === 'left') ? "right" : "left");
-
+		
 		return (
 			<div className="step-wrapper" id={this.props.scrollId}>
 				<div className={"step-text"} vertical-align="center">
