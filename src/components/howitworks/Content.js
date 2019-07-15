@@ -103,7 +103,7 @@ class Content extends React.Component {
         Array.from(sections, (val, index) => { return items.push(this.contentFromSection(val, index)); });
 
         return (
-            <div className={this.props.className} > 
+            <div className="content-wrapper" > 
 		        {items}
             </div>
         );
