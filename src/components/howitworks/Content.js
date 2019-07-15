@@ -1,103 +1,67 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Step} from "./Step";
+import SwaggerExtracter from "../../model/SwaggerExtracter"
 
 const propTypes = {
     sections: PropTypes.array.isRequired,
-    url: PropTypes.string.isRequired
+    swaggerData: PropTypes.object.isRequired
 };
 
 class Content extends React.Component {
 
-    constructor(props) {
-        super(props);
-        let languages = ["python", "shell", "http", "javascript", "ruby", "java", "go"];
-        this.state = {
-            activeLanguage: languages[0],
-			languages: languages,
-            swaggerResponse: {},
-            sections: this.props.sections,
-        };
-		
-		//this.languageCallback = this.languageCallback.bind(this)
+    getDataFromSwagger(endpoint, swaggerData)  {
+
+        let swaggerExtracter = new SwaggerExtracter();
+        let header = {}, body = {}, responses = {};
+
+        // Check out if the swagger file contains the id (which is the endpoint)
+        if (swaggerData.paths.hasOwnProperty(endpoint)) {
+
+            // Retrieve the header
+            header = swaggerExtracter.getHeaderForEndpointFromSwaggerJson(endpoint, swaggerData);
+
+            // Get the endpoint data which includes request body (if any), responeses etc.
+            const endpointData = swaggerData.paths[endpoint][Object.keys(swaggerData.paths[endpoint])[0]];
+
+            // We ectract the body if there is any
+            if (endpointData.hasOwnProperty("requestBody")) {
+                body = swaggerExtracter.getBodyExampleForEndpointFromSwaggerJson(endpoint, swaggerData, true);
+            }
+
+            // We ectract the responses if there are any
+            if (endpointData.hasOwnProperty("responses")) {
+                responses = endpointData.responses;
+            }
+        }
+
+        return [header, body, responses];
     }
-	
-	languageCallback(language) {
-		if (language === this.props.activeLanguage) return;
-		const languages = this.state.languages.slice();
-		for (let i in languages) {
-			if (language === languages[i]) {
-				this.setState({activeLanguage: language});
-				break;
-			}
-		}
-	}
-
-    componentDidMount() {
-        this.fetchData();
-    }
-
-    fetchData() {
-        const data = {
-            url: this.props.url
-        };
-
-        const options = {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-
-        fetch("/swaggerdata/get", options)
-            .then(response => response.json())
-            .then(response => this.setState({ swaggerResponse: response }))
-    }
-
+    
     contentFromSection(section, i) {
-        const language  = this.state.activeLanguage;
-		const languages = this.state.languages.slice();
-		//const langcall  = this.languageCallback;
-        const swagger   = this.state.swaggerResponse;
-
-        const id = section.id;
-        const title = section.title;
-        const description = section.description;
-        const imagelink = section.img;
-        const keywords = section.keywords;
-		
-		if (JSON.stringify(swagger).indexOf(id) >= 0) {
-            const code = swagger["data"][id]["code"][language];
+        // Check if the swagger data has loaded.
+        if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
             return (
-                <Step
-					key={id} 
-					scrollId={id} 
-					title={title} 
-					description={description}
-					statusCodes={languages}
-					head={code}
-					body={code}
-                    keywords={keywords}
-					imagelink={imagelink}
-				/>
-            );
-        } else {
-            return (
-                <Step
-					key={id} 
-					scrollId={id} 
-					title={title} 
-					description={description}
-                    keywords={keywords}
-					imagelink={imagelink}
-				/>
+                <p key={i}>Loading...</p>
             );
         }
+        
+        const [header, body, responses] = this.getDataFromSwagger(section.id, this.props.swaggerData);
+        
+        return (
+            <Step
+                key={section.id}
+                scrollId={section.id}
+                title={section.title}
+                description={section.description}
+                imagelink={section.img}
+                keywords={section.keywords}
+            />
+        );
     }
 
     render() {
-        const sections = this.state.sections.slice();
+        const sections = this.props.sections.slice();
 
         let items = [];
         Array.from(sections, (val, index) => { return items.push(this.contentFromSection(val, index)); });

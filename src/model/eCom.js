@@ -1,6 +1,6 @@
 const eComSections = [
     {
-        "id": "fetchAuthorizationTokenUsingPost",
+        "id": "/accesstoken/get",
         "title": "1. Customer chooses to pay with Vipps",
         "description": "A customer browses around on your website. As the customer has chosen an item or service to buy, the customer pushes the “betal med Vipps” button.\n\nFor this command to be possible, you need to send a request for a [valid token] from Vipps, as shown below. The token needs to be renewed every 24 hours. ",
         "img": "../../assets/ecom-steps/Step1.svg",
@@ -9,7 +9,7 @@ const eComSections = [
         }
     },
     {
-        "id": "initiatePaymentV3UsingPOST",
+        "id": "/ecomm/v2/payments",
         "title": "2. Vipps handles the payment",
         "description": "When pushing the button on you’re website, [initiation of payment] to Vipps should happen. This is done by sending an initiate payment request containing the information specified in the code snippet below.",
         "img": "../../assets/ecom-steps/Step2.svg",
@@ -29,7 +29,7 @@ const eComSections = [
     },
 
     {
-        "id": "transactionUpdateCallbackForRegularPaymentUsingPOST",
+        "id": "[callbackPrefix]/v2/payments/{orderId}",
         "title": "4. Vipps reserves the amount",
         "description": "An amount is now [reserved] in the customers bank account, and a confirmation is sent to you by Vipps, containing a status set to reserve.",
         "img": "../../assets/ecom-steps/Step4.svg",
@@ -46,7 +46,7 @@ const eComSections = [
         }
     },
     {
-        "id": "capturePaymentUsingPOST",
+        "id": "/ecomm/v2/payments/{orderId}/capture",
         "title": "6. The amount is withdrawn from the customers account",
         "description": "The customer is given the service payed for or is notified that the items are being shipped.\n\nNow, you’ll need to confirm to Vipps that the item or services is delivered, and Vipps will perform [capture]. According to [Norwegian law], you cannot capture the amount from the customer before the item or service is shipped or delivered to the customer.",
         "img": "../../assets/ecom-steps/Step6.svg",
@@ -56,7 +56,7 @@ const eComSections = [
         }
     },
     {
-        "id": "cancelPaymentRequestUsingPUT",
+        "id": "/ecomm/v2/payments/{orderId}/cancel",
         "title": "Cancellation of payment",
         "description": "If the customer choose to reject the initiated payment in the Vipps app, the payment will be [cancelled]. This also happens if the customer does not respond within 5 to 10 minutes in the app.\n\nThe order confirmation sent to you by Vipps will contain a status set to Cancel.",
         "img": "../../assets/ecom-steps/Cancel.svg",
@@ -65,7 +65,7 @@ const eComSections = [
         }
     },
     {
-        "id": "refundPaymentUsingPOST",
+        "id": "/ecomm/v2/payments/{orderId}/refund",
         "title": "Refunding the customer",
         "description": "If the customer wants a [refund], and is guaranteed to have one, you’ll have to send a refund request to Vipps. A refund can be either partial or full. You initiate the refund by sending information as serial number, amount and transaction text, as shown in the code snippet below.",
         "img": "../../assets/ecom-steps/Refund.svg",
