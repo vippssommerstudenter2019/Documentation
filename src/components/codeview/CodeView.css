@@ -1,0 +1,175 @@
+@import url("../../styles/how-it-works.css");
+
+/**
+ * Stylings for the outer container for the code view.
+ */
+.codeview {
+  background-color: var(--athensGreyLight);
+  border: 1px solid var(--ghost);
+  border-radius: 25px
+}
+
+
+.codeview pre,
+.codeview code {
+	font-family: 'PT Mono' , monospace;
+	font-size: .9rem;
+	line-height: 1.75rem;
+  letter-spacing: .01rem;
+  padding: 0px 0px 0px 35px !important;
+}
+
+
+/**
+ * The styling for the top bar of the code view. Is where we see the title and can copy code.
+ */
+.codeview-utility-bar {
+  display:inline-flex;
+  flex-flow:row;
+  justify-content:space-between;
+  height: 85px;
+  width: 100%;
+
+	background-color: var(--athensGreyLight); 
+  border-radius: 25px 25px 0px 0px;
+}
+
+.codeview-utility-bar button {
+	font-family: Vipps;
+	font-weight: lighter;
+	background-color:var(--athensGrey);
+  color: var(--rum);
+  
+  margin: 25px 25px 15px 15px;
+	font-size: 13px;
+  line-height: 15px;
+  text-align: center;
+
+  height: 30px;
+  width: 65px;
+  border-radius: 40px;
+}
+
+.codeview-utility-bar button:hover {
+    color: var(--manatee);
+}
+
+.codeview-utility-bar button.selected {
+    color: var(--rum);
+}
+
+.codeview-utility-bar button:focus {
+    outline: none;
+}
+
+.codeview-utility-bar button:active {
+    background-color: var(--athensGreyLight);
+}
+
+.codeview-utility-bar p {
+  font-weight: lighter;
+  font-family: Vipps;
+  height: 100%;
+  height:30px;
+  line-height:15px;
+  margin: 35px 20px 20px 35px;
+  color: var(--manatee);
+}
+
+/*
+ * The collapse function that code view is placed inside of.
+ */
+.codeview-collapse {
+	display: flex;
+	flex-direction: column;
+  width: 100%;
+	margin: 0px;
+	padding: 0px;
+  line-height: normal;
+}
+
+.codeview-collapse-content {
+	display: block;
+	overflow: hidden;
+  height: 150px;
+  border-radius: 0px 0px 25px 25px;
+}
+
+.codeview-collapse-overlay {
+	z-index: 4;
+	display: block;
+	margin-top: -150px;
+	height: 155px;
+	padding-top: 100px;
+	
+	text-align: center;
+	line-height: 50px;
+	font-family: Vipps;
+	font-weight: lighter;
+	color: var(--manatee);
+  border-radius: 0px 0px 25px 25px;
+
+	background: linear-gradient(rgba(255,255,255,0), var(--athensGreyLight) 80%, var(--athensGreyLight));
+}
+
+.codeview-collapse-overlay:hover {
+	color: var(--rum);
+}
+
+.codeview-collapse.expanded .codeview-collapse-content {
+	height: auto;
+	overflow: auto;
+}
+
+.codeview-collapse.expanded .codeview-collapse-overlay {
+	height: 50px;
+	margin-top: 0px;
+	padding-top: 0px;
+	line-height: 50px;
+	background: var(--athensGreyLight); /*linear-gradient(transparent, var(--athensGreyLight) 50%, var(--athensGreyLight));*/
+}
+
+/**
+ * The overlay over the code view, not implemented yet.
+ */
+
+/*
+.overlay-container {
+  position: relative;
+  width: 100%;
+}
+
+
+Used for overlay over the code view when copied. Will be implemented when we get the design ready
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+	border-radius: 0px 0px 25px 25px;
+}
+
+.overlay-container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+*/
+
