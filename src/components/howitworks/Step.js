@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import { StickyContainer, Sticky } from 'react-sticky';
 //import CodeView from "./CodeView";
-import {PrismCode} from 'prismjs';
+//import {Prism} from 'prismjs';
 import Tooltip from "rc-tooltip";
 import 'rc-tooltip/assets/bootstrap.css';
 
@@ -50,6 +50,7 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 			const indexOfMatch = input.indexOf(match);
 			result.push(input.substring(currentIndex, indexOfMatch));
 			
+			// eslint-disable-next-line
 			const matchWithoutBrackets = match.replace(/[\[\]']+/g, ''); // NO SONAR
 
 			result.push(createToolTip(matchWithoutBrackets, keywords[matchWithoutBrackets]));
@@ -59,6 +60,7 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 		result.push(input.substring(currentIndex, input.length));
 	}
 	else {
+		// eslint-disable-next-line
 		result.push(input.replace(/[\[\]']+/g, ''));
 	}
 
@@ -113,25 +115,17 @@ class Step extends Component {
 	
 	rightPart() {	
 		let items = [];
-		if (this.props.imagelink) items.push(
-			<div className="step-img">
-				<img src={this.props.imagelink} alt={this.props.title}/>
-			</div>
-		);
+		
 		// Momentarily solution for jsons!
 		if (this.props.head) items.push(
 			<div className="step-box step-description">
-				<PrismCode>
-					{this.props.head}
-				</PrismCode>
+					{this.prismify(this.props.head)}
 			</div>
 		);
 		
 		if (this.props.body) items.push(
 			<div className="step-box step-description">
-				<PrismCode>
-					{this.props.body}
-				</PrismCode>
+					{this.prismify(this.props.body)}
 			</div>
 		);
 		return (
@@ -140,12 +134,34 @@ class Step extends Component {
 			</div>
 		);
 	}
+	
+	prismify(code) {
+		return (
+			<pre>
+				<code className="language-javascript" >
+					{code}
+				</code>
+			</pre>
+		);
+	}
+	
+	imgPart() {
+		if (this.props.imagelink) return(
+			<div className="step-img">
+				<img src={this.props.imagelink} alt={this.props.title}/>
+			</div>
+		);
+		return;
+	}
 		
 	render() {
 		return (
 			<div className="step-wrapper">
+				{this.imgPart()}
+				<div>
 				{this.leftPart()}
 				{this.rightPart()}
+				</div>
 			</div>
 		);
 	}
