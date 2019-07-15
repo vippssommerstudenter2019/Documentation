@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import { StickyContainer, Sticky } from 'react-sticky';
 //import CodeView from "./CodeView";
-//import {Prism} from 'prismjs';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism.css';
 import Tooltip from "rc-tooltip";
 import 'rc-tooltip/assets/bootstrap.css';
 
@@ -71,17 +72,34 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 	);
 }
 
+class PrismBlock extends Component {
+	componentDidMount() {
+		console.log("Prism activation!");
+		Prism.highlightAll(false, () => console.log("Prism mounted!"));
+	}
+	
+	render() {
+		return (
+			<pre>
+				<code className="language-javascript" >
+					{this.props.code}
+				</code>
+			</pre>
+		);
+	}
+}
+
 class Step extends Component {
 	leftPart() {
 		let items = [];
 		if (this.props.title) items.push(
-			<div className="step-title xlarge-font-size text-color-black">
+			<div key="title" className="step-title xlarge-font-size text-color-black">
 				{this.props.title}
 			</div>
 		);
 		
 		if (this.props.description) items.push(
-			<div className="step-description"> 
+			<div key="desc" className="step-description"> 
 				{formatDescriptionToIncludeHoverLinks(this.props.description, this.props.keywords)} 
 			</div>
 		);
@@ -91,17 +109,19 @@ class Step extends Component {
 			Array.from(this.props.statusCodes, (v, i) => {
 				// Momentarily solution for Status Codes
 				codes.push(
-					<tr>
-						<th> {i} </th>
-						<th> {v} </th>
+					<tr key={i} >
+						<td> {i} </td>
+						<td> {v} </td>
 					</tr>
 				);
 				return v;
 			});
 			items.push(
-				<div className="step-box">
+				<div key="status" className="step-box">
 					<table>
-						{codes}
+						<tbody>
+							{codes}
+						</tbody>
 					</table>
 				</div>
 			);
@@ -116,32 +136,21 @@ class Step extends Component {
 	rightPart() {	
 		let items = [];
 		
-		// Momentarily solution for jsons!
 		if (this.props.head) items.push(
-			<div className="step-box step-description">
-					{this.prismify(this.props.head)}
+			<div key="head" className="step-box">
+					<PrismBlock code={this.props.head} />
 			</div>
 		);
 		
 		if (this.props.body) items.push(
-			<div className="step-box step-description">
-					{this.prismify(this.props.body)}
+			<div key="body" className="step-box">
+					<PrismBlock code={this.props.body} />
 			</div>
 		);
 		return (
 			<div className="step-right">
 				{items}
 			</div>
-		);
-	}
-	
-	prismify(code) {
-		return (
-			<pre>
-				<code className="language-javascript" >
-					{code}
-				</code>
-			</pre>
 		);
 	}
 	
