@@ -19,7 +19,7 @@ class Content extends React.Component {
             sections: this.props.sections,
         };
 		
-		this.languageCallback = this.languageCallback.bind(this)
+		//this.languageCallback = this.languageCallback.bind(this)
     }
 	
 	languageCallback(language) {
@@ -58,14 +58,13 @@ class Content extends React.Component {
     contentFromSection(section, i) {
         const language  = this.state.activeLanguage;
 		const languages = this.state.languages.slice();
-		const langcall  = this.languageCallback;
+		//const langcall  = this.languageCallback;
         const swagger   = this.state.swaggerResponse;
 
         const id = section.id;
         const title = section.title;
         const description = section.description;
         const imagelink = section.img;
-        const position = (i % 2 === 0) ?  'left' : 'right';
         const keywords = section.keywords;
 		
 		if (JSON.stringify(swagger).indexOf(id) >= 0) {

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import CodeView from "./CodeView";
+//import { StickyContainer, Sticky } from 'react-sticky';
+//import CodeView from "./CodeView";
+import {PrismCode} from 'prismjs';
 import Tooltip from "rc-tooltip";
 import 'rc-tooltip/assets/bootstrap.css';
 
@@ -47,8 +49,8 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 		for (const match of matches) {
 			const indexOfMatch = input.indexOf(match);
 			result.push(input.substring(currentIndex, indexOfMatch));
-
-			const matchWithoutBrackets = match.replace(/[\[\]']+/g, '');
+			
+			const matchWithoutBrackets = match.replace(/[\[\]']+/g, ''); // NO SONAR
 
 			result.push(createToolTip(matchWithoutBrackets, keywords[matchWithoutBrackets]));
 			currentIndex = indexOfMatch + match.length;
@@ -119,13 +121,17 @@ class Step extends Component {
 		// Momentarily solution for jsons!
 		if (this.props.head) items.push(
 			<div className="step-box step-description">
-				{this.props.head}
+				<PrismCode>
+					{this.props.head}
+				</PrismCode>
 			</div>
 		);
 		
 		if (this.props.body) items.push(
 			<div className="step-box step-description">
-				{this.props.body}
+				<PrismCode>
+					{this.props.body}
+				</PrismCode>
 			</div>
 		);
 		return (
@@ -133,10 +139,6 @@ class Step extends Component {
 				{items}
 			</div>
 		);
-	}
-	
-	imgPart() {
-		
 	}
 		
 	render() {

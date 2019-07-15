@@ -173,14 +173,14 @@
 .step-left {
 	float: left;
 	width: 55%;
-	height: 100%;
+	height: auto;
 	padding: 16px;
 }
 
 .step-right {
 	float: right;
 	width: 45%;
-	height: 100%;
+	height: auto;
 	padding: 16px;
 }
 
@@ -191,6 +191,10 @@
 .step-box {
 	margin-top: 16px;
 	margin-bottom: 16px;
+}
+
+.step-title {
+	padding-top: 125px;
 }
 
 .step-description {
@@ -210,7 +214,8 @@
 .step-img img {
 	width: 100%;
 	height: 100%;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .step-box {
