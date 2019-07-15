@@ -56,6 +56,9 @@ class Content extends React.Component {
                 description={section.description}
                 imagelink={section.img}
                 keywords={section.keywords}
+                header={header}
+                body={body}
+                responses={responses}
             />
         );
     }
