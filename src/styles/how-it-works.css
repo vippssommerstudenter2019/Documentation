@@ -33,45 +33,32 @@
  * The main wrapper for the content of the application
  * Apllication content does not include the vipps header or footer
  */
-.content-wrapper {
-	text-align: left;
-	display: grid;
-	grid-template-columns: auto 100px 1000px 100px auto;
-	grid-template-rows: auto auto auto;
-	grid-template-areas:
-		".			intro-area	intro-area	intro-area	."
-		".			. 			step-area	.			."
-		"outro-area	outro-area	outro-area	outro-area	outro-area";
+.intro-wrapper,
+.content-wrapper,
+.outro-wrapper {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
-
-.intro-area {
-	grid-area: intro-area;
-}
-
-.step-area {
-	grid-area: step-area;
-}
-
-.outro-area {
-	grid-area: outro-area;
-}
+.intro-wrapper   {max-width: 1500px;}
+.content-wrapper {max-width: 1300px;}
+.outro-wrapper   {max-width: 1500px;}
 
 /*
  *The layout for the intro elements
  */
 .intro-wrapper {
 	display: grid;
-	grid-template-columns: 60% 40%;
+	grid-template-columns: 50% auto 40%;
 	grid-template-rows: auto;
 	grid-column-gap: 32px;
 	grid-template-areas:
-		"intro-text intro-image";
-	
+		"intro-text . intro-image";
 	background-color: #FFF4EC;
+	padding: 128px;
+	max-height: 1000px;
 	margin-top: 64px;
 	margin-bottom: 64px;
-	padding: 10%;
-	width:100%;
 }
 
 .intro-text {
@@ -96,7 +83,6 @@
  */
 .outro-wrapper {
 	display: block;
-	width: auto;
 	height: 600;
 	background-color: var(--seashellPeach);
 	color: var(--vippsblack);
@@ -116,8 +102,8 @@
 
 .outro-image, 
 .outro-image img { 
-	width:  500px;
-	height: 500px;
+	width:  250px;
+	height: 250px;
 	margin: auto;
 }
 
@@ -159,89 +145,114 @@
 
 /*
  * The layouts for both Step and CodeStep.
+ * Step.js -> 2.0 styling
+ * All 'step-wrapper's are inside the 'content-wrapper' with a max-width of [1300px]
  */
 
-.step-text {
-	grid-area: step-text;
-	align-self: center;
+.step-wrapper {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	margin-top: 128px;
+	margin-bottom: 128px;
 }
 
-.step-sub-text,
-.code-title,
-.code-description,
-.code-code {
+.step-left {
+	float: left;
+	width: 55%;
+	height: auto;
+	padding: 16px;
+}
+
+.step-right {
+	float: right;
+	width: 45%;
+	height: auto;
+	padding: 16px;
+}
+
+.step-img,
+.step-title,
+.step-description,
+.step-json,
+.step-box {
 	margin-top: 16px;
 	margin-bottom: 16px;
 }
 
-.step-img-right {
-	grid-area: img-right;
-	align-self: center;
-	justify-self: start;
+.step-title {
+	
 }
 
-.step-img-left {
-	align-self: center;
-	justify-self: end;
-}
-
-.step-wrapper,
-.code-wrapper {
-	margin-top: 64px;
-	margin-bottom: 64px;
-	padding-top: 32px;
-	padding-bottom: 32px;
-	display: grid;
-	grid-template-columns: auto 60% auto;
-	grid-column-gap: 32px;
-	font-size: 1.2vmin;
-}
-
-.step-wrapper {
-	grid-template-rows: auto;
-	grid-template-areas:
-		"img-left step-text img-right";
-}
-
-.step-paragraph {
+.step-description {
 	font-family: 'Arial', sans-serif;
 	font-size: 1.3rem;
 	line-height: 1.9rem;
 	letter-spacing: .01rem;
+	padding-top: 16px;
+	padding-bottom: 16px;
 }
 
-.code-img-left {
-	grid-area: img-left;
-	align-self: start;
-	justify-self: end;
+.step-img {
+	display: block;
+	width: 55%;
+	height: 250px;
+	padding: 16px;
+	text-align: center;
 }
 
-.code-img-right {
-	grid-area: img-right;
-	align-self: start;
-	justify-self: start; 
+.step-img img {
+	width: 250px;
+	height: 250px;
 }
 
-.code-title {
-	grid-area: title;
+.step-box {
+	display: block;
+	height: auto;
+	width: 100%;
+	padding: 5px;
+	border-radius: 5px;
+	border: 0.8px solid var(--ghost);
+	background-color: var(--athensGreyLight);
 }
 
-.code-description {
-	grid-area: desc;
+.step-box pre[class*="language-"],
+.step-box code[class*="language-"] {
+	font-family: 'PT Mono' , monospace;
+	font-size: .9rem;
+	line-height: 1.75rem;
+	letter-spacing: .01rem;
 }
 
-.code-code {
-	grid-area: code;
+.step-box table {
+	display: table;
+	margin: auto;
 }
 
-.code-wrapper {
-	grid-template-rows: auto auto auto;
-	grid-template-areas:
-		". 			title	."
-		"img-left	desc	img-right"
-		"img-left	code	img-right"
-		"img-left	. 		img-right";
+.step-box tbody {
+	display: table-body;
 }
+
+.step-box tr {
+	display: table-row;
+}
+
+.step-box td {
+	display: table-cell;
+	padding: 5px;
+}
+
+.step-box.step-description {
+	word-wrap: break-word;
+}
+
+
+
+
+
+/*
+ * The Dropdown styling..
+ */
 
 .dropdown {
 	display: inline-block;

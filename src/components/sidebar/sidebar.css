@@ -1,9 +1,5 @@
 /* SIDEBAR */
 
-.scrollable {
-  margin-top: 15px !important;
-}
-
 .scrollable ul {
   margin-top: 0 !important;
 }
@@ -26,6 +22,7 @@
 .Logo {
   width: 75%;
   margin-top: 30px;
+  margin-bottom: 24px;
 }
 
 .SidebarMenu {
@@ -72,28 +69,10 @@
   margin-bottom: 2%;
 }
 
-.ApiLink {
-  background: #f6f6f9;
-  color: #49367e;
-  border-radius: 20px;
-  padding: 0px 30px 0px 30px !important;
-  margin-left: 0px !important;
-  height: 40px;
-  border: none;
-  font-size: 16px !important;
-  margin-left: 0px;
-  margin-top: 20px;
-  width: 100%;
-}
 
-.ApiLink:hover {
-  background: #49367e;
-  color: white;
-}
+
 
 .listEl {
-  padding: 0px 0px 0px 0px !important;
-  margin: 5px 0px 5px 20px !important;
   text-decoration: none;
   font-size: 16px;
   color: #49367e;
@@ -108,10 +87,11 @@
   background: #f6f6f9;
 }
 
+
 .collapsible-header {
   padding: 0px 30px 0px 30px !important;
   text-decoration: none;
-  line-height: 40px !important;
+  line-height: 25px !important;
   font-size: 16px;
   color: #49367e;
   display: block;
@@ -123,6 +103,7 @@
 
 .collapsible-header:hover {
   background: #f6f6f9 !important;
+  color: #5e3dc2 !important;
 }
 
 .active {
@@ -130,7 +111,6 @@
 }
 
 .collapsible {
-  margin: 40px 0px 0px 0px !important;
   border-top-color: white;
   border-top: 0px;
   border-bottom-color: white;
@@ -159,25 +139,51 @@
   transform: none !important;
 }
 
-li > a {
-  height: auto !important;
-  line-height: 32px !important;
-  color: #49367e !important;
-  border-radius: 20px;
-  padding: 0px 0px 0px 0px !important;
-  margin: 10px 0px 10px 0px !important;
-}
 
 li > div > a:hover {
   display: block;
   color: #49367e;
 }
-
+/* SIDEBAR HEADERS */
 li > div > a{
   display:inline-block !important;
   width:100% !important;
   height:100% !important;
+  line-height: 19px !important;
+  padding: 5px 10px 5px 5px !important;
+  vertical-align: middle;
+  color: #161225 !important;
+  margin: 0px 10px 0px 0px !important;
 }
+
+.sidenav li {
+  line-height: 32px !important;
+  margin-top: 9px !important;
+}
+
+
+.collapsible-header{
+  margin-top: 18px !important;
+}
+
+.collapsible-body{
+}
+
+ /* SIDEBAR SUBHEADERS */ 
+ li > a {
+  border-radius: 20px;
+  display:inline-block !important;
+  width:100% !important;
+  height:100% !important;
+  line-height: 16px !important;
+  padding: 5px 10px 5px 35px !important;
+
+  vertical-align: middle;
+  color: #161225 !important;
+  line-height: 32px;
+}
+
+
 
 li > a:hover {
   background-color: #f6f6f9 !important;
@@ -185,19 +191,37 @@ li > a:hover {
 
 /*  Sidebar scrolling   */
 
-.sidebarlogo {
-  margin-bottom: 1vh;
-  height: 7vh;
-  position: static;
+
+.collapsible-header a {
+  opacity: 0.99;
 }
 
+
 .scrollable {
-  right: 10vw;
+  width: 100%;
+  position: absolute;
   overflow-y: scroll;
   height: 82vh;
-  border-top: 1px solid #c9c6d7 !important;
-  border-bottom: 1px solid #c9c6d7 !important;
 }
+
+.fadeout-top {
+  margin-top: 0px;
+  width: 100%;
+  height: 12px;
+  background-image: linear-gradient(to top, transparent 1%, white 100%);
+  position: absolute;
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+}
+
+.fadeout-bottom {
+  width: 100%;
+  margin-top: calc(82vh - 12px);
+  height: 12px;
+  background-image: linear-gradient(to bottom, transparent 1%, white 100%);
+  position: relative;
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+}
+
 
 .apilink {
   height: 10vh;
@@ -206,6 +230,7 @@ li > a:hover {
 }
 
 .scrollable::-webkit-scrollbar {
+  z-index: 0;
   width: 30px;
 }
 
@@ -215,9 +240,24 @@ li > a:hover {
 
 .scrollable::-webkit-scrollbar-thumb {
   width: 5px;
-  background: #ededef;
+  background: #F6F6F9 !important;
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
+}
+
+::-webkit-scrollbar {
+  z-index: 0;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: var(--vippsorange);
+  border-radius: 110px;
 }
 
 /* Vipps-colors */
@@ -248,3 +288,9 @@ li > a:hover {
 a:hover {
   color: red;
 }
+
+.collapsible.popout > li {
+  -webkit-transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+

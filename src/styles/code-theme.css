@@ -181,7 +181,7 @@
 	display: block;
 	overflow: hidden;
 	height: 150px;
-	transition: height 1.5s ease-in-out;
+	
 	/* Cannot do transition with auto parametres! */
 	//transition: height 1.5s ease-in-out; 
 }

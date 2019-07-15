@@ -1,13 +1,25 @@
-.DocCardImg img {
-  max-width: 10vw;
-}
-
 h1,
 h2,
 h3 {
   margin-top: 9vh;
   margin-bottom: 3vh;
   color: var(--vippsblack);
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 18px;
 }
 
 h4,
@@ -17,10 +29,6 @@ h5 {
 }
 
 .DocCardTitle {
-  color: var(--vippsorange);
-}
-
-h1:first-of-type {
   color: var(--vippsorange);
 }
 
@@ -66,6 +74,7 @@ h1:first-of-type {
 /* Vipps-colors */
 
 :root {
+  --lightgrey: #f6f6f9;
   --vippsorange: #ff5b24;
   --lightvippsorange: #fdf4ed;
   --vippspurple: #4d3280;

@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  SideNav,
-  Collapsible,
-  CollapsibleItem
-} from "react-materialize";
+import {SideNav, Collapsible, CollapsibleItem} from "react-materialize";
 import M from "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
@@ -11,7 +7,7 @@ import { Link } from "react-router-dom";
 import vipps_dev from "../../img/vipps_dev.svg"
 
 // Contains the menuitems and backlink
-export const Sidebar = props => (
+const Sidebar = props => (
   <section className="Sidebar">
     <SidebarHeader />
     <SidebarMenu headers={props.headers} api={props.api}/>
@@ -36,28 +32,9 @@ const SidebarMenu = props => (
   </div>
 );
 
-// Buttons to different swaggers
-/*const DeveloperResources = () => (
-  <button className="ApiLink sidebarMarg">
-    Developer
-  </button>
-);*/
-
-/*const SwaggerISPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html" id="mySwaggerISP">Swagger ISP</a></button>
-);
-
-const SwaggerIPPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html" id="mySwaggerIPP">Swagger IPP</a></button>
-);*/
-
 // Navigation Menu
 const SidebarNav = props => {
-  // Generates an sidebar menu from given header datastructure passed in props
-  const propHeaders = props.headers;
-  const sidebarHeaders = propHeaders.map((head, index) => (
+  const sidebarHeaders = props.headers.map((head, index) => (
     <CollapsibleItem
       key={"Item: "+index}
       header={<a href={Object.values(head)[1]}>{Object.values(head)[0]}</a>}
@@ -73,23 +50,24 @@ const SidebarNav = props => {
     </CollapsibleItem>
   ));
 
-  // Returns the correct navigation bar
-  // Param: normal = false if documentation page is invoice, else true
-  function navBar (normal) {
+  function retNavBar () {
       return (
         <div>
         <SideNav className="sidebarMarg">
         <div className='static sidebarlogo'>
           <SidebarHeader />
           </div>
-          <div className='scrollable'>
-            <Collapsible>{sidebarHeaders}</Collapsible>
-          </div>
+            <div className='scrollable'>
+            <Collapsible accordion={false}>{sidebarHeaders}</Collapsible>
+            </div>
+          <div className='fadeout-top'/>
+          <div className='fadeout-bottom'/>
         </SideNav>
       </div>
       )
   };
 
-  // If documentpage is invoice then show two swagger buttons
-  return props.api === "invoice" ? navBar(false) : navBar(true);
+  return retNavBar()
 }
+
+export default Sidebar

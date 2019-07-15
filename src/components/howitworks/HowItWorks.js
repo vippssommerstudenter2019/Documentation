@@ -56,29 +56,12 @@ class HowItWorks extends React.Component {
 
 		return (
 			<div className="App">
-				<StickyContainer>
-					<div className="content-wrapper">
-						<div className="intro-area"> 
-						<IntroBox 
-							content={this.props.intro} 
-						/>
-						</div>
-						
-						<div className="step-area" >
-						<Content 
-							swaggerData={this.state.swaggerData} 
-							sections={this.props.sections}
-						/>
-						</div>
-						
-						<div className="outro-area" >
-						<OutroBox 
-							
-							content={this.props.outro} 
-						/>
-						</div>
-					</div>
-				</StickyContainer>
+				<IntroBox content={this.props.intro} />
+				<Content 
+					url="https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.yaml" 
+					sections={this.props.sections}
+				/>
+				<OutroBox content={this.props.outro} />
 			</div>
 		)
 	}

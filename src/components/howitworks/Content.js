@@ -10,7 +10,6 @@ const propTypes = {
 
 class Content extends React.Component {
 
-
     getDataFromSwagger(endpoint, swaggerData)  {
 
         let swaggerExtracter = new SwaggerExtracter();
@@ -40,8 +39,6 @@ class Content extends React.Component {
     }
     
     contentFromSection(section, i) {
-
-
         // Check if the swagger data has loaded.
         if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
             return (
@@ -70,7 +67,7 @@ class Content extends React.Component {
         Array.from(sections, (val, index) => { return items.push(this.contentFromSection(val, index)); });
 
         return (
-            <div className={this.props.className} > 
+            <div className="content-wrapper" > 
 		        {items}
             </div>
         );
