@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Step, CodeStep} from "./Step";
+import {Step} from "./Step";
 
 const propTypes = {
     sections: PropTypes.array.isRequired,
@@ -19,7 +19,7 @@ class Content extends React.Component {
             sections: this.props.sections,
         };
 		
-		this.languageCallback = this.languageCallback.bind(this)
+		//this.languageCallback = this.languageCallback.bind(this)
     }
 	
 	languageCallback(language) {
@@ -58,31 +58,28 @@ class Content extends React.Component {
     contentFromSection(section, i) {
         const language  = this.state.activeLanguage;
 		const languages = this.state.languages.slice();
-		const langcall  = this.languageCallback;
+		//const langcall  = this.languageCallback;
         const swagger   = this.state.swaggerResponse;
 
         const id = section.id;
         const title = section.title;
         const description = section.description;
         const imagelink = section.img;
-        const position = (i % 2 === 0) ?  'left' : 'right';
         const keywords = section.keywords;
-
-        if (JSON.stringify(swagger).indexOf(id) >= 0) {
+		
+		if (JSON.stringify(swagger).indexOf(id) >= 0) {
             const code = swagger["data"][id]["code"][language];
             return (
-                <CodeStep 
+                <Step
 					key={id} 
 					scrollId={id} 
 					title={title} 
-					description={description} 
-					language={language}
-					languages={languages}
-					langcall={langcall}
-					code={code} 
-					imagelink={imagelink}
-                    position={position}
+					description={description}
+					statusCodes={languages}
+					head={code}
+					body={code}
                     keywords={keywords}
+					imagelink={imagelink}
 				/>
             );
         } else {
@@ -91,10 +88,9 @@ class Content extends React.Component {
 					key={id} 
 					scrollId={id} 
 					title={title} 
-					description={description} 
-					imagelink={imagelink}
-					position={position}
+					description={description}
                     keywords={keywords}
+					imagelink={imagelink}
 				/>
             );
         }
