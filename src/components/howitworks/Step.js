@@ -89,11 +89,9 @@ class Step extends Component {
 	*/
 
 	render() {
-		const imgflt = "step-img-" + ((this.props.position === 'left') ? "right" : "left");
-
 		return (
 			<div className="step-wrapper" id={this.props.scrollId}>
-				<div className={"step-text"} vertical-align="center">
+				<div className="step-text" vertical-align="center">
 
 					<div className="step-sub-text">
 						<b>
@@ -111,7 +109,7 @@ class Step extends Component {
 
 				</div>
 
-				<div className={imgflt} vertical-align="center">
+				<div className="step-img" vertical-align="center">
 					<img src={this.props.imagelink} alt={this.props.title}/>
 				</div>
 
@@ -140,6 +138,7 @@ class CodeStep extends Component {
 					<div className={descriptionClass}>
 						{formatDescriptionToIncludeHoverLinks(this.props.description, this.props.keywords)}
 					</div>
+					
 				</div>
 
 				<div className="code-code" >
@@ -160,7 +159,75 @@ class CodeStep extends Component {
 	}
 }
 
+class Step2 extends Component {
+	leftSide() {
+		let items = [];
+		if (this.props.title) items.push(
+			<div className="step2-title xlarge-font-size text-color-black">
+				{this.props.title}
+			</div>
+		);
+		
+		if (this.props.description) items.push(
+			<div className="step2-description"> 
+				{formatDescriptionToIncludeHoverLinks(this.props.description, this.props.keywords)} 
+			</div>
+		);
+		
+		if (this.props.statusCodes){
+			let codes = [];
+			Array.from(this.props.statusCodes, (v, i) => {
+				codes.push(
+					<tr>
+						<th className="step2-status-id" > {i} </th>
+						<th className="step2-status-name" > {v} </th>
+					</tr>
+				);
+				return v;
+			});
+			items.push(
+				<div className="step2-status">
+					<table>
+						{codes}
+					</table>
+				</div>
+			);
+		}
+		return items;
+	}
+	
+	rightSide() {	
+		let items = [];
+		if (this.props.head) items.push(
+			<div className="step2-json step2-description">
+				{this.props.head}
+			</div>
+		);
+		
+		if (this.props.body) items.push(
+			<div className="step2-json step2-description">
+				{this.props.body}
+			</div>
+		);
+		return items;
+	}
+		
+	render() {
+		return (
+			<div className="step2-wrapper">
+				<div className="step2-left">
+					{this.leftSide()}
+				</div>
+				<div className="step2-right">
+					{this.rightSide()}
+				</div>
+			</div>
+		);
+	}
+}
+
 export {
+	Step2, 
 	Step,
 	CodeStep,
 };

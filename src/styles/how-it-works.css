@@ -160,10 +160,22 @@
 /*
  * The layouts for both Step and CodeStep.
  */
-
-.step-text {
-	grid-area: step-text;
-	align-self: center;
+.step-wrapper,
+.code-wrapper {
+	max-width: 1000px;
+	margin-top: 64px;
+	margin-bottom: 64px;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	display: grid;
+	grid-template-columns: 60% 40%;
+	grid-column-gap: 32px;
+	font-size: 1.2vmin;
+}
+.step-wrapper {
+	grid-template-rows: auto;
+	grid-template-areas:
+		"step-text img-right";
 }
 
 .step-sub-text,
@@ -174,33 +186,15 @@
 	margin-bottom: 16px;
 }
 
-.step-img-right {
-	grid-area: img-right;
+.step-text {
+	grid-area: step-text;
+	align-self: center;
+}
+
+.step-img {
+	grid-area: img;
 	align-self: center;
 	justify-self: start;
-}
-
-.step-img-left {
-	align-self: center;
-	justify-self: end;
-}
-
-.step-wrapper,
-.code-wrapper {
-	margin-top: 64px;
-	margin-bottom: 64px;
-	padding-top: 32px;
-	padding-bottom: 32px;
-	display: grid;
-	grid-template-columns: auto 60% auto;
-	grid-column-gap: 32px;
-	font-size: 1.2vmin;
-}
-
-.step-wrapper {
-	grid-template-rows: auto;
-	grid-template-areas:
-		"img-left step-text img-right";
 }
 
 .step-paragraph {
@@ -242,6 +236,86 @@
 		"img-left	code	img-right"
 		"img-left	. 		img-right";
 }
+
+/*
+ * Step.js -> 2.0 styling
+ */
+
+.step2-wrapper {
+	max-width: 1000px;
+	min-height: 500px;
+	height: auto;
+	margin-top: 128px;
+	margin-bottom: 128px;
+}
+
+.step2-left {
+	float: left;
+	width: 55%;
+	height: 100%;
+	padding-right: 16px;
+}
+
+.step2-right {
+	float: right;
+	width: 45%;
+	height: 100%;
+	padding-left: 16px;
+}
+
+.step2-title,
+.step2-description,
+.step2-json,
+.step2-status {
+	margin-bottom: 32px;
+}
+
+.step2-description {
+	font-family: 'Arial', sans-serif;
+	font-size: 1.3rem;
+	line-height: 1.9rem;
+	letter-spacing: .01rem;
+}
+
+.step2-status {
+	display: block;
+	height: auto;
+	width: 100%;
+	padding: 5px;
+	overflow-x: none;
+	overflow-y: auto;
+	border-radius: 5px;
+	border: 0.8px solid var(--ghost);
+	background-color: var(--athensGreyLight);
+}
+
+.step2-status table {
+	margin: auto;
+	border: none;
+}
+
+.step2-status-id {
+	text-align: middle;
+	background-color: var(--ghost);
+}
+
+.step2-json {
+	display: block;
+	height: auto;
+	width: 100%;
+	word-wrap: normal;
+	border-radius: 5px;
+	border: 0.8px solid var(--ghost);
+	background-color: var(--athensGreyLight);
+}
+
+
+
+
+
+/*
+ * The Dropdown styling..
+ */
 
 .dropdown {
 	display: inline-block;
