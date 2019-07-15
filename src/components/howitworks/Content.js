@@ -11,23 +11,23 @@ const propTypes = {
 class Content extends React.Component {
 
 
-    getDataFromSwagger(swaggerData)  {
+    getDataFromSwagger(endpoint, swaggerData)  {
 
         let swaggerExtracter = new SwaggerExtracter();
         let header = {}, body = {}, responses = {};
 
         // Check out if the swagger file contains the id (which is the endpoint)
-        if (swaggerData.paths.hasOwnProperty(section.id)) {
+        if (swaggerData.paths.hasOwnProperty(endpoint)) {
 
             // Retrieve the header
-            header = swaggerExtracter.getHeaderForEndpointFromSwaggerJson(section.id, swaggerData);
+            header = swaggerExtracter.getHeaderForEndpointFromSwaggerJson(endpoint, swaggerData);
 
             // Get the endpoint data which includes request body (if any), responeses etc.
-            const endpointData = swaggerData.paths[section.id][Object.keys(swaggerData.paths[section.id])[0]];
+            const endpointData = swaggerData.paths[endpoint][Object.keys(swaggerData.paths[endpoint])[0]];
 
             // We ectract the body if there is any
             if (endpointData.hasOwnProperty("requestBody")) {
-                body = swaggerExtracter.getBodyExampleForEndpointFromSwaggerJson(section.id, swaggerData, true);
+                body = swaggerExtracter.getBodyExampleForEndpointFromSwaggerJson(endpoint, swaggerData, true);
             }
 
             // We ectract the responses if there are any
@@ -41,7 +41,6 @@ class Content extends React.Component {
     
     contentFromSection(section, i) {
 
-        const [header, body, responses] = this.getDataFromSwagger(this.props.swaggerData);
 
         // Check if the swagger data has loaded.
         if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
@@ -49,6 +48,9 @@ class Content extends React.Component {
                 <p key={i}>Loading...</p>
             );
         }
+        
+        const [header, body, responses] = this.getDataFromSwagger(section.id, this.props.swaggerData);
+        
         return (
             <Step
                 key={section.id}
