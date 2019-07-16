@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 /**
- * Generates a hash from a string.
+ * Generates a hash (unique number) from a string.
  */
 export function getHashCodeFromString(string) {
 
@@ -61,7 +61,7 @@ class CodeView extends Component {
         textArea.value = this.props.code;
 
         // Append the textarea under this code view.
-        document.getElementById(this.props.code.hashCode()).appendChild(textArea);
+        document.getElementById(getHashCodeFromString(this.props.code)).appendChild(textArea);
         textArea.focus();
         textArea.select();
 

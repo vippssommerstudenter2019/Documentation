@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Step} from "./Step";
+import {Step} from "../step/Step";
 import SwaggerExtracter from "../../model/SwaggerExtracter"
 
 const propTypes = {
@@ -12,7 +12,7 @@ class Content extends React.Component {
 
     getDataFromSwagger(endpoint, swaggerData)  {
 
-        let swaggerExtracter = new SwaggerExtracter();
+        const swaggerExtracter = new SwaggerExtracter();
         let header = {}, body = {}, responses = {};
 
         // Check out if the swagger file contains the id (which is the endpoint)
