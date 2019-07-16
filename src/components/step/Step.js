@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Tooltip from "rc-tooltip";
 import CodeView from "../codeview/CodeView"
+import Response from "./Response";
 import 'rc-tooltip/assets/bootstrap.css';
 import "./Step.css"
-import { objectIsEmpty } from "../../Util"
+import "../../Util"
 
 export function titleCase(str) {
 	let splitStr = str.split(' ');
@@ -62,7 +63,7 @@ export function formatDescriptionToIncludeTooltips(input, keywords) {
 			const indexOfMatch = input.indexOf(match);
 			result.push(input.substring(currentIndex, indexOfMatch));
 			
-			const matchWithoutBrackets = match.replace(/[\[\]']+/g, '');
+			const matchWithoutBrackets = match.replace(/[[\]]/g, '');
 
 			result.push(createToolTip(matchWithoutBrackets, keywords[matchWithoutBrackets]));
 			currentIndex = indexOfMatch + match.length;
@@ -71,7 +72,7 @@ export function formatDescriptionToIncludeTooltips(input, keywords) {
 		result.push(input.substring(currentIndex, input.length));
 	}
 	else {
-		result.push(input.replace(/[\[\]']+/g, ''));
+		result.push(input.replace(/[[\]]/g, ''));
 	}
 
 	return (
@@ -135,7 +136,7 @@ class Step extends Component {
 	getDataComponents() {	
 		let items = [];
 		
-		if (!objectIsEmpty(this.props.header)) {
+		if (!this.props.header.isEmpty()) {
 			items.push(
 				<div key="head" className="step-box">
 						<CodeView title="Header" code={JSON.stringify(this.props.header, null, spaceForJson)} language="javascript" />
@@ -143,7 +144,7 @@ class Step extends Component {
 			);
 		}
 	
-		if (!objectIsEmpty(this.props.body)) {
+		if (!this.props.body.isEmpty()) {
 			items.push(
 				<div key="body" className="step-box">
 						<CodeView title="Body" code={JSON.stringify(this.props.body, null, spaceForJson)} language="javascript"/>
@@ -158,31 +159,23 @@ class Step extends Component {
 
 		let items = [];
 
-		if (!objectIsEmpty(this.props.responses)) {
+		if (!this.props.responses.isEmpty()) {
 
 			const statusCodes = Object.keys(this.props.responses).sort();
 
 			for (const statusCode of statusCodes) {
-				if (this.props.responses[statusCode].hasOwnProperty("content")) {
+				let content = {};
 
+				if (this.props.responses.hasOwnProperty("content")) {
+					content = this.props.repsonses[statusCode].content;
 				}
-				else {
-					items.push(
-						<div key="status" className="step-box error">
-							
-						</div>
-					);
-				}
+
+				items.push(
+					<div key={statusCode}>
+						<Response statusCode={statusCode} description={this.props.responses[statusCode].description} content={content}/>
+					</div>
+				);
 			}
-
-			items.push(
-				<div key="status" className="step-box">
-					<table>
-						<tbody>
-						</tbody>
-					</table>
-				</div>
-			);
 		}
 
 		return items;
