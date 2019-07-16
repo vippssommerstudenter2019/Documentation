@@ -7,42 +7,35 @@ import "./Step.css"
 import "../../Util"
 import { objectIsEmpty } from '../../Util';
 
-export function titleCase(str) {
-	let splitStr = str.split(' ');
-
-	for (let i = 0; i < splitStr.length; i++) {
-		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-	}
-
-	return splitStr.join(' ');
-}
+/**
 
 /**
  * Creates a tooltip for some word with a given description.
  * 
- * @param {*} word The word to create the tooltip for.
- * @param {*} description The description of the word that will popup on hover.
+ * @param {*} keyword The word to create the tooltip for.
+ * @param {*} keywordData The keyword data to create the tooltip for.
  */
-export function createToolTip(word, description) {
+export function createToolTip(keyword, keywordData) {
+
 	return (
 		<Tooltip
-			key={word}
+			key={keyword}
 			overlay={
 				<div className="padding-s default-font-size keyword-overlay">
 					<div className="large-font-size">
-						<b>{titleCase(word)}</b>
+						<b>{keywordData.title}</b>
 					</div>
 					<br/>
 					<div className="default-font-size">
-						{description}
+						{keywordData.description}
 					</div>
 					<br/>
 					<br/>
-					<a className="rc-custom-link" href="http://localhost:3000/documentation/ecommerce/#authentication" target="_blank" rel="noopener noreferrer">See the API documentation for more info</a>
+					<a className="rc-custom-link" href={keywordData.link} target="_blank" rel="noopener noreferrer">API documentation</a>
 				</div>
 			}
 			placement="bottom">
-			<button className="underlined-purple"><u>{word}</u></button>
+			<button className="underlined-purple"><u>{keyword}</u></button>
 		</Tooltip>
 	);
 }
@@ -57,7 +50,7 @@ export function formatDescriptionToIncludeTooltips(input, keywords) {
 	const matches = input.match(/\[.*?\]/g);
 	let result = [];
 
-	if (matches) {
+	if (matches && !objectIsEmpty(keywords)) {
 		let currentIndex = 0;
 
 		for (const match of matches) {
@@ -65,7 +58,6 @@ export function formatDescriptionToIncludeTooltips(input, keywords) {
 			result.push(input.substring(currentIndex, indexOfMatch));
 			
 			const matchWithoutBrackets = match.replace(/[[\]]/g, '');
-
 			result.push(createToolTip(matchWithoutBrackets, keywords[matchWithoutBrackets]));
 			currentIndex = indexOfMatch + match.length;
 		}
