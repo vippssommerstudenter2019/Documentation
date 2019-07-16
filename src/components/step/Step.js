@@ -165,15 +165,15 @@ class Step extends Component {
 			const statusCodes = Object.keys(this.props.responses).sort();
 
 			for (const statusCode of statusCodes) {
-				let content = {};
+				let json = {};
 
 				if (this.props.responses[statusCode].hasOwnProperty("content")) {
-					content = this.props.responses[statusCode].content;
+					json = this.props.responses[statusCode].content;
 				}
 
 				items.push(
 					<div key={statusCode}>
-						<Response statusCode={statusCode} description={this.props.responses[statusCode].description} content={content}/>
+						<Response statusCode={statusCode} description={this.props.responses[statusCode].description} json={json}/>
 					</div>
 				);
 			}
