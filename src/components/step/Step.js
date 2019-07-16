@@ -94,7 +94,7 @@ class Step extends Component {
 	/**
 	 * Returns a container containing the image (if there was provided one).
 	 */
-	getImageComponent() {
+	imageComponent() {
 		if (this.props.imagelink) {
 			return (
 				<div className="step-img">
@@ -109,7 +109,7 @@ class Step extends Component {
 	/**
 	 * Returns the title and description components.
 	 */
-	getTextComponents() {
+	textComponents() {
 		let items = [];
 		if (this.props.title) {
 			items.push(
@@ -134,13 +134,13 @@ class Step extends Component {
 	/**
 	 * Returns a container with the header and body codeviews (if any for this step).
 	 */
-	getDataComponents() {	
+	bodyAndHeaderComponents() {	
 		let items = [];
 		
 		if (!objectIsEmpty(this.props.header)) {
 			items.push(
 				<div key="head" className="step-box">
-						<CodeView title="Header" code={JSON.stringify(this.props.header, null, spaceForJson)} language="javascript" />
+						<CodeView title="Header" code={JSON.stringify(this.props.header, null, spaceForJson)} language="javascript" shouldCollapse={false}/>
 				</div>
 			);
 		}
@@ -148,7 +148,7 @@ class Step extends Component {
 		if (!objectIsEmpty(this.props.body)) {
 			items.push(
 				<div key="body" className="step-box">
-						<CodeView title="Body" code={JSON.stringify(this.props.body, null, spaceForJson)} language="javascript"/>
+						<CodeView title="Body" code={JSON.stringify(this.props.body, null, spaceForJson)} language="javascript" shouldCollapse={true}/>
 				</div>
 			);
 		}
@@ -156,7 +156,10 @@ class Step extends Component {
 		return items;
 	}
 
-	getResponsesComponent() {
+	/**
+	 * Will return all the responses of the endpoint with example bodies (if any).
+	 */
+	responsesComponent() {
 
 		let items = [];
 
@@ -185,13 +188,13 @@ class Step extends Component {
 	render() {
 		return (
 			<div className="step-wrapper">
-				{this.getImageComponent()}
+				{this.imageComponent()}
 				<div className="step-right">
-					{this.getDataComponents()}
+					{this.bodyAndHeaderComponents()}
 				</div>
 				<div className="step-left">
-					{this.getTextComponents()}
-					{this.getResponsesComponent()}
+					{this.textComponents()}
+					{this.responsesComponent()}
 				</div>
 			</div>
 		);

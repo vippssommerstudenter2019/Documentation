@@ -5,7 +5,7 @@
  */
 .codeview {
   background-color: var(--athensGreyLight);
-  border-radius: 5px
+  border-radius: 5px;
 }
 
 
@@ -15,6 +15,7 @@
 	font-size: .9rem;
 	line-height: 1.75rem;
   letter-spacing: .01rem;
+  margin-top: 0px;
   padding: 0px 0px 0px 35px !important;
 }
 
@@ -76,6 +77,13 @@
   color: var(--manatee);
 }
 
+/**
+ * The non collapsable container.
+ */
+.codeview-non-collapsable {
+  padding-bottom: 10px;
+}
+
 /*
  * The collapse function that code view is placed inside of.
  */
@@ -84,14 +92,15 @@
 	flex-direction: column;
   width: 100%;
 	margin: 0px;
-	padding: 0px;
+  padding: 0px;
   line-height: normal;
 }
 
 .codeview-collapse-content {
 	display: block;
-	overflow: hidden;
-  height: 150px;
+  overflow: hidden;
+  height: 200px;
+  padding-bottom: 10px;
   border-radius: 0px 0px 25px 25px;
 }
 

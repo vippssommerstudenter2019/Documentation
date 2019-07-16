@@ -59,7 +59,10 @@ class Response extends React.Component {
                     <div key={this.props.statusCode} className="response-content">
                         <pre>
                             <code className="language-javascript">
-                                {JSON.stringify(this.swaggerExtracter.buildBody(schema, false), null, 4)}
+
+                                {/* We have to add a new line here to get correct indentation in the code view. */}
+
+                                {"\n" + JSON.stringify(this.swaggerExtracter.buildBody(schema, false), null, 4)}
                             </code>
                         </pre>
                     </div>

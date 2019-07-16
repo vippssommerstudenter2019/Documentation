@@ -7,7 +7,8 @@ import "./CodeView.css"
 const propTypes = {
     title: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired
+    language: PropTypes.string.isRequired,
+    shouldCollapse: PropTypes.bool.isRequired
 };
 
 /**
@@ -27,6 +28,11 @@ export function getHashCodeFromString(string) {
     }
     return hash;
 };
+
+/**
+ * Determines the line height for when we'll apply a expandable element.
+ */
+const lineCountCollapsibleThreshold = 10;
 
 /**
  * A component which displays some code and has got the option to copy from it.
@@ -81,11 +87,53 @@ class CodeView extends Component {
 
     handleExpand() {
         this.setState({ collapsed: !this.state.collapsed });
-    }
+   }
+
+   /**
+    * Returns the syntax hightlighted code component.
+    */
+   codeComponent() {
+       return (
+           <pre>
+               <code className={"language-" + this.props.language}>
+
+                   {/* We have to add a new line here to get correct indentation in the code view. */}
+                   {"\n" + this.props.code}
+
+               </code>
+           </pre>
+       );
+   }
 
     render() {
 
-        const collapse = "codeview-collapse" + (this.state.collapsed ? "" : " expanded");
+        // We check if the amount of lines in the code is above a certain limit, and add the collapsible only if
+        // it's above that threshold
+        const lines = this.props.code.split("\n").length;
+
+        let elements = [];
+
+        if (lines > lineCountCollapsibleThreshold && this.props.shouldCollapse) {
+            const collapse = "codeview-collapse" + (this.state.collapsed ? "" : " expanded");
+
+            elements.push(
+                <div className={collapse}>
+                    <div className="codeview-collapse-content">
+                        {this.codeComponent()}
+                    </div>
+                    <button className="codeview-collapse-overlay" onClick={this.handleExpand}>
+                        {(this.state.collapsed ? "Expand" : " Close")}
+                    </button>
+                </div>
+            );
+        }
+        else {
+            elements.push(
+                <div className="codeview-non-collapsable">
+                    {this.codeComponent()}
+                </div> 
+            );
+        }
 
         return (
             // Render a container with code with an utility bar and style it according to Vipps style.
@@ -97,18 +145,7 @@ class CodeView extends Component {
                     <p>{this.props.title}</p>
                     <button onClick={this.handleCopyClick}>Copy</button>
                 </div>
-                <div className={collapse}>
-                    <div className="codeview-collapse-content">
-                        <pre>
-                            <code className={"language-" + this.props.language}>
-                                {this.props.code}
-                            </code>
-                        </pre>
-                    </div>
-                    <button className="codeview-collapse-overlay" onClick={this.handleExpand}>
-                        {(this.state.collapsed ? "Expand" : " Close")}
-                    </button>
-                </div>
+                {elements}
             </div>
         );
     }
