@@ -3,6 +3,6 @@
  * 
  * @param {*} object The object to check.
  */
-export function objectIsEmpty(object) {
-    return Object.keys(object).length === 0 && object.constructor === Object;
+Object.prototype.isEmpty = function () {
+    return Object.keys(this).length === 0 && this.constructor === Object;
 }
