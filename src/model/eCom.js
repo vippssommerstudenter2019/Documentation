@@ -16,14 +16,19 @@ const eComSections = [
     {
         "id": "/ecomm/v2/payments",
         "title": "2. Vipps handles the payment",
-        "description": "When pushing the button on you’re website, [initiation of payment] to Vipps should happen. This is done by sending an initiate payment request containing the information specified in the code snippet below.",
+        "description": "Starts the payment process. Once the transaction is successfully initiated in Vipps, you will receive a URL in response which will direct the customer to the [landing page]. Passing ‘isApp’ will make Vipps respond with an [app-switch deeplink] that will take the customer directly to the Vipps app.",
         "img": "../../assets/ecom-steps/Step2.svg",
         "keywords": {
-            "initiation of payment": {
-                "title": "What is a token?",
+            "landing page": {
+                "title": "What is the landing page?",
                 "description": "A token is an object which represents the right to perform some operation. An Access token, is a system object representing the subject of access control operations. All API calls are authenticated and authorized based on the application access token (JWT bearer token) and a subscription key.",
                 "link": "http://localhost:3000/documentation/ecommerce/#authentication"
-            } 
+            },
+            "app-switch deeplink": {
+                "title": "What is the landing page?",
+                "description": "A token is an object which represents the right to perform some operation. An Access token, is a system object representing the subject of access control operations. All API calls are authenticated and authorized based on the application access token (JWT bearer token) and a subscription key.",
+                "link": "http://localhost:3000/documentation/ecommerce/#authentication"
+            }  
         }
     },
     {
