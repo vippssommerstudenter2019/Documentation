@@ -117,7 +117,7 @@ class CodeView extends Component {
             const collapse = "codeview-collapse" + (this.state.collapsed ? "" : " expanded");
 
             elements.push(
-                <div className={collapse}>
+                <div key={this.props.title} className={collapse}>
                     <div className="codeview-collapse-content">
                         {this.codeComponent()}
                     </div>
@@ -129,7 +129,7 @@ class CodeView extends Component {
         }
         else {
             elements.push(
-                <div className="codeview-non-collapsable">
+                <div key={this.props.title} className="codeview-non-collapsable">
                     {this.codeComponent()}
                 </div> 
             );
