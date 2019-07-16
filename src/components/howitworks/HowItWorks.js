@@ -58,7 +58,7 @@ class HowItWorks extends React.Component {
 			<div className="App">
 				<IntroBox content={this.props.intro} />
 				<Content 
-					url="https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.yaml" 
+					swaggerData={this.state.swaggerData}	
 					sections={this.props.sections}
 				/>
 				<OutroBox content={this.props.outro} />

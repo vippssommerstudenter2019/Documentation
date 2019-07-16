@@ -1,7 +1,5 @@
 @import url("../../node_modules/rc-tooltip/assets/bootstrap.css");
 @import url("vipps-style.css");
-@import url("code-theme.css");
-@import url("../../node_modules/codemirror/lib/codemirror.css");
 
 /**
  * Predefined Vipps colours.
@@ -180,10 +178,6 @@
 	margin-bottom: 16px;
 }
 
-.step-title {
-	
-}
-
 .step-description {
 	font-family: 'Arial', sans-serif;
 	font-size: 1.3rem;
@@ -211,17 +205,6 @@
 	height: auto;
 	width: 100%;
 	padding: 5px;
-	border-radius: 5px;
-	border: 0.8px solid var(--ghost);
-	background-color: var(--athensGreyLight);
-}
-
-.step-box pre[class*="language-"],
-.step-box code[class*="language-"] {
-	font-family: 'PT Mono' , monospace;
-	font-size: .9rem;
-	line-height: 1.75rem;
-	letter-spacing: .01rem;
 }
 
 .step-box table {

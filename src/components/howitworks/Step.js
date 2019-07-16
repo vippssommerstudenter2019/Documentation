@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-//import { StickyContainer, Sticky } from 'react-sticky';
-//import CodeView from "./CodeView";
-import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
 import Tooltip from "rc-tooltip";
+import CodeView from "../codeview/CodeView"
 import 'rc-tooltip/assets/bootstrap.css';
 
 export function titleCase(str) {
@@ -72,24 +69,20 @@ export function formatDescriptionToIncludeHoverLinks(input, keywords) {
 	);
 }
 
-class PrismBlock extends Component {
-	componentDidMount() {
-		console.log("Prism activation!");
-		Prism.highlightAll(false, () => console.log("Prism mounted!"));
-	}
-	
-	render() {
-		return (
-			<pre>
-				<code className="language-javascript" >
-					{this.props.code}
-				</code>
-			</pre>
-		);
-	}
+export function objectIsEmpty(object) {
+
+	return Object.keys(object).length === 0 && object.constructor === Object;
 }
 
+
+/**
+ * Essentially the tab size within the json in the header and body.
+ */
+const spaceForJson = 4;
+
+
 class Step extends Component {
+
 	leftPart() {
 		let items = [];
 		if (this.props.title) items.push(
@@ -104,9 +97,9 @@ class Step extends Component {
 			</div>
 		);
 		
-		if (this.props.statusCodes){
+		if (!objectIsEmpty(this.props.responses)) {
 			let codes = [];
-			Array.from(this.props.statusCodes, (v, i) => {
+			Array.from(this.props.responses, (v, i) => {
 				// Momentarily solution for Status Codes
 				codes.push(
 					<tr key={i} >
@@ -136,20 +129,25 @@ class Step extends Component {
 	rightPart() {	
 		let items = [];
 		
-		if (this.props.head) items.push(
-			<div key="head" className="step-box">
-					<PrismBlock code={this.props.head} />
-			</div>
-		);
-		
-		if (this.props.body) items.push(
-			<div key="body" className="step-box">
-					<PrismBlock code={this.props.body} />
-			</div>
-		);
+		if (!objectIsEmpty(this.props.header)) {
+			items.push(
+				<div key="head" className="step-box">
+						<CodeView title="Header" code={JSON.stringify(this.props.header, null, spaceForJson)} language="javascript" />
+				</div>
+			);
+		}
+	
+		if (!objectIsEmpty(this.props.body)) {
+			items.push(
+				<div key="body" className="step-box">
+						<CodeView title="Body" code={JSON.stringify(this.props.body, null, spaceForJson)} language="javascript"/>
+				</div>
+			);
+		}
+
 		return (
 			<div className="step-right">
-				{items}
+				{items} 
 			</div>
 		);
 	}
