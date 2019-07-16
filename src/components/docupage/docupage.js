@@ -45,7 +45,7 @@ class DocuPage extends React.Component {
 
   goToAnchor() { 
     const hash = window.document.location.hash;
-    if (hash !="") {
+    if (hash !=="") {
         setTimeout(function() {
             if (window.location.hash) {
                 window.scrollTo(0, 0);
