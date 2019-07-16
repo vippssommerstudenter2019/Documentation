@@ -5,6 +5,7 @@ import Response from "./Response";
 import 'rc-tooltip/assets/bootstrap.css';
 import "./Step.css"
 import "../../Util"
+import { objectIsEmpty } from '../../Util';
 
 export function titleCase(str) {
 	let splitStr = str.split(' ');
@@ -136,7 +137,7 @@ class Step extends Component {
 	getDataComponents() {	
 		let items = [];
 		
-		if (!this.props.header.isEmpty()) {
+		if (!objectIsEmpty(this.props.header)) {
 			items.push(
 				<div key="head" className="step-box">
 						<CodeView title="Header" code={JSON.stringify(this.props.header, null, spaceForJson)} language="javascript" />
@@ -144,7 +145,7 @@ class Step extends Component {
 			);
 		}
 	
-		if (!this.props.body.isEmpty()) {
+		if (!objectIsEmpty(this.props.body)) {
 			items.push(
 				<div key="body" className="step-box">
 						<CodeView title="Body" code={JSON.stringify(this.props.body, null, spaceForJson)} language="javascript"/>
@@ -159,15 +160,15 @@ class Step extends Component {
 
 		let items = [];
 
-		if (!this.props.responses.isEmpty()) {
+		if (!objectIsEmpty(this.props.responses)) {
 
 			const statusCodes = Object.keys(this.props.responses).sort();
 
 			for (const statusCode of statusCodes) {
 				let content = {};
 
-				if (this.props.responses.hasOwnProperty("content")) {
-					content = this.props.repsonses[statusCode].content;
+				if (this.props.responses[statusCode].hasOwnProperty("content")) {
+					content = this.props.responses[statusCode].content;
 				}
 
 				items.push(
