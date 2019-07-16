@@ -26,7 +26,7 @@ class Content extends React.Component {
 
             // We ectract the body if there is any
             if (endpointData.hasOwnProperty("requestBody")) {
-                body = swaggerExtracter.getBodyExampleForEndpointFromSwaggerJson(endpoint, swaggerData, true);
+                body = swaggerExtracter.getBodyExampleForEndpointFromSwaggerJson(endpoint, swaggerData, false);
             }
 
             // We ectract the responses if there are any
