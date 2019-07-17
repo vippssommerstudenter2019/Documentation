@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Step} from "../step/Step";
+import Step from "./step/Step";
 import SwaggerExtracter from "../../model/SwaggerExtracter"
 
 const propTypes = {
@@ -8,36 +8,10 @@ const propTypes = {
     swaggerData: PropTypes.object.isRequired
 };
 
+const swaggerExtracter = new SwaggerExtracter();
+
 class Content extends React.Component {
 
-    getDataFromSwagger(endpoint, swaggerData)  {
-
-        const swaggerExtracter = new SwaggerExtracter();
-        let header = {}, body = {}, responses = {};
-
-        // Check out if the swagger file contains the id (which is the endpoint)
-        if (swaggerData.paths.hasOwnProperty(endpoint)) {
-
-            // Retrieve the header
-            header = swaggerExtracter.getHeaderForEndpointFromSwaggerJson(endpoint, swaggerData);
-
-            // Get the endpoint data which includes request body (if any), responeses etc.
-            const endpointData = swaggerData.paths[endpoint][Object.keys(swaggerData.paths[endpoint])[0]];
-
-            // We ectract the body if there is any
-            if (endpointData.hasOwnProperty("requestBody")) {
-                body = swaggerExtracter.getBodyExampleForEndpointFromSwaggerJson(endpoint, swaggerData, false);
-            }
-
-            // We ectract the responses if there are any
-            if (endpointData.hasOwnProperty("responses")) {
-                responses = endpointData.responses;
-            }
-        }
-
-        return [header, body, responses];
-    }
-    
     contentFromSection(section, i) {
         // Check if the swagger data has loaded.
         if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
@@ -45,20 +19,23 @@ class Content extends React.Component {
                 <p key={i}>Loading...</p>
             );
         }
-        
-        const [header, body, responses] = this.getDataFromSwagger(section.id, this.props.swaggerData);
-        
+
+        // We use the swagger extracter to get example headers, bodies and responses for every endpoint in this step.
+        var endpointData = {};
+        for (const endpoint of section.endpoints) {
+            const [header, body, responses] = swaggerExtracter.getDataFromSwagger(endpoint, this.props.swaggerData);
+            endpointData[endpoint] = {
+                header: header,
+                body: body,
+                responses: responses
+            }
+        }
+
         return (
             <Step
-                key={section.id}
-                scrollId={section.id}
-                title={section.title}
-                description={section.description}
-                imagelink={section.img}
-                keywords={section.keywords}
-                header={header}
-                body={body}
-                responses={responses}
+                key={section.endpoints[0] + section.title}
+                metaData={section}
+                endpointData={endpointData}
             />
         );
     }
