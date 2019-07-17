@@ -1,16 +1,16 @@
-@import url("../../styles/how-it-works.css");
+@import url("../../../styles/how-it-works.css");
 
 /**
- * Stylings for the outer container for the code view.
+ * Stylings for the outer container for the data view.
  */
-.codeview {
+.dataview {
   background-color: var(--athensGreyLight);
   border-radius: 5px;
 }
 
 
-.codeview pre,
-.codeview code {
+.dataview pre,
+.dataview code {
 	font-family: 'PT Mono' , monospace;
 	font-size: .9rem;
 	line-height: 1.75rem;
@@ -19,30 +19,34 @@
   padding: 0px 0px 0px 35px !important;
 }
 
+.dataview-title {
+  font-family: Vipps;
+  font-size: 0.9rem;
+  background-color:var(--athensGreyLight);
+  color: var(--rum);
+  padding: 25px 0px 0px 35px; 
+}
+
 
 /**
- * The styling for the top bar of the code view. Is where we see the title and can copy code.
+ * The styling for the top bar of the data view. Is where we see the title and can copy the data.
  */
-.codeview-utility-bar {
-  display:inline-flex;
-  flex-flow:row;
-  justify-content:space-between;
-  height: 85px;
+.dataview-utility-bar {
+  height: 50px;
   width: 100%;
-
 	background-color: var(--athensGreyLight); 
   border-radius: 5px 5px 0px 0px;
 }
 
-.codeview-utility-bar button {
+.copy-button {
 	font-family: Vipps;
 	font-weight: lighter;
 	background-color:var(--athensGreyLight);
   color: var(--rum);
-  
+  float: right;
+
   margin: 25px 25px 15px 15px;
 	font-size: 13px;
-  line-height: 15px;
   text-align: center;
 
   height: 30px;
@@ -51,43 +55,59 @@
   border: 0.8px solid var(--ghost);
 }
 
-.codeview-utility-bar button:hover {
+.copy-button:hover {
     color: var(--manatee);
 }
 
-.codeview-utility-bar button.selected {
+.copy-button.selected {
     color: var(--rum);
 }
 
-.codeview-utility-bar button:focus {
+.copy-button:focus {
     outline: none;
 }
 
-.codeview-utility-bar button:active {
+.copy-button:active {
     background-color: var(--athensGrey);
 }
 
-.codeview-utility-bar p {
-  font-weight: lighter;
-  font-family: Vipps;
-  height: 100%;
-  height: 30px;
-  line-height: 15px;
-  margin: 35px 20px 20px 35px;
+
+.header-body-button {
+	font-family: Vipps;
+  font-size: 13px;
+  line-height: 25px;
+	background-color:var(--athensGreyLight);
   color: var(--manatee);
+  float: left;
+  outline: none;
+  width: 100%;
+  margin-right: 25px;
+  padding: 35px 5px 0px 35px;  
+
+  height: 30px;
+  width: 65px;
+}
+
+.header-body-button-activated {
+  font-weight: bold;
+  color: var(--rum);
+}
+
+.header-body-button:hover {
+    color: var(--manatee);
 }
 
 /**
  * The non collapsable container.
  */
-.codeview-non-collapsable {
+.dataview-non-collapsable {
   padding-bottom: 10px;
 }
 
 /*
- * The collapse function that code view is placed inside of.
+ * The collapse function that data view is placed inside of.
  */
-.codeview-collapse {
+.dataview-collapse {
 	display: flex;
 	flex-direction: column;
   width: 100%;
@@ -96,7 +116,7 @@
   line-height: normal;
 }
 
-.codeview-collapse-content {
+.dataview-collapse-content {
 	display: block;
   overflow: hidden;
   height: 200px;
@@ -104,7 +124,7 @@
   border-radius: 0px 0px 25px 25px;
 }
 
-.codeview-collapse-overlay {
+.dataview-collapse-overlay {
 	z-index: 4;
 	display: block;
 	margin-top: -150px;
@@ -121,16 +141,16 @@
 	background: linear-gradient(rgba(255,255,255,0), var(--athensGreyLight) 80%, var(--athensGreyLight));
 }
 
-.codeview-collapse-overlay:hover {
+.dataview-collapse-overlay:hover {
 	color: var(--rum);
 }
 
-.codeview-collapse.expanded .codeview-collapse-content {
+.dataview-collapse.expanded .dataview-collapse-content {
 	height: auto;
 	overflow: auto;
 }
 
-.codeview-collapse.expanded .codeview-collapse-overlay {
+.dataview-collapse.expanded .dataview-collapse-overlay {
 	height: 50px;
 	margin-top: 0px;
 	padding-top: 0px;
@@ -139,7 +159,7 @@
 }
 
 /**
- * The overlay over the code view, not implemented yet.
+ * The overlay over the data view, not implemented yet.
  */
 
 /*
