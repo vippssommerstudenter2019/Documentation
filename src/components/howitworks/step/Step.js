@@ -178,6 +178,11 @@ class Step extends Component {
 			);
 		}
 
+		// Only add the subtitle component if there is one provided. This will prevent the extra padding on steps that don't have a subtitle.
+		let subtitleComponent = [];
+		if (this.props.metaData.subtitle) {
+			subtitleComponent = <div className="step-subtitle">{this.props.metaData.subtitle}</div>
+		}
 
 		return (
 			<div className="step-wrapper">
@@ -185,7 +190,7 @@ class Step extends Component {
 				<div key="title" className="step-title xlarge-font-size">
 					{this.props.metaData.title}
 				</div>
-				<div className="step-subtitle">{this.props.metaData.subtitle}</div>
+				{subtitleComponent}
 				{components}
 			</div>
 		);
