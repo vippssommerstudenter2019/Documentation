@@ -16,22 +16,6 @@ const eComSections = [
         }
     },
     {
-        "id": "/accesstoken/get",
-        "mode": "POST",
-        "title": "2. Set up endpoints required by Vipps",
-        "description": "In order for Vipps to send and get information from you as the seller, you have to implement some [endpoints]. \n 1. Transaction update \n 2. Shipping details \n 3. Remove user consent.",
-        "img": "../../assets/ecom-steps/Step1.svg",
-        "keywords": {
-            "endpoints": {
-                "title": "What is an access token?",
-                "description": "A token is an object which represents the right to perform some operation. An access token, is a system object representing the subject of access control operations. All API calls are authenticated and authorized based on the application access token (JWT bearer token).",
-                "titleLink": "API documentation",
-                "link": "http://localhost:3000/documentation/ecommerce/#authentication"
-            }
-
-        }
-    },
-    {
         "id": "/ecomm/v2/payments",
         "mode" : "POST",
         "title": "2. Initiate payment",
