@@ -12,40 +12,52 @@ const swaggerExtracter = new SwaggerExtracter();
 
 class Content extends React.Component {
 
-    contentFromSection(section) {
-        // Check if the swagger data has loaded.
-        if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
-            return (
-                <p key={section.title}>Loading...</p>
+    contentFromSection(title, section) {
+
+        let subsections = [];
+
+        subsections.push(
+            <div className="hero-font-size section-title">{title}</div>
+        )
+
+        for (const subsection of Object.values(section)) {
+            // We use the swagger extracter to get example headers, bodies and responses for every endpoint in this step.
+
+            var endpointData = {};
+            for (const endpoint of subsection.endpoints) {
+                const [header, body, responses] = swaggerExtracter.getExampleData(endpoint, this.props.swaggerData);
+                endpointData[endpoint] = {
+                    header: header,
+                    body: body,
+                    responses: responses
+                }
+            }
+
+            subsections.push(
+                <Step
+                    key={subsection.endpoints[0] + subsection.title}
+                    metaData={subsection}
+                    endpointData={endpointData}
+                />
             );
         }
 
-        // We use the swagger extracter to get example headers, bodies and responses for every endpoint in this step.
-        var endpointData = {};
-        for (const endpoint of section.endpoints) {
-            const [header, body, responses] = swaggerExtracter.getExampleData(endpoint, this.props.swaggerData);
-            endpointData[endpoint] = {
-                header: header,
-                body: body,
-                responses: responses
-            }
-        }
-
-        return (
-            <Step
-                key={section.endpoints[0] + section.title}
-                metaData={section}
-                endpointData={endpointData}
-            />
-        );
+        return subsections;
     }
 
     render() {
         let components = [];
 
-        for (const section of Object.values(this.props.sections)) {
+        // Check if the swagger data has loaded.
+        if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
+            return (
+                <p key={"tempkey"}>Loading...</p>
+            );
+        }
+
+        for (const [title, section] of Object.entries(this.props.sections)) {
             components.push(
-                this.contentFromSection(section)
+                this.contentFromSection(title, section)
             );
         }
 
