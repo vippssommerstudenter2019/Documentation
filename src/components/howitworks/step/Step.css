@@ -1,88 +1,79 @@
-
-/*
- * The layout for Step.
- * All 'step-wrapper's are inside the 'content-wrapper' with a max-width of [1300px]
- */
-
  /*
   * The outer wrapper, includes everything in the step
   */
 .step-wrapper {
-	width: 100%;
-	height: auto;
 	overflow: auto;
+
+	width: 100%;
 	margin-top: 128px;
 	margin-bottom: 200px;
+	display: grid;
+	grid-template-columns: 250px auto;
+	grid-template-rows: auto auto;
+	grid-column-gap: 30px;
+	grid-template-areas: "step-image step-header"
+						 ".			 step-content";
 }
+
+/* Includes the title and the introduction (if any) */
+.step-header {
+	grid-area: step-header;
+}
+
+.step-title {
+	width: 45%;
+	grid-area: step-title;
+}
+
+.step-introduction {
+	font-style: italic;
+	width: 45%;
+}
+
 
 /*
  * The wrapper around the descrption, responses and data.
  */
-.step-content-wrapper {
+.step-content {
 	display: block;
 	overflow: auto;
+	grid-area: step-content;
 }
 
-.step-left {
+.step-text-responses {
 	float: left;
-	width: 55%;
+	width: 45%;
 	height: auto;
 	padding-right: 16px;
 }
 
-.step-right {
+.step-data {
 	float: right;
-	width: 45%;
-	height: auto;
-}
-
-.step-title {
 	width: 55%;
+	padding-left: 30px;
+	
 }
 
-.step-title,
+.step-data, 
 .step-description,
-.step-box {
-	margin-top: 16px;
-	margin-bottom: 16px;
+.step-introduction {
+	padding-top: 16px;
+	padding-bottom: 48px;
 }
 
 .step-description,
-.step-subtitle {
+.step-introduction {
 	font-size: 1.3rem;
 	font-family: 'Arial', sans-serif;
 	line-height: 1.9rem;
 	letter-spacing: .01rem;
-	padding-top: 16px;
-	padding-bottom: 16px;
 }
 
-.step-subtitle {
-	font-style: italic;
-	width: 55%;
-}
+/* The image component */
 
-.step-img {
-	width: 100%;
-	height: 500px;
-}
-
-.step-img img {
-	height: 100%;
-	display: block;
-	margin-left: auto;
-  	margin-right: auto;
-}
-
-.step-box {
-	display: block;
-	height: auto;
-	width: 100%;
-	padding: 5px;
-}
-
-.step-box.step-description {
-	word-wrap: break-word;
+.step-wrapper img {
+	grid-area: step-image;
+	grid-row: 1 / -1;
 }
 
 

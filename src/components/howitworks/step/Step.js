@@ -15,7 +15,7 @@ import { objectIsEmpty } from '../../../Util';
  * MetaData includes:
  * 
  * title : string
- * subtitle : string
+ * introduction : string
  * imagePath : string
  * descriptions: object 
  * endpoints: list
@@ -90,11 +90,7 @@ export function formatDescriptionToIncludeTooltips(input, keywords) {
 		result.push(input.replace(/[[\]]/g, ''));
 	}
 
-	return (
-		<div className="step-paragraph">
-			{result}
-		</div>
-	);
+	return result;
 }
 
 /**
@@ -110,11 +106,7 @@ class Step extends Component {
 	 */
 	createImageComponent() {
 		if (this.props.metaData.imagePath) {
-			return (
-				<div className="step-img">
-					<img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />
-				</div>
-			);
+			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />
 		}
 
 		return;
@@ -130,13 +122,12 @@ class Step extends Component {
 
 		if (!objectIsEmpty(this.props.endpointData[endpoint].header)) {
 			items.push(
-				<div key="head" className="step-box">
-					<DataView title={this.props.metaData.modes[endpoint] + " " + endpoint} 
-							  header={this.props.endpointData[endpoint].header} 
-							  body={this.props.endpointData[endpoint].body}
-							  shouldCollapse={true}
-							  spaceForJson={spaceForJson}/>
-				</div>
+				<DataView key={endpoint}
+						  title={this.props.metaData.modes[endpoint] + " " + endpoint}
+						  header={this.props.endpointData[endpoint].header}
+						  body={this.props.endpointData[endpoint].body}
+						  shouldCollapse={true}
+						  spaceForJson={spaceForJson} />
 			);
 		}
 
@@ -145,15 +136,15 @@ class Step extends Component {
 
 	render() {
 
-		let components = [];
+		let content = [];
 
 		// As one step can inlcude more than one endpoint, we loop through them 
 		// and append all of them
 		for (const endpoint of this.props.metaData.endpoints) {
 
 			// Left part of the step: text and responses
-			let leftComponents = [];
-			leftComponents.push(
+			let textAndReponseComponents = [];
+			textAndReponseComponents.push(
 				<div key="description" className="step-description">
 					{formatDescriptionToIncludeTooltips(this.props.metaData.descriptions[endpoint], this.props.metaData.keywords)}
 				</div>
@@ -161,37 +152,42 @@ class Step extends Component {
 
 			// Not all endpoints have responses, so we include them only if they are given
 			if (this.props.metaData.responses.includes(endpoint)) {
-				leftComponents.push(
+				textAndReponseComponents.push(
 					<ResponseTable key={"response" + endpoint} responses={this.props.endpointData[endpoint].responses} />
 				);
 			}
 
-			components.push(
-				<div className="step-content-wrapper" key={endpoint + "-content"}>
-					<div className="step-right">
-						{this.createBodyAndHeaderComponents(endpoint)}
-					</div>
-					<div className="step-left">
-						{leftComponents}
-					</div>
+			content.push(
+				<div key={endpoint + "-data"} className="step-data">
+					{this.createBodyAndHeaderComponents(endpoint)}
+				</div>
+			);
+			
+			content.push(
+				<div key={endpoint + "-text-responses"} className="step-text-responses">
+					{textAndReponseComponents}
 				</div>
 			);
 		}
 
-		// Only add the subtitle component if there is one provided. This will prevent the extra padding on steps that don't have a subtitle.
-		let subtitleComponent = [];
-		if (this.props.metaData.subtitle) {
-			subtitleComponent = <div className="step-subtitle">{this.props.metaData.subtitle}</div>
+		// Only add the introduction component if there is one provided. This will prevent the extra padding on steps that don't have a introduction.
+		let introductionComponent = [];
+		if (this.props.metaData.introduction) {
+			introductionComponent = <div className="step-introduction">{this.props.metaData.introduction}</div>
 		}
 
 		return (
 			<div className="step-wrapper">
 				{this.createImageComponent()}
-				<div key="title" className="step-title xlarge-font-size">
-					{this.props.metaData.title}
+				<div className="step-header">
+					<div key="title" className="step-title xlarge-font-size">
+						{this.props.metaData.title}
+					</div>
+					{introductionComponent}
 				</div>
-				{subtitleComponent}
-				{components}
+				<div className="step-content" key={this.props.metaData.title + "-content"}>
+					{content}
+				</div>
 			</div>
 		);
 	}
