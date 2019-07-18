@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Tooltip from "rc-tooltip";
 import DataView from "../dataview/DataView"
 import ResponseTable from "../responses/ResponseTable";
 import PropTypes from "prop-types";
-import 'rc-tooltip/assets/bootstrap.css';
+import {TooltipText} from "../tooltip/Tooltip"
 import "./Step.css"
 import { objectIsEmpty } from '../../../Util';
 
@@ -32,68 +31,6 @@ const propTypes = {
 
 
 /**
- * Creates a tooltip for some word with a given description.
- * 
- * @param {*} keyword The word to create the tooltip for.
- * @param {*} keywordData The keyword data to create the tooltip for.
- */
-export function createToolTip(keyword, keywordData) {
-
-	return (
-		<Tooltip
-			key={keyword}
-			overlay={
-				<div className="padding-s default-font-size keyword-overlay">
-					<div className="large-font-size">
-						<b>{keywordData.title}</b>
-					</div>
-					<br />
-					<div className="default-font-size">
-						{keywordData.description}
-					</div>
-					<br />
-					<br />
-					<a className="rc-custom-link" href={keywordData.link} target="_blank" rel="noopener noreferrer">{keywordData.linkTitle}</a>
-				</div>
-			}
-			placement="bottom">
-			<button className="underlined-purple"><u>{keyword}</u></button>
-		</Tooltip>
-	);
-}
-
-/**
- * Injects tooltips (popups on hover) for a given input for some keywords.
- * 
- * @param {*} input The text to inject tooltips into.
- * @param {*} keywords The keywords that should be hoverable and display a tooltip.
- */
-export function formatDescriptionToIncludeTooltips(input, keywords) {
-	const matches = input.match(/\[.*?\]/g);
-	let result = [];
-
-	if (matches && !objectIsEmpty(keywords)) {
-		let currentIndex = 0;
-
-		for (const match of matches) {
-			const indexOfMatch = input.indexOf(match);
-			result.push(input.substring(currentIndex, indexOfMatch));
-
-			const matchWithoutBrackets = match.replace(/[[\]]/g, '');
-			result.push(createToolTip(matchWithoutBrackets, keywords[matchWithoutBrackets]));
-			currentIndex = indexOfMatch + match.length;
-		}
-
-		result.push(input.substring(currentIndex, input.length));
-	}
-	else {
-		result.push(input.replace(/[[\]]/g, ''));
-	}
-
-	return result;
-}
-
-/**
  * Essentially the tab size within the json in the header and body.
  */
 const spaceForJson = 4;
@@ -117,7 +54,7 @@ class Step extends Component {
 	 * 
 	 * @param {*} endpoint The endpoint to create header and body components for.
 	 */
-	createBodyAndHeaderComponents(endpoint) {
+	createBodyAndHeaderComponentsForEndpoint(endpoint) {
 		let items = [];
 
 		if (!objectIsEmpty(this.props.endpointData[endpoint].header)) {
@@ -134,6 +71,45 @@ class Step extends Component {
 		return items;
 	}
 
+	/**
+	 * Constructs one endpoint component with description, responses and data view (header and body).
+	 * 
+	 * @param {*} endpoint The endpoint to construct for.
+	 */
+	createEndpointContent(endpoint) {
+		let content = [];
+
+		// Left part of the step: text and responses
+		let textAndReponseComponents = [];
+		textAndReponseComponents.push(
+			<div key="description" className="step-description">
+				<TooltipText input={this.props.metaData.descriptions[endpoint]}
+					keywordsData={this.props.metaData.keywords} />
+			</div>
+		);
+
+		// Not all endpoints have responses, so we include them only if they are given
+		if (this.props.metaData.responses) {
+			textAndReponseComponents.push(
+				<ResponseTable key={"response" + endpoint} responses={this.props.endpointData[endpoint].responses} />
+			);
+		}
+
+		content.push(
+			<div key={endpoint + "-data"} className="step-data">
+				{this.createBodyAndHeaderComponentsForEndpoint(endpoint)}
+			</div>
+		);
+
+		content.push(
+			<div key={endpoint + "-text-responses"} className="step-text-responses">
+				{textAndReponseComponents}
+			</div>
+		);
+
+		return content;
+	} 
+
 	render() {
 
 		let content = [];
@@ -141,40 +117,18 @@ class Step extends Component {
 		// As one step can inlcude more than one endpoint, we loop through them 
 		// and append all of them
 		for (const endpoint of this.props.metaData.endpoints) {
-
-			// Left part of the step: text and responses
-			let textAndReponseComponents = [];
-			textAndReponseComponents.push(
-				<div key="description" className="step-description">
-					{formatDescriptionToIncludeTooltips(this.props.metaData.descriptions[endpoint], this.props.metaData.keywords)}
-				</div>
-			);
-
-			// Not all endpoints have responses, so we include them only if they are given
-			if (this.props.metaData.responses) {
-				textAndReponseComponents.push(
-					<ResponseTable key={"response" + endpoint} responses={this.props.endpointData[endpoint].responses} />
-				);
-			}
-
-			content.push(
-				<div key={endpoint + "-data"} className="step-data">
-					{this.createBodyAndHeaderComponents(endpoint)}
-				</div>
-			);
-
-			content.push(
-				<div key={endpoint + "-text-responses"} className="step-text-responses">
-					{textAndReponseComponents}
-				</div>
-			);
+			content.push(this.createEndpointContent(endpoint));
 		}
 
 		// Only add the introduction component if there is one provided. This will prevent the extra padding on steps that don't have a introduction.
 		let introductionComponent = [];
 		if (this.props.metaData.introduction) {
-			console.log(this.props.metaData.introduction)
-			introductionComponent = <div className="step-introduction">{formatDescriptionToIncludeTooltips(this.props.metaData.introduction, this.props.metaData.keywords)}</div>
+			introductionComponent = (
+				<div className="step-introduction">
+					<TooltipText input={this.props.metaData.introduction}
+								 keywordsData={this.props.metaData.keywords} />
+				</div>
+			);
 		}
 
 		return (
