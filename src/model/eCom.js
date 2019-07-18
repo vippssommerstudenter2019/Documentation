@@ -3,7 +3,7 @@ const eComSections = `
 access_token:
     title: Get accesss token
     introduction: 
-    imagePath: ../../assets/ecom-steps/Step1.svg
+    imagePath: ../../assets/ecom-steps/PayWithVipps.svg
     endpoints:
         - /accesstoken/get
     descriptions:
@@ -23,7 +23,7 @@ access_token:
 endpoints:
     title: Set up endpoints required by Vipps
     introduction: In order for Vipps to send and receive information from you, you need to implement some [endpoints] at your [backend]. They make it possible for you to for example get transaction updates and provide shipping details. 
-    imagePath: ../../assets/ecom-steps/Step2.svg
+    imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
     endpoints:
         - "[callbackPrefix]/v2/payments/{orderId}"
         - "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails"
@@ -54,7 +54,7 @@ endpoints:
 initate:
     title: Initiate payment
     introduction: 
-    imagePath: ../../assets/ecom-steps/Step3.svg
+    imagePath: ../../assets/ecom-steps/Initiate.svg
     endpoints:
         - /ecomm/v2/payments
     descriptions:
@@ -84,7 +84,7 @@ initate:
 customer_confirms:
     title: Customer confirmation and checking status
     introduction: 
-    imagePath: ../../assets/ecom-steps/Step4.svg
+    imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
     endpoints:
         - "[callbackPrefix]/v2/payments/{orderId}"
     descriptions:
@@ -103,7 +103,7 @@ customer_confirms:
 ship_item:
     title: You confirm the order and ship/deliver the item
     introduction: 
-    imagePath: ../../assets/ecom-steps/Step5.svg
+    imagePath: ../../assets/ecom-steps/ShipItem.svg
     endpoints:
         - ship_item
     descriptions:
@@ -116,7 +116,7 @@ ship_item:
 capture:
     title: Withdraw the money
     introduction: 
-    imagePath: ../../assets/ecom-steps/Step5.svg
+    imagePath: ../../assets/ecom-steps/Capture.svg
     endpoints:
         - "/ecomm/v2/payments/{orderId}/capture"
     descriptions:
@@ -130,7 +130,7 @@ capture:
 cancellation:
     title: Cancellation of payment
     introduction: 
-    imagePath: ../../assets/ecom-steps/cancel.svg
+    imagePath: ../../assets/ecom-steps/Cancel.svg
     endpoints:
         - /ecomm/v2/payments/{orderId}/cancel
     descriptions:
@@ -143,7 +143,7 @@ cancellation:
 refund:
     title: Refunding of payment
     introduction: 
-    imagePath: ../../assets/ecom-steps/refund.svg
+    imagePath: ../../assets/ecom-steps/Refund.svg
     endpoints:
         - /ecomm/v2/payments/{orderId}/refund
     descriptions:
