@@ -128,7 +128,7 @@ export default class SwaggerExtracter {
     * @param {*} endpoint The endpoint to return for.
     * @param {*} swaggerData The data where the endpoint is located.
     */
-    getDataFromSwagger(endpoint, swaggerData) {
+    getExampleData(endpoint, swaggerData) {
 
         let header = {}, body = {}, responses = {};
 
