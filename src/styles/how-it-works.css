@@ -34,12 +34,13 @@
 .intro-wrapper,
 .content-wrapper,
 .outro-wrapper {
-	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
 .intro-wrapper   {max-width: 1500px;}
-.content-wrapper {max-width: 1300px;}
+.content-wrapper {
+	max-width: 1500px;
+}
 .outro-wrapper   {max-width: 1500px;}
 
 /*
