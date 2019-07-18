@@ -1,7 +1,8 @@
 import React from "react";
+import 'rc-tooltip/assets/bootstrap.css';
 import Tooltip from "rc-tooltip";
 import PropTypes from "prop-types";
-import 'rc-tooltip/assets/bootstrap.css';
+import "./Tooltip.css"
 
 const customToolTipPropTypes = {
     keyword: PropTypes.string.isRequired,

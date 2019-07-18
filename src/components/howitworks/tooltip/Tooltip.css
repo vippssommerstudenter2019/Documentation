@@ -1,0 +1,20 @@
+.rc-tooltip {
+	opacity: 1;
+    z-index: 4;
+    max-width: 400px;
+	border-radius: 100px 25px 25px 25px;
+}
+
+.underlined-purple {
+	color: #49367e;
+	text-decoration: underline;
+}
+
+.rc-custom-link {
+	color: #FFF4EC;
+	text-decoration: underline;
+}
+
+.rc-custom-link, a:hover {
+    color: inherit; 
+}
