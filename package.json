@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "codemirror": "^5.48.0",
+    "js-yaml": "^3.13.1",
     "json-schema-ref-parser": "^7.1.0",
     "materialize-css": "^1.0.0-rc.2",
     "prismjs": "^1.16.0",
