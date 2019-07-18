@@ -53,7 +53,7 @@ export function createToolTip(keyword, keywordData) {
 					</div>
 					<br />
 					<br />
-					<a className="rc-custom-link" href={keywordData.link} target="_blank" rel="noopener noreferrer">API documentation</a>
+					<a className="rc-custom-link" href={keywordData.link} target="_blank" rel="noopener noreferrer">{keywordData.linkTitle}</a>
 				</div>
 			}
 			placement="bottom">
@@ -123,11 +123,11 @@ class Step extends Component {
 		if (!objectIsEmpty(this.props.endpointData[endpoint].header)) {
 			items.push(
 				<DataView key={endpoint}
-						  title={this.props.metaData.modes[endpoint] + " " + endpoint}
-						  header={this.props.endpointData[endpoint].header}
-						  body={this.props.endpointData[endpoint].body}
-						  shouldCollapse={true}
-						  spaceForJson={spaceForJson} />
+					title={this.props.metaData.modes[endpoint] + " " + endpoint}
+					header={this.props.endpointData[endpoint].header}
+					body={this.props.endpointData[endpoint].body}
+					shouldCollapse={true}
+					spaceForJson={spaceForJson} />
 			);
 		}
 
@@ -151,7 +151,7 @@ class Step extends Component {
 			);
 
 			// Not all endpoints have responses, so we include them only if they are given
-			if (this.props.metaData.responses.includes(endpoint)) {
+			if (this.props.metaData.responses) {
 				textAndReponseComponents.push(
 					<ResponseTable key={"response" + endpoint} responses={this.props.endpointData[endpoint].responses} />
 				);
@@ -162,7 +162,7 @@ class Step extends Component {
 					{this.createBodyAndHeaderComponents(endpoint)}
 				</div>
 			);
-			
+
 			content.push(
 				<div key={endpoint + "-text-responses"} className="step-text-responses">
 					{textAndReponseComponents}
@@ -173,7 +173,8 @@ class Step extends Component {
 		// Only add the introduction component if there is one provided. This will prevent the extra padding on steps that don't have a introduction.
 		let introductionComponent = [];
 		if (this.props.metaData.introduction) {
-			introductionComponent = <div className="step-introduction">{this.props.metaData.introduction}</div>
+			console.log(this.props.metaData.introduction)
+			introductionComponent = <div className="step-introduction">{formatDescriptionToIncludeTooltips(this.props.metaData.introduction, this.props.metaData.keywords)}</div>
 		}
 
 		return (
