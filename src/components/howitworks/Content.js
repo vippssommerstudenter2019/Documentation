@@ -4,7 +4,7 @@ import Step from "./step/Step";
 import SwaggerExtracter from "../../model/SwaggerExtracter"
 
 const propTypes = {
-    sections: PropTypes.array.isRequired,
+    sections: PropTypes.object.isRequired,
     swaggerData: PropTypes.object.isRequired
 };
 
@@ -12,11 +12,11 @@ const swaggerExtracter = new SwaggerExtracter();
 
 class Content extends React.Component {
 
-    contentFromSection(section, i) {
+    contentFromSection(section) {
         // Check if the swagger data has loaded.
         if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
             return (
-                <p key={i}>Loading...</p>
+                <p key={section.title}>Loading...</p>
             );
         }
 
@@ -41,14 +41,17 @@ class Content extends React.Component {
     }
 
     render() {
-        const sections = this.props.sections.slice();
+        let components = [];
 
-        let items = [];
-        Array.from(sections, (val, index) => { return items.push(this.contentFromSection(val, index)); });
+        for (const section of Object.values(this.props.sections)) {
+            components.push(
+                this.contentFromSection(section)
+            );
+        }
 
         return (
             <div className="content-wrapper" > 
-		        {items}
+		        {components}
             </div>
         );
     }
