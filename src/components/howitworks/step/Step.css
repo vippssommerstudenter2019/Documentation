@@ -2,27 +2,20 @@
   * The outer wrapper, includes everything in the step
   */
 .step-wrapper {
-	overflow: auto;
+	display:inline-block;
+
 
 	width: 100%;
 	margin-top: 128px;
 	margin-bottom: 200px;
-	display: grid;
-	grid-template-columns: 250px auto;
-	grid-template-rows: auto auto;
-	grid-column-gap: 30px;
-	grid-template-areas: "step-image step-header"
-						 ".			 step-content";
 }
 
 /* Includes the title and the introduction (if any) */
 .step-header {
-	grid-area: step-header;
 }
 
 .step-title {
 	width: 45%;
-	grid-area: step-title;
 }
 
 .step-introduction {
@@ -37,7 +30,6 @@
 .step-content {
 	display: block;
 	overflow: auto;
-	grid-area: step-content;
 }
 
 .step-text-responses {
@@ -51,7 +43,6 @@
 	float: right;
 	width: 55%;
 	padding-left: 30px;
-	
 }
 
 .step-data, 
@@ -72,8 +63,11 @@
 /* The image component */
 
 .step-wrapper img {
-	grid-area: step-image;
-	grid-row: 1 / -1;
+	position: absolute; 
+	width: 300px;
+	height: 300px;
+    margin-left: -300px;
+	margin-top: -100px;
 }
 
 
