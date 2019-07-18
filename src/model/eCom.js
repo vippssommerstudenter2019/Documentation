@@ -1,7 +1,7 @@
 const eComSections = [
     {
         "title": "Get accesss token",
-        "subtitle": "",
+        "introduction": "",
         "imagePath": "../../assets/ecom-steps/Step1.svg",
         "descriptions": {
             "/accesstoken/get": "In order to make API calls to Vipps, you need a valid [access token]. This token has to be renewned every 24 hours.",
@@ -36,7 +36,7 @@ const eComSections = [
             "[consentRemovalPrefix]/v2/consents/{userId}": "DELETE"
         },
         "title": "Setup endpoints required by Vipps",
-        "subtitle": "In order for Vipps to send and receive information from you, you need to implement some [endpoints]. They make it possible for you to for example get transaction updates and provide shipping details.",
+        "introduction": "In order for Vipps to send and receive information from you, you need to implement some [endpoints]. They make it possible for you to for example get transaction updates and provide shipping details.",
         "imagePath": "../../assets/ecom-steps/Step1.svg",
         "descriptions": {
             "[callbackPrefix]/v2/payments/{orderId}": "Gets called when there is an transaction update for an order. The callback prefix is the endpoint at your site where Vipps can send transaction updates to.",
@@ -59,7 +59,7 @@ const eComSections = [
             "/ecomm/v2/payments" : "POST"
         },
         "title": "1. Initiate payment",
-        "subtitle" : "",
+        "introduction" : "",
         "imagePath": "../../assets/ecom-steps/Step2.svg",
         "descriptions": {
             "/ecomm/v2/payments": "Sends a request to Vipps to start the payment. Once the transaction is successfully initiated in Vipps, you will receive a URL in response which you can direct the customer to the [Vipps landing page] with. You need to provide a [fallback URL] to you site which the customer will return to after confirming in the Vipps app. In order to get the status of the payment, Vipps will send infomation to the [callbackPrefix URL]. Passing ‘isApp’ as true will make Vipps respond with an [app-switch deeplink] that can take the customer directly to the Vipps app..",
@@ -102,7 +102,7 @@ const eComSections = [
             "[callbackPrefix]/v2/payments/{orderId}" : "POST"
         },
         "title": "2. Customer confirmation and checking status",
-        "subtitle": "",
+        "introduction": "",
         "imagePath": "../../assets/ecom-steps/Step3.svg",
         "descriptions": {
             "[callbackPrefix]/v2/payments/{orderId}": "The customer is now being taken to the landing page and will confirm the [reservation of the payment] in the Vipps app. You have to check if the reservation of the payment was successful before doing anything else. This is where the callback prefix URL comes into the picture. You have set up an [endpoint] at that URL where you'll get status updates and can check that the money is reserved. The transactionInfo will yield a status of 'RESERVE' if everything is OK.",
@@ -131,7 +131,7 @@ const eComSections = [
         "modes": {
         },
         "title": "4. You confirm the order and ship the item or deliver the service",
-        "subtitle": "",
+        "introduction": "",
         "imagePath": "../../assets/ecom-steps/Step5.svg",
         "descriptions": {
             "merchantConfirm": "Now, you can provide the customer with a confirmation of that you’ve been given the order and that payment is reserved. Next step is delivering the service or shipping the items ordered from the customer.",
@@ -150,7 +150,7 @@ const eComSections = [
             "/ecomm/v2/payments/{orderId}/capture" : "POST"
         },
         "title": "5. Withdraw",
-        "subtitle": "",
+        "introduction": "",
         "imagePath": "../../assets/ecom-steps/Step7.svg",
         "descriptions": {
             "/ecomm/v2/payments/{orderId}/capture": "Up to this point, the money is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped.  This is called a capture. You send a capture request to Vipps so the money can be withdrawn from the buyer's account.",
@@ -169,7 +169,7 @@ const eComSections = [
             "/ecomm/v2/payments/{orderId}/cancel": "PUT"
         },
         "title": "Cancellation of payement",
-        "subtitle": "",
+        "introduction": "",
         "imagePath": "../../assets/ecom-steps/Step7.svg",
         "descriptions": {
             "/ecomm/v2/payments/{orderId}/cancel": "If you as the seller can't deliver the ordered service or the item isn't in stock, you can send a cancel message to Vipps in order to free up the reservation of the payment. In that way, the money will be availabe to use for the buyer again.",
@@ -188,7 +188,7 @@ const eComSections = [
             "/ecomm/v2/payments/{orderId}/refund": "POST"
         },
         "title": "Refunding the payment",
-        "subtitle": "",
+        "introduction": "",
         "imagePath": "../../assets/ecom-steps/Step7.svg",
         "descriptions": {
             "/ecomm/v2/payments/{orderId}/refund": "If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full. You initiate the refund by sending information as serial number, amount and transaction text.",
@@ -203,7 +203,7 @@ const eComSections = [
 
 const eComIntro = {
     "title": "Vipps eCom API",
-    "subtitle": "Understanding the process of online payments",
+    "introduction": "Understanding the process of online payments",
     "description": "Before implementing the Vipps eCom API, you’ll need to get keys for testing and production through the developer portal. Look here for how to get started.\n\nAlso, you should know how the payment process works.Underneath is a stepwise description of the payment process, including the customer, the Vipps eCom API and your website.",
     "imgPath": "../../assets/images/womanWithPhone.svg"
 };
