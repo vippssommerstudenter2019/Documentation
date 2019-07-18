@@ -134,12 +134,10 @@ class Step extends Component {
 		return (
 			<div className="step-wrapper">
 				{this.createImageComponent()}
-				<div className="step-header">
-					<div key="title" className="step-title xlarge-font-size">
-						{this.props.metaData.title}
-					</div>
-					{introductionComponent}
+				<div key="title" className="step-title">
+					{this.props.metaData.title}
 				</div>
+				{introductionComponent}
 				<div className="step-content" key={this.props.metaData.title + "-content"}>
 					{content}
 				</div>
