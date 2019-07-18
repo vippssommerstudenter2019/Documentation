@@ -73,6 +73,7 @@ initate:
             title: What is the fallback URL?
             description: An URL on your site that the customer willl be redirected to after they have confirmed the payment in the Vipps app, which makes it possible for you to provide an order confirmation or a receipt. 
             linkTitle: API Documentation
+            link: http://localhost:3000/documentation/ecommerce/#initiate-payment 
         app-switch deeplink:
             title: What is app-switch?
             description: If you are implementing Vipps in an iOS or Android App, you can – with the help of the app-switch deeplink – guide your customers directly towards the Vipps app to make a more streamlined experience.
