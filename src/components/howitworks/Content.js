@@ -23,7 +23,7 @@ class Content extends React.Component {
         // We use the swagger extracter to get example headers, bodies and responses for every endpoint in this step.
         var endpointData = {};
         for (const endpoint of section.endpoints) {
-            const [header, body, responses] = swaggerExtracter.getDataFromSwagger(endpoint, this.props.swaggerData);
+            const [header, body, responses] = swaggerExtracter.getExampleData(endpoint, this.props.swaggerData);
             endpointData[endpoint] = {
                 header: header,
                 body: body,
