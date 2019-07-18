@@ -1,21 +1,16 @@
  /*
   * The outer wrapper, includes everything in the step
   */
-.step-wrapper {
-	display:inline-block;
-
-
-	width: 100%;
-	margin-top: 128px;
+.step-wrapper {	
+	margin-top: 50px;
 	margin-bottom: 200px;
-}
-
-/* Includes the title and the introduction (if any) */
-.step-header {
 }
 
 .step-title {
 	width: 45%;
+	font-family: VippsHeader;
+	font-size: 35px;
+	line-height: 50px;
 }
 
 .step-introduction {
@@ -54,10 +49,11 @@
 
 .step-description,
 .step-introduction {
-	font-size: 1.3rem;
-	font-family: 'Arial', sans-serif;
-	line-height: 1.9rem;
-	letter-spacing: .01rem;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 23px;
+	line-height: 35px;
 }
 
 /* The image component */
@@ -68,28 +64,4 @@
 	height: 300px;
     margin-left: -300px;
 	margin-top: -100px;
-}
-
-
-/**
- * The styling for tooltip.
- */
-.rc-tooltip {
-	opacity: 1;
-	z-index: 4;
-	border-radius: 100px 25px 25px 25px;
-}
-
-.underlined-purple {
-	color: #49367e;
-	text-decoration: underline;
-}
-
-.rc-custom-link {
-	color: #FFF4EC;
-	text-decoration: underline;
-}
-
-.rc-custom-link, a:hover {
-    color: inherit; 
 }

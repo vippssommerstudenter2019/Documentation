@@ -1,5 +1,4 @@
-
-
+@import url("../../../styles/how-it-works.css");
 
 .response-wrapper {
   margin-bottom: 10px;  
@@ -9,14 +8,19 @@
 .response-button-collapsible,
 .response-displayer-collapsible {
   background-color: #edf8f4;
-  color: black;
-  padding: 12px;
+  color: var(--vippsblack);
+  padding: 5px 5px 5px 10px;
   width: 100%;
+
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 28px;
+
   border-radius: 5px;
   text-align: left;
-  padding-left: 25px;
   outline: none;
-  font-size: 15px;
 }
 
 .response-button-collapsible {
