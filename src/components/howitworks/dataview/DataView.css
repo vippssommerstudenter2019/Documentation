@@ -25,6 +25,7 @@
   background-color:var(--athensGreyLight);
   color: var(--rum);
   padding: 25px 0px 0px 35px; 
+  border-radius: 5px 5px 0px 0px;
 }
 
 
@@ -35,7 +36,6 @@
   height: 50px;
   width: 100%;
 	background-color: var(--athensGreyLight); 
-  border-radius: 5px 5px 0px 0px;
 }
 
 .copy-button {
