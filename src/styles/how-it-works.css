@@ -115,13 +115,10 @@
 	font-weight: bold;
 }
 
-/*
- * The styling for text links and popups.
- */
-.keyword-overlay {
-	max-width: 400px;
+/* Styling for the sections */
+
+.section-title {
+	color: var(--vippsblack);
+	font-weight: bold;
 }
-
-
-
 
