@@ -6,13 +6,14 @@ import PropTypes from "prop-types";
 import "../../model/SwaggerExtracter";
 import '../../styles/how-it-works.css';
 import $RefParser from "json-schema-ref-parser";
+import yaml from "js-yaml";
 
 /**
  * The input props. 
  */
 const propTypes = {
 	intro: PropTypes.object.isRequired,
-	sections: PropTypes.array.isRequired,
+	sections: PropTypes.string.isRequired,
 	outro: PropTypes.object.isRequired,
 	swaggerURL: PropTypes.string.isRequired,
 };
@@ -26,6 +27,7 @@ class HowItWorks extends React.Component {
 		super(props);
 
 		this.state = {
+			metaData: yaml.safeLoad(this.props.sections),
 			swaggerData: {}
 		};
 	}
@@ -44,10 +46,12 @@ class HowItWorks extends React.Component {
 					// TODO: Handle error
 				}
 				else {
-					this.setState({ swaggerData: data }); 
+					this.setState({ 
+						swaggerData: data,
+						metaData: this.state.metaData
+					}); 
 				}
 			});    
-
 		});
 	}
 
@@ -58,7 +62,7 @@ class HowItWorks extends React.Component {
 				<IntroBox content={this.props.intro} />
 				<Content 
 					swaggerData={this.state.swaggerData}	
-					sections={this.props.sections}
+					sections={this.state.metaData}
 				/>
 				<OutroBox content={this.props.outro} />
 			</div>
