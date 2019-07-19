@@ -120,4 +120,38 @@ export default class SwaggerExtracter {
 
         return {};
    }
+
+
+    /**
+    * Returns header, body and response for a given endpoint from the swagger data.
+    * 
+    * @param {*} endpoint The endpoint to return for.
+    * @param {*} swaggerData The data where the endpoint is located.
+    */
+    getExampleData(endpoint, swaggerData) {
+
+        let header = {}, body = {}, responses = {};
+
+        // Check out if the swagger file contains the id (which is the endpoint)
+        if (swaggerData.paths.hasOwnProperty(endpoint)) {
+
+            // Retrieve the header
+            header = this.getHeaderForEndpointFromSwaggerJson(endpoint, swaggerData);
+
+            // Get the endpoint data which includes request body (if any), responeses etc.
+            const endpointData = swaggerData.paths[endpoint][Object.keys(swaggerData.paths[endpoint])[0]];
+
+            // We ectract the body if there is any
+            if (endpointData.hasOwnProperty("requestBody")) {
+                body = this.getBodyExampleForEndpointFromSwaggerJson(endpoint, swaggerData, false);
+            }
+
+            // We ectract the responses if there are any
+            if (endpointData.hasOwnProperty("responses")) {
+                responses = endpointData.responses;
+            }
+        }
+
+        return [header, body, responses];
+    }
 }

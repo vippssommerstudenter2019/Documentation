@@ -1,5 +1,4 @@
-
-
+@import url("../../../styles/how-it-works.css");
 
 .response-wrapper {
   margin-bottom: 10px;  
@@ -9,14 +8,19 @@
 .response-button-collapsible,
 .response-displayer-collapsible {
   background-color: #edf8f4;
-  color: black;
-  padding: 12px;
+  color: var(--vippsblack);
+  padding: 5px 5px 5px 10px;
   width: 100%;
+
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 28px;
+
   border-radius: 5px;
   text-align: left;
-  padding-left: 25px;
   outline: none;
-  font-size: 15px;
 }
 
 .response-button-collapsible {
@@ -35,7 +39,7 @@
   font-weight: bold;
   font-size: 15px; 
   float: right;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .response-active:after {
@@ -43,7 +47,7 @@
 }
 
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/* Add a background color to the button if it is clicked on, and when we move the mouse over it (hover) */
 .response-active, .response-button-collapsible:hover {
   background-color: var(--gallery);
 }
@@ -54,4 +58,14 @@
   overflow: hidden;
   background-color: var(--athensGreyLight);
   transition: max-height 0.2s ease-out;
+}
+
+/* Style the response json */ 
+.response-content pre,
+.response-content code {
+	font-family: 'PT Mono' , monospace;
+	font-size: .9rem;
+	line-height: 1.75rem;
+  letter-spacing: .01rem;
+  padding: 0px 0px 0px 25px !important;
 }

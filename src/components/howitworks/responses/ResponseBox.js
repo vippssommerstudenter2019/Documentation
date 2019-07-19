@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import "../../Util"
-import { objectIsEmpty } from '../../Util';
-import "./Response.css"
+import { objectIsEmpty } from '../../../Util';
+import "./ResponseBox.css"
 import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
-import SwaggerExtracter from "../../model/SwaggerExtracter";
+import '../../../../node_modules/prismjs/themes/prism.css';
+import SwaggerExtracter from "../../../model/SwaggerExtracter";
 
 const propTypes = {
     statusCode: PropTypes.string.isRequired,
@@ -13,7 +12,7 @@ const propTypes = {
     json: PropTypes.object.isRequired
 };
 
-class Response extends React.Component {
+class ResponseBox extends React.Component {
 
     constructor(props) {
         super(props);
@@ -82,6 +81,6 @@ class Response extends React.Component {
 }
 
 
-Response.propTypes = propTypes;
+ResponseBox.propTypes = propTypes;
 
-export default Response;
+export default ResponseBox;

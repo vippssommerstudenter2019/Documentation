@@ -15,7 +15,7 @@ class IntroBox extends React.Component {
 			<div className="intro-wrapper">
 				<div className="intro-text" >
 					<div className="large-font-size">
-						{this.props.content.subtitle}
+						{this.props.content.introduction}
 					</div>
 					<div className="xxlarge-font-size">
 						<div className="intro-title">
