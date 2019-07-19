@@ -17,7 +17,7 @@ class Content extends React.Component {
         let subsections = [];
 
         subsections.push(
-            <div className="hero-font-size section-title">{title}</div>
+            <div key={title} className="hero-font-size section-title">{title}</div>
         )
 
         for (const subsection of Object.values(section)) {
