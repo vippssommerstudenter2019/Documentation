@@ -20,7 +20,7 @@ class Content extends React.Component {
             <div key={title} className="hero-font-size section-title">{title}</div>
         )
 
-        for (const subsection of Object.values(section)) {
+        for (const [id, subsection] of Object.entries(section)) {
             // We use the swagger extracter to get example headers, bodies and responses for every endpoint in this step.
 
             var endpointData = {};
@@ -35,6 +35,7 @@ class Content extends React.Component {
 
             subsections.push(
                 <Step
+                    id={id}
                     key={subsection.endpoints[0] + subsection.title}
                     metaData={subsection}
                     endpointData={endpointData}
@@ -50,12 +51,13 @@ class Content extends React.Component {
 
         // Check if the swagger data has loaded.
         if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
-            return (
-                <p key={"tempkey"}>Loading...</p>
-            );
+            // TODO: add some sort of animation here.
+            return <div></div>;
         }
 
+
         for (const [title, section] of Object.entries(this.props.sections)) {
+
             components.push(
                 this.contentFromSection(title, section)
             );
