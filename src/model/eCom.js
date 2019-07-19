@@ -20,7 +20,7 @@ Prerequisites:
                 link: http://localhost:3000/documentation/ecommerce/#authentication
 
     endpoints:
-        title: Set up endpoints required by Vipps
+        title: Set up endpoints
         introduction: In order for Vipps to send and receive information from you, you need to implement some [endpoints] at your [backend]. They make it possible for you to for example get transaction updates and provide shipping details. 
         imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
         endpoints:
@@ -125,7 +125,7 @@ The payment process:
         responses: true
         keywords:
 
-
+Nice to know:
     cancellation:
         title: Cancellation of payment
         introduction: 
