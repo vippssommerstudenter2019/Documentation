@@ -14,7 +14,7 @@
 }
 
 .step-introduction {
-	font-style: italic;
+	font-style: italic !important;
 	width: 45%;
 }
 
