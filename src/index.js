@@ -13,12 +13,13 @@ const PageRouter = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={StartPage}/>
-            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json" 
+            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks apiName="eCom"
+                                                                                         swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json" 
                                                                                          intro={eComIntro} 
                                                                                          sections={eComSections} 
                                                                                          outro={eComOutro} />}/>
-            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro}/>}/>
-            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks intro={eComIntro} sections={eComSections} outro={eComOutro}/>} />
+            <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks apiName="invoice" intro={eComIntro} sections={eComSections} outro={eComOutro}/>}/>
+            <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks apiName="login" intro={eComIntro} sections={eComSections} outro={eComOutro}/>} />
             <Route path="/documentation/ecommerce/" component={props => <DocuPage doc="ecom"/>}/>
             <Route path="/documentation/invoice/" component={props => <DocuPage doc="invoice"/>}/>
             <Route path="/documentation/secure-login/" component={props => <DocuPage doc="login"/>}/>

@@ -7,11 +7,13 @@ import "../../model/SwaggerExtracter";
 import '../../styles/how-it-works.css';
 import $RefParser from "json-schema-ref-parser";
 import yaml from "js-yaml";
+import Sidebar from '../sidebar/sidebar';
 
 /**
  * The input props. 
  */
 const propTypes = {
+	apiName: PropTypes.string.isRequired,
 	intro: PropTypes.object.isRequired,
 	sections: PropTypes.string.isRequired,
 	outro: PropTypes.object.isRequired,
@@ -57,9 +59,32 @@ class HowItWorks extends React.Component {
 
 	render() {
 
+		let subsectionSideBarData = [];
+
+		for (const [sectionName, subsections] of Object.entries(this.state.metaData)) {
+			for (const [subsectionName, subsection] of Object.entries(subsections)) {
+				subsectionSideBarData.push({ 
+					name: subsection.title,
+					anchor: "#" + subsectionName
+				})
+			}
+		}
+
+		var sideBarData = [
+			{
+				name: "How it works",
+				anchor: "#" + this.props.apiName,
+				children: subsectionSideBarData
+			}
+		];
+		
 		return (
 			<div className="App">
-				<IntroBox content={this.props.intro} />
+				<div className="Sidebar">
+					<Sidebar headers={sideBarData} api="#ecom"/>
+				</div>
+				<IntroBox 	id={this.props.apiName}
+							content={this.props.intro} />
 				<Content 
 					swaggerData={this.state.swaggerData}	
 					sections={this.state.metaData}
