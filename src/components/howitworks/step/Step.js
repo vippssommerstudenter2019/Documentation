@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
 import DataView from "../dataview/DataView"
 import ResponseTable from "../responses/ResponseTable";
 import PropTypes from "prop-types";
@@ -10,6 +11,8 @@ import { objectIsEmpty } from '../../../Util';
 /**
  * The propes required by this component. As the step component can include information about more than
  * one endpoint, we have objects and list for the descriptions, endpoints, modes etc.
+ * 
+ * id: The identifier for this step. Used with the sidebar to scroll to this step.
  * 
  * MetaData includes:
  * 
@@ -25,6 +28,7 @@ import { objectIsEmpty } from '../../../Util';
  * EndpointData inlcudes a dictionary of endpoints with example headers, bodies and responses.
  */
 const propTypes = {
+	id: PropTypes.string.isRequired,
 	metaData: PropTypes.object.isRequired,
 	endpointData: PropTypes.object.isRequired
 };
@@ -133,7 +137,7 @@ class Step extends Component {
 		return (
 			<div className="step-wrapper">
 				{this.createImageComponent()}
-				<div key="title" className="step-title">
+				<div id={this.props.id} key="title" className="step-title">
 					{this.props.metaData.title}
 				</div>
 				{introductionComponent}
