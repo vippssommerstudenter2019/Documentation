@@ -26,6 +26,15 @@
 
 .App {
   text-align: left;
+  color: var(--vippsblack) !important;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 350px auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "sidebarheader intro-wrapper"
+    "sidebar 	   content-wrapper"
+    "sidebarfooter outro-wrapper";
 }
 
 /* 
@@ -35,14 +44,23 @@
 .intro-wrapper,
 .content-wrapper,
 .outro-wrapper {
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 200px;
+	margin-right: 200px;
 }
-.intro-wrapper   {max-width: 1300px;}
+.intro-wrapper   {
+	max-width: 1300px;
+	grid-area: intro-wrapper;
+}
+
 .content-wrapper {
 	max-width: 1300px;
+	grid-area: content-wrapper;
 }
-.outro-wrapper   {max-width: 1300px;}
+
+.outro-wrapper   {
+	max-width: 1300px;
+	grid-area: outro-wrapper;
+}
 
 /*
  *The layout for the intro elements
@@ -55,7 +73,7 @@
 	grid-template-areas:
 		"intro-text . intro-image";
 	background-color: #FFF4EC;
-	padding: 128px;
+	padding: 70px;
 	max-height: 1000px;
 	margin-top: 64px;
 	margin-bottom: 64px;
