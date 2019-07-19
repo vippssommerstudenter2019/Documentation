@@ -15,6 +15,11 @@
 	text-decoration: underline;
 }
 
-.rc-custom-link, a:hover {
+.rc-custom-link a:hover {
     color: inherit; 
 }
+
+.rc-custom-link a:active {
+    color: inherit; 
+}
+
