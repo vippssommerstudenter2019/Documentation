@@ -100,7 +100,7 @@ The payment process:
                 link: http://localhost:3000/documentation/ecommerce/#reserve
 
     ship_item:
-        title: You confirm the order and ship/deliver the item
+        title: Confirm the order and ship/deliver the item
         introduction: 
         imagePath: ../../assets/ecom-steps/ShipItem.svg
         endpoints:
