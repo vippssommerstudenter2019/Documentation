@@ -125,8 +125,7 @@ class Step extends Component {
 		if (this.props.metaData.introduction) {
 			introductionComponent = (
 				<div className="step-introduction">
-					<TooltipText input={this.props.metaData.introduction}
-								 keywordsData={this.props.metaData.keywords} />
+					<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
 				</div>
 			);
 		}
