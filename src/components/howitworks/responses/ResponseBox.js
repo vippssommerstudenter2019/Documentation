@@ -39,7 +39,7 @@ class ResponseBox extends React.Component {
 
     render() {
 
-        const error = (this.props.statusCode !== "200");
+        const error = !this.props.statusCode.startsWith("2");
         const buttonClassName = "response-button-collapsible" + (error ? " error" : "");
         const displayerClassName = "response-displayer-collapsible" + (error ? " error" : "");
 
