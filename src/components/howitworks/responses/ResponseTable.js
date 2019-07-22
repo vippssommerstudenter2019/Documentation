@@ -7,15 +7,10 @@ export default function ResponseTable(props) {
     const statusCodes = Object.keys(props.responses).sort();
 
     for (const statusCode of statusCodes) {
-        let json = {};
-
-        if (props.responses[statusCode].hasOwnProperty("content")) {
-            json = props.responses[statusCode].content;
-        }
 
         items.push(
             <div key={statusCode}>
-                <ResponseBox statusCode={statusCode} description={props.responses[statusCode].description} json={json} />
+                <ResponseBox statusCode={statusCode} description={props.responses[statusCode].description} json={props.responses[statusCode].json} />
             </div>
         );
     }
