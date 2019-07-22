@@ -146,27 +146,26 @@ Nice to know:
         endpoints:
             - /ecomm/v2/payments/{orderId}/refund
         descriptions:
-            /ecomm/v2/payments/{orderId}/refund: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full. You initiate the refund by sending information as serial number, amount and transaction text. 
+            /ecomm/v2/payments/{orderId}/refund: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full, specified with the amount field.
         modes:
             /ecomm/v2/payments/{orderId}/refund: POST
         responses: true
         keywords:
 `;
 
-const eComIntro = {
-    "title": "Vipps eCom API",
-    "introduction": "Understanding the process of online payments",
-    "description": "Before implementing the Vipps eCom API, you’ll need to get keys for testing and production through the developer portal. Look here for how to get started.\n\nAlso, you should know how the payment process works.Underneath is a stepwise description of the payment process, including the customer, the Vipps eCom API and your website.",
-    "imgPath": "../../assets/images/womanWithPhone.svg"
-};
+const eComIntro = `
+---
+title: Vipps eCom API
+introduction: Understanding the process of online payments
+description: Before implementing the Vipps eCom API, you’ll need to get keys for testing and production through the developer portal. Look here for how to get started. Also, you should know how the payment process works.Underneath is a stepwise description of the payment process, including the customer, the Vipps eCom API and your website.
+imagePath: "../../assets/images/womanWithPhone.svg"
+`;
 
-const eComOutro = {
-    "title": "Great! Now you know how the payment process works",
-    "description": "You're ready to move forward to the documentation",
-    "imgPath": "../../assets/images/jumpingMan.svg"
-};
-
-
-
+const eComOutro = `
+---
+title: Great! Now you know how the payment process works
+description: You're ready to move forward to the documentation
+imagePath: "../../assets/images/jumpingMan.svg"
+`;
 
 export { eComSections, eComIntro, eComOutro};
