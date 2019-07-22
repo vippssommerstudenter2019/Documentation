@@ -19,7 +19,7 @@ class OutroBox extends React.Component {
         return (
 				<div className="outro-wrapper">
 					<div className="outro-image">
-						<img src={this.props.content.imgPath} alt="Springing into action!"/>
+						<img src={this.props.content.imagePath} alt="Springing into action!"/>
 					</div>
 					<div className="outro-text" >
 						<div className="xxlarge-font-size">
