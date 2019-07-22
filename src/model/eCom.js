@@ -157,7 +157,7 @@ const eComIntro = `
 ---
 title: Vipps eCom API
 introduction: Understanding the process of online payments
-description: Before implementing the Vipps eCom API, you’ll need to get keys for testing and production through the developer portal. Look here for how to get started. Also, you should know how the payment process works.Underneath is a stepwise description of the payment process, including the customer, the Vipps eCom API and your website.
+description: Before implementing the Vipps eCom API, you’ll need to get keys for testing and production through the developer portal. Look here for how to get started. Also, you should know how the payment process works. Underneath is a stepwise description of the payment process, including the customer, the Vipps eCom API and your website.
 imagePath: "../../assets/images/womanWithPhone.svg"
 `;
 
@@ -166,6 +166,7 @@ const eComOutro = `
 title: Great! Now you know how the payment process works
 description: You're ready to move forward to the documentation
 imagePath: "../../assets/images/jumpingMan.svg"
+link: http://localhost:3000/documentation/ecommerce/
 `;
 
 export { eComSections, eComIntro, eComOutro};
