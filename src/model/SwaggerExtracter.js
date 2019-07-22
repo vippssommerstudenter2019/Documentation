@@ -1,154 +1,80 @@
-
+/**
+ * Extracts information from a swagger 2.0 JSON document.
+ */
 export default class SwaggerExtracter {
-
-    /**
-     * Returns all the information for a given endpoint.
-     * 
-     * @param {*} endpointName The endpoint name.
-     * @param {*} swaggerJson The swagger data where the endpoint is located. 
-     */
-    getEndpointData(endpointName, swaggerJson) {
-        return swaggerJson.paths[endpointName][Object.keys(swaggerJson.paths[endpointName])[0]];
-    }
-
-    /**
-     * Returns the header for a given endpoint.
-     *  
-     * @param {*} endpointName The name of the endpoint name.
-     * @param {*} swaggerJson The swagger data where the endpoint is located.
-     */
-    getHeaderForEndpointFromSwaggerJson(endpointName, swaggerJson) {
-        const endpointData = this.getEndpointData(endpointName, swaggerJson);
-        let json = {}
-
-        for (const parameter of endpointData.parameters) {
-            json[parameter.name] = parameter.schema.type;
-        }
-
-        return json;
-    }
-
-    /**
-     * Crawls through certain json data until it finds an object with a certain key/name.
-     * 
-     * @param {*} name The name/key to look for. 
-     * @param {*} data The data to look through. 
-     */
-    lookForObjectWithName(name, data) {
-        for (const [key, value] of Object.entries(data)) {
-            if (key === name) {
-                return data[key];
-            }
-            else if (typeof value === 'object' && value !== null) {
-                return this.lookForObjectWithName(name, value);
-            }
-        }
-    }
-
-    /**
-     * Returns the properties of an endpoint.
-     * 
-     * @param {*} object The endpoint data.
-     * @param {*} onlyRequired Wether the function should include only the required properties.
-     */
-    getPropertyNames(object, onlyRequired) {
-        let properties = [];
-
-        if (onlyRequired && object.hasOwnProperty("required")) {
-            for (const key of object.required) {
-                properties.push(key);
-            }
-        }
-        else {
-            for (const key of Object.keys(object.properties)) {
-                properties.push(key);
-            }
-        }
-
-        return properties;
-    }
 
     /**
      * Build body and all the sub properties. 
      * 
      * @param {*} schema The schema for the endpoint.
-     * @param {*} onlyRequired Wether we should only include the properties that are required. 
      */
-    buildBody(schema, onlyRequired) {
-        const properties = this.getPropertyNames(schema, onlyRequired);
+    buildBody(schema) {
+
         let map = {};
 
-        for (const property of properties) {
+        for (const property of Object.keys(schema.properties)) {
             if (schema.properties[property].hasOwnProperty("properties")) {
-                map[property] = this.buildBody(schema.properties[property], onlyRequired);
+                map[property] = this.buildBody(schema.properties[property]);
             }
             else {
-                for (const property of properties) {
-                    map[property] = schema.properties[property].example;
+                for (const property of Object.keys(schema.properties)) {
+
+                    if (schema.properties[property].hasOwnProperty("example")) {
+                        map[property] = schema.properties[property].example;
+                    }
+                    else {
+                        map[property] = schema.properties[property].type;
+                    }
                 }
             }
         }
 
         return map;
     }
-
-    /**
-     * Returns the body example for a given endpoint.
-     * 
-     * @param {*} endpointName The name of the endpoint.
-     * @param {*} swaggerJson The swagger data where the endpoint is located.
-     * @param {*} onlyRequired Wether the body should only include the required fields.
-     */
-    getBodyExampleForEndpointFromSwaggerJson(endpointName, swaggerJson, onlyRequired) {
-        // Get the request boy
-        const requestBody = this.getEndpointData(endpointName, swaggerJson).requestBody;
-        
-        // Crawl through the request body until we find the schema
-        let schema = this.lookForObjectWithName("schema", requestBody);
-
-        // We found the schema
-        if (schema !== undefined) {
-
-            // In some cases the schema will be an array of multiple properties, so we have to extract one of them
-            // TODO: Find a better solution for this.
-            if (schema.hasOwnProperty("oneOf")) {
-                schema = schema["oneOf"][1];
-            }
-
-           return this.buildBody(schema, onlyRequired);
-        }
-
-        return {};
-   }
-
-
+    
     /**
     * Returns header, body and response for a given endpoint from the swagger data.
     * 
     * @param {*} endpoint The endpoint to return for.
+    * @param {*} type The REST type for the given endpoint (POST, PUT, GET etc.)
     * @param {*} swaggerData The data where the endpoint is located.
     */
-    getExampleData(endpoint, swaggerData) {
+    getExampleData(endpoint, type, swaggerData) {
 
         let header = {}, body = {}, responses = {};
 
-        // Check out if the swagger file contains the id (which is the endpoint)
+        // Check out if the open API file contains the id (which is the endpoint)
         if (swaggerData.paths.hasOwnProperty(endpoint)) {
 
-            // Retrieve the header
-            header = this.getHeaderForEndpointFromSwaggerJson(endpoint, swaggerData);
-
             // Get the endpoint data which includes request body (if any), responeses etc.
-            const endpointData = swaggerData.paths[endpoint][Object.keys(swaggerData.paths[endpoint])[0]];
+            const endpointData = swaggerData.paths[endpoint][type.toLowerCase()];
 
-            // We ectract the body if there is any
-            if (endpointData.hasOwnProperty("requestBody")) {
-                body = this.getBodyExampleForEndpointFromSwaggerJson(endpoint, swaggerData, false);
+            // We ectract the header and body if there is any
+            for (const parameter of endpointData.parameters) {
+                if (parameter.in === "header") {
+                    header[parameter.name] = parameter.type;
+                }
+                else if (parameter.in === "body") {
+                    body = this.buildBody(parameter.schema);
+                }
             }
 
             // We ectract the responses if there are any
             if (endpointData.hasOwnProperty("responses")) {
-                responses = endpointData.responses;
+
+                for (const [statusCode, response] of Object.entries(endpointData.responses)) {
+                    let map = {};
+                    let responseBody = {};
+
+                    if (response.hasOwnProperty("schema")) {
+                        responseBody = this.buildBody(response.schema);
+                    }
+
+                    map.json = responseBody;
+                    map.description = response.description;
+
+                    responses[statusCode] = map;
+                }
             }
         }
 
