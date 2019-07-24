@@ -26,7 +26,7 @@ const PageRouter = () => (
                                                                                        sections={invoiceSections} 
                                                                                        outro={invoiceOutro}/>}/>
             <Route path="/how-it-works/secure-login/" exact component={props => <HowItWorks apiName="login" 
-                                                                                            swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-login-api/master/docs/swagger.json"
+                swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json"
                                                                                             intro={loginIntro} 
                                                                                             sections={loginSections} 
                                                                                             outro={loginOutro}/>} />
