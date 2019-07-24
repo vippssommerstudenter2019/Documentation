@@ -29,7 +29,7 @@
   color: var(--vippsblack) !important;
   margin: 0px;
   display: grid;
-  grid-template-columns: 350px auto;
+  grid-template-columns: 280px auto;
   grid-template-rows: auto auto auto;
   grid-template-areas:
     "sidebarheader intro-wrapper"
@@ -44,21 +44,21 @@
 .intro-wrapper,
 .content-wrapper,
 .outro-wrapper {
-	margin-left: 200px;
+	margin-left: 20px;
 	margin-right: 20px;
 }
 .intro-wrapper   {
-	max-width: 1300px;
+	max-width: 1100px;
 	grid-area: intro-wrapper;
 }
 
 .content-wrapper {
-	max-width: 1300px;
+	max-width: 1100px;
 	grid-area: content-wrapper;
 }
 
 .outro-wrapper   {
-	max-width: 1300px;
+	max-width: 1100px;
 	grid-area: outro-wrapper;
 }
 
