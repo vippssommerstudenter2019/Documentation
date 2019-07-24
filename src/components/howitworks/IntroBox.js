@@ -27,7 +27,7 @@ class IntroBox extends React.Component {
 					</div>
 				</div>
 				<div className="intro-image">
-					<img src={this.props.content.imgPath} alt="Woman Using ecom"/>
+					<img src={this.props.content.imagePath} alt="Woman Using ecom"/>
 				</div>
 			</div>
         );

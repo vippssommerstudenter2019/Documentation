@@ -14,9 +14,9 @@ import Sidebar from '../sidebar/sidebar';
  */
 const propTypes = {
 	apiName: PropTypes.string.isRequired,
-	intro: PropTypes.object.isRequired,
+	intro: PropTypes.string.isRequired,
 	sections: PropTypes.string.isRequired,
-	outro: PropTypes.object.isRequired,
+	outro: PropTypes.string.isRequired,
 	swaggerURL: PropTypes.string.isRequired,
 };
 
@@ -29,6 +29,8 @@ class HowItWorks extends React.Component {
 		super(props);
 
 		this.state = {
+			intro: yaml.safeLoad(this.props.intro),
+			outro: yaml.safeLoad(this.props.outro),
 			metaData: yaml.safeLoad(this.props.sections),
 			swaggerData: {}
 		};
@@ -49,6 +51,8 @@ class HowItWorks extends React.Component {
 				}
 				else {
 					this.setState({ 
+						intro: this.state.intro,
+						outro: this.state.outro,
 						swaggerData: data,
 						metaData: this.state.metaData
 					}); 
@@ -61,7 +65,7 @@ class HowItWorks extends React.Component {
 
 		let subsectionSideBarData = [];
 
-		for (const [sectionName, subsections] of Object.entries(this.state.metaData)) {
+		for (const subsections of Object.values(this.state.metaData)) {
 			for (const [subsectionName, subsection] of Object.entries(subsections)) {
 				subsectionSideBarData.push({ 
 					name: subsection.title,
@@ -84,12 +88,12 @@ class HowItWorks extends React.Component {
 					<Sidebar headers={sideBarData} api="#ecom"/>
 				</div>
 				<IntroBox 	id={this.props.apiName}
-							content={this.props.intro} />
+							content={this.state.intro} />
 				<Content 
 					swaggerData={this.state.swaggerData}	
 					sections={this.state.metaData}
 				/>
-				<OutroBox content={this.props.outro} />
+				<OutroBox content={this.state.outro} />
 			</div>
 		)
 	}

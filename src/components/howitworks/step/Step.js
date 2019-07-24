@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
 import DataView from "../dataview/DataView"
 import ResponseTable from "../responses/ResponseTable";
 import PropTypes from "prop-types";
@@ -136,7 +135,7 @@ class Step extends Component {
 
 		return (
 			<div className="step-wrapper">
-				{this.createImageComponent()}
+				{/*this.createImageComponent()*/}
 				<div id={this.props.id} key="title" className="step-title">
 					{this.props.metaData.title}
 				</div>

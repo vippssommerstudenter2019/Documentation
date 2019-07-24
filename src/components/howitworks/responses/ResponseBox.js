@@ -4,7 +4,6 @@ import { objectIsEmpty } from '../../../Util';
 import "./ResponseBox.css"
 import Prism from 'prismjs';
 import '../../../../node_modules/prismjs/themes/prism.css';
-import SwaggerExtracter from "../../../model/SwaggerExtracter";
 
 const propTypes = {
     statusCode: PropTypes.string.isRequired,
@@ -18,7 +17,6 @@ class ResponseBox extends React.Component {
         super(props);
 
         this.expandCollapsible = this.expandCollapsible.bind(this);
-        this.swaggerExtracter = new SwaggerExtracter();
     }
 
     componentDidMount() {
@@ -41,14 +39,12 @@ class ResponseBox extends React.Component {
 
     render() {
 
-        const error = (this.props.statusCode !== "200");
+        const error = !this.props.statusCode.startsWith("2");
         const buttonClassName = "response-button-collapsible" + (error ? " error" : "");
         const displayerClassName = "response-displayer-collapsible" + (error ? " error" : "");
 
         // There is content in the response, we'll add a collapsible to display the response. 
         if (!objectIsEmpty(this.props.json)) {
-
-            const schema = this.swaggerExtracter.lookForObjectWithName("schema", this.props.json);
 
             return (
                 <div key={this.props.statusCode} className="response-wrapper codeview">
@@ -60,8 +56,7 @@ class ResponseBox extends React.Component {
                             <code className="language-javascript">
 
                                 {/* We have to add a new line here to get correct indentation in the code view. */}
-
-                                {"\n" + JSON.stringify(this.swaggerExtracter.buildBody(schema, false), null, 4)}
+                                {"\n" + JSON.stringify(this.props.json, null, 4)}
                             </code>
                         </pre>
                     </div>
