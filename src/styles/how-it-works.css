@@ -48,17 +48,17 @@
 	margin-right: 20px;
 }
 .intro-wrapper   {
-	max-width: 1100px;
+	max-width: 1000px;
 	grid-area: intro-wrapper;
 }
 
 .content-wrapper {
-	max-width: 1100px;
+	max-width: 1000px;
 	grid-area: content-wrapper;
 }
 
 .outro-wrapper   {
-	max-width: 1100px;
+	max-width: 1000px;
 	grid-area: outro-wrapper;
 }
 
