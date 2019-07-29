@@ -170,7 +170,7 @@ li > div > a{
 }
 
  /* SIDEBAR SUBHEADERS */ 
- li > a {
+ .sidenav li > a {
   border-radius: 20px;
   display:inline-block !important;
   width:100% !important;
@@ -188,6 +188,7 @@ li > div > a{
 .sidenav li > a:hover {
   background-color: #f6f6f9 !important;
 }
+
 
 /*  Sidebar scrolling   */
 
