@@ -98,10 +98,7 @@ class DocuPage extends React.Component {
         return;
       }
     });
-    let sidebarHeaders =
-      navbarHeaders[2].name === "Table of contents"
-        ? navbarHeaders.slice(3)
-        : navbarHeaders.slice(2);
+    let sidebarHeaders = navbarHeaders.slice(1);
     sidebarHeaders.unshift(this.devResourceHeader(this.getChildren()));
     return sidebarHeaders;
   }

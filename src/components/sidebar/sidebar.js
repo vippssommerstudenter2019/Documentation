@@ -42,8 +42,13 @@ const SidebarNav = props => {
       <ul>
         {Object.values(head)[2].map((child, indice) => (
           <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a  key={"a index: "+ index + ", indice: " + indice }
-                href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
+            {/* Links from Developer resources opens in a new tab */}
+            {Object.values(head)[0] === "Developer resources" 
+              ? <a  key={"a index: "+ index + ", indice: " + indice }
+                    href={Object.values(child)[1]}
+                    target ="_blank"> {Object.values(child)[0]} </a>
+              : <a  key={"a index: "+ index + ", indice: " + indice }
+                    href={Object.values(child)[1]}> {Object.values(child)[0]} </a>}
           </li>
         ))}
       </ul>
