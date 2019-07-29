@@ -28,7 +28,9 @@ table code {
 
 pre,
 code {
-  /* padding: 10px !important; */
+  /* padding: 0 !important; */
+  /* font-family: monospace !important; */
+  /* line-height: normal !important; */
   background-color: var(--lightgrey) !important;
   overflow-x: auto !important;
   white-space: pre-wrap !important;
@@ -36,6 +38,13 @@ code {
   white-space: -pre-wrap !important;
   white-space: -o-pre-wrap !important;
   word-wrap: break-word !important;
+}
+
+.react-syntax-highlighter-line-number{
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 .Container {
