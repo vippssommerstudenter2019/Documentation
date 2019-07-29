@@ -46,7 +46,8 @@ const SidebarNav = props => {
             {Object.values(head)[0] === "Developer resources" 
               ? <a  key={"a index: "+ index + ", indice: " + indice }
                     href={Object.values(child)[1]}
-                    target ="_blank"> {Object.values(child)[0]} </a>
+                    target ="_blank"
+                    rel="noopener noreferrer"> {Object.values(child)[0]} </a>
               : <a  key={"a index: "+ index + ", indice: " + indice }
                     href={Object.values(child)[1]}> {Object.values(child)[0]} </a>}
           </li>
