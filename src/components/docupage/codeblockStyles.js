@@ -1,10 +1,6 @@
-
 const vippsorange = "#ff5b24";
-const lightvippsorange = "#fdf4ed";
 const vippspurple = "#4d3280";
 const vippsblue = "#59cbe8";
-// const vippsblack = "#161225";
-const vippsblueberry = "#49367e";
 const lightgrey = "#f6f6f9";
 const vippsgray = "#938FA8";
 const vippsblack = "#484848";
