@@ -162,7 +162,7 @@ h1:first-child {
   border-top: none;
 }
 
-h2{
+.Content h2{
   line-height: 41px !important;
   margin-bottom: 27px !important;
   border-top: 1px solid #c9c6d7;
@@ -170,13 +170,13 @@ h2{
   margin-top: 48px !important;
 }
 
-p {
+.Content p {
   font-size: 18px !important;
   font-family: Arial, sans-serif !important;
   line-height: 32px !important;
 }
 
-ul > li {
+.Content ul > li {
   font-size: 18px !important;
   font-family: Arial, sans-serif !important;
   line-height: 32px !important;
@@ -184,13 +184,13 @@ ul > li {
 
 /* TODO: Mediaqueries */
 
-ol{
+.Content ol{
   font-size: 18px !important;
   font-family: Arial, sans-serif !important;
   line-height: 32px !important;
 }
 
-h3, h4 {
+.Content h3, h4 {
   margin-top: 27px !important;
   margin-bottom: 27px !important;
 }
