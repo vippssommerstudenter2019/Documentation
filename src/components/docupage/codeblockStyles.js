@@ -41,7 +41,7 @@ export default {
       "hyphens": "none",
       "position": "relative",
       "margin": ".5em 0",
-      "overflow": "visible",
+      "overflow": "auto",
       "padding": "0",
       "backgroundColor": lightgrey,
       "WebkitBoxSizing": "border-box",
