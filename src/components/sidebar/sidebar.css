@@ -173,10 +173,10 @@ li > div > a{
  li > a {
   border-radius: 20px;
   display:inline-block !important;
-  width:100% !important;
+  /*width:100% !important;*/
   height:100% !important;
   line-height: 16px !important;
-  padding: 5px 10px 5px 35px !important;
+  /*padding: 5px 10px 5px 35px !important;*/
 
   vertical-align: middle;
   color: #161225 !important;
@@ -185,7 +185,7 @@ li > div > a{
 
 
 
-li > a:hover {
+.sidenav_2 li > a:hover {
   background-color: #f6f6f9 !important;
 }
 
@@ -195,6 +195,7 @@ li > a:hover {
 .collapsible-header a {
   opacity: 0.99;
 }
+
 
 
 .scrollable {
@@ -293,4 +294,3 @@ a:hover {
   -webkit-transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-
