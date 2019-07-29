@@ -41,18 +41,17 @@ code {
 
 .Container {
   margin: 0px;
-  margin-left: 40px;
   display: grid;
-  grid-template-columns: 25vw 40vw 35vw;
-  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-columns:  calc(50vw - var( --sidebarwidth / 2)) calc(50vw - var( --sidebarwidth / 2 ) - 50px);
+  grid-template-rows: 90vh 5vh;
   grid-template-areas:
-    "sidebarheader content1 content2 "
-    "sidebar content1 content2"
-    "sidebarfooter content1 content2";
+    "content1 content2 "
+    "content1 content2";
 }
 .Content {
   grid-area: content1 / content1 / content2 / content2;
-  max-width: 40vw;
+  padding-left: calc(var(--sidebarwidth) + 50px); 
+  max-width: 60em;
 }
 
 .sidebarfooter {
@@ -109,9 +108,10 @@ code {
   transition: margin-right 0.05s ease-out;
 }
 
-/* Vipps-colors */
+/* Variables */
 
 :root {
+  --sidebarwidth: 350px;
   --vippsorange: #ff5b24;
   --lightvippsorange: #fdf4ed;
   --vippspurple: #4d3280;

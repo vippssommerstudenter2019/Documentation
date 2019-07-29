@@ -215,7 +215,7 @@ li > a:hover {
 
 .fadeout-bottom {
   width: 100%;
-  margin-top: calc(82vh - 12px);
+  margin-top: calc(82vh - 24px);
   height: 12px;
   background-image: linear-gradient(to bottom, transparent 1%, white 100%);
   position: relative;
