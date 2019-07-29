@@ -37,13 +37,20 @@ table code {
 pre,
 code {
   padding: 10px !important;
-  background-color: var(--lightgrey) !important;
   overflow-x: auto !important;
   white-space: pre-wrap !important;
   white-space: -moz-pre-wrap !important;
   white-space: -pre-wrap !important;
   white-space: -o-pre-wrap !important;
   word-wrap: break-word !important;
+}
+
+pre {
+  background-color: var(--lightgrey) !important;
+}
+
+pre code {
+  background-color: transparent !important;
 }
 
 .Container {
