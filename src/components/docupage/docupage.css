@@ -1,3 +1,7 @@
+.Content {
+  margin-bottom: 10vh;
+}
+
 #developer-resources {
   margin-top: 0 !important;
   color: var(--vippsorange) !important;
@@ -42,16 +46,13 @@ code {
 .Container {
   margin: 0px;
   display: grid;
-  grid-template-columns:  calc(50vw - var( --sidebarwidth / 2)) calc(50vw - var( --sidebarwidth / 2 ) - 50px);
-  grid-template-rows: 90vh 5vh;
+  grid-template-columns:  calc(var( --sidebarwidth) + 50px) auto auto;
   grid-template-areas:
-    "content1 content2 "
-    "content1 content2";
+    ". content1 content2 "
 }
 .Content {
-  grid-area: content1 / content1 / content2 / content2;
-  padding-left: calc(var(--sidebarwidth) + 50px); 
-  max-width: 60em;
+  grid-area: content1 ;
+  max-width: 50em ;
 }
 
 .sidebarfooter {
