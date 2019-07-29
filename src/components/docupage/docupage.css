@@ -37,7 +37,6 @@ table code {
 pre,
 code {
   padding: 10px !important;
-  background-color: transparent !important;
   overflow-x: auto !important;
   white-space: pre-wrap !important;
   white-space: -moz-pre-wrap !important;
@@ -48,6 +47,10 @@ code {
 
 pre {
   background-color: var(--lightgrey) !important;
+}
+
+pre code {
+  background-color: transparent !important;
 }
 
 .Container {
