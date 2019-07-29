@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import vippsColours from './codeblockStyles';
+
 
 class CodeBlock extends PureComponent {
   static propTypes = {
@@ -16,7 +18,7 @@ class CodeBlock extends PureComponent {
     const { language, value } = this.props;
     return (
       <div className="codeblock">
-      <SyntaxHighlighter language={language} showLineNumbers={true}>
+      <SyntaxHighlighter language={language} showLineNumbers={true} style={vippsColours}>
         {value}
       </SyntaxHighlighter>
       </div>
