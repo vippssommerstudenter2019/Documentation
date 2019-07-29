@@ -173,10 +173,10 @@ li > div > a{
  li > a {
   border-radius: 20px;
   display:inline-block !important;
-  /*width:100% !important;*/
+  width:100% !important;
   height:100% !important;
   line-height: 16px !important;
-  /*padding: 5px 10px 5px 35px !important;*/
+  padding: 5px 10px 5px 35px !important;
 
   vertical-align: middle;
   color: #161225 !important;
@@ -185,7 +185,7 @@ li > div > a{
 
 
 
-.sidenav_2 li > a:hover {
+.sidenav li > a:hover {
   background-color: #f6f6f9 !important;
 }
 
