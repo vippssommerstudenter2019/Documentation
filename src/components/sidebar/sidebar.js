@@ -8,10 +8,9 @@ import vipps_dev from "../../img/vipps_dev.svg"
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
-  <section className="Sidebar">
-    <SidebarHeader />
+  <div>
     <SidebarMenu headers={props.headers} api={props.api}/>
-  </section>
+    </div>
 );
 
 // Header for logo and backlink

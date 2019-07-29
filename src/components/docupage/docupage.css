@@ -1,3 +1,7 @@
+.Content {
+  margin-bottom: 10vh;
+}
+
 #developer-resources {
   margin-top: 0 !important;
   color: var(--vippsorange) !important;
@@ -41,18 +45,14 @@ code {
 
 .Container {
   margin: 0px;
-  margin-left: 40px;
   display: grid;
-  grid-template-columns: 350px 40vw 40vw;
-  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-columns:  calc(var( --sidebarwidth) + 50px) auto auto;
   grid-template-areas:
-    "sidebarheader content1 content2 "
-    "sidebar content1 content2"
-    "sidebarfooter content1 content2";
+    ". content1 content2 "
 }
 .Content {
-  grid-area: content1 / content1 / content2 / content2;
-  max-width: 50em;
+  grid-area: content1 ;
+  max-width: 50em ;
 }
 
 .sidebarfooter {
@@ -109,9 +109,10 @@ code {
   transition: margin-right 0.05s ease-out;
 }
 
-/* Vipps-colors */
+/* Variables */
 
 :root {
+  --sidebarwidth: 350px;
   --vippsorange: #ff5b24;
   --lightvippsorange: #fdf4ed;
   --vippspurple: #4d3280;
