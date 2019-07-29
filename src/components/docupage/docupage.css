@@ -28,7 +28,7 @@ table code {
 
 pre,
 code {
-  padding: 10px !important;
+  /* padding: 10px !important; */
   background-color: var(--lightgrey) !important;
   overflow-x: auto !important;
   white-space: pre-wrap !important;
