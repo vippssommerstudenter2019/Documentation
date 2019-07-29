@@ -4102,7 +4102,7 @@ figure {
 }
 
 code {
-	padding: .125rem .3125rem .0625rem;
+	/* padding: .125rem .3125rem .0625rem; */
 	border: 0;
 	font-weight: 300
 }
@@ -7974,7 +7974,7 @@ screen and (min-width:47.5em) {
 }
 
 code {
-	font-size: .875rem
+	/* font-size: .875rem */
 }
 
 .fonts-experiment {
