@@ -42,7 +42,7 @@ code {
   margin: 0px;
   margin-left: 40px;
   display: grid;
-  grid-template-columns: 350px 40vw 40vw;
+  grid-template-columns: 25vw 40vw 35vw;
   grid-template-rows: 5vh 90vh 5vh;
   grid-template-areas:
     "sidebarheader content1 content2 "
@@ -51,7 +51,7 @@ code {
 }
 .Content {
   grid-area: content1 / content1 / content2 / content2;
-  max-width: 50em;
+  max-width: 40vw;
 }
 
 .sidebarfooter {
