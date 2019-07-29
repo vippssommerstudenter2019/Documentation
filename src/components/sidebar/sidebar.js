@@ -33,6 +33,11 @@ const SidebarMenu = props => (
 );
 
 // Navigation Menu
+{/*
+  Takes in argument in the form of list containing collections of headers
+  Example: [{name: "ex1", anchor: "#ex1", children: [{name: "ex1a", anchor: "#ex1a"}, {name: "ex1b", anchor: "#ex1b"}]},
+            {name: "ex2", anchor: "#ex2", children: [{name: ex2a", anchor: "#ex2a"}]}]
+*/}
 const SidebarNav = props => {
   const sidebarHeaders = props.headers.map((head, index) => (
     <CollapsibleItem
