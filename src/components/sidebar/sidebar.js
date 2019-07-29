@@ -1,6 +1,6 @@
 import React from "react";
 import {SideNav, Collapsible, CollapsibleItem} from "react-materialize";
-import M from "materialize-css";
+import "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
@@ -8,10 +8,9 @@ import vipps_dev from "../../img/vipps_dev.svg"
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
-  <section className="Sidebar">
-    <SidebarHeader />
+  <div>
     <SidebarMenu headers={props.headers} api={props.api}/>
-  </section>
+    </div>
 );
 
 // Header for logo and backlink
@@ -33,6 +32,11 @@ const SidebarMenu = props => (
 );
 
 // Navigation Menu
+{/*
+  Takes in argument in the form of list containing collections of headers
+  Example: [{name: "ex1", anchor: "#ex1", children: [{name: "ex1a", anchor: "#ex1a"}, {name: "ex1b", anchor: "#ex1b"}]},
+            {name: "ex2", anchor: "#ex2", children: [{name: ex2a", anchor: "#ex2a"}]}]
+*/}
 const SidebarNav = props => {
   const sidebarHeaders = props.headers.map((head, index) => (
     <CollapsibleItem
@@ -42,8 +46,14 @@ const SidebarNav = props => {
       <ul>
         {Object.values(head)[2].map((child, indice) => (
           <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a  key={"a index: "+ index + ", indice: " + indice }
-                href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
+            {/* Links from Developer resources opens in a new tab */}
+            {Object.values(head)[0] === "Developer resources" 
+              ? <a  key={"a index: "+ index + ", indice: " + indice }
+                    href={Object.values(child)[1]}
+                    target ="_blank"
+                    rel="noopener noreferrer"> {Object.values(child)[0]} </a>
+              : <a  key={"a index: "+ index + ", indice: " + indice }
+                    href={Object.values(child)[1]}> {Object.values(child)[0]} </a>}
           </li>
         ))}
       </ul>

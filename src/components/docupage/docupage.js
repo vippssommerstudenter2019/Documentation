@@ -45,7 +45,7 @@ class DocuPage extends React.Component {
 
   goToAnchor() { 
     const hash = window.document.location.hash;
-    if (hash !="") {
+    if (hash !=="") {
         setTimeout(function() {
             if (window.location.hash) {
                 window.scrollTo(0, 0);
@@ -98,10 +98,8 @@ class DocuPage extends React.Component {
         return;
       }
     });
-    let sidebarHeaders =
-      navbarHeaders[2].name === "Table of contents"
-        ? navbarHeaders.slice(3)
-        : navbarHeaders.slice(2);
+    {/* First element is empty*/}
+    let sidebarHeaders = navbarHeaders.slice(1);
     sidebarHeaders.unshift(this.devResourceHeader(this.getChildren()));
     return sidebarHeaders;
   }

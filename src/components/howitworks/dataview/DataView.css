@@ -1,0 +1,204 @@
+@import url("../../../styles/how-it-works.css");
+
+/**
+ * Stylings for the outer container for the data view.
+ */
+.dataview {
+  background-color: var(--athensGreyLight);
+  border-radius: 5px;
+}
+
+
+.dataview pre,
+.dataview code {
+	font-family: 'PT Mono' , monospace;
+	font-size: .9rem;
+	line-height: 1.75rem;
+  letter-spacing: .01rem;
+  margin-top: 0px;
+  padding: 0px 0px 0px 35px !important;
+}
+
+.dataview-title {
+  font-family: Vipps;
+  font-size: 0.8rem;
+  background-color:var(--athensGreyLight);
+  color: var(--rum);
+  padding: 25px 0px 0px 35px; 
+  border-radius: 5px 5px 0px 0px;
+}
+
+
+/**
+ * The styling for the top bar of the data view. Is where we see the title and can copy the data.
+ */
+.dataview-utility-bar {
+  height: 50px;
+  width: 100%;
+	background-color: var(--athensGreyLight); 
+}
+
+.copy-button {
+	font-family: Vipps;
+	font-weight: lighter;
+	background-color:var(--athensGreyLight);
+  color: var(--rum);
+  float: right;
+
+  margin: 25px 25px 15px 15px;
+	font-size: 13px;
+  text-align: center;
+
+  height: 30px;
+  width: 65px;
+  border-radius: 40px;
+  border: 0.8px solid var(--ghost);
+}
+
+.copy-button:hover {
+    color: var(--manatee);
+}
+
+.copy-button.selected {
+    color: var(--rum);
+}
+
+.copy-button:focus {
+    outline: none;
+}
+
+.copy-button:active {
+    background-color: var(--athensGrey);
+}
+
+
+.header-body-button {
+	font-family: Vipps;
+  font-size: 13px;
+  line-height: 25px;
+	background-color:var(--athensGreyLight);
+  color: var(--manatee);
+  float: left;
+  outline: none;
+  width: 100%;
+  margin-right: 25px;
+  padding: 35px 5px 0px 35px;  
+
+  height: 30px;
+  width: 65px;
+}
+
+.header-body-button-activated {
+  font-weight: bold;
+  color: var(--rum);
+}
+
+.header-body-button:hover {
+    color: var(--manatee);
+}
+
+/**
+ * The non collapsable container.
+ */
+.dataview-non-collapsable {
+  padding-bottom: 10px;
+}
+
+/*
+ * The collapse function that data view is placed inside of.
+ */
+.dataview-collapse {
+	display: flex;
+	flex-direction: column;
+  width: 100%;
+	margin: 0px;
+  padding: 0px;
+  line-height: normal;
+}
+
+.dataview-collapse-content {
+	display: block;
+  overflow: hidden;
+  height: 200px;
+  padding-bottom: 10px;
+  border-radius: 0px 0px 25px 25px;
+}
+
+.dataview-collapse-overlay {
+	z-index: 4;
+	display: block;
+	margin-top: -150px;
+	height: 155px;
+	padding-top: 100px;
+	
+	text-align: center;
+	line-height: 50px;
+	font-family: Vipps;
+	font-weight: lighter;
+	color: var(--manatee);
+  border-radius: 0px 0px 25px 25px;
+
+	background: linear-gradient(rgba(255,255,255,0), var(--athensGreyLight) 80%, var(--athensGreyLight));
+}
+
+.dataview-collapse-overlay:hover {
+	color: var(--rum);
+}
+
+.dataview-collapse.expanded .dataview-collapse-content {
+	height: auto;
+	overflow: auto;
+}
+
+.dataview-collapse.expanded .dataview-collapse-overlay {
+	height: 50px;
+	margin-top: 0px;
+	padding-top: 0px;
+	line-height: 50px;
+	background: var(--athensGreyLight); /*linear-gradient(transparent, var(--athensGreyLight) 50%, var(--athensGreyLight));*/
+}
+
+/**
+ * The overlay over the data view, not implemented yet.
+ */
+
+/*
+.overlay-container {
+  position: relative;
+  width: 100%;
+}
+
+
+Used for overlay over the code view when copied. Will be implemented when we get the design ready
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+	border-radius: 0px 0px 25px 25px;
+}
+
+.overlay-container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+*/
+
