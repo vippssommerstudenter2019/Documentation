@@ -1,6 +1,7 @@
 #developer-resources {
   margin-top: 0 !important;
   color: var(--vippsorange) !important;
+  margin-bottom: 96px !important;
 }
 h1,
 h2,
@@ -153,19 +154,43 @@ h1 {
   border-top: 1px solid #c9c6d7;
   padding-top: 48px !important;
   margin-top: 48px !important;
+  margin-bottom: 27px !important;
+  line-height: 58px !important;
 }
 
 h1:first-child {
   border-top: none;
 }
 
+h2{
+  line-height: 41px !important;
+  margin-bottom: 27px !important;
+  border-top: 1px solid #c9c6d7;
+  padding-top: 48px !important;
+  margin-top: 48px !important;
+}
+
 p {
-  font-size: 16px !important;
+  font-size: 18px !important;
+  font-family: Arial, sans-serif !important;
+  line-height: 32px !important;
 }
 
 ul > li {
-  font-size: 16px !important;
-  font-family: Arial, sans-serif;
+  font-size: 18px !important;
+  font-family: Arial, sans-serif !important;
+  line-height: 32px !important;
 }
 
 /* TODO: Mediaqueries */
+
+ol{
+  font-size: 18px !important;
+  font-family: Arial, sans-serif !important;
+  line-height: 32px !important;
+}
+
+h3, h4 {
+  margin-top: 27px !important;
+  margin-bottom: 27px !important;
+}
