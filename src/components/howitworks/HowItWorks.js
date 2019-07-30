@@ -75,16 +75,16 @@ class HowItWorks extends React.Component {
 			}
 		}
 
-		var sideBarData = [
-			{
-				name: "How it works",
-				anchor: "#" + this.props.apiName,
-				children: subsectionSideBarData
-			}
-		];
+		var sideBarData = 
+		[{
+			name: "How it works",
+			anchor: "#" + this.props.apiName,
+			children: subsectionSideBarData
+		}];
 		
 		return (
 			<div className="App">
+				<div id={this.props.apiName}/>
 				<div className="Sidebar">
 					<Sidebar headers={sideBarData} api="#ecom"/>
 				</div>

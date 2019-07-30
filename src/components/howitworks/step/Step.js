@@ -27,7 +27,7 @@ import { objectIsEmpty } from '../../../Util';
  * EndpointData inlcudes a dictionary of endpoints with example headers, bodies and responses.
  */
 const propTypes = {
-	id: PropTypes.string.isRequired,
+	titleid: PropTypes.string.isRequired,
 	metaData: PropTypes.object.isRequired,
 	endpointData: PropTypes.object.isRequired
 };
@@ -134,9 +134,9 @@ class Step extends Component {
 		}
 
 		return (
-			<div className="step-wrapper" id={this.props.id} >
+			<div className="step-wrapper">
 				{this.createImageComponent()}
-				<div key="title" className="step-title">
+				<div id={this.props.titleid} key="title" className="step-title">
 					{this.props.metaData.title}
 				</div>
 				{introductionComponent}

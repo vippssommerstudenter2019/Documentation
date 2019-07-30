@@ -87,9 +87,7 @@
   background: #f6f6f9;
 }
 
-.listEl.hit {
-  background: #f6f6f9;
-}
+
 
 
 .collapsible-header {
@@ -110,7 +108,7 @@
   color: #5e3dc2 !important;
 }
 
-.hit {
+.collapsible-header.hit, .listEl.hit {
   background: #f6f6f9;
 }
 
@@ -173,9 +171,6 @@ li > div > a{
   margin-top: 18px !important;
 }
 
-.collapsible-body.hit {
-	display: block;
-}
 
  /* SIDEBAR SUBHEADERS */ 
  li > a {

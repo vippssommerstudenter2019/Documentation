@@ -43,7 +43,7 @@ class SidebarNavSpy extends Component {
 		
 		this.state = {
 			line: offset + window.innerHeight * percent,
-			active: {section: 0, subsection: 0},
+			active: {section: 0, subsection: -1},
 		}
 		
 		this.elementSpy.bind(this);
@@ -116,9 +116,21 @@ class SidebarNavSpy extends Component {
 				</ul>
 			);
 			if (activeSection === sec) {
+			if (activeSubsection === -1) {
 			return (
 				<li className="active" key={"sec"+sec}>
-					<div className="collapsible-header">{header}</div>
+					<div className="collapsible-header hit">
+						{header}	
+					</div>
+					<div className="">{subsections}</div>
+				</li>
+			);
+			}
+			return (
+				<li className="active" key={"sec"+sec}>
+					<div className="collapsible-header">
+						{header}
+					</div>
 					<div className="">{subsections}</div>
 				</li>
 			);	

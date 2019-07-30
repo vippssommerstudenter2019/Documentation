@@ -47,7 +47,7 @@ class Content extends React.Component {
 
             subsections.push(
                 <Step
-                    id={id}
+                    titleid={id}
                     key={subsection.endpoints[0] + subsection.title}
                     metaData={subsection}
                     endpointData={endpointData}
