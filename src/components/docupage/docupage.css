@@ -10,7 +10,6 @@
   font-size: calc(0.4vw + 0.4vh + .3vmin);
 }
 
-
 h1,
 h2,
 h3 {
@@ -42,8 +41,12 @@ pre {
   background-color: var(--lightgrey) !important;
 }
 
-pre code {
+/* pre code {
   background-color: transparent !important;
+} */
+
+code {
+  background: #f6f6f9;
 }
 
 .Container {
@@ -171,5 +174,6 @@ h1:first-child {
   --vippspurple: #4d3280;
   --vippsblue: #59cbe8;
   --vippsblack: #161225;
+  --lightvippsgray: #f6f6f9;
   --vippsblueberry: #49367e;
 }

@@ -11,7 +11,7 @@ export default {
       "background": "none",
       "fontFamily": "'PT Mono', monospace",
       "textAlign": "left",
-      "whiteSpace": "pre",
+      "whiteSpace": "pre-line",
       "wordSpacing": "normal",
       "wordBreak": "normal",
       "wordWrap": "normal",
@@ -21,14 +21,15 @@ export default {
       "WebkitHyphens": "none",
       "MozHyphens": "none",
       "msHyphens": "none",
-      "hyphens": "none"
+      "hyphens": "none",
+      "margin": "0px 0px 25px 25px",
     },
     "pre[class*=\"language-\"]": {
       "color": vippsgray,
       "background": "none",
       "fontFamily": "'PT Mono', monospace",
       "textAlign": "left",
-      "whiteSpace": "pre",
+      "whiteSpace": "pre-line",
       "wordSpacing": "normal",
       "wordBreak": "normal",
       "wordWrap": "normal",
@@ -40,14 +41,14 @@ export default {
       "msHyphens": "none",
       "hyphens": "none",
       "position": "relative",
-      "margin": ".5em 0",
       "overflow": "auto",
       "padding": "0",
       "backgroundColor": lightgrey,
       "WebkitBoxSizing": "border-box",
       "MozBoxSizing": "border-box",
       "boxSizing": "border-box",
-      "marginBottom": "1em"
+      "border-radius": "0px 0px 20px 20px"
+
     },
     "pre[class*=\"language-\"]>code": {
       "position": "relative",
