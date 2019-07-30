@@ -97,7 +97,9 @@ class DocuPage extends React.Component {
       } else {
         return;
       }
-    });
+    })
+    navbarHeaders.push(navbarHeader);
+    ;
     {/* First element is empty*/}
     let sidebarHeaders = navbarHeaders.slice(1);
     sidebarHeaders.unshift(this.devResourceHeader(this.getChildren()));
