@@ -46,10 +46,9 @@ const SidebarNav = props => {
       key={"Item: "+index}
       header={
         <div>
-        <a href={Object.values(head)[1]}>
-        <p className="sidebarLink">{Object.values(head)[0]}</p>
+        <a className="sidebarLink" href={Object.values(head)[1]}>{Object.values(head)[0]}
         </a>
-        <img className="arrow" src={arrow_right} alt="arrow"></img>
+        <img className="arrow" alt="arrow"></img>
         </div>
         }
     >

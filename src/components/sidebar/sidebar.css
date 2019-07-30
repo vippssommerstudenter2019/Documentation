@@ -107,7 +107,7 @@
 }
 
 .collapsible-header:hover > div > a {
-  color: var(--vippspurple) !important;
+  color: #5E3DC2!important;
 }
 
 .collapsible-header > div > a {
@@ -133,10 +133,15 @@
 
 .arrow {
   margin-right: 0 !important;
+  content:url("../../img/arrowRight.svg");
 }
 
 .active {
   background-color: white !important;
+}
+
+.active .arrow {
+  content:url("../../img/arrowDown.svg")
 }
 
 .collapsible {
