@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Mono&display=swap');
 
 #developer-resources {
   margin-top: 0 !important;
@@ -8,7 +9,6 @@
 :root {
   font-size: calc(0.4vw + 0.4vh + .3vmin);
 }
-
 
 h1,
 h2,
@@ -30,27 +30,23 @@ table code {
   padding: 0 !important;
 }
 
-.token {
-  background-color: var(--lightgrey) !important;
-}
-
-pre,
-code {
-  padding: 10px !important;
-  overflow-x: auto !important;
-  white-space: pre-wrap !important;
-  white-space: -moz-pre-wrap !important;
-  white-space: -pre-wrap !important;
-  white-space: -o-pre-wrap !important;
-  word-wrap: break-word !important;
+.react-syntax-highlighter-line-number{
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 pre {
   background-color: var(--lightgrey) !important;
 }
 
-pre code {
+/* pre code {
   background-color: transparent !important;
+} */
+
+code {
+  background: #f6f6f9;
 }
 
 .Container {
@@ -178,5 +174,6 @@ h1:first-child {
   --vippspurple: #4d3280;
   --vippsblue: #59cbe8;
   --vippsblack: #161225;
+  --lightvippsgray: #f6f6f9;
   --vippsblueberry: #49367e;
 }
