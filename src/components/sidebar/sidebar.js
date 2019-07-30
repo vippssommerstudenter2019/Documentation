@@ -48,6 +48,7 @@ class SidebarNavSpy extends Component {
 		
 		this.elementSpy.bind(this);
 		this.elementAboveLine.bind(this);
+		this.myRef = React.createRef();
 	}
 	
 	// returns a value based on the position of a element, 
@@ -81,7 +82,7 @@ class SidebarNavSpy extends Component {
 	
 	componentDidMount() {
 		this.elementSpy();
-		this.timerID = window.setInterval(() => this.elementSpy(), 100);
+		this.timerID = window.setInterval(() => this.elementSpy(), 300);
 	}
 	
 	componentWillUnmount() {
@@ -92,7 +93,8 @@ class SidebarNavSpy extends Component {
 		const activeSection = this.state.active.section;
 		const activeSubsection = this.state.active.subsection;
 		function createSubsection(subsection, sec, sub) {
-			const header = <a key={"a sec"+sec+"sub"+sub} href={subsection.anchor}> {subsection.name} </a>;
+			// key={"a sec"+sec+"sub"+sub}
+			const header = <a href={subsection.anchor}> {subsection.name} </a>;
 			if (activeSection === sec && activeSubsection === sub) {
 			return (
 				<li className="listEl hit" key={"sec"+sec+"sub"+sub}>
@@ -108,18 +110,17 @@ class SidebarNavSpy extends Component {
 		};
 		const sidebarHeaders = this.props.sections.map((section, sec) => {
 			const header = <a href={section.anchor}>{section.name}</a>;
-			const active = (activeSection === sec)? "active" : "";
 			const subsections = (
-				<ul className={active} >
+				<ul>
 					{section.children.map((el, sub) => createSubsection(el, sec, sub))}
 				</ul>
 			);
 			if (activeSection === sec) {
-			console.log("Expand: ", section.name);
 			return (
-				<CollapsibleItem key={"sec"+sec} header={header} expanded>
-					{subsections}
-				</CollapsibleItem>
+				<li className="active" key={"sec"+sec}>
+					<div className="collapsible-header">{header}</div>
+					<div className="">{subsections}</div>
+				</li>
 			);	
 			}
 			return (
@@ -127,8 +128,8 @@ class SidebarNavSpy extends Component {
 					{subsections}
 				</CollapsibleItem>
 			);
-		});
-		return (
+		}); 
+		return ( 
 			<div>
 				<SideNav className="sidebarMarg">
 				<div className='fadeout-top'/>

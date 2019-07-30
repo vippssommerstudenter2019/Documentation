@@ -169,12 +169,12 @@ li > div > a{
   margin-top: 9px !important;
 }
 
-
 .collapsible-header{
   margin-top: 18px !important;
 }
 
-.collapsible-body{
+.collapsible-body.hit {
+	display: block;
 }
 
  /* SIDEBAR SUBHEADERS */ 
