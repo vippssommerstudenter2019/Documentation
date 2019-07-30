@@ -8,7 +8,7 @@ import vipps_dev from "../../img/vipps_dev.svg"
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
-  <div>
+  <div className="Sidebar">
     <SidebarMenu headers={props.headers} api={props.api}/>
     </div>
 );
@@ -70,8 +70,8 @@ const SidebarNav = props => {
             <div className='scrollable'>
             <Collapsible accordion={false}>{sidebarHeaders}</Collapsible>
             </div>
-          <div className='fadeout-top'/>
-          <div className='fadeout-bottom'/>
+          <div className='fadeoutTop'/>
+          <div className='fadeoutBottom'/>
         </SideNav>
       </div>
       )

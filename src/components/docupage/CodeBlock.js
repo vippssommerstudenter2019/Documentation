@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import vippsColours from "./codeblockStyles";
-import "./codeblock.css"
+import codeblockCSS from "./codeblock.module.css"
 
 
 class CodeBlock extends PureComponent {
@@ -34,12 +34,12 @@ class CodeBlock extends PureComponent {
   render() {
     const { language, value } = this.props;
     return (
-      <div className="codeblock">
-        <div className="codeblockHeader">
-          <div className="codeblockLanguage">
+      <div className={codeblockCSS.codeblock}>
+        <div className={codeblockCSS.codeblockHeader}>
+          <div className={codeblockCSS.codeblockLanguage}>
             {language}
           </div>
-          <button className="copy-button" onClick={this.handleCopyClick}>Copy</button>
+          <button className={codeblockCSS.copyButton} onClick={this.handleCopyClick}>Copy</button>
         </div>
         <SyntaxHighlighter language={language} showLineNumbers={true} style={vippsColours}>
           {/* We have to add a new line here to get correct indentation in the code view. */}
