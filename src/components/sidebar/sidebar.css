@@ -87,6 +87,10 @@
   background: #f6f6f9;
 }
 
+.listEl.hit {
+  background: #f6f6f9;
+}
+
 
 .collapsible-header {
   padding: 0px 30px 0px 30px !important;
@@ -104,6 +108,10 @@
 .collapsible-header:hover {
   background: #f6f6f9 !important;
   color: #5e3dc2 !important;
+}
+
+.hit {
+  background: #f6f6f9;
 }
 
 .active {

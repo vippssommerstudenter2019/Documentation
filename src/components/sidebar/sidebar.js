@@ -28,30 +28,11 @@ const SidebarHeader = () => (
 // Structures the sidebar content
 const SidebarMenu = props => (
   <div className="SidebarMenu">
-    <SidebarNav headers={props.headers} api={props.api}/>
+	<SidebarNavSpy offset={0} percent={50} sections={props.headers} api={props.api}/>
   </div>
 );
 
-function createSections(headers) {
-	let sections = [];
-	Array.from(headers, (head, i) => {
-		const name = Object.values(head)[1].replace("#","");
-		sections.push(name);
-		Array.from(Object.values(head)[2], (head, i) => {
-			const name = Object.values(head)[1].replace("#","");
-			sections.push(name);
-			return name;
-		});
-		return name;
-	});
-	console.log("Create:\n", headers, "\nTo\n", sections);
-	return sections;
-}
-
-// """ScrollSpy"""
-// This class will take in a list of id's => from the create sections function
-// And figure out which element whit that id that is currently on the screen
-class HeaderSpy extends Component {
+class SidebarNavSpy extends Component {
 	constructor(props) {
 		super(props);
 		
@@ -61,15 +42,14 @@ class HeaderSpy extends Component {
 		const percent = this.props.percent? (this.props.percent / 100) : 1;
 		
 		this.state = {
-			activeSection: "",
-			line: offset + window.innerHeight * percent
-		};
+			line: offset + window.innerHeight * percent,
+			active: {section: 0, subsection: 0},
+		}
 		
+		this.elementSpy.bind(this);
 		this.elementAboveLine.bind(this);
-		this.spy.bind(this);
 	}
 	
-
 	// returns a value based on the position of a element, 
 	// the higest value should be the selected element 
 	elementAboveLine(element) {
@@ -79,86 +59,92 @@ class HeaderSpy extends Component {
 		return rect.bottom <= line;
 	}
 	
-	spy(headers) {
-		const sections = this.props.sections
-		const above = sections.map((section, index) => {
-			const element = document.getElementById(section); 
-			return element && this.elementAboveLine(element);
-		});
-		var index = -1;
-		Array.from(above, (bool, i) => {if (bool) index = i});
-		if (index === -1) return;
-		this.setState({activeSection: sections[index]});
+	getElement(el) {
+		return document.getElementById(el.anchor.replace("#",""));
 	}
-
+	
+	// This function spies on all the elements on the
+	// Requires a Section to be visible by ID, to find it's subsections
+	elementSpy() {
+		const sections = this.props.sections;
+		const activeSection = sections.map((section, i) => {
+			const element = this.getElement(section);
+			return element && this.elementAboveLine(element);
+		}).lastIndexOf(true);
+		if (activeSection === -1) return;
+		const activeSubsection = sections[activeSection].children.map((subsection, i) => {
+			const element = this.getElement(subsection); 
+			return element && this.elementAboveLine(element);
+		}).lastIndexOf(true);
+		this.setState({active: {section: activeSection, subsection: activeSubsection}});
+	}
+	
 	componentDidMount() {
-		this.spy();
-		this.timerID = window.setInterval(() => this.spy(), 100);
+		this.elementSpy();
+		this.timerID = window.setInterval(() => this.elementSpy(), 100);
 	}
 	
 	componentWillUnmount() {
 		window.clearInterval(this.timerID);
 	}
- 
+	
 	render() {
-		
+		const activeSection = this.state.active.section;
+		const activeSubsection = this.state.active.subsection;
+		function createSubsection(subsection, sec, sub) {
+			const header = <a key={"a sec"+sec+"sub"+sub} href={subsection.anchor}> {subsection.name} </a>;
+			if (activeSection === sec && activeSubsection === sub) {
+			return (
+				<li className="listEl hit" key={"sec"+sec+"sub"+sub}>
+					{header}
+				</li>
+			);
+			}
+			return (
+				<li className="listEl" key={"sec"+sec+"sub"+sub}>
+					{header}
+				</li>
+			);
+		};
+		const sidebarHeaders = this.props.sections.map((section, sec) => {
+			const header = <a href={section.anchor}>{section.name}</a>;
+			const active = (activeSection === sec)? "active" : "";
+			const subsections = (
+				<ul className={active} >
+					{section.children.map((el, sub) => createSubsection(el, sec, sub))}
+				</ul>
+			);
+			if (activeSection === sec) {
+			console.log("Expand: ", section.name);
+			return (
+				<CollapsibleItem key={"sec"+sec} header={header} expanded>
+					{subsections}
+				</CollapsibleItem>
+			);	
+			}
+			return (
+				<CollapsibleItem key={"sec"+sec} header={header}>
+					{subsections}
+				</CollapsibleItem>
+			);
+		});
 		return (
 			<div>
-			{this.state.activeSection}
+				<SideNav className="sidebarMarg">
+				<div className='fadeout-top'/>
+				<div className='static sidebarlogo'>
+					<SidebarHeader />
+				</div>
+				<div className='scrollable'>
+					<Collapsible accordion={false}>
+						{sidebarHeaders}
+					</Collapsible>
+				</div>
+				<div className='fadeout-bottom'/>
+				</SideNav>
 			</div>
 		);
 	}
-}
-
-class SidebarNavClass extends Component {
-	constructor(props) {
-		super(props);
-	}
-	
-	
-	
-	
-}
-
-
-// Navigation Menu
-const SidebarNav = props => {
-  const headers = props.headers.slice();  
-  const sidebarHeaders = props.headers.map((head, index) => (
-    <CollapsibleItem
-      key={"Item: "+index}
-      header={<a href={Object.values(head)[1]}>{Object.values(head)[0]}</a>}
-    >
-      <ul>
-        {Object.values(head)[2].map((child, indice) => (
-          <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a  key={"a index: "+ index + ", indice: " + indice }
-                href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
-          </li>
-        ))}
-      </ul>
-    </CollapsibleItem>
-  ));
-	
-  //function retNavBar () {
-      return (
-        <div>
-			<SideNav className="sidebarMarg">
-			<div className='static sidebarlogo'>
-			<SidebarHeader />
-				</div>
-					<div className='scrollable'>
-					<Collapsible accordion={false}>{sidebarHeaders}</Collapsible>
-					<HeaderSpy offset={0} percent={50} sections={createSections(headers)}/>
-				</div>
-			<div className='fadeout-top'/>
-			<div className='fadeout-bottom'/>
-			</SideNav>
-		</div>
-      );
-  //};
-
-  //return retNavBar()
 }
 
 export default Sidebar
