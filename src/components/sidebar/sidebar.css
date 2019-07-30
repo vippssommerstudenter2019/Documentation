@@ -85,6 +85,7 @@
 
 .listEl:hover {
   background: white;
+  color: #5E3DC2!important;
 }
 
 
@@ -102,7 +103,7 @@
 }
 
 .collapsible-header:hover {
-  background: white !important; /* #f6f6f6*/
+  background: white !important; /* #f6f6f9*/
   color: #5e3dc2 !important;
 }
 
@@ -115,6 +116,9 @@
   text-decoration: none;
   line-height: 25px !important;
   font-size: 16px !important;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
 
 .collapsible-header > div {
@@ -166,7 +170,7 @@
 }
 
 .button:focus {
-  background-color: #f6f6f9 !important;
+  background-color: white !important; /*f6f6f9*/
 }
 
 #sidenav_2 {
@@ -221,6 +225,7 @@ li > div > a {
 
 .sidenav li > a:hover {
   background-color: white !important; /*#f6f6f9*/
+  color: #5E3DC2!important;
 }
 
 
@@ -277,7 +282,7 @@ li > div > a {
 
 .scrollable::-webkit-scrollbar-thumb {
   width: 5px;
-  background: #F6F6F9 !important;
+  background: white !important; /*f6f6f9*/
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
 }
