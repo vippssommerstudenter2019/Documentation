@@ -42,12 +42,21 @@ const SidebarNav = props => {
     <CollapsibleItem
       key={"Item: " + index}
       header={
-        <div>
+        
+          Object.values(head)[2].length != 0 
+          ? 
+          <div>
           <a className="sidebarLink" href={Object.values(head)[1]}>
             {Object.values(head)[0]}
           </a>
           <img className="arrow" alt="arrow" />
-        </div>
+          </div>
+          :
+          <div>
+          <a className="sidebarLink" href={Object.values(head)[1]}>
+            {Object.values(head)[0]}
+          </a>
+          </div>
       }
     >
       <ul>
