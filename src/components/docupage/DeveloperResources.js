@@ -18,7 +18,7 @@ const DeveloperResources = (props) => (
         <h1 id={docupageCSS.developerResources}>
                 Documentation - {props.pageTitle}
         </h1>
-        <h2>Developer resources</h2>
+        <h2 id="developer-resources">Developer resources</h2>
     <div className= {docupageCSS.resourceLink}>
         <hr />
         {props.devURLs.map(element => (
