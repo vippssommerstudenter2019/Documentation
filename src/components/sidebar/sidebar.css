@@ -145,7 +145,7 @@ li > div > a:hover {
   color: #49367e;
 }
 /* SIDEBAR HEADERS */
-li > div > a{
+li > div > a {
   display:inline-block !important;
   width:100% !important;
   height:100% !important;
