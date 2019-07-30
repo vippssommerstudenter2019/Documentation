@@ -1,5 +1,9 @@
 /* SIDEBAR */
 
+.sidenav {
+  box-shadow: none;
+}
+
 .scrollable ul {
   margin-top: 0 !important;
 }
@@ -245,23 +249,21 @@ li > div > a {
   height: 82vh;
 }
 
-.fadeout-top {
+.fadeoutTop {
   margin-top: 0px;
   width: 100%;
   height: 12px;
   background-image: linear-gradient(to top, transparent 1%, white 100%);
   position: absolute;
-  /* "transparent" only works here because == rgba(0,0,0,0) */
 }
 
-.fadeout-bottom {
+.fadeoutBottom {
   width: 100%;
   margin: 0;
-  margin-top: calc(82vh - 27px);
+  margin-top: calc(82vh - 12px);
   height: 12px;
   background-image: linear-gradient(to bottom, transparent 1%, white 100%);
   position: relative;
-  /* "transparent" only works here because == rgba(0,0,0,0) */
 }
 
 

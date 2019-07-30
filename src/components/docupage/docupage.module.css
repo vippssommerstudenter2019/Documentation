@@ -1,6 +1,90 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Mono&display=swap');
+/* Docupage CSS */
 
-#developer-resources {
+h1,
+h2,
+h3 {
+  margin-top: 9vh;
+  margin-bottom: 3vh;
+  color: var(--vippsblack);
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h4,
+h5 {
+  margin-top: 5vh;
+  margin-bottom: 1vh;
+}
+
+.resourceLink {
+  width: 50%;
+}
+
+.container {
+  color: var(--vippsblack);
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 350px 40vw 40vw;
+  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-areas:
+    "sidebarheader content1 content2 "
+    "sidebar content1 content2"
+    "sidebarfooter content1 content2";
+}
+.content {
+  margin-right: 10vw;
+  grid-area: content1 / content1 / content2 / content2;
+  max-width: 50em;
+}
+
+.sidebarfooter {
+  grid-area: sidebarfooter;
+}
+
+.sidebar {
+  margin: 2vh;
+  position: fixed;
+  grid-area: sidebar;
+}
+
+.sidebarheader {
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  max-width: 100px;
+  grid-area: sidebarheader;
+}
+
+
+
+/* Vipps-colors */
+
+:root {
+  --lightgrey: #f6f6f9;
+  --vippsorange: #ff5b24;
+  --lightvippsorange: #fdf4ed;
+  --vippspurple: #4d3280;
+  --vippsblue: #59cbe8;
+  --vippsblack: #161225;
+  --vippsblueberry: #49367e;
+}
+
+
+#developerResources {
   margin-top: 0 !important;
   color: var(--vippsorange) !important;
   margin-bottom: 96px !important;
@@ -9,6 +93,7 @@
 :root {
   font-size: calc(0.4vw + 0.4vh + .3vmin);
 }
+
 
 h1,
 h2,
@@ -30,23 +115,27 @@ table code {
   padding: 0 !important;
 }
 
-.react-syntax-highlighter-line-number{
-  -webkit-user-select: none; /* Safari */        
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
+.token {
+  background-color: var(--lightgrey) !important;
+}
+
+pre,
+code {
+  padding: 10px !important;
+  overflow-x: auto !important;
+  white-space: pre-wrap !important;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap !important;
+  white-space: -o-pre-wrap !important;
+  word-wrap: break-word !important;
 }
 
 pre {
   background-color: var(--lightgrey) !important;
 }
 
-/* pre code {
+pre code {
   background-color: transparent !important;
-} */
-
-code {
-  background: #f6f6f9;
 }
 
 .Container {
@@ -174,6 +263,5 @@ h1:first-child {
   --vippspurple: #4d3280;
   --vippsblue: #59cbe8;
   --vippsblack: #161225;
-  --lightvippsgray: #f6f6f9;
   --vippsblueberry: #49367e;
 }
