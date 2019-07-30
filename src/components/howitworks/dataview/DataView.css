@@ -4,8 +4,15 @@
  * Stylings for the outer container for the data view.
  */
 .dataview {
+  background-color: var(--athensGreyMedio);
+  border-radius: 5px;
+  border:1px solid var(--athensGreyLight);
+}
+
+.dataview:hover {
   background-color: var(--athensGreyLight);
   border-radius: 5px;
+  border:1px solid var(--athensGrey);
 }
 
 
@@ -22,8 +29,7 @@
 .dataview-title {
   font-family: Vipps;
   font-size: 0.8rem;
-  background-color:var(--athensGreyLight);
-  color: var(--rum);
+  color: var(--ghost);
   padding: 25px 0px 0px 35px; 
   border-radius: 5px 5px 0px 0px;
 }
@@ -35,13 +41,12 @@
 .dataview-utility-bar {
   height: 50px;
   width: 100%;
-	background-color: var(--athensGreyLight); 
 }
 
 .copy-button {
 	font-family: Vipps;
 	font-weight: lighter;
-	background-color:var(--athensGreyLight);
+	background-color:none;
   color: var(--rum);
   float: right;
 
@@ -52,11 +57,11 @@
   height: 30px;
   width: 65px;
   border-radius: 40px;
-  border: 0.8px solid var(--ghost);
+  border: 1px solid var(--rum);
 }
 
 .copy-button:hover {
-    color: var(--manatee);
+    background-color: var(--athensGrey);
 }
 
 .copy-button.selected {
@@ -70,14 +75,20 @@
 .copy-button:active {
     background-color: var(--athensGrey);
 }
+.language-javascript {
+  background: none!important;
+}
+
+.token {
+  background: none!important;
+}
 
 
 .header-body-button {
 	font-family: Vipps;
   font-size: 13px;
   line-height: 25px;
-	background-color:var(--athensGreyLight);
-  color: var(--manatee);
+  color: var(--rum);
   float: left;
   outline: none;
   width: 100%;
@@ -138,7 +149,7 @@
 	color: var(--manatee);
   border-radius: 0px 0px 25px 25px;
 
-	background: linear-gradient(rgba(255,255,255,0), var(--athensGreyLight) 80%, var(--athensGreyLight));
+	background: linear-gradient(rgba(255,255,255,0), var(--athensGreyMedio) 80%, var(--athensGreyMedio));
 }
 
 .dataview-collapse-overlay:hover {
@@ -155,7 +166,7 @@
 	margin-top: 0px;
 	padding-top: 0px;
 	line-height: 50px;
-	background: var(--athensGreyLight); /*linear-gradient(transparent, var(--athensGreyLight) 50%, var(--athensGreyLight));*/
+	background: var(--athensGreyMedio); /*linear-gradient(transparent, var(--athensGreyLight) 50%, var(--athensGreyLight));*/
 }
 
 /**

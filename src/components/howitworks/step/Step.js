@@ -47,6 +47,8 @@ class Step extends Component {
 	createImageComponent() {
 		if (this.props.metaData.imagePath) {
 			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />
+		} else {
+			return <div className="img-circle"></div>
 		}
 
 		return;
@@ -92,11 +94,18 @@ class Step extends Component {
 		);
 
 		// Not all endpoints have responses, so we include them only if they are given
+		/*
 		if (this.props.metaData.responses) {
 			textAndReponseComponents.push(
 				<ResponseTable key={"response" + endpoint} responses={this.props.endpointData[endpoint].responses} />
 			);
 		}
+*/
+		content.push(
+			<div key={endpoint + "-text-responses"} className="step-text-responses">
+				{textAndReponseComponents}
+			</div>
+		);
 
 		content.push(
 			<div key={endpoint + "-data"} className="step-data">
@@ -104,11 +113,7 @@ class Step extends Component {
 			</div>
 		);
 
-		content.push(
-			<div key={endpoint + "-text-responses"} className="step-text-responses">
-				{textAndReponseComponents}
-			</div>
-		);
+		
 
 		return content;
 	} 
@@ -127,22 +132,26 @@ class Step extends Component {
 		let introductionComponent = [];
 		if (this.props.metaData.introduction) {
 			introductionComponent = (
-				<div className="step-introduction">
+				
 					<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
-				</div>
+				
 			);
 		}
 
 		return (
 			<div className="step-wrapper" id={this.props.id} >
-				{this.createImageComponent()}
-				<div key="title" className="step-title">
-					{this.props.metaData.title}
+					<div className="step-img">
+						{this.createImageComponent()}
+					</div>
+					<div key="title" className="step-title">
+						{this.props.metaData.title}
+					</div>
+				<div className="step-introduction">
+					{introductionComponent}
 				</div>
-				{introductionComponent}
-				<div className="step-content" key={this.props.metaData.title + "-content"}>
+				
 					{content}
-				</div>
+				
 			</div>
 		);
 	}
