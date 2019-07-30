@@ -3,12 +3,12 @@ const eComSections = `
 Prerequisites:
     access_token:
         title: Get accesss token
-        introduction: 
+        introduction: In order to make API calls to Vipps, you need a valid [access token]. This token has to be renewned every 24 hours.
         imagePath: ../../assets/ecom-steps/PayWithVipps.svg
         endpoints:
             - /accesstoken/get
         descriptions:
-            /accesstoken/get: In order to make API calls to Vipps, you need a valid [access token]. The token has to be renewned every 24 hours.
+            /accesstoken/get: Gets called when you ask for a valid acess token from Vipps.
         modes:
             /accesstoken/get: POST
         responses: true
@@ -21,7 +21,7 @@ Prerequisites:
 
     endpoints:
         title: Set up endpoints
-        introduction: In order for Vipps to send and receive information from you, you need to implement some [endpoints] at your [backend]. They make it possible for you to for example get transaction updates and provide shipping details. 
+        introduction: To let Vipps send and receive information from you, you need to implement [endpoints] at your [backend]. They make it possible for you to for example get transaction updates and provide shipping details.
         imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
         endpoints:
             - "[callbackPrefix]/v2/payments/{orderId}"
@@ -52,7 +52,7 @@ Prerequisites:
 The payment process:
     initate:
         title: Initiate payment
-        introduction: 
+        introduction: The customer is now selecting a service or item at your webstore, and wants to pay with Vipps. 
         imagePath: ../../assets/ecom-steps/Initiate.svg
         endpoints:
             - /ecomm/v2/payments
@@ -82,12 +82,12 @@ The payment process:
 
     customer_confirms:
         title: Customer confirmation and checking status
-        introduction: 
+        introduction: The customer is now being taken to the landing page and will confirm the [reservation of the payment] in the Vipps app. 
         imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
         endpoints:
             - "[callbackPrefix]/v2/payments/{orderId}"
         descriptions:
-            "[callbackPrefix]/v2/payments/{orderId}": The customer is now being taken to the landing page and will confirm the [reservation of the payment] in the Vipps app. You have to check if the reservation of the payment was successful before doing anything else. This is where the endpoint for transaction updates comes into the picture. You'll have to check the information you get passed there to see if the status is 'reserve' as in the example to the right.
+            "[callbackPrefix]/v2/payments/{orderId}": You have to check if the reservation of the payment was successful before doing anything else. This is where the endpoint for transaction updates comes into the picture. You'll have to check the information you get passed there to see if the status is 'reserve' as in the example to the right.
 
         modes:
             "[callbackPrefix]/v2/payments/{orderId}": POST
@@ -101,12 +101,12 @@ The payment process:
 
     ship_item:
         title: Confirm the order and ship/deliver the item
-        introduction: 
+        introduction: Now, you'll have to provide the customer with a confirmation of that you’ve been given the order and that payment is reserved. Next step is delivering the service or shipping the items ordered from the customer.
         imagePath: ../../assets/ecom-steps/ShipItem.svg
         endpoints:
             - ship_item
         descriptions:
-            ship_item: Now, you'll have to provide the customer with a confirmation of that you’ve been given the order and that payment is reserved. Next step is delivering the service or shipping the items ordered from the customer.
+            ship_item:
     
         modes:
         responses: false
@@ -114,12 +114,12 @@ The payment process:
 
     capture:
         title: Withdraw the money
-        introduction: 
+        introduction: Up to this point, the money is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped.  This is called a capture.
         imagePath: ../../assets/ecom-steps/Capture.svg
         endpoints:
             - "/ecomm/v2/payments/{orderId}/capture"
         descriptions:
-            "/ecomm/v2/payments/{orderId}/capture": Up to this point, the money is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped.  This is called a capture. You send a capture request to Vipps so the money can be withdrawn from the buyer's account.
+            "/ecomm/v2/payments/{orderId}/capture": You send a capture request to Vipps so the money can be withdrawn from the buyer's account.
         modes:
             "/ecomm/v2/payments/{orderId}/capture" : POST
         responses: true
@@ -128,12 +128,12 @@ The payment process:
 Nice to know:
     cancellation:
         title: Cancellation of payment
-        introduction: 
+        introduction: If you as the seller can't deliver the ordered service or the item isn't in stock, you can send a cancel message to Vipps in order to free up the reservation of the payment.
         imagePath: ../../assets/ecom-steps/Cancel.svg
         endpoints:
             - /ecomm/v2/payments/{orderId}/cancel
         descriptions:
-            /ecomm/v2/payments/{orderId}/cancel: If you as the seller can't deliver the ordered service or the item isn't in stock, you can send a cancel message to Vipps in order to free up the reservation of the payment. In that way, the money be availabe to use for the buyer again. 
+            /ecomm/v2/payments/{orderId}/cancel: Sends a request to Vipps for cancellation. The money will be availabe for the buyer.		
         modes:
             /ecomm/v2/payments/{orderId}/cancel: PUT
         responses: true
@@ -141,12 +141,12 @@ Nice to know:
 
     refund:
         title: Refunding of payment
-        introduction: 
+        introduction: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full.
         imagePath: ../../assets/ecom-steps/Refund.svg
         endpoints:
             - /ecomm/v2/payments/{orderId}/refund
         descriptions:
-            /ecomm/v2/payments/{orderId}/refund: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full, specified with the amount field.
+            /ecomm/v2/payments/{orderId}/refund: You initiate the refund by sending information as serial number, amount and transaction text.		
         modes:
             /ecomm/v2/payments/{orderId}/refund: POST
         responses: true

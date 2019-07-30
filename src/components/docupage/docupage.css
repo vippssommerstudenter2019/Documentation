@@ -1,8 +1,15 @@
+
 #developer-resources {
   margin-top: 0 !important;
   color: var(--vippsorange) !important;
   margin-bottom: 96px !important;
 }
+
+:root {
+  font-size: calc(0.4vw + 0.4vh + .3vmin);
+}
+
+
 h1,
 h2,
 h3 {
@@ -30,7 +37,6 @@ table code {
 pre,
 code {
   padding: 10px !important;
-  background-color: var(--lightgrey) !important;
   overflow-x: auto !important;
   white-space: pre-wrap !important;
   white-space: -moz-pre-wrap !important;
@@ -39,49 +45,26 @@ code {
   word-wrap: break-word !important;
 }
 
+pre {
+  background-color: var(--lightgrey) !important;
+}
+
+pre code {
+  background-color: transparent !important;
+}
+
 .Container {
+  max-width: 100vw;
   margin: 0px;
-  margin-left: 40px;
   display: grid;
-  grid-template-columns: 350px 40vw 40vw;
-  grid-template-rows: 5vh 90vh 5vh;
+  grid-template-columns:  calc(var( --sidebarwidth) + 50px) auto auto;
   grid-template-areas:
-    "sidebarheader content1 content2 "
-    "sidebar content1 content2"
-    "sidebarfooter content1 content2";
+    ". content1 "
 }
 .Content {
-  grid-area: content1 / content1 / content2 / content2;
-  max-width: 50em;
-}
-
-.sidebarfooter {
-  grid-area: sidebarfooter;
-}
-
-.sidebar {
-  margin: 0vh;
-  position: fixed;
-  grid-area: sidebar;
-}
-
-.sidebarheader {
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  max-width: 100px;
-  grid-area: sidebarheader;
-}
-
-.sidenav {
-  box-shadow: none !important;
-}
-
-.devResources {
-  grid-column-start: content1 !important;
-  grid-column-end: content2 !important;
-  grid-row-start: content1 !important;
-  grid-row-end: content1 !important;
+  grid-area: content1 ;
+  max-width: 50em ;
+  margin-bottom: 7vh;
 }
 
 .devResources hr {
@@ -109,16 +92,7 @@ code {
   transition: margin-right 0.05s ease-out;
 }
 
-/* Vipps-colors */
 
-:root {
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
-}
 
 tr:nth-child(even) {
   background-color: var(--lightgrey) !important;
@@ -193,4 +167,16 @@ h1:first-child {
 .Content h3, h4 {
   margin-top: 27px !important;
   margin-bottom: 27px !important;
+}
+
+/* Variables */
+
+:root {
+  --sidebarwidth: 350px;
+  --vippsorange: #ff5b24;
+  --lightvippsorange: #fdf4ed;
+  --vippspurple: #4d3280;
+  --vippsblue: #59cbe8;
+  --vippsblack: #161225;
+  --vippsblueberry: #49367e;
 }
