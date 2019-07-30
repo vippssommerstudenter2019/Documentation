@@ -84,7 +84,7 @@
 }
 
 .listEl:hover {
-  background: #f6f6f9;
+  background: white;
 }
 
 
@@ -102,8 +102,37 @@
 }
 
 .collapsible-header:hover {
-  background: #f6f6f9 !important;
+  background: white !important; /* #f6f6f6*/
   color: #5e3dc2 !important;
+}
+
+.collapsible-header:hover > div > a {
+  color: var(--vippspurple) !important;
+}
+
+.collapsible-header > div > a {
+  color :var(--vippsblack) !important;
+  text-decoration: none;
+  line-height: 25px !important;
+  font-size: 16px !important;
+}
+
+.collapsible-header > div {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.sidebarLink, .arrow{
+  margin: auto !important;
+}
+
+.sidebarLink {
+  margin-left: 0 !important;
+  padding-right: 11px;
+}
+
+.arrow {
+  margin-right: 0 !important;
 }
 
 .active {
@@ -186,7 +215,7 @@ li > div > a {
 
 
 .sidenav li > a:hover {
-  background-color: #f6f6f9 !important;
+  background-color: white !important; /*#f6f6f9*/
 }
 
 

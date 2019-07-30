@@ -260,11 +260,11 @@ h2 {
   width: 100%;
   border-bottom: white;
 }
-
+/*
 .collapsible-header:hover {
-  background: #f6f6f9 !important;
+  background: #f6f6f9 !important; 
 }
-
+*/
 .active {
   background-color: white !important;
 }

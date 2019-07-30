@@ -5,12 +5,15 @@ import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 import vipps_dev from "../../img/vipps_dev.svg"
+import arrow_down from "../../img/arrowDown.svg"
+import arrow_right from "../../img/arrowRight.svg"
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
-  <div>
+  <section className="Sidebar">
+    <SidebarHeader />
     <SidebarMenu headers={props.headers} api={props.api}/>
-    </div>
+  </section>
 );
 
 // Header for logo and backlink
@@ -41,7 +44,14 @@ const SidebarNav = props => {
   const sidebarHeaders = props.headers.map((head, index) => (
     <CollapsibleItem
       key={"Item: "+index}
-      header={<a href={Object.values(head)[1]}>{Object.values(head)[0]}</a>}
+      header={
+        <div>
+        <a href={Object.values(head)[1]}>
+        <p className="sidebarLink">{Object.values(head)[0]}</p>
+        </a>
+        <img className="arrow" src={arrow_right} alt="arrow"></img>
+        </div>
+        }
     >
       <ul>
         {Object.values(head)[2].map((child, indice) => (
