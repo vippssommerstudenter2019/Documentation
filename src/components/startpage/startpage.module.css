@@ -1,4 +1,4 @@
-/* SETUP */
+/* Startpage CSS */
 .DocCardImg img {
   max-width: 10vw;
 }
@@ -126,7 +126,6 @@ h2 {
 }
 
 .GetStartedLink {
-  border: none;
   background: #49367e;
   color: white;
   border-radius: 10% 10% 10% 10% / 50% 50% 50% 50%;
@@ -260,11 +259,11 @@ h2 {
   width: 100%;
   border-bottom: white;
 }
-
+/*
 .collapsible-header:hover {
-  background: #f6f6f9 !important;
+  background: #f6f6f9 !important; 
 }
-
+*/
 .active {
   background-color: white !important;
 }

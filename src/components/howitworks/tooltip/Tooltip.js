@@ -55,6 +55,7 @@ class TooltipText extends React.Component {
 
     render() {
         // Find the words in the input which has got square brackets, e.g. [access token]
+        if (!this.props.input) return [];
         const matches = this.props.input.match(/\[.*?\]/g);
         let result = [];
 

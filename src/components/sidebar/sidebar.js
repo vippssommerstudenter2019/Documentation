@@ -4,24 +4,27 @@ import "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import vipps_dev from "../../img/vipps_dev.svg"
+import vipps_dev from "../../img/vipps_dev.svg";
+import arrow_down from "../../img/arrowDown.svg";
+import arrow_right from "../../img/arrowRight.svg";
+
+/*
+  Takes in argument in the form of list containing collections of headers
+  Example: [{name: "ex1", anchor: "#ex1", children: [{name: "ex1a", anchor: "#ex1a"}, {name: "ex1b", anchor: "#ex1b"}]},
+            {name: "ex2", anchor: "#ex2", children: [{name: ex2a", anchor: "#ex2a"}]}]
+*/
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
   <section className="Sidebar">
-    <SidebarHeader />
-    <SidebarMenu headers={props.headers} api={props.api}/>
+    <SidebarMenu headers={props.headers} api={props.api} />
   </section>
 );
 
 // Header for logo and backlink
 const SidebarHeader = () => (
   <Link to="/" className="SidebarHeader ">
-    <img
-      className="Logo logoMarg"
-      src={vipps_dev}
-      alt="logo"
-    />
+    <img className="Logo logoMarg" src={vipps_dev} alt="logo" />
   </Link>
 );
 
@@ -32,6 +35,7 @@ const SidebarMenu = props => (
   </div>
 );
 
+// Navigation Menu
 class SidebarNavSpy extends Component {
 	constructor(props) {
 		super(props);
@@ -93,7 +97,6 @@ class SidebarNavSpy extends Component {
 		const activeSection = this.state.active.section;
 		const activeSubsection = this.state.active.subsection;
 		function createSubsection(subsection, sec, sub) {
-			// key={"a sec"+sec+"sub"+sub}
 			const header = <a href={subsection.anchor}> {subsection.name} </a>;
 			if (activeSection === sec && activeSubsection === sub) {
 			return (
@@ -108,12 +111,41 @@ class SidebarNavSpy extends Component {
 				</li>
 			);
 		};
+		function createLinks(link, sec, sub) {
+			return (
+				<li className="listEl" key={"sec"+sec+"sub"+sub}>
+					<a
+						key={"sec"+sec+"sub"+sub}
+						href={link.anchor}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{" " + link.name + " "}
+					</a>
+				</li>
+			);
+		}
 		const sidebarHeaders = this.props.sections.map((section, sec) => {
-			const header = <a href={section.anchor}>{section.name}</a>;
+			const header = (
+			(section.children)?
+				(<div>
+					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
+					<img className="arrow" alt="arrow" />
+				</div>)
+			:
+				(<div>
+					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
+				</div>)
+			);
 			const subsections = (
-				<ul>
+				(section.name === "Developer resources")?
+				(<ul>
+					{section.children.map((el, sub) => createLinks(el, sec, sub))}
+				</ul>)
+				:
+				(<ul>
 					{section.children.map((el, sub) => createSubsection(el, sec, sub))}
-				</ul>
+				</ul>)
 			);
 			if (activeSection === sec) {
 			if (activeSubsection === -1) {
@@ -122,7 +154,9 @@ class SidebarNavSpy extends Component {
 					<div className="collapsible-header hit">
 						{header}	
 					</div>
-					<div className="">{subsections}</div>
+					<div className="collapsible-body hit">
+						{subsections}
+					</div>
 				</li>
 			);
 			}
@@ -131,7 +165,9 @@ class SidebarNavSpy extends Component {
 					<div className="collapsible-header">
 						{header}
 					</div>
-					<div className="">{subsections}</div>
+					<div className="collapsible-body hit">
+						{subsections}
+					</div>
 				</li>
 			);	
 			}
@@ -160,4 +196,4 @@ class SidebarNavSpy extends Component {
 	}
 }
 
-export default Sidebar
+export default Sidebar;

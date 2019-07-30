@@ -3,12 +3,12 @@ const invoiceSections = `
 Prerequisites:
     access_token:
         title: Get accesss token
-        introduction: 
+        introduction: In order to make API calls to Vipps, you need a valid [access token]. The token has to be renewned every 24 hours.
         imagePath: ../../assets/ecom-steps/PayWithVipps.svg
         endpoints:
             - /accesstoken/get
         descriptions:
-            /accesstoken/get: In order to make API calls to Vipps, you need a valid [access token]. The token has to be renewned every 24 hours.
+            /accesstoken/get: Gets called when you ask for a valid acess token from Vipps		
         modes:
             /accesstoken/get: POST
         responses: true
@@ -21,12 +21,12 @@ Prerequisites:
 
     recipient_token:
         title: Get recipient token
-        introduction: 
+        introduction: To submit an invoice, you need both an access token and a [recipient token]. 
         imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
         endpoints:
             - "/recipients/tokens"
         descriptions:
-            "/recipients/tokens" : To submit an invoice, you need both an access token and a [recipient token]. You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
+            "/recipients/tokens" : You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
         modes:
             "/recipients/tokens" : POST
         responses: true 
@@ -40,7 +40,7 @@ Prerequisites:
 The invoice process:
     send_invoice:
         title: Send invoice
-        introduction: 
+        introduction: The first step in the payment process is sending the invoice to the customer. As an ISP you should have recieved an invoice from your partner with an URL and necessary credentials.
         imagePath: ../../assets/ecom-steps/Initiate.svg
         endpoints:
             - "/invoices/{invoiceId}"
@@ -51,7 +51,7 @@ The invoice process:
         responses: true 
         keywords:
             states:
-                title: States
+                title: States?
                 description: An invoice will go through several states, and it's important to keep track of these. Read more in the API documentation.
                 linkTitle: API documentation
                 link: http://localhost:3000/documentation/invoice/#invoice-states

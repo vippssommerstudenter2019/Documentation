@@ -490,10 +490,10 @@ hr {
 	overflow: visible
 }
 
-pre {
+/* pre {
 	font-family: monospace, monospace;
 	font-size: 1em
-}
+} */
 
 a {
 	background-color: transparent
@@ -511,7 +511,7 @@ strong {
 	font-weight: bolder
 }
 
-code,
+/* code, */
 kbd,
 samp {
 	font-family: monospace, monospace;
@@ -709,9 +709,9 @@ button {
 	outline: 0
 }
 
-pre {
+/* pre {
 	overflow: auto
-}
+} */
 
 button,
 input,
@@ -4102,12 +4102,12 @@ figure {
 }
 
 code {
-	padding: .125rem .3125rem .0625rem;
+	/* padding: .125rem .3125rem .0625rem; */
 	border: 0;
 	font-weight: 300
 }
 
-code,
+/* code, */
 kbd {
 	background-color: #f6f6f9;
 	font-family: VippsHeader, Consolas, Liberation Mono, Courier, monospace;
@@ -7974,7 +7974,7 @@ screen and (min-width:47.5em) {
 }
 
 code {
-	font-size: .875rem
+	/* font-size: .875rem */
 }
 
 .fonts-experiment {

@@ -1,5 +1,9 @@
 /* SIDEBAR */
 
+.sidenav {
+  box-shadow: none;
+}
+
 .scrollable ul {
   margin-top: 0 !important;
 }
@@ -70,8 +74,6 @@
 }
 
 
-
-
 .listEl {
   text-decoration: none;
   font-size: 16px;
@@ -84,11 +86,9 @@
 }
 
 .listEl:hover {
-  background: #f6f6f9;
+  background: white;
+  color: #5E3DC2!important;
 }
-
-
-
 
 .collapsible-header {
   padding: 0px 30px 0px 30px !important;
@@ -104,16 +104,71 @@
 }
 
 .collapsible-header:hover {
-  background: #f6f6f9 !important;
+  background: white !important; /* #f6f6f9*/
   color: #5e3dc2 !important;
 }
 
 .collapsible-header.hit, .listEl.hit {
   background: #f6f6f9;
 }
+.collapsible-body.hit {display: block;}
+
+.collapsible-header:hover > div > a {
+  color: #5E3DC2!important;
+}
+
+.collapsible-header > div > a {
+  color :var(--vippsblack) !important;
+  text-decoration: none;
+  line-height: 25px !important;
+  font-size: 16px !important;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.collapsible-header > div {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.sidebarLink, .arrow{
+  margin: auto !important;
+}
+
+.sidebarLink {
+  margin-left: 0 !important;
+  padding-right: 11px;
+}
+
+.arrow::after {
+  //content:"";
+  content:url("../../img/arrowRight.svg");
+}
+
+.arrow {
+  margin-right: 0 !important;
+  transition-duration:0.5s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration:0.5s;
+  -webkit-transition-timing-function: ease-in-out;
+}
 
 .active {
   background-color: white !important;
+}
+
+.active .arrow {
+  transition-duration:0.5s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration:0.5s;
+  -webkit-transition-timing-function: ease-in-out;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  //content:url("../../img/arrowDown.svg")
 }
 
 .collapsible {
@@ -138,7 +193,7 @@
 }
 
 .button:focus {
-  background-color: #f6f6f9 !important;
+  background-color: white !important; /*f6f6f9*/
 }
 
 #sidenav_2 {
@@ -151,7 +206,7 @@ li > div > a:hover {
   color: #49367e;
 }
 /* SIDEBAR HEADERS */
-li > div > a{
+li > div > a {
   display:inline-block !important;
   width:100% !important;
   height:100% !important;
@@ -173,7 +228,7 @@ li > div > a{
 
 
  /* SIDEBAR SUBHEADERS */ 
- li > a {
+ .sidenav li > a {
   border-radius: 20px;
   display:inline-block !important;
   width:100% !important;
@@ -188,9 +243,11 @@ li > div > a{
 
 
 
-li > a:hover {
-  background-color: #f6f6f9 !important;
+.sidenav li > a:hover {
+  background-color: white !important; /*#f6f6f9*/
+  color: #5E3DC2!important;
 }
+
 
 /*  Sidebar scrolling   */
 
@@ -200,6 +257,7 @@ li > a:hover {
 }
 
 
+
 .scrollable {
   width: 100%;
   position: absolute;
@@ -207,22 +265,21 @@ li > a:hover {
   height: 82vh;
 }
 
-.fadeout-top {
+.fadeoutTop {
   margin-top: 0px;
   width: 100%;
   height: 12px;
   background-image: linear-gradient(to top, transparent 1%, white 100%);
   position: absolute;
-  /* "transparent" only works here because == rgba(0,0,0,0) */
 }
 
-.fadeout-bottom {
+.fadeoutBottom {
   width: 100%;
+  margin: 0;
   margin-top: calc(82vh - 12px);
   height: 12px;
   background-image: linear-gradient(to bottom, transparent 1%, white 100%);
   position: relative;
-  /* "transparent" only works here because == rgba(0,0,0,0) */
 }
 
 
@@ -243,7 +300,7 @@ li > a:hover {
 
 .scrollable::-webkit-scrollbar-thumb {
   width: 5px;
-  background: #F6F6F9 !important;
+  background: white !important; /*f6f6f9*/
   border-radius: 110px;
   box-shadow: inset 10px 0px 0px 10px white;
 }
@@ -296,4 +353,3 @@ a:hover {
   -webkit-transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-

@@ -1,7 +1,8 @@
 import React from 'react';
+import docupageCSS from "./docupage.module.css";
 
 const UrlElement = (LinkTitle, LinkURL) => (
-    <div>
+    <div >
         <a href={LinkURL}>
             <div>
                 {LinkTitle}
@@ -13,15 +14,17 @@ const UrlElement = (LinkTitle, LinkURL) => (
 );
 
 const DeveloperResources = (props) => (
-    <div className="devResources">
-        <h1 id="developer-resources">
+    <div className={docupageCSS.devResources}>
+        <h1 id={docupageCSS.developerResources}>
                 Documentation - {props.pageTitle}
         </h1>
-        <h2>Developer resources</h2>
+        <h2 id="developer-resources">Developer resources</h2>
+    <div className= {docupageCSS.resourceLink}>
         <hr />
         {props.devURLs.map(element => (
             UrlElement(element[0], element[1])
         ))}
+        </div>
     </div>
   );
 
