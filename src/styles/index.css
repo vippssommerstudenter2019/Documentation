@@ -59,6 +59,23 @@ h5 {
   grid-area: sidebar;
 }
 
+@media (max-width:50em) {
+  .scrollable {
+    visibility:hidden;
+    display:none;
+  }
+  .sidenav {
+    background:none;
+  }
+  .SidebarHeader {
+    width:100%;
+    background:#fff;
+  }
+  .fadeout-bottom {
+    display:none;
+  }
+}
+
 .sidebarheader {
   margin-left: 20px;
   margin-top: 20px;

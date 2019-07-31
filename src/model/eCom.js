@@ -51,7 +51,7 @@ The payment process:
     initate:
         title: Initiate payment
         introduction: The customer is now selecting a service or item at your webstore, and wants to pay with Vipps. 
-        imagePath: ../../assets/ecom-illustrations/initiatePayment.svg
+        imagePath: ../../assets/ecom-illustrations/initiatePayment2.svg
         endpoints:
             - /ecomm/v2/payments
         descriptions:
@@ -81,7 +81,7 @@ The payment process:
     customer_confirms:
         title: Customer confirmation and checking status
         introduction: The customer is now being taken to the landing page and will confirm the [reservation of the payment] in the Vipps app. 
-        imagePath: ../../assets/ecom-illustrations/customerConfirms.png
+        imagePath: ../../assets/ecom-illustrations/customerConfirms2.svg
         endpoints:
             - "[callbackPrefix]/v2/payments/{orderId}"
         descriptions:
@@ -100,7 +100,7 @@ The payment process:
     ship_item:
         title: Confirm the order and ship/deliver the item
         introduction: Now, you'll have to provide the customer with a confirmation of that you’ve been given the order and that payment is reserved. Next step is delivering the service or shipping the items ordered from the customer.
-        imagePath: ../../assets/ecom-illustrations/confirmOrder.png
+        imagePath: ../../assets/ecom-illustrations/confirmOrder2.svg
         endpoints:
             - ship_item
         descriptions:
@@ -113,7 +113,7 @@ The payment process:
     capture:
         title: Withdraw the money
         introduction: Up to this point, the money is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped.  This is called a capture.
-        imagePath: ../../assets/ecom-illustrations/capture.svg
+        imagePath: ../../assets/ecom-illustrations/capture2.svg
         endpoints:
             - "/ecomm/v2/payments/{orderId}/capture"
         descriptions:
@@ -127,7 +127,7 @@ Nice to know:
     cancellation:
         title: Cancellation of payment
         introduction: If you as the seller can't deliver the ordered service or the item isn't in stock, you can send a cancel message to Vipps in order to free up the reservation of the payment.
-        imagePath: ../../assets/ecom-illustrations/cancel.svg
+        imagePath: ../../assets/ecom-illustrations/cancel2.svg
         endpoints:
             - /ecomm/v2/payments/{orderId}/cancel
         descriptions:
