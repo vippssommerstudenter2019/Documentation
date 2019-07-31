@@ -1,0 +1,101 @@
+
+span.token.comment {
+    color: #7D8B99
+  }
+span.token.block-comment {
+  color: #7D8B99
+  }
+span.token.prolog {
+  color: #7D8B99
+  }
+span.token.doctype {
+  color: #7D8B99
+  }
+span.token.cdata {
+  color: #7D8B99
+  }
+span.token.punctuation {
+  color: var(--vippsblack)
+  }
+span.token.property {
+  color: var(--vippspurple)
+  }
+span.token.tag {
+  color: var(--vippspurple)
+  }
+span.token.boolean {
+  color: var(--vippspurple)
+  }
+span.token.number {
+  color: var(--vippspurple)
+  }
+span.token.function-name {
+  color: var(--vippspurple)
+  }
+span.token.constant {
+  color: var(--vippspurple)
+  }
+span.token.symbol {
+  color: var(--vippspurple)
+  }
+span.token.deleted {
+  color: var(--vippspurple)
+  }
+span.token.selector {
+  color: var(--vippsblue)
+  }
+span.token.attr-name {
+  color: var(--vippsblue)
+  }
+span.token.string {
+  color: var(--vippsblue)
+  }
+span.token.char {
+  color: var(--vippsblue)
+  }
+span.token.function {
+  color: var(--vippsblue)
+  }
+span.token.builtin {
+  color: var(--vippsblue)
+  }
+span.token.inserted {
+  color: var(--vippsblue)
+  }
+span.token.operator {
+  color: var(--vippsblack)
+  }
+span.token.entity {
+  color: var(--vippsblack)
+  }
+span.token.url {
+  color: var(--vippsblack)
+  }
+span.token.variable {
+  color: var(--vippsblack)
+  }
+span.token.atrule {
+  color: var(--vippsorange)
+  }
+span.token.attr-value {
+  color: var(--vippsorange)
+  }
+span.token.keyword {
+  color: var(--vippsorange)
+  }
+span.token.class-name {
+  color: var(--vippsorange)
+  }
+span.token.regex {
+  color: var(--vippsorange)
+  }
+span.token.important {
+  color: var(--vippsorange);
+  font-weight: normal
+  }
+span.token.language-css.span.token.string {
+  color: var(--vippsblack)
+  }
+span.token.style.span.token.string {
+  color: var(--vippsblack)
+  }
