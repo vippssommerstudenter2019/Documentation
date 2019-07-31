@@ -145,6 +145,24 @@
 	}
 }
 
+@media (min-width:768px) and (max-width:1100px) {
+	.intro-description {
+		font-size:15px;
+		line-height:24px;
+		width:100%;
+	}
+	.intro-title {
+		font-size:35px;
+		line-height:45px;
+		margin-top:70px;
+	}
+	.intro-sub {
+		font-size:22px;
+		line-height:28px;
+		width:100%;
+	}
+}
+
 @media (min-width:1200px) {
 	.intro-description {
 		font-size:18px;

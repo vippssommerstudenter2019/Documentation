@@ -92,7 +92,7 @@
   color: var(--rum);
   float: right;
 
-  margin: 25px 25px 15px 15px;
+  margin: 15px 25px 15px 15px;
 	font-size: 13px;
   text-align: center;
 
@@ -129,15 +129,13 @@
 .header-body-button {
 	font-family: Vipps;
   font-size: 13px;
-  line-height: 25px;
   color: var(--rum);
-  float: left;
   outline: none;
   width: 100%;
   margin-right: 25px;
-  padding: 35px 5px 0px 35px;  
+  padding: 25px 0px 0px 35px;  
 
-  height: 30px;
+  height: 20px;
   width: 65px;
 }
 
@@ -154,7 +152,7 @@
  * The non collapsable container.
  */
 .dataview-non-collapsable {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 /*

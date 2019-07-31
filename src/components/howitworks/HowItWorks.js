@@ -88,6 +88,7 @@ class HowItWorks extends React.Component {
 				<div className="Sidebar">
 					<Sidebar headers={sideBarData} api="#ecom"/>
 				</div>
+				
 				<IntroBox 	id={this.props.apiName}
 							content={this.state.intro} />
 				<Content 

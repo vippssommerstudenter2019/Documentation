@@ -33,7 +33,7 @@ class CustomTooltip extends React.Component {
                     </div>
                 }
                 placement="bottom">
-                <button className="underlined-purple"><u>{this.props.keyword}</u></button>
+                <button className="underlined-purple">{this.props.keyword}</button>
             </Tooltip>
         );
     }
