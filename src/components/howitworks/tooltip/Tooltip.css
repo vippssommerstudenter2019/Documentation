@@ -9,7 +9,7 @@
 
 .underlined-purple {
 	color: var(--vippspurple);
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .underlined-purple:hover {
