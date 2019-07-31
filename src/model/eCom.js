@@ -164,6 +164,7 @@ const eComFlowChart = `
 ---
 title: Steps to implement for eCom
 browserImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+tabletImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
 mobileImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
 stepTitles: false
 `;
