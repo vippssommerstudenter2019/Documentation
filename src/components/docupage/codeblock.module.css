@@ -1,36 +1,17 @@
 .codeblock {
   font-size: 15px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-rows: 2;
+  border-radius: 20px 20px 20px 20px;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 1em;
-  max-width: 100%;
-  background-color: var(--athensGreyLight);
 }
-
-.codeblockBody {
-  width: 100%;
-  font-family: 'PT Mono', monospace;
-  padding-bottom: 1em;
-}
-
-.codeblockNumbering {
-  float: left;
-  list-style-type: none;
-  padding: 0 15px 0 25px;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-   -khtml-user-select: none; /* Konqueror HTML */
-     -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* Internet Explorer/Edge */
-          user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome and Opera */
-}
-
 
 .codeblockHeader {
+  background-color: var(--athensGreyLight);
   width: 100%;
   margin: auto;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .codeblockLanguage {
@@ -39,16 +20,22 @@
   color: var(--vippsblack);
   float: left;
   margin: 25px 15px 15px 25px;
+  /* margin-right: 25px;
+    padding: 35px 5px 0px 35px;
+    height: 30px;
+    width: 65px; */
 }
 
 .codeblockHeader button {
   color: var(--vippsblack);
+  background-color: var(--lightvippsgray);
 }
 
 .copyButton {
   font-family: Vipps;
   font-weight: lighter;
-  color: var(--vippsblack);
+  background-color: var(--athensGreyLight);
+  color: var(--rum);
   float: right;
 
   margin: 25px 25px 15px 15px;
@@ -71,4 +58,8 @@
 
 .copyButton:focus {
   outline: none;
+}
+
+.copyButton:active {
+  background-color: var(--athensGrey);
 }

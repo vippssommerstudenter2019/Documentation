@@ -1,17 +1,25 @@
-import React from "react";
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import vippsColours from "./codeblockStyles";
 import codeblockCSS from "./codeblock.module.css"
 
 
-const CodeBlock = (props) =>  {
-  const { language, value } = props;
+class CodeBlock extends PureComponent {
+  static propTypes = {
+    value: PropTypes.string.isRequired,
+    language: PropTypes.string
+  };
 
-  const handleCopyClick = (e) => {
+  static defaultProps = {
+    language: null
+  };
+
+  handleCopyClick = () => {
     // Create new element
     var el = document.createElement('textarea');
     // Set value (string to be copied)
-    el.value =  value;
+    el.value = this.props.value;
     // Set non-editable to avoid focus and move outside of view
     el.setAttribute('readonly', '');
     document.body.appendChild(el);
@@ -23,25 +31,23 @@ const CodeBlock = (props) =>  {
     document.body.removeChild(el);
   }
 
-  return (
+  render() {
+    const { language, value } = this.props;
+    return (
       <div className={codeblockCSS.codeblock}>
         <div className={codeblockCSS.codeblockHeader}>
           <div className={codeblockCSS.codeblockLanguage}>
             {language}
           </div>
-          <button className={codeblockCSS.copyButton} onClick={e => handleCopyClick(e)}>Copy</button>
+          <button className={codeblockCSS.copyButton} onClick={this.handleCopyClick}>Copy</button>
         </div>
-        <div className={codeblockCSS.codeblockBody}>
-          <div className={codeblockCSS.codeblockNumbering}>
-            {value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
-          </div>
-          <SyntaxHighlighter language={language} style={vippsColours}>
-            {/* We have to add a new line here to get correct indentation in the code view. */}
-            {value}
-          </SyntaxHighlighter>
-        </div>
+        <SyntaxHighlighter language={language} showLineNumbers={true} style={vippsColours}>
+          {/* We have to add a new line here to get correct indentation in the code view. */}
+          {value}
+        </SyntaxHighlighter>
       </div>
     );
+  }
 }
 
 export default CodeBlock;
