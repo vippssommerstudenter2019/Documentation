@@ -9,14 +9,14 @@ const propTypes = {
 class Flowchart extends Component {
 	createImageComponent() {
 		console.log("Rendering Flowchart!");
-		
-		if (this.props.content.imagePath) {
-		// 812px mobile
-		
-			return <img src={this.props.content.imagePath} alt="flowchart" />
-		} else {
-			return <div className="img-circle"></div>
+		if (window.innerWidth <= 812 && !!this.props.content.mobileImage) {
+			return <img src={this.props.content.mobileImage} alt="flowchart" />;
+		} else if (!!this.props.content.browserImage) {
+			return <img src={this.props.content.browserImage} alt="flowchart" />;
+		} else if (!!this.props.content.mobileImage) {
+			return <img src={this.props.content.mobileImage} alt="flowchart" />;
 		}
+		return <div className="img-circle"> Missing Flowchart </div>;
 	}
 	createFlexList() {
 		if (!this.props.content.stepTitles) return;
