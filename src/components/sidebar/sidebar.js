@@ -130,7 +130,7 @@ class SidebarNavSpy extends Component {
 			(section.children)?
 				(<div>
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
-					<img className="arrow" alt="arrow" />
+					<img className="arrow" alt="arrow" src={arrow_right} />
 				</div>)
 			:
 				(<div>
