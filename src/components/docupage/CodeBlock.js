@@ -41,10 +41,15 @@ class CodeBlock extends PureComponent {
           </div>
           <button className={codeblockCSS.copyButton} onClick={this.handleCopyClick}>Copy</button>
         </div>
-        <SyntaxHighlighter language={language} showLineNumbers={true} style={vippsColours}>
-          {/* We have to add a new line here to get correct indentation in the code view. */}
-          {value}
-        </SyntaxHighlighter>
+        <div className={codeblockCSS.codeblockBody}>
+          <div className={codeblockCSS.codeblockNumbering}>
+            {value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
+          </div>
+          <SyntaxHighlighter language={language} style={vippsColours}>
+            {/* We have to add a new line here to get correct indentation in the code view. */}
+            {value}
+          </SyntaxHighlighter>
+        </div>
       </div>
     );
   }
