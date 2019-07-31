@@ -19,7 +19,7 @@ class CustomTooltip extends React.Component {
             <Tooltip
                 key={this.props.keyword}
                 overlay={
-                    <div className="padding-s default-font-size keyword-overlay">
+                    <div className="default-font-size keyword-overlay tool-tip">
                         <div className="large-font-size">
                             <b>{this.props.title}</b>
                         </div>

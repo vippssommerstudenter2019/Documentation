@@ -74,8 +74,6 @@
 }
 
 
-
-
 .listEl {
   text-decoration: none;
   font-size: 16px;
@@ -91,7 +89,6 @@
   background: white;
   color: #5E3DC2!important;
 }
-
 
 .collapsible-header {
   padding: 0px 30px 0px 30px !important;
@@ -110,6 +107,11 @@
   background: white !important; /* #f6f6f9*/
   color: #5e3dc2 !important;
 }
+
+.collapsible-header.hit, .listEl.hit {
+  background: #f6f6f9;
+}
+.collapsible-body.hit {display: block;}
 
 .collapsible-header:hover > div > a {
   color: #5E3DC2!important;
@@ -139,9 +141,17 @@
   padding-right: 11px;
 }
 
+.arrow::after {
+  //content:"";
+  content:url("../../img/arrowRight.svg");
+}
+
 .arrow {
   margin-right: 0 !important;
-  content:url("../../img/arrowRight.svg");
+  transition-duration:0.5s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration:0.5s;
+  -webkit-transition-timing-function: ease-in-out;
 }
 
 .active {
@@ -149,7 +159,16 @@
 }
 
 .active .arrow {
-  content:url("../../img/arrowDown.svg")
+  transition-duration:0.5s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration:0.5s;
+  -webkit-transition-timing-function: ease-in-out;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  //content:url("../../img/arrowDown.svg")
 }
 
 .collapsible {
@@ -203,13 +222,10 @@ li > div > a {
   margin-top: 9px !important;
 }
 
-
 .collapsible-header{
   margin-top: 18px !important;
 }
 
-.collapsible-body{
-}
 
  /* SIDEBAR SUBHEADERS */ 
  .sidenav li > a {

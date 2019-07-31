@@ -14,24 +14,42 @@ class IntroBox extends React.Component {
         return (
 			<div className="intro-wrapper">
 				<div className="intro-text" >
-					<div className="large-font-size">
+					
+					<div className="xxlarge-font-size intro-title">
+						{this.props.content.title}
+					</div>
+
+					<div className="intro-sub">
 						{this.props.content.introduction}
 					</div>
-					<div className="xxlarge-font-size">
-						<div className="intro-title">
-							{this.props.content.title}
-						</div>
-					</div>
-					<div className="large-font-size">
+
+					<div className="intro-description">
 						{this.props.content.description} 
 					</div>
+
+					<div className="intro-description">
+						{this.props.content.descriptiontwo} 
+					</div>
 				</div>
-				<div className="intro-image">
-					<img src={this.props.content.imagePath} alt="Woman Using ecom"/>
-				</div>
+				
 			</div>
         );
     }
+};
+
+class IntroPoints extends React.Component {
+	render() {
+		return (
+			<div className="top-list">
+				<div className="col-1">
+					<li>test</li>
+				</div>
+				<div className="col-2">
+
+				</div>
+			</div>
+		);
+	}
 }
 
 IntroBox.propTypes = propTypes;
