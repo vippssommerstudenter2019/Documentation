@@ -56,7 +56,7 @@ class Step extends Component {
 	 * 
 	 * @param {*} endpoint The endpoint to create header and body components for.
 	 */
-	createBodyAndHeaderComponentsForEndpoint(endpoint) {
+	createEndpointDataComponent(endpoint) {
 		if (!objectIsEmpty(this.props.endpointData[endpoint].header)) {
 			return(
 				<DataView key={endpoint}
@@ -65,7 +65,8 @@ class Step extends Component {
 					body={this.props.endpointData[endpoint].body}
 					responses={this.props.endpointData[endpoint].responses}
 					shouldCollapse={true}
-					spaceForJson={spaceForJson} />
+					spaceForJson={spaceForJson} 
+				/>
 			);
 		}
 	}
@@ -76,7 +77,8 @@ class Step extends Component {
 	 * @param {*} endpoint The endpoint to construct for.
 	 */
 	createEndpointContent(endpoint) {
-		return [
+		// is both step-text-response & step-description neccesary?
+		return [ 
 		<div key={endpoint + "-text-responses"} className="step-text-responses">
 			<div key={endpoint+"-description"} className="step-description">
 				<TooltipText input={this.props.metaData.descriptions[endpoint]} keywordsData={this.props.metaData.keywords} />
@@ -84,7 +86,7 @@ class Step extends Component {
 		</div>
 		,
 		<div key={endpoint + "-data"} className="step-data">
-			{this.createBodyAndHeaderComponentsForEndpoint(endpoint)}
+			{this.createEndpointDataComponent(endpoint)}
 		</div>
 		];
 	} 
