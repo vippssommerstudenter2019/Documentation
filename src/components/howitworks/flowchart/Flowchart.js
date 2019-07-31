@@ -9,7 +9,10 @@ const propTypes = {
 class Flowchart extends Component {
 	createImageComponent() {
 		console.log("Rendering Flowchart!");
+		
 		if (this.props.content.imagePath) {
+		// 812px mobile
+		
 			return <img src={this.props.content.imagePath} alt="flowchart" />
 		} else {
 			return <div className="img-circle"></div>
