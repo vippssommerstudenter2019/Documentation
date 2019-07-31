@@ -148,9 +148,9 @@
 
 .arrow {
   margin-right: 0 !important;
-  transition-duration:0.5s;
+  transition-duration:0.2s;
   transition-timing-function: ease-in-out;
-  -webkit-transition-duration:0.5s;
+  -webkit-transition-duration:0.2s;
   -webkit-transition-timing-function: ease-in-out;
 }
 
@@ -159,16 +159,15 @@
 }
 
 .active .arrow {
-  transition-duration:0.5s;
+  transition-duration:0.2s;
   transition-timing-function: ease-in-out;
-  -webkit-transition-duration:0.5s;
+  -webkit-transition-duration:0.2s;
   -webkit-transition-timing-function: ease-in-out;
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
-  //content:url("../../img/arrowDown.svg")
 }
 
 .collapsible {
