@@ -141,29 +141,7 @@
   padding-right: 11px;
 }
 
-<<<<<<< HEAD
-.arrow::before {
-	border-style: solid;
-	border-color: var(--manatee);
-	border-width: 0.20em 0.20em 0 0;
-	content: ' ';
-	display: inline-block;
-	height: 0.90em;
-	width: 0.90em;
-	left: 0.15em;
-	position: relative;
-	top: 0.15em;
-	transform: rotate(-45deg);
-	vertical-align: top;
-	transition-duration:0.2s;
-	transition-timing-function: ease-in-out;
-	margin-right: 0 !important;
-}
 
-.arrow:before {
-	left: 0.25em;
-	transform: rotate(225deg);
-=======
 .arrow::after {
   //content:"";
   content:url("../../img/arrowRight.svg");
@@ -175,18 +153,12 @@
   transition-timing-function: ease-in-out;
   -webkit-transition-duration:0.2s;
   -webkit-transition-timing-function: ease-in-out;
->>>>>>> d244f958077463895a12a8b531411cae37fda505
 }
 
 .active {
   background-color: white !important;
 }
 
-<<<<<<< HEAD
-.active .arrow:before {
-	top: 0;
-	transform: rotate(135deg);
-=======
 .active .arrow {
   transition-duration:0.2s;
   transition-timing-function: ease-in-out;
@@ -197,7 +169,6 @@
   -o-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
->>>>>>> d244f958077463895a12a8b531411cae37fda505
 }
 
 .collapsible {
