@@ -6,30 +6,12 @@ const vippsgray = "#938FA8";
 const vippsblack = "#484848";
 
 export default {
-    "code[class*=\"language-\"]": {
-      "color": vippsgray,
-      "background": "none",
-      "fontFamily": "'PT Mono', monospace",
-      "textAlign": "left",
-      "whiteSpace": "pre-line",
-      "wordSpacing": "normal",
-      "wordBreak": "normal",
-      "wordWrap": "normal",
-      "MozTabSize": "4",
-      "OTabSize": "4",
-      "tabSize": "4",
-      "WebkitHyphens": "none",
-      "MozHyphens": "none",
-      "msHyphens": "none",
-      "hyphens": "none",
-      "margin": "0px 0px 25px 25px",
-    },
     "pre[class*=\"language-\"]": {
       "color": vippsgray,
       "background": "none",
       "fontFamily": "'PT Mono', monospace",
       "textAlign": "left",
-      "whiteSpace": "pre-line",
+      "whiteSpace": "pre",
       "wordSpacing": "normal",
       "wordBreak": "normal",
       "wordWrap": "normal",
@@ -47,8 +29,6 @@ export default {
       "WebkitBoxSizing": "border-box",
       "MozBoxSizing": "border-box",
       "boxSizing": "border-box",
-      "border-radius": "0px 0px 20px 20px"
-
     },
     "pre[class*=\"language-\"]>code": {
       "position": "relative",
