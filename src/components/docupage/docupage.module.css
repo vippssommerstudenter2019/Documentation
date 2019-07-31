@@ -1,4 +1,10 @@
 /* Docupage CSS */
+.Container {
+  background-position: 60vw;
+  background-size: 40VW;
+  background-image: url(../../img/smiliesBackground.svg);
+  background-repeat: repeat-y;
+}
 
 h1,
 h2,
@@ -115,11 +121,6 @@ table code {
   padding: 0 !important;
 }
 
-.InlineCode {
-  color: var(--vippspurple);
-  background-color: var(--lightgrey);
-}
-
 .token {
   background-color: var(--lightgrey) !important;
 }
@@ -137,6 +138,10 @@ table code {
   grid-area: content1 ;
   max-width: 50em ;
   margin-bottom: 7vh;
+}
+
+.Content h2:first-child{
+  border: 2px solid red !important;
 }
 
 .devResources hr {
@@ -204,7 +209,7 @@ h1 {
   line-height: 58px !important;
 }
 
-h1:first-child {
+h1:first-child, h1:nth-child(2) {
   border-top: none;
 }
 
