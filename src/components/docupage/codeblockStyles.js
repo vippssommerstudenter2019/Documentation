@@ -9,6 +9,7 @@ export default {
     "code[class*=\"language-\"]": {
       "color": vippsgray,
       "background": "none",
+      "fontFamily": "'PT Mono', monospace",
       "textAlign": "left",
       "whiteSpace": "pre",
       "wordSpacing": "normal",
@@ -21,6 +22,7 @@ export default {
       "MozHyphens": "none",
       "msHyphens": "none",
       "hyphens": "none",
+      "margin": "0px 0px 25px 25px",
     },
     "pre[class*=\"language-\"]": {
       "color": vippsgray,
@@ -45,6 +47,7 @@ export default {
       "WebkitBoxSizing": "border-box",
       "MozBoxSizing": "border-box",
       "boxSizing": "border-box",
+      "border-radius": "0px 0px 20px 20px"
 
     },
     "pre[class*=\"language-\"]>code": {
