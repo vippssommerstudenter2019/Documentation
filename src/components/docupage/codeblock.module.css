@@ -32,6 +32,7 @@
 }
 
 .copyButton {
+  transition: all 1s ease;
   font-family: Vipps;
   font-weight: lighter;
   background-color: var(--athensGreyLight);
@@ -56,10 +57,7 @@
   color: var(--rum);
 }
 
-.copyButton:focus {
-  outline: none;
-}
-
 .copyButton:active {
-  background-color: var(--athensGrey);
+  color: var(--signalPurple);
+  transition: all ease;
 }

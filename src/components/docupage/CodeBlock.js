@@ -15,7 +15,9 @@ class CodeBlock extends PureComponent {
     language: null
   };
 
-  handleCopyClick = () => {
+  handleCopyClick = (e) => {
+    let targetButton = e.target
+    
     // Create new element
     var el = document.createElement('textarea');
     // Set value (string to be copied)
@@ -29,6 +31,16 @@ class CodeBlock extends PureComponent {
     document.execCommand('copy');
     // Remove temporary element
     document.body.removeChild(el);
+    // Change text to 'Copied' then back to 'Copy' after 3 sec
+    // Vipps purple
+    /*targetButton.style.color='blue';
+    setTimeout(
+      function changeText() {
+        // Vipps black
+        targetButton.style.color = 'black';
+      }.bind(this),
+      2000
+    );*/
   }
 
   render() {
@@ -39,7 +51,7 @@ class CodeBlock extends PureComponent {
           <div className={codeblockCSS.codeblockLanguage}>
             {language}
           </div>
-          <button className={codeblockCSS.copyButton} onClick={this.handleCopyClick}>Copy</button>
+          <button className={codeblockCSS.copyButton} onClick={e => this.handleCopyClick(e)}>Copy</button>
         </div>
         <SyntaxHighlighter language={language} showLineNumbers={true} style={vippsColours}>
           {/* We have to add a new line here to get correct indentation in the code view. */}
