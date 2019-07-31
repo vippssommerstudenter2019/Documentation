@@ -9,12 +9,10 @@ const propTypes = {
  * Represents a box with a short overview over the content.
  */
 class IntroBox extends React.Component {
-
     render() {
         return (
 			<div className="intro-wrapper">
 				<div className="intro-text" >
-					
 					<div className="xxlarge-font-size intro-title">
 						{this.props.content.title}
 					</div>
@@ -31,7 +29,6 @@ class IntroBox extends React.Component {
 						{this.props.content.descriptiontwo} 
 					</div>
 				</div>
-				
 			</div>
         );
     }

@@ -2,7 +2,7 @@ const eComSections = `
 ---
 Prerequisites:
     access_token:
-        title: Get accesss token
+        title: Get access token
         introduction: In order to make API calls to Vipps, you need a valid [access token]. This token has to be renewned every 24 hours.
         endpoints:
             - /accesstoken/get
@@ -160,6 +160,13 @@ descriptiontwo: Also, you should know how the payment process works. Underneath 
 imagePath: "../../assets/images/womanWithPhone.svg"
 `;
 
+const eComFlowChart = `
+---
+title: Steps to implement for eCom
+imagePath: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+stepTitles: false
+`;
+
 const eComOutro = `
 ---
 title: Great! Now you know how the payment process works
@@ -168,4 +175,4 @@ imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
 link: http://localhost:3000/documentation/ecommerce/
 `;
 
-export { eComSections, eComIntro, eComOutro};
+export { eComSections, eComIntro, eComOutro, eComFlowChart};

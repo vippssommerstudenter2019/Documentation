@@ -1,6 +1,7 @@
 import React from 'react';
 import Content from "./Content"
 import IntroBox from "./IntroBox";
+import Flowchart from "./flowchart/Flowchart";
 import OutroBox from "./OutroBox";
 import PropTypes from "prop-types";
 import "../../model/SwaggerExtracter";
@@ -31,6 +32,7 @@ class HowItWorks extends React.Component {
 		this.state = {
 			intro: yaml.safeLoad(this.props.intro),
 			outro: yaml.safeLoad(this.props.outro),
+			flowchart: this.props.flowchart? yaml.safeLoad(this.props.flowchart) : false,
 			metaData: yaml.safeLoad(this.props.sections),
 			swaggerData: {}
 		};
@@ -88,8 +90,8 @@ class HowItWorks extends React.Component {
 				<div className="Sidebar">
 					<Sidebar headers={sideBarData} api="#ecom"/>
 				</div>
-				<IntroBox 	id={this.props.apiName}
-							content={this.state.intro} />
+				<IntroBox content={this.state.intro} />
+				{this.state.flowchart? <Flowchart content={this.state.flowchart} /> : null}
 				<Content 
 					swaggerData={this.state.swaggerData}	
 					sections={this.state.metaData}
