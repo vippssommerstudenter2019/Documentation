@@ -8,9 +8,8 @@ import { SOURCE_URLS,
           DEV_URLS,
           PAGE_TITLES,
           DEV_SIDEBAR_HEADER } from './Constants.js'
-import "./../../styles/index.css";
 import "./../../styles/vipps-style.css";
-import "./docupage.css";
+import docupageCSS from "./docupage.module.css";
 
 class DocuPage extends React.Component {
   state = {
@@ -97,7 +96,9 @@ class DocuPage extends React.Component {
       } else {
         return;
       }
-    });
+    })
+    navbarHeaders.push(navbarHeader);
+    ;
     {/* First element is empty*/}
     let sidebarHeaders = navbarHeaders.slice(1);
     sidebarHeaders.unshift(this.devResourceHeader(this.getChildren()));
@@ -127,11 +128,9 @@ class DocuPage extends React.Component {
 
 
   render = () => (
-      <div className="Container">
-        <div className="Sidebar">
+      <div className={docupageCSS.Container}>
           <Sidebar headers={this.state.headers} api={this.props.doc} />
-        </div>
-        <div className="Content">
+        <div className={docupageCSS.Content}>
           <DeveloperResources devURLs={this.devURLs} pageTitle={this.pageTitle}/>
           <ReactMarkdown
             source={this.state.content}

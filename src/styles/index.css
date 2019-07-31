@@ -1,3 +1,5 @@
+/* Index CCS*/
+
 h1,
 h2,
 h3 {
@@ -88,14 +90,25 @@ h5 {
   box-shadow: none !important;
 }
 
+
 /* Vipps-colors */
 
 :root {
-  --lightgrey: #f6f6f9;
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
+ --debug: #FF00FF;
+ --vippsblack: #161225;
+ --vippsblue: #59cbe8;
+ --vippsgray: #6f6f6f;
+ --vippspurple: #49367E;
+ --vippsred: #EB5858;
+ --vippsorange: #FF5B24;
+ --vippsrust: #9B3716;
+ --signalPurple: #5E3DC2;
+
+ --ghost: #C9C6D7;
+ --seashellPeach: #FFF4EC;
+ --gallery: #F0F0F0;
+ --athensGrey: #EFEEF3;
+ --athensGreyLight: #F6F6F9;
+ --manatee: #938FA8;
+ --rum: #706B8B;
 }
