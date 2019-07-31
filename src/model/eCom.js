@@ -4,7 +4,6 @@ Prerequisites:
     access_token:
         title: Get accesss token
         introduction: In order to make API calls to Vipps, you need a valid [access token]. This token has to be renewned every 24 hours.
-        imagePath: ../../assets/ecom-steps/PayWithVipps.svg
         endpoints:
             - /accesstoken/get
         descriptions:
@@ -22,7 +21,6 @@ Prerequisites:
     endpoints:
         title: Set up endpoints
         introduction: To let Vipps send and receive information from you, you need to implement [endpoints] at your [backend]. They make it possible for you to for example get transaction updates and provide shipping details.
-        imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
         endpoints:
             - "[callbackPrefix]/v2/payments/{orderId}"
             - "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails"
@@ -53,7 +51,7 @@ The payment process:
     initate:
         title: Initiate payment
         introduction: The customer is now selecting a service or item at your webstore, and wants to pay with Vipps. 
-        imagePath: ../../assets/ecom-steps/Initiate.svg
+        imagePath: ../../assets/ecom-illustrations/initiatePayment2.svg
         endpoints:
             - /ecomm/v2/payments
         descriptions:
@@ -83,7 +81,7 @@ The payment process:
     customer_confirms:
         title: Customer confirmation and checking status
         introduction: The customer is now being taken to the landing page and will confirm the [reservation of the payment] in the Vipps app. 
-        imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
+        imagePath: ../../assets/ecom-illustrations/customerConfirms2.svg
         endpoints:
             - "[callbackPrefix]/v2/payments/{orderId}"
         descriptions:
@@ -102,7 +100,7 @@ The payment process:
     ship_item:
         title: Confirm the order and ship/deliver the item
         introduction: Now, you'll have to provide the customer with a confirmation of that you’ve been given the order and that payment is reserved. Next step is delivering the service or shipping the items ordered from the customer.
-        imagePath: ../../assets/ecom-steps/ShipItem.svg
+        imagePath: ../../assets/ecom-illustrations/confirmOrder2.svg
         endpoints:
             - ship_item
         descriptions:
@@ -115,7 +113,7 @@ The payment process:
     capture:
         title: Withdraw the money
         introduction: Up to this point, the money is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped.  This is called a capture.
-        imagePath: ../../assets/ecom-steps/Capture.svg
+        imagePath: ../../assets/ecom-illustrations/capture2.svg
         endpoints:
             - "/ecomm/v2/payments/{orderId}/capture"
         descriptions:
@@ -129,7 +127,7 @@ Nice to know:
     cancellation:
         title: Cancellation of payment
         introduction: If you as the seller can't deliver the ordered service or the item isn't in stock, you can send a cancel message to Vipps in order to free up the reservation of the payment.
-        imagePath: ../../assets/ecom-steps/Cancel.svg
+        imagePath: ../../assets/ecom-illustrations/cancel2.svg
         endpoints:
             - /ecomm/v2/payments/{orderId}/cancel
         descriptions:
@@ -142,7 +140,7 @@ Nice to know:
     refund:
         title: Refunding of payment
         introduction: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full.
-        imagePath: ../../assets/ecom-steps/Refund.svg
+        imagePath: ../../assets/ecom-illustrations/refund.svg
         endpoints:
             - /ecomm/v2/payments/{orderId}/refund
         descriptions:
@@ -156,8 +154,9 @@ Nice to know:
 const eComIntro = `
 ---
 title: Vipps eCom API
-introduction: Understanding the process of online payments
-description: Before implementing the Vipps eCom API, you’ll need to get keys for testing and production through the developer portal. Look here for how to get started. Also, you should know how the payment process works. Underneath is a stepwise description of the payment process, including the customer, the Vipps eCom API and your website.
+introduction: Understanding how the process of online payments works
+description: Before implementing the Vipps eCom API, you’ll need to get keys for testing and production through the developer portal. Look here for how to get started. 
+descriptiontwo: Also, you should know how the payment process works. Underneath is a stepwise description of the payment process, including the customer, the Vipps eCom API and your website.
 imagePath: "../../assets/images/womanWithPhone.svg"
 `;
 
@@ -165,7 +164,7 @@ const eComOutro = `
 ---
 title: Great! Now you know how the payment process works
 description: You're ready to move forward to the documentation
-imagePath: "../../assets/images/jumpingMan.svg"
+imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
 link: http://localhost:3000/documentation/ecommerce/
 `;
 

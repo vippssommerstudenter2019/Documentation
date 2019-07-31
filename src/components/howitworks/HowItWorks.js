@@ -96,10 +96,11 @@ class HowItWorks extends React.Component {
 				/>
 				<OutroBox content={this.state.outro} />
 			</div>
-		)
+		);
 	}
-}
+};
 
 HowItWorks.propTypes = propTypes;
 
 export default HowItWorks;
+ 
