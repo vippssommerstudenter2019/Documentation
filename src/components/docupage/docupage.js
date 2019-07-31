@@ -1,6 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import HeadingRenderer from "./HeadingRenderer.js";
+import InlineCodeRenderer from "./InlineCodeRenderer";
 import CodeBlock from "./CodeBlock.js";
 import Sidebar from "../sidebar/sidebar.js";
 import DeveloperResources from './DeveloperResources'
@@ -134,7 +135,9 @@ class DocuPage extends React.Component {
           <DeveloperResources devURLs={this.devURLs} pageTitle={this.pageTitle}/>
           <ReactMarkdown
             source={this.state.content}
-            renderers={{ code: CodeBlock, heading: HeadingRenderer }}
+            renderers={{code: CodeBlock,
+                        inlineCode: InlineCodeRenderer,
+                        heading: HeadingRenderer }}
           />
         </div>
       </div>
