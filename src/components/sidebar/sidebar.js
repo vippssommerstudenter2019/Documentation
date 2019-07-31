@@ -1,95 +1,114 @@
 import React from "react";
-import {
-  SideNav,
-  Collapsible,
-  CollapsibleItem
-} from "react-materialize";
-import M from "materialize-css";
+import { SideNav, Collapsible, CollapsibleItem } from "react-materialize";
+import "materialize-css";
 import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import vipps_docs from "../../img/vipps_docs.svg"
+import vipps_dev from "../../img/vipps_dev.svg";
+import arrow_down from "../../img/arrowDown.svg";
+import arrow_right from "../../img/arrowRight.svg";
 
 // Contains the menuitems and backlink
-export const Sidebar = props => (
+const Sidebar = props => (
   <section className="Sidebar">
-    <SidebarHeader />
-    <SidebarMenu headers={props.headers} api={props.api}/>
+    <SidebarMenu headers={props.headers} api={props.api} />
   </section>
 );
 
 // Header for logo and backlink
 const SidebarHeader = () => (
   <Link to="/" className="SidebarHeader ">
-    <img
-      className="Logo logoMarg"
-      src={vipps_docs}
-      alt="logo"
-    />
+    <img className="Logo logoMarg" src={vipps_dev} alt="logo" />
   </Link>
 );
 
 // Structures the sidebar content
 const SidebarMenu = props => (
   <div className="SidebarMenu">
-    <SidebarNav headers={props.headers} api={props.api}/>
+    <SidebarNav headers={props.headers} api={props.api} />
   </div>
 );
 
-// Buttons to different swaggers
-/*const DeveloperResources = () => (
-  <button className="ApiLink sidebarMarg">
-    Developer 
-  </button>
-);*/
-
-/*const SwaggerISPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/isp.html" id="mySwaggerISP">Swagger ISP</a></button>
-);
-
-const SwaggerIPPLink = () => (
-  <button className="ApiLink sidebarMarg">
-    <a href="https://vippsas.github.io/vipps-invoice-api/ipp.html" id="mySwaggerIPP">Swagger IPP</a></button>
-);*/
-
 // Navigation Menu
+{
+  /*
+  Takes in argument in the form of list containing collections of headers
+  Example: [{name: "ex1", anchor: "#ex1", children: [{name: "ex1a", anchor: "#ex1a"}, {name: "ex1b", anchor: "#ex1b"}]},
+            {name: "ex2", anchor: "#ex2", children: [{name: ex2a", anchor: "#ex2a"}]}]
+*/
+}
 const SidebarNav = props => {
-  // Generates an sidebar menu from given header datastructure passed in props
-  const propHeaders = props.headers;
-  const sidebarHeaders = propHeaders.map((head, index) => (
+  const sidebarHeaders = props.headers.map((head, index) => (
     <CollapsibleItem
-      key={"Item: "+index}
-      header={<a href={Object.values(head)[1]}>{Object.values(head)[0]}</a>}
+      key={"Item: " + index}
+      header={
+        
+          Object.values(head)[2].length != 0 
+          ? 
+          <div>
+          <a className="sidebarLink" href={Object.values(head)[1]}>
+            {Object.values(head)[0]}
+          </a>
+          <img className="arrow" alt="arrow" />
+          </div>
+          :
+          <div>
+          <a className="sidebarLink" href={Object.values(head)[1]}>
+            {Object.values(head)[0]}
+          </a>
+          </div>
+      }
     >
       <ul>
         {Object.values(head)[2].map((child, indice) => (
-          <li className="listEl" key={"li index: "+ index + ", indice: " + indice }>
-            <a  key={"a index: "+ index + ", indice: " + indice } 
-                href={Object.values(child)[1]}> {Object.values(child)[0]} </a>
+          <li
+            className="listEl"
+            key={"li index: " + index + ", indice: " + indice}
+          >
+            {/* Links from Developer resources opens in a new tab */}
+            {Object.values(head)[0] === "Developer resources" ? (
+              <a
+                key={"a index: " + index + ", indice: " + indice}
+                href={Object.values(child)[1]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                {Object.values(child)[0]}{" "}
+              </a>
+            ) : (
+              <a
+                key={"a index: " + index + ", indice: " + indice}
+                href={Object.values(child)[1]}
+              >
+                {" "}
+                {Object.values(child)[0]}{" "}
+              </a>
+            )}
           </li>
         ))}
       </ul>
     </CollapsibleItem>
   ));
 
-  // Returns the correct navigation bar
-  // Param: normal = false if documentation page is invoice, else true
-  function navBar (normal) {
-      return (
-        <div>
+  function retNavBar() {
+    return (
+      <div>
         <SideNav className="sidebarMarg">
-        <div className='static sidebarlogo'>
-          <SidebarHeader />
+          <div className="static sidebarlogo">
+            <SidebarHeader />
           </div>
-          <div className='scrollable'>
-            <Collapsible>{sidebarHeaders}</Collapsible>
+          <div className="scrollable">
+            <Collapsible accordion={false}>{sidebarHeaders}</Collapsible>
           </div>
+          <div className="fadeoutTop" />
+          <div className="fadeoutBottom" />
         </SideNav>
       </div>
-      )
-  };
+    );
+  }
 
-  // If documentpage is invoice then show two swagger buttons
-  return props.api === "invoice" ? navBar(false) : navBar(true);
-}
+  return retNavBar();
+};
+
+export default Sidebar;

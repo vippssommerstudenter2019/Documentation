@@ -1,54 +1,84 @@
+/* How It Works */
+
 @import url("../../node_modules/rc-tooltip/assets/bootstrap.css");
 @import url("vipps-style.css");
-@import url("code-theme.css");
-@import url("../../node_modules/codemirror/lib/codemirror.css");
+
+/**
+ * Predefined Vipps colours.
+ */
+:root {
+ --debug: #FF00FF;
+ --vippsblack: #161225;
+ --vippsblue: #59cbe8;
+ --vippsgray: #6f6f6f;
+ --vippspurple: #49367E;
+ --vippsred: #EB5858;
+ --vippsorange: #FF5B24;
+ --vippsrust: #9B3716;
+ --signalPurple: #5E3DC2;
+
+ --ghost: #C9C6D7;
+ --seashellPeach: #FFF4EC;
+ --gallery: #F0F0F0;
+ --athensGrey: #EFEEF3;
+ --athensGreyLight: #F6F6F9;
+ --manatee: #938FA8;
+ --rum: #706B8B;
+}
 
 .App {
   text-align: left;
+  color: var(--vippsblack) !important;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 280px auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "sidebarheader intro-wrapper"
+    "sidebar 	   content-wrapper"
+    "sidebarfooter outro-wrapper";
 }
 
 /* 
  * The main wrapper for the content of the application
  * Apllication content does not include the vipps header or footer
  */
+.intro-wrapper,
+.content-wrapper,
+.outro-wrapper {
+	margin-left: 120px;
+	margin-right: 20px;
+}
+.intro-wrapper   {
+	max-width: 1000px;
+	grid-area: intro-wrapper;
+}
+
 .content-wrapper {
-	text-align: left;
-	display: grid;
-	grid-template-columns: auto 100px 1000px 100px auto;
-	grid-template-rows: auto auto auto;
-	grid-template-areas:
-		".			intro-area	intro-area	intro-area	."
-		".			. 			step-area	.			."
-		"outro-area	outro-area	outro-area	outro-area	outro-area";
+	max-width: 1000px;
+	grid-area: content-wrapper;
 }
 
-.intro-area {
-	grid-area: intro-area;
-}
-
-.step-area {
-	grid-area: step-area;
-}
-
-.outro-area {
-	grid-area: outro-area;
+.outro-wrapper   {
+	max-width: 1000px;
+	grid-area: outro-wrapper;
 }
 
 /*
  *The layout for the intro elements
  */
 .intro-wrapper {
-	background-color: #FFF4EC;
-	margin-top: 64px;
-	margin-bottom: 64px;
 	display: grid;
-	padding: 10%;
-	border-radius: 10px;
-	grid-template-columns: 60% 40%;
+	grid-template-columns: 50% auto 40%;
 	grid-template-rows: auto;
 	grid-column-gap: 32px;
 	grid-template-areas:
-		"intro-text intro-image"
+		"intro-text . intro-image";
+	background-color: #FFF4EC;
+	padding: 70px;
+	max-height: 1000px;
+	margin-top: 64px;
+	margin-bottom: 64px;
 }
 
 .intro-text {
@@ -64,6 +94,7 @@
 }
 
 .intro-title {
+	color: var(--vippsorange);
 	font-weight: bold;
 }
 
@@ -72,10 +103,9 @@
  */
 .outro-wrapper {
 	display: block;
-	width: auto;
 	height: 600;
-	background-color: #49367e;
-	color: white;
+	background-color: var(--seashellPeach);
+	color: var(--vippsblack);
 	margin-top: 64px;
 	padding: 128px;
 	text-align: center;
@@ -110,195 +140,10 @@
 	font-weight: bold;
 }
 
-/*
- * The styling for text links and popups.
- */
-.keyword-overlay {
-	max-width: 400px;
+/* Styling for the sections */
+
+.section-title {
+	color: var(--vippsblack);
+	font-weight: bold;
 }
 
-.rc-tooltip {
-	opacity: 1;
-	z-index: 4;
-	border-radius: 100px 25px 25px 25px;
-}
-
-.underlined-purple {
-	color: #49367e;
-	text-decoration: underline;
-}
-
-.rc-custom-link {
-	color: #FFF4EC;
-	text-decoration: underline;
-}
-
-.rc-custom-link, a:hover {
-    color: inherit; 
-}
-
-/*
- * The layouts for both Step and CodeStep.
- */
-
-.step-text {
-	grid-area: step-text;
-	align-self: center;
-}
-
-.step-sub-text,
-.code-title,
-.code-description,
-.code-code {
-	margin-top: 16px;
-	margin-bottom: 16px;
-}
-
-.step-img-right {
-	grid-area: img-right;
-	align-self: center;
-	justify-self: start;
-}
-
-.step-img-left {
-	align-self: center;
-	justify-self: end;
-}
-
-.step-wrapper,
-.code-wrapper {
-	margin-top: 64px;
-	margin-bottom: 64px;
-	padding-top: 32px;
-	padding-bottom: 32px;
-	display: grid;
-	grid-template-columns: auto 60% auto;
-	grid-column-gap: 32px;
-	font-size: 1.2vmin;
-}
-
-.step-wrapper {
-	grid-template-rows: auto;
-	grid-template-areas:
-		"img-left step-text img-right";
-}
-
-.code-img-left {
-	grid-area: img-left;
-	align-self: start;
-	justify-self: end;
-}
-
-.code-img-right {
-	grid-area: img-right;
-	align-self: start;
-	justify-self: start; 
-}
-
-.code-title {
-	grid-area: title;
-}
-
-.code-description {
-	grid-area: desc;
-}
-
-.code-code {
-	grid-area: code;
-}
-
-.code-wrapper {
-	grid-template-rows: auto auto auto;
-	grid-template-areas:
-		". 			title	."
-		"img-left	desc	img-right"
-		"img-left	code	img-right"
-		"img-left	. 		img-right";
-}
-
-.dropdown {
-	display: inline-block;
-	position: relative;
-	width: 100%;
-	z-index: 10;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-	width: 100%;
-}
-
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
-.dropdown-border {
-	padding-left: 5px;
-	padding-right: 5px;
-	border-width: 2px; 
-	border-style: hidden;
-}
-
-.dropdown-border.top {
-	border-radius: 20px 20px 0px 0px;
-	padding-bottom: 5px;
-	margin-bottom: -5px;
-}
-.dropdown-border.bot {
-	border-radius: 0px 0px 20px 20px;
-}
-
-.dropdown:hover .dropdown-border.top {
-	border-top-style: solid;
-	border-left-style: solid;
-	border-right-style: solid;
-}
-
-.dropdown:hover .dropdown-border.bot {
-	border-left-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-}
-
-.dropdown:hover .dropdown-border {
-	background-color: #fbfbfb;
-	border-color: #e0e0e0;
-	border-left-style: solid;
-	border-right-style: solid;
-	justify-content: space-around;
-}
-
-.dropdown-border button {
-	display: block;
-	text-align: left;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	width: 100%;
-	border-style: solid;
-	border-width: small;
-	border-color: #e0e0e0;
-}
-
-.dropdown-icon:after {
-	float: right;
-	display: inline-block;
-	content: '';
-	height: .8em;
-	width: .8em;
-	border-style: solid;
-	border-width: 0.3em 0.3em 0 0;
-	
-	margin-left: 0.7em;
-	//margin-bottom: 0.5em;
-	margin-top: 0.25em;
-	
-	transform: rotate(-45deg);
-	vertical-align: bot;	
-}
-.dropdown-icon:after {
-    transform: rotate(-135deg);
-}
-.dropdown:hover .dropdown-icon:after {
-	transform: rotate(135deg);
-}

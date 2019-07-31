@@ -1,114 +1,82 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Step, CodeStep} from "./Step";
+import Step from "./step/Step";
+import SwaggerExtracter from "../../model/SwaggerExtracter"
+import OpenAPIExtracter from "../../model/OpenAPIExtracter";
 
 const propTypes = {
-    sections: PropTypes.array.isRequired,
-    url: PropTypes.string.isRequired
+    sections: PropTypes.object.isRequired,
+    swaggerData: PropTypes.object.isRequired
 };
+
+const openAPIExtracter = new OpenAPIExtracter();
+const swaggerExtracter = new SwaggerExtracter();
 
 class Content extends React.Component {
 
-    constructor(props) {
-        super(props);
-        let languages = ["python", "shell", "http", "javascript", "ruby", "java", "go"];
-        this.state = {
-            activeLanguage: languages[0],
-			languages: languages,
-            swaggerResponse: {},
-            sections: this.props.sections,
-        };
-		
-		this.languageCallback = this.languageCallback.bind(this)
-    }
-	
-	languageCallback(language) {
-		if (language === this.props.activeLanguage) return;
-		const languages = this.state.languages.slice();
-		for (let i in languages) {
-			if (language === languages[i]) {
-				this.setState({activeLanguage: language});
-				break;
-			}
-		}
-	}
+    contentFromSection(title, section) {
 
-    componentDidMount() {
-        this.fetchData();
-    }
+        let subsections = [];
+/*
+        subsections.push(
+            <div key={title} className="hero-font-size section-title">{title}</div>
+        )
+  */      
+        for (const [id, subsection] of Object.entries(section)) {
+            // We use the swagger extracter to get example headers, bodies and responses for every endpoint in this step.
 
-    fetchData() {
-        const data = {
-            url: this.props.url
-        };
+            var endpointData = {};
+            for (const endpoint of subsection.endpoints) {
 
-        const options = {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
+                let header, body, responses;
 
-        fetch("/swaggerdata/get", options)
-            .then(response => response.json())
-            .then(response => this.setState({ swaggerResponse: response }))
-    }
+                if (this.props.swaggerData.hasOwnProperty("openapi")) {
+                    [header, body, responses] = openAPIExtracter.getExampleData(endpoint, this.props.swaggerData);
+                }
+                else if (this.props.swaggerData.hasOwnProperty("swagger")) {
+                    [header, body, responses] = swaggerExtracter.getExampleData(endpoint, subsection.modes[endpoint], this.props.swaggerData);
+                }
 
-    contentFromSection(section, i) {
-        const language  = this.state.activeLanguage;
-		const languages = this.state.languages.slice();
-		const langcall  = this.languageCallback;
-        const swagger   = this.state.swaggerResponse;
+                endpointData[endpoint] = {
+                    header: header,
+                    body: body,
+                    responses: responses
+                }
+            }
 
-        const id = section.id;
-        const title = section.title;
-        const description = section.description;
-        const imagelink = section.img;
-        const position = (i % 2 === 0) ?  'left' : 'right';
-        const keywords = section.keywords;
-
-        if (JSON.stringify(swagger).indexOf(id) >= 0) {
-            const code = swagger["data"][id]["code"][language];
-            return (
-                <CodeStep 
-					key={id} 
-					scrollId={id} 
-					title={title} 
-					description={description} 
-					language={language}
-					languages={languages}
-					langcall={langcall}
-					code={code} 
-					imagelink={imagelink}
-                    position={position}
-                    keywords={keywords}
-				/>
-            );
-        } else {
-            return (
+            subsections.push(
                 <Step
-					key={id} 
-					scrollId={id} 
-					title={title} 
-					description={description} 
-					imagelink={imagelink}
-					position={position}
-                    keywords={keywords}
-				/>
+                    id={id}
+                    key={subsection.endpoints[0] + subsection.title}
+                    metaData={subsection}
+                    endpointData={endpointData}
+                />
             );
         }
+
+        return subsections;
     }
 
     render() {
-        const sections = this.state.sections.slice();
+        let components = [];
 
-        let items = [];
-        Array.from(sections, (val, index) => { return items.push(this.contentFromSection(val, index)); });
+        // Check if the swagger data has loaded.
+        if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
+            // TODO: add some sort of animation here.
+            return <div></div>;
+        }
+
+
+        for (const [title, section] of Object.entries(this.props.sections)) {
+
+            components.push(
+                this.contentFromSection(title, section)
+            );
+        }
 
         return (
-            <div className={this.props.className} > 
-		        {items}
+            <div className="content-wrapper" > 
+		        {components}
             </div>
         );
     }

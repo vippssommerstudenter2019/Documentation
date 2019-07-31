@@ -1,71 +1,54 @@
+/* Index CCS*/
 
-
-img {
-  max-width: 10vw;
-}
-
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin-top: 9vh;
   margin-bottom: 3vh;
-  color: var(--vippsorange);
+  color: var(--vippsblack);
 }
 
-h4, h5 {
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h4,
+h5 {
   margin-top: 5vh;
   margin-bottom: 1vh;
 }
 
 
-
-.container {
-  margin: 0px;
-  display: grid;
-  grid-template-columns: 350px 40vw 40vw;
-  grid-template-rows: 5vh 90vh 5vh;
-  grid-template-areas:
-    "sidebarheader content1 content2 "
-    "sidebar content1 content2"
-    "sidebarfooter content1 content2";
-}
-.content {
-  margin-right: 10vw;
-  grid-area: content1 / content1 / content2 / content2;
-  max-width: 50em;
-}
-
-
-.sidebarfooter {
-  grid-area: sidebarfooter;
-}
-
-.sidebar {
-
-  margin: 2vh;
-  position: fixed;
-  grid-area: sidebar;
-}
-
-.sidebarheader {
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  max-width: 100px;
-  grid-area: sidebarheader;
-}
-
-.sidenav {
-    box-shadow: none!important;
-}
-
-
 /* Vipps-colors */
 
-
 :root {
-  --vippsorange :#FF5B24;
-  --lightvippsorange : #FDF4ED;
-  --vippspurple :#4D3280 ;
-  --vippsblue : #59CBE8 ;
-  --vippsblack :#161225 ;
-  --vippsblueberry :#49367e ;
-  }
+ --debug: #FF00FF;
+ --vippsblack: #161225;
+ --vippsblue: #59cbe8;
+ --vippsgray: #6f6f6f;
+ --vippspurple: #49367E;
+ --vippsred: #EB5858;
+ --vippsorange: #FF5B24;
+ --vippsrust: #9B3716;
+ --signalPurple: #5E3DC2;
+
+ --ghost: #C9C6D7;
+ --seashellPeach: #FFF4EC;
+ --gallery: #F0F0F0;
+ --athensGrey: #EFEEF3;
+ --athensGreyLight: #F6F6F9;
+ --manatee: #938FA8;
+ --rum: #706B8B;
+}

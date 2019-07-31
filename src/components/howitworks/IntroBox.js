@@ -12,25 +12,24 @@ class IntroBox extends React.Component {
 
     render() {
         return (
-				<div className="intro-wrapper">
-					<div className="intro-text" >
-						<div className="large-font-size">
-							{this.props.content.subtitle}
-						</div>
-						<div className="xxlarge-font-size">
-							<div className="intro-title">
-								{this.props.content.title}
-							</div>
-						</div>
-						<div className="large-font-size">
-							{this.props.content.description} 
+			<div className="intro-wrapper">
+				<div className="intro-text" >
+					<div className="large-font-size">
+						{this.props.content.introduction}
+					</div>
+					<div className="xxlarge-font-size">
+						<div className="intro-title">
+							{this.props.content.title}
 						</div>
 					</div>
-					<div className="intro-image">
-						<img src={this.props.content.imgPath} alt="Woman Using ecom"/>
+					<div className="large-font-size">
+						{this.props.content.description} 
 					</div>
 				</div>
-
+				<div className="intro-image">
+					<img src={this.props.content.imagePath} alt="Woman Using ecom"/>
+				</div>
+			</div>
         );
     }
 }

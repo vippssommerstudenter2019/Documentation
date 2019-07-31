@@ -11,12 +11,7 @@ const propTypes = {
 class OutroBox extends React.Component {
 
     render() {
-		/*
-		<div className="large-font-size">
-							{this.props.content.subtitle}
-						</div>
-		*/
-        return (
+       return (
 				<div className="outro-wrapper">
 					<div className="outro-image">
 						<img 
@@ -37,7 +32,7 @@ class OutroBox extends React.Component {
 						</div>
 					</div>
 					<div className="outro-link" >
-						<a href="https://www.vipps.no">
+						<a href={this.props.content.link}>
 							<button className="button" > 
 								eCom API Documentation
 							</button>
