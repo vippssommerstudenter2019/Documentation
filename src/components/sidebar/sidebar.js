@@ -127,7 +127,7 @@ class SidebarNavSpy extends Component {
 		}
 		const sidebarHeaders = this.props.sections.map((section, sec) => {
 			const header = (
-			(section.children)?
+				(section.children.length !== 0)?
 				(<div>
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
 					<img className="arrow" alt="arrow" src={arrow_right} />
