@@ -33,14 +33,14 @@ class CodeBlock extends PureComponent {
     document.body.removeChild(el);
     // Change text to 'Copied' then back to 'Copy' after 3 sec
     // Vipps purple
-    /*targetButton.style.color='blue';
+    targetButton.changeText='Copied';
     setTimeout(
       function changeText() {
         // Vipps black
-        targetButton.style.color = 'black';
+        targetButton.changeText = 'Copy';
       }.bind(this),
       2000
-    );*/
+    );
   }
 
   render() {

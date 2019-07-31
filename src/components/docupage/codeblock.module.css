@@ -32,7 +32,6 @@
 }
 
 .copyButton {
-  transition: all 1s ease;
   font-family: Vipps;
   font-weight: lighter;
   background-color: var(--athensGreyLight);
@@ -47,10 +46,12 @@
   width: 65px;
   border-radius: 40px;
   border: 0.8px solid var(--ghost);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .copyButton:hover {
-  color: var(--manatee);
+  color: var(--vippsorange);
+
 }
 
 .copyButton.selected {
@@ -58,6 +59,6 @@
 }
 
 .copyButton:active {
-  color: var(--signalPurple);
-  transition: all ease;
+  color: var(--vippsorange);
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
