@@ -141,6 +141,7 @@
   padding-right: 11px;
 }
 
+<<<<<<< HEAD
 .arrow::before {
 	border-style: solid;
 	border-color: var(--manatee);
@@ -162,15 +163,41 @@
 .arrow:before {
 	left: 0.25em;
 	transform: rotate(225deg);
+=======
+.arrow::after {
+  //content:"";
+  content:url("../../img/arrowRight.svg");
+}
+
+.arrow {
+  margin-right: 0 !important;
+  transition-duration:0.2s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration:0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+>>>>>>> d244f958077463895a12a8b531411cae37fda505
 }
 
 .active {
   background-color: white !important;
 }
 
+<<<<<<< HEAD
 .active .arrow:before {
 	top: 0;
 	transform: rotate(135deg);
+=======
+.active .arrow {
+  transition-duration:0.2s;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-duration:0.2s;
+  -webkit-transition-timing-function: ease-in-out;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+>>>>>>> d244f958077463895a12a8b531411cae37fda505
 }
 
 .collapsible {
