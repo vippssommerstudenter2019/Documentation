@@ -141,6 +141,7 @@
   padding-right: 11px;
 }
 
+
 .arrow::after {
   //content:"";
   content:url("../../img/arrowRight.svg");
