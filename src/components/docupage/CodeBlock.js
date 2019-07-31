@@ -1,8 +1,7 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import vippsColours from "./codeblockStyles";
 import codeblockCSS from "./codeblock.module.css"
-
+import "./syntaxhighlighting.css"
 
 const CodeBlock = (props) =>  {
   const { language, value } = props;
@@ -35,7 +34,7 @@ const CodeBlock = (props) =>  {
           <div className={codeblockCSS.codeblockNumbering}>
             {value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
           </div>
-          <SyntaxHighlighter language={language} style={vippsColours}>{value}</SyntaxHighlighter>
+          <SyntaxHighlighter language={language} useInlineStyles={false} >{value}</SyntaxHighlighter>
         </div>
       </div>
     );
