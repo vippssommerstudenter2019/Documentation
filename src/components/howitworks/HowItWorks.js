@@ -42,7 +42,8 @@ class HowItWorks extends React.Component {
 		.then(response => response.json())
 		.then((response) => {
 
-			// We use a reference parser to inject all the references in the json file with content, in that way we can extract bodies with examples for example.
+			// We use a reference parser to inject all the references in the json file with content, 
+			// in that way we can extract bodies with examples for example.
 			$RefParser.dereference(response, (error, data) => {
 				if (error) {
 					console.error(error);
@@ -74,16 +75,16 @@ class HowItWorks extends React.Component {
 			}
 		}
 
-		var sideBarData = [
-			{
-				name: "How it works",
-				anchor: "#" + this.props.apiName,
-				children: subsectionSideBarData
-			}
-		];
+		var sideBarData = 
+		[{
+			name: "How it works",
+			anchor: "#" + this.props.apiName,
+			children: subsectionSideBarData
+		}];
 		
 		return (
 			<div className="App">
+				<div id={this.props.apiName}/>
 				<div className="Sidebar">
 					<Sidebar headers={sideBarData} api="#ecom"/>
 				</div>
