@@ -163,7 +163,9 @@ imagePath: "../../assets/images/womanWithPhone.svg"
 const eComFlowChart = `
 ---
 title: Steps to implement for eCom
-imagePath: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+browserImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+tabletImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+mobileImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
 stepTitles: false
 `;
 
