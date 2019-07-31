@@ -17,6 +17,7 @@
 .codeblockNumbering {
   float: left;
   list-style-type: none;
+  text-align: right;
   padding: 0 15px 0 25px;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
