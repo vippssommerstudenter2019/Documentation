@@ -1,13 +1,14 @@
 .codeblock {
   font-size: 15px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 1em;
   max-width: 100%;
+  background-color: var(--athensGreyLight);
 }
 
 .codeblockBody {
-  background-color: var(--athensGreyLight);
   width: 100%;
   font-family: 'PT Mono', monospace;
   padding-bottom: 1em;
@@ -28,7 +29,6 @@
 
 
 .codeblockHeader {
-  background-color: var(--athensGreyLight);
   width: 100%;
   margin: auto;
 }
@@ -43,14 +43,12 @@
 
 .codeblockHeader button {
   color: var(--vippsblack);
-  background-color: var(--lightvippsgray);
 }
 
 .copyButton {
   font-family: Vipps;
   font-weight: lighter;
-  background-color: var(--athensGreyLight);
-  color: var(--rum);
+  color: var(--vippsblack);
   float: right;
 
   margin: 25px 25px 15px 15px;
@@ -73,8 +71,4 @@
 
 .copyButton:focus {
   outline: none;
-}
-
-.copyButton:active {
-  background-color: var(--athensGrey);
 }
