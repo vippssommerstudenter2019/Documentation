@@ -135,8 +135,10 @@ class DataView extends Component {
         const lines = data.split("\n").length;
 
         let elements = [];
+        
+        // commenting out to remove expand-function
 
-        if (lines > lineCountCollapsibleThreshold && this.props.shouldCollapse) {
+        /*if (lines > lineCountCollapsibleThreshold && this.props.shouldCollapse) {
             const collapse = "dataview-collapse" + (this.state.collapsed ? "" : " expanded");
 
             elements.push(
@@ -150,13 +152,13 @@ class DataView extends Component {
                 </div>
             );
         }
-        else {
+        else {*/
             elements.push(
                 <div key={this.props.title} className="dataview-non-collapsable">
                     {this.dataComponent(data)}
                 </div>
             );
-        }
+        /*}*/
 
         // We add the components for switching between header and body
         // If there isn't a body provided, we won't add the button.
