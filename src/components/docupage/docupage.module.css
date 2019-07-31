@@ -115,6 +115,11 @@ table code {
   padding: 0 !important;
 }
 
+.InlineCode {
+  color: var(--vippspurple);
+  background-color: var(--lightgrey);
+}
+
 .token {
   background-color: var(--lightgrey) !important;
 }
