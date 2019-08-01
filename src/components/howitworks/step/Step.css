@@ -103,10 +103,9 @@
 		display:flex;
 		flex-flow:column;
 		margin-bottom:70px;
-		max-width:812px;
 	}
 	.step-wrapper img {
-		width:40vw;
+		width:60vw;
 		height:auto;
 	}
 	.step-img {
@@ -125,7 +124,7 @@
 		margin-top:11px;
 	}
 	.step-title {
-		flex:8;
+		flex:3;
 		height:30px;
 		margin-bottom:20px;
 		font-size:24px;
@@ -133,17 +132,28 @@
 	}
 	.step-introduction {
 		margin:1rem 0 1rem 0;
-		padding:1rem 1rem 1rem 3rem;
+		padding:1rem 0rem 1rem 3rem;
 		flex:1;
-		width:350px;
+		
 	}
+	.step-introduction, .step-description {
+		font-size:18px;
+		line-height:28px;
+	}
+
 	.step-data {
 		flex:1;
-		width:350px;
+		width:345px;
 	}
 	.step-description {
 		flex:1;
-		width:350px;
+	}
+	.step-introduction, .step-description {
+		width:100%;
+	}
+
+	.step-headline {
+		height:100px;
 	}
   }
 

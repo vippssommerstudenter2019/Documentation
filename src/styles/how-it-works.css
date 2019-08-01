@@ -53,9 +53,9 @@ html, body {
 @media (max-width:812px) {
 	.App {
 		display:flex;
-		flex-flow:row wrap;
-		margin:0 0 0 2rem;
-		width:812px;
+		flex-flow:column;
+		margin:0 0 0 20px;
+		margin-right:0;
 	}
 }
 
@@ -216,19 +216,21 @@ html, body {
 /* mobilie */
 @media (max-width:812px) {
 	.intro-description {
-		font-size:14px;
-		line-height:23px;
+		font-size:18px;
+		line-height:28px;
 		width:100%;
 		font-weight:300;
+		font-family: Arial, sans-serif;
+		margin-top:10px;
 	}
 	.intro-title {
-		font-size:30px;
-		line-height:27px;
+		font-size:33px;
+		line-height:47px;
 		margin-top:70px;
 	}
 	.intro-sub {
-		font-size:18px;
-		line-height:28px;
+		font-size:20px;
+		line-height:30px;
 		width:100%;
 		padding-top:2rem;
 	}
@@ -236,19 +238,19 @@ html, body {
 		margin-left:0px;
 		margin-right:10px;
 		flex: 1 0 auto;
-		max-width:812px;
+		/* max-width:812px; */
 	}
 
 	.intro-wrapper {
-		width:100%;
 		margin: 0 10px 0 5px;
 		margin-top:20px;
 		flex:1;
+		width:100%;
+		margin-bottom:50px;
 	}
 
 	.outro-wrapper {
 		flex-shrink:0;
-		position:relative;
 	}
 	
 	.section-line {
@@ -280,6 +282,16 @@ html, body {
 	
 	.last-line {
 		flex:8;
+	}
+
+	.flow-wrapper {
+		flex:1;
+		margin:0;
+		padding:0;
+	}
+
+	.flow-wrapper img {
+		width:100%;
 	}
 }
 
