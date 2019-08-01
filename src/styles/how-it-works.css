@@ -3,6 +3,11 @@
 @import url("../../node_modules/rc-tooltip/assets/bootstrap.css");
 @import url("vipps-style.css");
 
+
+html, body {
+	height:100%;
+}
+
 /**
  * Predefined Vipps colours.
  */
@@ -25,6 +30,11 @@
  --athensGreyMedio: #FCFBFE;
  --manatee: #938FA8;
  --rum: #706B8B;
+
+ --responseLightGreen: #E9FBE7;
+ --responseGreen: #6EC06A;
+ --responseLightRed: #FAEAEA;
+ --responseRed: #E16060;
 }
 
 .App {
@@ -46,7 +56,8 @@
 	.App {
 		display:flex;
 		flex-flow:row wrap;
-		margin:0;
+		margin:0 0 0 2rem;
+		width:812px;
 	}
 }
 
@@ -135,7 +146,7 @@
 .outro-wrapper {
 	display: block;
   position: absolute;
-	//top: 0;
+/* 	//top: 0; */
 	left: 0;
 	height: 100%;
 	width: 100%;
@@ -186,6 +197,7 @@
 	display:flex;
 	flex-flow:row wrap;
 	width:100%;
+	margin:20px 0 80px 0;
 }
 
 .first-line {
@@ -216,8 +228,9 @@
 @media (max-width:812px) {
 	.intro-description {
 		font-size:14px;
-		line-height:21px;
+		line-height:23px;
 		width:100%;
+		font-weight:300;
 	}
 	.intro-title {
 		font-size:30px;
@@ -225,19 +238,59 @@
 		margin-top:70px;
 	}
 	.intro-sub {
-		font-size:20px;
+		font-size:18px;
 		line-height:28px;
 		width:100%;
+		padding-top:2rem;
 	}
 	.content-wrapper {
-		margin:30px;
+		margin-left:0px;
+		margin-right:10px;
+		flex: 1 0 auto;
+		max-width:812px;
 	}
-	.intro-wrapper,
-	.content-wrapper,
-	.outro-wrapper {
-		margin-left: 20px;
-		margin-right: 20px;
+
+	.intro-wrapper {
+		width:100%;
+		margin: 0 10px 0 5px;
+		margin-top:20px;
 		flex:1;
+	}
+
+	.outro-wrapper {
+		flex-shrink:0;
+		position:relative;
+	}
+	
+	.section-line {
+		display:flex;
+		flex-flow:row wrap;
+		width:100%;
+		margin:0;
+	}
+
+	.first-line, .last-line {
+		height:3px;
+		background-color:var(--rum);
+		width:100%;
+		align-self:center;
+	}
+	
+	.first-line {
+		flex:1;
+
+	}
+	
+	.section-end {
+		flex:2;
+		color:var(--rum);
+		text-transform:uppercase;
+		font-size:12px;
+		margin:0 2rem 0 2rem;
+	}
+	
+	.last-line {
+		flex:8;
 	}
 }
 

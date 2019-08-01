@@ -53,7 +53,7 @@ class Content extends React.Component {
 
         return (
          <div>
-         <div id={title} className="xxlarge-font-size text-color-primary">{title}</div>
+         <div id={title} className="intro-title">{title}</div>
           {subsections}
          <div class="section-line">
 					<div class="first-line">

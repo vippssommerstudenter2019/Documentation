@@ -45,7 +45,7 @@ class Step extends Component {
 	 */
 	createImageComponent() {
 		if (this.props.metaData.imagePath) {
-			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />  //hmm
+			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />
 		} else {
 			return <div className="img-circle"></div>
 		}

@@ -13,7 +13,7 @@ class IntroBox extends React.Component {
         return (
 			<div className="intro-wrapper">
 
-					<div className="hero-font-size text-color-primary">
+					<div className="intro-title">
 						{this.props.content.title}
 					</div>
 

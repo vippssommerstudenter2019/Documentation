@@ -8,6 +8,29 @@
   margin-top: 0 !important;
 }
 
+@media (max-width:50em) {
+  .scrollable {
+    visibility:hidden;
+    display:none;
+  }
+  .sidenav {
+    background:none;
+    box-shadow:none;
+  }
+  .SidebarHeader {
+    width:100%;
+    background:#fff;
+  }
+  .fadeout-bottom {
+    display:none;
+  }
+  .sidebarlogo {
+    width:100%;
+    background:#fff;
+    display:block;
+  }
+}
+
 .Sidebar {
   background: white;
   display: grid;
@@ -352,3 +375,5 @@ a:hover {
   -webkit-transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: margin 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
+
