@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import vippsColours from "./codeblockStyles";
 import codeblockCSS from "./codeblock.module.css"
+import copyemoji from "../../img/blunk.svg";
 
 
 class CodeBlock extends PureComponent {
@@ -17,6 +18,8 @@ class CodeBlock extends PureComponent {
 
   handleCopyClick = (e) => {
     let targetButton = e.target
+    var emoji = document.getElementById('1');
+    emoji.style.display = "block";
     
     // Create new element
     var el = document.createElement('textarea');
@@ -31,16 +34,24 @@ class CodeBlock extends PureComponent {
     document.execCommand('copy');
     // Remove temporary element
     document.body.removeChild(el);
-    // Change text to 'Copied' then back to 'Copy' after 3 sec
-    // Vipps purple
     targetButton.changeText='Copied';
+    console.log("hei");
+    emoji.style.opacity = "1";
+
+    
     setTimeout(
       function changeText() {
         // Vipps black
         targetButton.changeText = 'Copy';
+        emoji.style.transition = "1s ease";
+        emoji.style.opacity = "0";
       }.bind(this),
-      2000
+      0
     );
+
+    emoji.style.transition = "none";
+
+    //emoji.style.transition = "all 1s ease-out";
   }
 
   render() {
@@ -52,6 +63,7 @@ class CodeBlock extends PureComponent {
             {language}
           </div>
           <button className={codeblockCSS.copyButton} onClick={e => this.handleCopyClick(e)}>Copy</button>
+          <img className={codeblockCSS.copied} src={copyemoji} id="1" align="right"/>
         </div>
         <SyntaxHighlighter language={language} showLineNumbers={true} style={vippsColours}>
           {/* We have to add a new line here to get correct indentation in the code view. */}
