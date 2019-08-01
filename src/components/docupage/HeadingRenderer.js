@@ -1,5 +1,10 @@
 import React from "react";
 
+
+/* 
+Adds id to h1 and h2 elements making it possible to href them
+This is because we use ReactMarkdown
+*/
 const flatten = (text, child) => {
   return typeof child === 'string'
     ? text + child
