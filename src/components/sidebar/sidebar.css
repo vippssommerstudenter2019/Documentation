@@ -107,7 +107,6 @@
   width: 50%px !important;
   /*line-height: 32px !important;*/
 }
-
 .listEl:hover {
   background: white;
   color: #5E3DC2!important;
@@ -255,7 +254,7 @@ li > div > a {
   width:100% !important;
   height:100% !important;
   line-height: 16px !important;
-  padding: 5px 10px 5px 35px !important;
+  padding: 5px 40px 5px 35px !important;
 
   vertical-align: middle;
   color: #161225 !important;
