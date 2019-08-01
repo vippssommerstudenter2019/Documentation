@@ -31,7 +31,7 @@ const SidebarHeader = () => (
 // Structures the sidebar content
 const SidebarMenu = props => (
   <div className="SidebarMenu">
-	<SidebarNavSpy offset={0} percent={20} sections={props.headers} api={props.api}/>
+	<SidebarNavSpy offset={10} percent={20} sections={props.headers} api={props.api}/>
   </div>
 );
 
@@ -137,16 +137,10 @@ class SidebarNavSpy extends Component {
 		const activeSection = this.state.active.section;
 		const activeSubsection = this.state.active.subsection;
 		function createSubsection(subsection, sec, sub) {
+			const headSelect = (activeSection === sec && activeSubsection === sub)? "selectedElement":"";
 			const header = <a href={subsection.anchor}> {subsection.name} </a>;
-			if (activeSection === sec && activeSubsection === sub) {
 			return (
-				<li className="listEl hit" key={"sec"+sec+"sub"+sub}>
-					{header}
-				</li>
-			);
-			}
-			return (
-				<li className="listEl" key={"sec"+sec+"sub"+sub}>
+				<li className={"listEl "+headSelect} key={"sec"+sec+"sub"+sub}>
 					{header}
 				</li>
 			);
@@ -166,14 +160,16 @@ class SidebarNavSpy extends Component {
 			);
 		}
 		const sidebarHeaders = this.props.sections.map((section, sec) => {
+			const headSelect = (activeSection === sec && activeSubsection === -1)? "selectedElement":"";
+			if (activeSection === sec && activeSubsection === -1) console.log("High: ", section.name);
 			const header = (
 				(section.children.length !== 0)?
-				(<div>
+				(<div className={"listTop "+headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
 					<img className="arrow" alt="arrow" src={arrow_right} />
 				</div>)
 			:
-				(<div>
+				(<div className={"listTop "+headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
 				</div>)
 			);
