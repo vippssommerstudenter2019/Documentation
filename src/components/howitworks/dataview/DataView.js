@@ -1,53 +1,59 @@
 import PropTypes from "prop-types";
 import React, { Component } from 'react';
-import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
 import "./DataView.css"
 import { objectIsEmpty, getHashCodeFromString } from "../../../Util";
+import PrismView from "../prismview/PrismView";
+import ResponseTable from "../responses/ResponseTable";
 
 const propTypes = {
     title: PropTypes.string.isRequired,
     header: PropTypes.object.isRequired,
     body: PropTypes.object.isRequired,
-    shouldCollapse: PropTypes.bool.isRequired,
+	responses: PropTypes.object.isRequired,
     spaceForJson: PropTypes.number.isRequired
 };
-
-/**
- * Determines the line height for when we'll apply a expandable element.
- */
-const lineCountCollapsibleThreshold = 10;
 
 /**
  * A component which displays some header and body data and has got the option to copy from it.
  */
 class DataView extends Component {
-
     constructor(props) {
         super(props);
-
+		
+		// how much whitespace the json's will use for indentation 
+		const jsonSpace = this.props.spaceForJson;
+		const title = this.props.title;
+		
+		
+		// Defining how the different elements should look
+		function makeElement(str, el) { return{title: str, element: el}; };
+		const code = (json) => JSON.stringify(json, null, jsonSpace);
+		
+		//Checking which json's that actually have content 
+		let content = [];
+		if (!objectIsEmpty(this.props.header)) content.push(makeElement(
+			"Header", 
+			<PrismView key={title+"-header"} code={code(this.props.header)}/>
+		));
+		if (!objectIsEmpty(this.props.body)) content.push(makeElement(
+			"Body", 
+			<PrismView key={title+"-body"} code={code(this.props.body)}/>
+		));
+		if (!objectIsEmpty(this.props.responses)) content.push(makeElement(
+			"Responses", 
+			<ResponseTable key={title+"-responses"} responses={this.props.responses} spaceForJson={jsonSpace}/>
+		));
+		
+		// Setting the content, and selecting the first.
         this.state = {
-            collapsed: true,
-            showingHeader: true
+			content: content,
+			selected: content[0].title,
+			copyID: getHashCodeFromString(title),
         };
 
+		// Binding callbacks to this instance
         this.handleCopyClick = this.handleCopyClick.bind(this);
-        this.handleExpand = this.handleExpand.bind(this);
         this.switchMode = this.switchMode.bind(this);
-    }
-
-    /**
-     * Need to re-run Prism when the component mounts to get syntax highlightning.
-     */
-    componentDidMount() {
-        Prism.highlightAll();
-    }
-
-    /**
-     * Makes Prism highlight the json after we switch between body and header.
-     */
-    componentDidUpdate() {
-        Prism.highlightAll();
     }
 
 	/**
@@ -55,10 +61,26 @@ class DataView extends Component {
 	 */
     handleCopyClick() {
 
-        // We create a fake text area and inject the code into it
+        // We create a fake text area that we can inject the code into
         let textArea = document.createElement("textarea");
-        const value = JSON.stringify(this.state.showingHeader ? this.props.header : this.props.body, null, this.props.spaceForJson);
-        const id = getHashCodeFromString(value);
+		
+		// We check which state that is selected
+		const json = (()=>{
+			const selected = this.state.selected;
+			if (selected === "Header") return this.props.header;
+			if (selected === "Body") return this.props.body;
+			if (selected === "Responses") {
+				for (const json of Object.values(this.props.responses)) {
+					if (!objectIsEmpty(json)) return json;
+				}
+			}
+			return null;
+		})();
+		if (json === null) return;
+		
+		// Injection of the code into the text field
+        const value = JSON.stringify(json, null, this.props.spaceForJson);
+        const id = this.state.copyID;
         textArea.value = value;
 
         // Append the textarea under this code view.
@@ -71,7 +93,7 @@ class DataView extends Component {
             document.execCommand("copy");
 
             // TODO: Implement overlay for successful copy when design is ready
-            //var successful = document.execCommand('copy');
+            // var successful = document.execCommand('copy');
             // var msg = successful ? 'Copied' : 'Couldn\'t copy';
         } catch (err) {
             console.error('Fallback: Oops, unable to copy', err);
@@ -87,104 +109,50 @@ class DataView extends Component {
     switchMode(event) {
 
         const button = event.target;
-        const shouldShowHeader = button.innerHTML === "Header";
-        const hasBody = !objectIsEmpty(this.props.body);
-
-        button.classList.add("header-body-button-activated");
-        
-        if (shouldShowHeader) {
-            if (hasBody) {
-                button.nextSibling.classList.remove("header-body-button-activated");
-            }
-        }
-        else {
-            button.previousSibling.classList.remove("header-body-button-activated");
-        }       
-
-        this.setState({
-            collapsed: this.state.collapsed,
-            showingHeader: shouldShowHeader,
-        });
-
-        Prism.highlightAll();
-    }
-
-    handleExpand() {
-        this.setState({ collapsed: !this.state.collapsed });
-    }
-
-    /**
-     * Returns the syntax hightlighted data component.
-     */
-    dataComponent(data) {
-        return (
-            <pre>
-                <code className={"language-javascript"}>
-                    {/* We have to add a new line here to get correct indentation in the code view. */}
-                    {"\n" + data}
-                </code>
-            </pre>
-        );
-    }
+        const title = button.innerHTML;
+        if (title === this.state.selected) return;
+		this.setState({selected: title});
+	}
 
     render() {
+		const selected = this.state.selected;
+        let elements = this.state.content.map((comp, i) => {
+			const title = comp.title;
+			if (title === selected) 
+			return comp.element;
+			return null;
+		});
 
-        // We check if the amount of lines in the data is above a certain limit, and add the collapsible only if
-        // it's above that threshold
-        const data = JSON.stringify(this.state.showingHeader ? this.props.header : this.props.body, null, this.props.spaceForJson);
-        const lines = data.split("\n").length;
-
-        let elements = [];
-
-        if (lines > lineCountCollapsibleThreshold && this.props.shouldCollapse) {
-            const collapse = "dataview-collapse" + (this.state.collapsed ? "" : " expanded");
-
-            elements.push(
-                <div key={this.props.title} className={collapse}>
-                    <div className="dataview-collapse-content">
-                        {this.dataComponent(data)}
-                    </div>
-                    <button className="dataview-collapse-overlay" onClick={this.handleExpand}>
-                        {(this.state.collapsed ? "Expand" : " Close")}
-                    </button>
-                </div>
-            );
-        }
-        else {
-            elements.push(
-                <div key={this.props.title} className="dataview-non-collapsable">
-                    {this.dataComponent(data)}
-                </div>
-            );
-        }
-
-        // We add the components for switching between header and body
-        // If there isn't a body provided, we won't add the button.
-        let buttonComponents = [];
-        buttonComponents.push(
-            // We add the activated class so the header button will be highlighted initially
-            <button key={this.props.title + "header"} className="header-body-button header-body-button-activated" onClick={this.switchMode}>Header</button>
-        )
-
-        if (!objectIsEmpty(this.props.body)) {
-            buttonComponents.push(
-                <button key={this.props.title + "body"} className="header-body-button" onClick={this.switchMode}>Body</button>
-            )
-        }
+        // We add the components for switching between header, body and responses. If they exists.
+		const mainTitle = this.props.title;
+        let buttonComponents = this.state.content.map((comp, i) => {
+			const title = comp.title;
+			if (title === selected) 
+			return (
+			<button key={mainTitle + title} className="header-body-button header-body-button-activated" onClick={this.switchMode}>
+				{title}
+			</button>
+			);
+			return (
+			<button key={mainTitle + title} className="header-body-button" onClick={this.switchMode}>
+				{title}
+			</button>
+			);
+		});
 
         return (
             // Render a container with code with an utility bar and style it according to Vipps style.
             // We give the first div an id of an unique hash corresponding to the code so when
             // we want to copy something out of it, we know which component to grab the codde from
-            <div className="dataview" id={getHashCodeFromString(data)}>
+            <div className="dataview" id={this.state.copyID}>
                 <div className="dataview-title">{this.props.title}</div>
                 <div className="dataview-utility-bar">
                     <button className="copy-button" onClick={this.handleCopyClick}>Copy</button>
                     {buttonComponents}
                 </div>
-                {elements}
-            </div>
-        );
+				{elements}
+			</div>
+		);
     }
 }
 

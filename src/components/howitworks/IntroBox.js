@@ -9,30 +9,29 @@ const propTypes = {
  * Represents a box with a short overview over the content.
  */
 class IntroBox extends React.Component {
-
     render() {
         return (
 			<div className="intro-wrapper">
-				<div className="intro-text" >
-					<div className="large-font-size">
+
+					<div className="hero-font-size text-color-primary">
+						{this.props.content.title}
+					</div>
+
+					<div className="intro-sub">
 						{this.props.content.introduction}
 					</div>
-					<div className="xxlarge-font-size">
-						<div className="intro-title">
-							{this.props.content.title}
-						</div>
-					</div>
-					<div className="large-font-size">
+
+					<div className="intro-description">
 						{this.props.content.description} 
 					</div>
-				</div>
-				<div className="intro-image">
-					<img src={this.props.content.imagePath} alt="Woman Using ecom"/>
-				</div>
+
+					<div className="intro-description">
+						{this.props.content.descriptiontwo} 
+					</div>
 			</div>
         );
-    }
-}
+	}
+};
 
 IntroBox.propTypes = propTypes;
 

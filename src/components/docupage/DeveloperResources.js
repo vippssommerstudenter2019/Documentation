@@ -3,7 +3,7 @@ import docupageCSS from "./docupage.module.css";
 
 const UrlElement = (LinkTitle, LinkURL) => (
     <div >
-        <a href={LinkURL}>
+        <a href={LinkURL} target="_blank" rel="noopener noreferrer">
             <div>
                 {LinkTitle}
                 <p>{String.fromCharCode(10132)}</p>
@@ -15,10 +15,10 @@ const UrlElement = (LinkTitle, LinkURL) => (
 
 const DeveloperResources = (props) => (
     <div className={docupageCSS.devResources}>
-        <h1 id={docupageCSS.developerResources}>
+        <h1 id={docupageCSS.pageTitle}>
                 Documentation - {props.pageTitle}
         </h1>
-        <h2 id="developer-resources">Developer resources</h2>
+        <h2 className={docupageCSS.developerResources} id="developer-resources">Developer resources</h2>
     <div className= {docupageCSS.resourceLink}>
         <hr />
         {props.devURLs.map(element => (

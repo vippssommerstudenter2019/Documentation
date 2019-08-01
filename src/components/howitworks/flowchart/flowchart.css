@@ -1,0 +1,17 @@
+.flow-wrapper {
+
+}
+
+.FlowChart {
+    margin:2rem 0 2rem 0;
+    
+}
+
+.FlowChart img {
+    width:90vw;
+}
+
+.FlowTitle {
+    font-family: Vippsheader;
+    color:var(--vippsorange);
+}

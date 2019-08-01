@@ -22,6 +22,7 @@
  --gallery: #F0F0F0;
  --athensGrey: #EFEEF3;
  --athensGreyLight: #F6F6F9;
+ --athensGreyMedio: #FCFBFE;
  --manatee: #938FA8;
  --rum: #706B8B;
 }
@@ -29,14 +30,22 @@
 .App {
   text-align: left;
   color: var(--vippsblack) !important;
-  margin: 0px;
   display: grid;
-  grid-template-columns: 280px auto;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: 250px auto;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas:
-    "sidebarheader intro-wrapper"
-    "sidebar 	   content-wrapper"
-    "sidebarfooter outro-wrapper";
+    "sidebar intro-wrapper"
+	"sidebar flow-wrapper"
+	"sidebar content-wrapper"
+	"sidebar outro-wrapper";
+}
+
+@media (max-width:812px) {
+	.App {
+		display:flex;
+		flex-flow:row wrap;
+		margin:0;
+	}
 }
 
 /* 
@@ -45,7 +54,8 @@
  */
 .intro-wrapper,
 .content-wrapper,
-.outro-wrapper {
+.outro-wrapper,
+.flow-wrapper {
 	margin-left: 120px;
 	margin-right: 20px;
 }
@@ -59,32 +69,30 @@
 	grid-area: content-wrapper;
 }
 
-.outro-wrapper   {
-	max-width: 1000px;
+.flow-wrapper {
+	max-width: 100%;
+	grid-area: flow-wrapper;
+}
+
+.outro-wrapper {
 	grid-area: outro-wrapper;
+	margin-top: 64px;
+	height: 100vh;
 }
 
 /*
  *The layout for the intro elements
  */
 .intro-wrapper {
-	display: grid;
-	grid-template-columns: 50% auto 40%;
-	grid-template-rows: auto;
-	grid-column-gap: 32px;
-	grid-template-areas:
-		"intro-text . intro-image";
-	background-color: #FFF4EC;
-	padding: 70px;
 	max-height: 1000px;
 	margin-top: 64px;
 	margin-bottom: 64px;
 }
 
 .intro-text {
-	grid-area: intro-text;
 	align-self: center;
 	justify-self: end; 
+	font-weight:300;
 }
 
 .intro-image { 
@@ -95,20 +103,41 @@
 
 .intro-title {
 	color: var(--vippsorange);
-	font-weight: bold;
+	font-family: VippsHeader;
+	margin:2rem 0 2rem 0;
+}
+
+.intro-sub {
+	margin:2rem 0 2rem 0;
+	font-size:23px;
+}
+
+.intro-description {
+	font-size: calc(.4rem + .8vw);
+	line-height: calc(1rem + 1vw);
+	margin:1rem 0 1rem 0;
+	white-space:initial;
+	width:50vw;
 }
 
 /*
  *The layout for the outro elements
  */
-.outro-wrapper {
+
+.outro-element {
 	display: block;
-	height: 600;
+	position: absolute;
+	top: auto;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1000; /* Goddamnit Docu Group, why is scrollbar @ z: 999 ?? */
 	background-color: var(--seashellPeach);
 	color: var(--vippsblack);
-	margin-top: 64px;
+	margin: 0px;
 	padding: 128px;
 	text-align: center;
+	grid-area:outro-wrapper;
 }
 
 .outro-text {
@@ -139,7 +168,107 @@
 /* Styling for the sections */
 
 .section-title {
-	color: var(--vippsblack);
-	font-weight: bold;
+	color: var(--vippsorange);
+	font-size:40px;
+	font-family: Vippsheader;
 }
 
+.section-line {
+	grid-column:1/8;
+	display:flex;
+	flex-flow:row wrap;
+	width:100%;
+}
+
+.first-line {
+	flex:1;
+	height:2px;
+	background-color:var(--rum);
+	width:100%;
+	align-self:center;
+}
+
+.section-end {
+	flex:2;
+	color:var(--rum);
+	text-transform:uppercase;
+	font-size:1rem;
+	margin:0 2rem 0 2rem;
+}
+
+.last-line {
+	flex:8;
+	height:2px;
+	background-color:var(--rum);
+	width:100%;
+	align-self:center;
+}
+
+/* mobilie */
+@media (max-width:812px) {
+	.intro-description {
+		font-size:14px;
+		line-height:21px;
+		width:100%;
+	}
+	.intro-title {
+		font-size:30px;
+		line-height:27px;
+		margin-top:70px;
+	}
+	.intro-sub {
+		font-size:20px;
+		line-height:28px;
+		width:100%;
+	}
+	.content-wrapper {
+		margin:30px;
+	}
+	.intro-wrapper,
+	.content-wrapper,
+	.outro-wrapper {
+		margin-left: 20px;
+		margin-right: 20px;
+		flex:1;
+	}
+}
+
+/* tablet and small screens */
+@media (min-width:768px) and (max-width:1100px) {
+	.intro-description {
+		font-size:15px;
+		line-height:24px;
+		width:100%;
+	}
+	.intro-title {
+		font-size:35px;
+		line-height:45px;
+		margin-top:70px;
+	}
+	.intro-sub {
+		font-size:22px;
+		line-height:28px;
+		width:100%;
+	}
+}
+
+
+/* big screens */
+
+@media (min-width:1200px) {
+	.intro-description {
+		font-size:18px;
+		line-height:27px;
+		width:100%;
+	}
+	.intro-title {
+		font-size:43px;
+		line-height:60px;
+		margin-top:70px;
+	}
+	.intro-sub {
+		font-size:23px;
+		line-height:32px;
+		width:100%;
+	}
+}

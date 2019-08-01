@@ -1,4 +1,13 @@
 /* Docupage CSS */
+.Container {
+  background-position-y: 17vh;
+  background-position-x: 60vw;
+  background-size: 40VW;
+  background-image: url(../../img/smiliesBackground.svg);
+  background-repeat: repeat-y;
+}
+
+#developer
 
 h1,
 h2,
@@ -84,10 +93,14 @@ h5 {
 }
 
 
-#developerResources {
+#pageTitle {
   margin-top: 0 !important;
   color: var(--vippsorange) !important;
   margin-bottom: 96px !important;
+}
+
+.developerResources {
+  border: none !important;
 }
 
 :root {
@@ -119,24 +132,6 @@ table code {
   background-color: var(--lightgrey) !important;
 }
 
-pre,
-code {
-  padding: 10px !important;
-  overflow-x: auto !important;
-  white-space: pre-wrap !important;
-  white-space: -moz-pre-wrap !important;
-  white-space: -pre-wrap !important;
-  white-space: -o-pre-wrap !important;
-  word-wrap: break-word !important;
-}
-
-pre {
-  background-color: var(--lightgrey) !important;
-}
-
-pre code {
-  background-color: transparent !important;
-}
 
 .Container {
   max-width: 100vw;
@@ -150,6 +145,10 @@ pre code {
   grid-area: content1 ;
   max-width: 50em ;
   margin-bottom: 7vh;
+}
+
+.Content h2:first-child{
+  border: 2px solid red !important;
 }
 
 .devResources hr {
@@ -194,6 +193,7 @@ table {
 }
 
 table thead th {
+  border-top: 1px solid #d8d8d8 !important;
   border-bottom: 1px solid #d8d8d8 !important;
   border-left: 1px solid #d8d8d8 !important;
   border-right: 1px solid #d8d8d8 !important;
@@ -217,7 +217,7 @@ h1 {
   line-height: 58px !important;
 }
 
-h1:first-child {
+h1:first-child, h1:nth-child(2) {
   border-top: none;
 }
 

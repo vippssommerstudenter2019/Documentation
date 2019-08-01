@@ -15,15 +15,12 @@ const swaggerExtracter = new SwaggerExtracter();
 class Content extends React.Component {
 
     contentFromSection(title, section) {
-
-        let subsections = [];
-/*
-        subsections.push(
-            <div key={title} className="hero-font-size section-title">{title}</div>
-        )
-  */      
-        for (const [id, subsection] of Object.entries(section)) {
-            // We use the swagger extracter to get example headers, bodies and responses for every endpoint in this step.
+    var subsections = [];
+		// No Section-Title:
+		// var subsections = [<div id={title} className="SectionTitle"/>];	
+    for (const [id, subsection] of Object.entries(section)) {
+            // We use the swagger extracter to get example headers, 
+			// bodies and responses for every endpoint in this step.
 
             var endpointData = {};
             for (const endpoint of subsection.endpoints) {
@@ -46,7 +43,7 @@ class Content extends React.Component {
 
             subsections.push(
                 <Step
-                    id={id}
+                    titleid={id}
                     key={subsection.endpoints[0] + subsection.title}
                     metaData={subsection}
                     endpointData={endpointData}
@@ -54,7 +51,19 @@ class Content extends React.Component {
             );
         }
 
-        return subsections;
+        return (
+        <div key={"wrapper-"+title} >
+			<div id={title} className="xxlarge-font-size text-color-primary">{title}</div>
+				{subsections}
+			<div className="section-line">
+				<div className="first-line"/>
+				<div className="section-end">
+					{"End " + title}
+				</div>
+				<div className="last-line"/>
+			</div> 
+        </div>
+        );
     }
 
     render() {
@@ -68,10 +77,7 @@ class Content extends React.Component {
 
 
         for (const [title, section] of Object.entries(this.props.sections)) {
-
-            components.push(
-                this.contentFromSection(title, section)
-            );
+            components.push(this.contentFromSection(title, section));
         }
 
         return (

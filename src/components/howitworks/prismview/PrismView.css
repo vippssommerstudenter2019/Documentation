@@ -1,0 +1,44 @@
+.prismview {
+}
+
+.prismview pre,
+.prismview code {
+	font-family: 'PT Mono' , monospace;
+	font-size: .9rem;
+	line-height: 1.75rem;
+	letter-spacing: .01rem;
+	margin-top: 0px;
+	padding: 0px 0px 0px 35px !important;
+}
+
+.language-javascript {
+  background: none!important;
+}
+
+.token {
+  background: none!important;
+}
+
+@media (min-width:768px) and (max-width:1100px) {
+  .prismview pre,
+  .prismview code {
+    font-family: 'PT Mono' , monospace;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: .01rem;
+    margin-top: 0px;
+    padding: 0px 0px 0px 35px !important;
+  }
+}
+
+@media (max-width: 812px) {
+  .prismview pre,
+  .prismview code {
+    font-family: 'PT Mono' , monospace;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: .01rem;
+    margin-top: 0px;
+    padding: 0px 0px 0px 35px !important;
+  }
+}
