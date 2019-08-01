@@ -96,7 +96,7 @@ class HowItWorks extends React.Component {
 			}
 		}
 		
-		return <Sidebar headers={sideBarData} api="#ecom"/>;
+		return <Sidebar headers={sideBarData} expandAll api="#ecom"/>;
 	}
 
 	render() {
