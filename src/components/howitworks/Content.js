@@ -16,12 +16,10 @@ class Content extends React.Component {
 
     contentFromSection(title, section) {
 
-        let subsections = [];
-/*
-        subsections.push(
-            <div key={title} className="hero-font-size section-title">{title}</div>
-        )
-  */      
+		// With Section-Title:
+        //var subsections = [<div id={title} className="SectionTitle">{title}</div>];
+		// No Section-Title:
+		var subsections = [<div id={title} className="SectionTitle"/>];		
         for (const [id, subsection] of Object.entries(section)) {
             // We use the swagger extracter to get example headers, 
 			// bodies and responses for every endpoint in this step.
@@ -69,10 +67,7 @@ class Content extends React.Component {
 
 
         for (const [title, section] of Object.entries(this.props.sections)) {
-
-            components.push(
-                this.contentFromSection(title, section)
-            );
+            components.push(this.contentFromSection(title, section));
         }
 
         return (
