@@ -67,7 +67,13 @@ class HowItWorks extends React.Component {
 	render() {
 
 		var sideBarData = [];
-		const toSub = (subsection, content) => {return{name: content.title, anchor: "#"+subsection};};
+		const toSub = (subsection, content) => {
+			return {
+				name: content.title, 
+				anchor: "#"+subsection
+			};
+		};
+		
 		const toSec = (section) => {
 			var children = [];
 			sideBarData.push({
@@ -76,7 +82,7 @@ class HowItWorks extends React.Component {
 				children: children
 			});
 			return children;
-		}			
+		};		
 		
 		for (const [section, subsections] of Object.entries(this.state.metaData)) {
 			var children = toSec(section);
