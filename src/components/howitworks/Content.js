@@ -15,12 +15,10 @@ const swaggerExtracter = new SwaggerExtracter();
 class Content extends React.Component {
 
     contentFromSection(title, section) {
-
-		// With Section-Title:
-        //var subsections = [<div id={title} className="SectionTitle">{title}</div>];
+    var subsections = [];
 		// No Section-Title:
-		var subsections = [<div id={title} className="SectionTitle"/>];		
-        for (const [id, subsection] of Object.entries(section)) {
+		// var subsections = [<div id={title} className="SectionTitle"/>];	
+    for (const [id, subsection] of Object.entries(section)) {
             // We use the swagger extracter to get example headers, 
 			// bodies and responses for every endpoint in this step.
 
@@ -53,7 +51,22 @@ class Content extends React.Component {
             );
         }
 
-        return subsections;
+        return (
+         <div>
+         <div id={title} className="xxlarge-font-size text-color-primary">{title}</div>
+          {subsections}
+         <div class="section-line">
+					<div class="first-line">
+
+					</div>
+					<div class="section-end">
+						{"End " + title}
+					</div>
+					<div class="last-line">
+					</div>
+				</div> 
+        </div>
+        );
     }
 
     render() {

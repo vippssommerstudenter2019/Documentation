@@ -1,10 +1,14 @@
 .flow-wrapper {
-	display: grid;
-	
+
 }
 
 .FlowChart {
-	
+    margin:2rem 0 2rem 0;
+    
+}
+
+.FlowChart img {
+    width:90vw;
 }
 
 .FlowSteps {
