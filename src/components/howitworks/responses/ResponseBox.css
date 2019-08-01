@@ -7,20 +7,27 @@
 /* Style the button that is used to open and close the collapsible content */
 .response-button-collapsible,
 .response-displayer-collapsible {
-  background-color: #edf8f4;
-  color: var(--vippsblack);
-  padding: 5px 5px 5px 10px;
+  background-color:var(--responseLightGreen);
+  color: var(--responseGreen);
+  padding: .7rem .5rem .7rem 1rem;
   width: 100%;
 
   font-family: Arial;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 25px;
 
   border-radius: 5px;
   text-align: left;
   outline: none;
+}
+
+@media (max-width:812px) {
+  .response-button-collapsible,
+  .response-displayer-collapsible {
+    padding: 1rem .8rem 1rem 1.2rem;
+  }
 }
 
 .response-button-collapsible {
@@ -29,13 +36,13 @@
  
 .response-button-collapsible.error,
 .response-displayer-collapsible.error {
-    background-color: #fceeee;
+    background-color:var(--responseLightRed);
+    color:var(--responseRed);
 }
 
 /* Add the plus and minus sign when opening/closing */
 .response-button-collapsible:after {
   content: '\002B';
-  color: black;
   font-weight: bold;
   font-size: 15px; 
   float: right;

@@ -33,15 +33,15 @@ class DataView extends Component {
 		let content = [];
 		if (!objectIsEmpty(this.props.header)) content.push(makeElement(
 			"Header", 
-			<PrismView key={title+"-header"} code={code(this.props.header)}/>
+			<PrismView key={title+"-header"} className="prismview-1" code={code(this.props.header)}/>
 		));
 		if (!objectIsEmpty(this.props.body)) content.push(makeElement(
 			"Body", 
-			<PrismView key={title+"-body"} code={code(this.props.body)}/>
+			<PrismView key={title+"-body"} className="prismview-1" code={code(this.props.body)}/>
 		));
 		if (!objectIsEmpty(this.props.responses)) content.push(makeElement(
 			"Responses", 
-			<ResponseTable key={title+"-responses"} responses={this.props.responses} spaceForJson={jsonSpace}/>
+			<ResponseTable key={title+"-responses"} className="prismview-2" responses={this.props.responses} spaceForJson={jsonSpace}/>
 		));
 		
 		// Setting the content, and selecting the first.
