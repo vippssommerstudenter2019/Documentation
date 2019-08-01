@@ -140,16 +140,29 @@ class Step extends Component {
 
 		return (
 			<div className="step-wrapper" >
+				<div class="step-headline">
 					<div className="step-img">
 						{this.createImageComponent()}
 					</div>
 					<div id={this.props.titleid} key="title" className="step-title">
 						{this.props.metaData.title}
 					</div>
-				  <div className="step-introduction">
-					  {introductionComponent}
-				  </div>
-					{content}
+				</div>
+				<div className="step-introduction">
+					{introductionComponent}
+				</div>
+				{content}
+				<div class="section-line">
+					<div class="first-line">
+
+					</div>
+					<div class="section-end">
+						End Payment Process
+					</div>
+					<div class="last-line">
+
+					</div>
+				</div>
 			</div>
 		);
 	}
