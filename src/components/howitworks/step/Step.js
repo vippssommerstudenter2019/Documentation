@@ -78,6 +78,9 @@ class Step extends Component {
 	 */
 	createEndpointContent(endpoint) {
 		// is both step-text-response & step-description neccesary?
+		const description = this.props.metaData.descriptions[endpoint];
+		if (!description || objectIsEmpty(description)) 
+		return <div key={endpoint+"-data"} className="step-data">{this.createEndpointDataComponent(endpoint)}</div>;
 		return [ 
 		<div key={endpoint + "-text-responses"} className="step-text-responses">
 			<div key={endpoint+"-description"} className="step-description">
@@ -110,7 +113,7 @@ class Step extends Component {
 
 		return (
 			<div className="step-wrapper" >
-				<div class="step-headline">
+				<div className="step-headline">
 					<div className="step-img">
 						{this.createImageComponent()}
 					</div>

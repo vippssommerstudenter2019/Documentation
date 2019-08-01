@@ -24,7 +24,6 @@ const DEV_URLS = {
         "Postman",
         "https://github.com/vippsas/vipps-login-api/tree/master/tools"
       ],
-      ["FAQ", "#faq"],
       ["Swagger", "https://vippsas.github.io/vipps-login-api/"]
     ],
     invoice: [
@@ -32,7 +31,6 @@ const DEV_URLS = {
         "Postman",
         "https://github.com/vippsas/vipps-invoice-api/tree/master/tools"
       ],
-      ["FAQ", "#faq"],
       ["Swagger ISP", "https://vippsas.github.io/vipps-invoice-api/isp.html"],
       ["Swagger IPP", "https://vippsas.github.io/vipps-invoice-api/ipp.html"]
     ]

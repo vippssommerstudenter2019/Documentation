@@ -30,12 +30,17 @@ class HowItWorks extends React.Component {
 		super(props);
 
 		this.state = {
+			pageWidth: window.innerWidth,
 			intro: yaml.safeLoad(this.props.intro),
 			outro: yaml.safeLoad(this.props.outro),
 			flowchart: this.props.flowchart? yaml.safeLoad(this.props.flowchart) : false,
 			metaData: yaml.safeLoad(this.props.sections),
 			swaggerData: {}
 		};
+	
+		const resize = () => this.setState({pageWidth: window.innerWidth});
+		resize.bind(this);
+		window.onresize = resize;
 	}
 
 	componentDidMount() {
@@ -63,9 +68,9 @@ class HowItWorks extends React.Component {
 			});    
 		});
 	}
-
-	render() {
-
+	
+	sidebar() {
+		if (this.state.pageWidth <= 812) return;
 		var sideBarData = [];
 		const toSub = (subsection, content) => {
 			return {
@@ -91,18 +96,17 @@ class HowItWorks extends React.Component {
 			}
 		}
 		
+		return <Sidebar headers={sideBarData} api="#ecom"/>;
+	}
+
+	render() {
 		return (
 			<div className="App">
 				<div id={this.props.apiName}/>
-				<div className="Sidebar">
-					<Sidebar headers={sideBarData} api="#ecom"/>
-				</div>
+				{this.sidebar()}
 				<IntroBox content={this.state.intro} />
-				{this.state.flowchart? <Flowchart content={this.state.flowchart} /> : null}
-				<Content 
-					swaggerData={this.state.swaggerData}	
-					sections={this.state.metaData}
-				/>
+				{this.state.flowchart? <Flowchart content={this.state.flowchart} pagewidth={this.state.pageWidth}/> : null}
+				<Content swaggerData={this.state.swaggerData} sections={this.state.metaData} />
 				<OutroBox content={this.state.outro} />
 			</div>
 		);
