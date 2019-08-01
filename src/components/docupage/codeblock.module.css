@@ -25,9 +25,12 @@
   font-family: 'PT Mono', monospace;
   padding-bottom: 1em;
   display: flex;
+  border: 1px solid red;
+
 }
 
 .codeblockNumbering {
+  border: 1px solid red;
   list-style-type: none;
   text-align: right;
   padding: 0 15px 0 25px;
