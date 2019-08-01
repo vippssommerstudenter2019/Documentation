@@ -108,8 +108,8 @@
   color: #5e3dc2 !important;
 }
 
-.collapsible-header.hit, .listEl.hit {
-  background: #f6f6f9;
+.collapsible-header.hit, .listEl.hit a {
+  color: #5e3dc2 !important;
 }
 .collapsible-body.hit {display: block;}
 
@@ -143,7 +143,6 @@
 
 
 .arrow::after {
-  //content:"";
   content:url("../../img/arrowRight.svg");
 }
 

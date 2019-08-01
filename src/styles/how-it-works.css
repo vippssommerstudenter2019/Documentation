@@ -39,7 +39,7 @@
 	"sidebar		flow-wrapper"
 	"sidebar		content-wrapper"
 	"sidebar-footer content-wrapper"
-	"sidebar-footer outro-wrapper";
+	"outro-wrapper	outro-wrapper";
 }
 
 @media (max-width:812px) {
@@ -126,12 +126,23 @@
 /*
  *The layout for the outro elements
  */
+.outro-element {
+	grid-area: outro-wrapper;
+	margin-top: 64px;
+	height: auto;
+}
+
 .outro-wrapper {
 	display: block;
-	height: 600;
+  position: absolute;
+	//top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1000; /* Goddamnit Docu Group, why is scrollbar @ z: 999 ?? */
 	background-color: var(--seashellPeach);
 	color: var(--vippsblack);
-	margin-top: 64px;
+	margin: 0px;
 	padding: 128px;
 	text-align: center;
 	grid-area:outro-wrapper;

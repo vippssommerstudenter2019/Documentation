@@ -1,3 +1,15 @@
+
+/* Vipps-colors */
+:root {
+  --lightgrey: #f6f6f9;
+  --vippsorange: #ff5b24;
+  --lightvippsorange: #fdf4ed;
+  --vippspurple: #4d3280;
+  --vippsblue: #59cbe8;
+  --vippsblack: #161225;
+  --vippsblueberry: #49367e;
+}
+
 .codeblock {
   font-size: 15px;
   display: flex;
@@ -12,11 +24,13 @@
   width: 100%;
   font-family: 'PT Mono', monospace;
   padding-bottom: 1em;
+  display: flex;
+
 }
 
 .codeblockNumbering {
-  float: left;
   list-style-type: none;
+  text-align: right;
   padding: 0 15px 0 25px;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -27,6 +41,9 @@
                                 supported by Chrome and Opera */
 }
 
+.codeblockBody pre{
+  overflow: auto;
+}
 
 .codeblockHeader {
   width: 100%;
@@ -36,19 +53,19 @@
 .codeblockLanguage {
   font-family: Vipps;
   line-height: 25px;
-  color: var(--vippsblack);
+  color: var(--var(--vippsblack));
   float: left;
   margin: 25px 15px 15px 25px;
 }
 
 .codeblockHeader button {
-  color: var(--vippsblack);
+  color: var(--var(--vippsblack));
 }
 
 .copyButton {
   font-family: Vipps;
   font-weight: lighter;
-  color: var(--vippsblack);
+  color: var(--var(--vippsblack));
   float: right;
 
   margin: 25px 25px 15px 15px;
@@ -72,4 +89,3 @@
 .copyButton:focus {
   outline: none;
 }
-

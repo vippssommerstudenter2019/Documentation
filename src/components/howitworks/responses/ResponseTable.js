@@ -9,8 +9,13 @@ export default function ResponseTable(props) {
     for (const statusCode of statusCodes) {
 
         items.push(
-            <div key={statusCode}>
-                <ResponseBox statusCode={statusCode} description={props.responses[statusCode].description} json={props.responses[statusCode].json} />
+            <div key={statusCode} className="responsetable" >
+                <ResponseBox 
+					statusCode={statusCode} 
+					description={props.responses[statusCode].description} 
+					json={props.responses[statusCode].json} 
+					spaceForJson={props.spaceForJson}
+				/>
             </div>
         );
     }
