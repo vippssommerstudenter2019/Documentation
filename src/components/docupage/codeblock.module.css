@@ -51,7 +51,6 @@
 
 .copyButton:hover {
   color: var(--vippsorange);
-
 }
 
 .copyButton.selected {
@@ -63,7 +62,10 @@
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
+
+
 .copied{
   margin-top: 31px;
   opacity: 0;
 }
+

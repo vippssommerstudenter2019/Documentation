@@ -17,8 +17,8 @@ class CodeBlock extends PureComponent {
   };
 
   handleCopyClick = (e) => {
-    let targetButton = e.target
-    var emoji = document.getElementById('1');
+    let targetButton = e.target;
+    var emoji = document.querySelector("button + img");
     emoji.style.display = "block";
     
     // Create new element
@@ -35,23 +35,27 @@ class CodeBlock extends PureComponent {
     // Remove temporary element
     document.body.removeChild(el);
     targetButton.changeText='Copied';
+
     console.log("hei");
     emoji.style.opacity = "1";
 
-    
+    //vipps emoij fading away
     setTimeout(
       function changeText() {
-        // Vipps black
-        targetButton.changeText = 'Copy';
-        emoji.style.transition = "1s ease";
+        emoji.style.transition = "1s ease-in";
         emoji.style.opacity = "0";
       }.bind(this),
       0
     );
 
+    setTimeout(
+      function changeText() {
+        // Vipps black
+        targetButton.changeText='Copy';
+      }.bind(this),
+      1000
+    );
     emoji.style.transition = "none";
-
-    //emoji.style.transition = "all 1s ease-out";
   }
 
   render() {
@@ -62,8 +66,10 @@ class CodeBlock extends PureComponent {
           <div className={codeblockCSS.codeblockLanguage}>
             {language}
           </div>
-          <button className={codeblockCSS.copyButton} onClick={e => this.handleCopyClick(e)}>Copy</button>
-          <img className={codeblockCSS.copied} src={copyemoji} id="1" align="right"/>
+          <button className={codeblockCSS.copyButton} onClick={e=> this.handleCopyClick(e)}>
+            Copy
+          </button>
+          <img className={codeblockCSS.copied} src={copyemoji} align="right"/>
         </div>
         <SyntaxHighlighter language={language} showLineNumbers={true} style={vippsColours}>
           {/* We have to add a new line here to get correct indentation in the code view. */}
