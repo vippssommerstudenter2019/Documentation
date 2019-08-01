@@ -166,14 +166,15 @@ class SidebarNavSpy extends Component {
 			);
 		}
 		const sidebarHeaders = this.props.sections.map((section, sec) => {
+			const headSelect = (activeSubsection === -1)? "headSelect":"";
 			const header = (
 				(section.children.length !== 0)?
-				(<div>
+				(<div className={headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
 					<img className="arrow" alt="arrow" src={arrow_right} />
 				</div>)
 			:
-				(<div>
+				(<div className={headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
 				</div>)
 			);
