@@ -5,7 +5,6 @@ import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 import vipps_dev from "../../img/vipps_dev.svg";
-import arrow_down from "../../img/arrowDown.svg";
 import arrow_right from "../../img/arrowRight.svg";
 
 /*
@@ -31,7 +30,7 @@ const SidebarHeader = () => (
 // Structures the sidebar content
 const SidebarMenu = props => (
   <div className="SidebarMenu">
-	<SidebarNavSpy offset={0} percent={50} sections={props.headers} api={props.api}/>
+	<SidebarNavSpy offset={0} percent={25} sections={props.headers} api={props.api}/>
   </div>
 );
 
@@ -47,7 +46,7 @@ class SidebarNavSpy extends Component {
 		
 		this.state = {
 			line: offset + window.innerHeight * percent,
-			active: {section: 0, subsection: -1},
+			active: {section: -1, subsection: -1},
 		}
 		
 		this.elementSpy.bind(this);
@@ -64,24 +63,39 @@ class SidebarNavSpy extends Component {
 		return rect.bottom <= line;
 	}
 	
-	getElement(el) {
-		return document.getElementById(el.anchor.replace("#",""));
+	sectionID(sec) {
+		return "secid-"+sec;
 	}
 	
 	// This function spies on all the elements on the
 	// Requires a Section to be visible by ID, to find it's subsections
 	elementSpy() {
+		const getElement = (el) => document.getElementById(el.anchor.replace("#",""));
 		const sections = this.props.sections;
 		const activeSection = sections.map((section, i) => {
-			const element = this.getElement(section);
+			const element = getElement(section);
 			return element && this.elementAboveLine(element);
 		}).lastIndexOf(true);
 		if (activeSection === -1) return;
 		const activeSubsection = sections[activeSection].children.map((subsection, i) => {
-			const element = this.getElement(subsection); 
+			const element = getElement(subsection); 
 			return element && this.elementAboveLine(element);
 		}).lastIndexOf(true);
-		this.setState({active: {section: activeSection, subsection: activeSubsection}});
+		
+		const acSec =  this.state.active.section;
+		if (acSec !== activeSection) {
+			var closing = document.getElementById(this.sectionID(acSec));
+			if (closing && closing.classList.contains("active")) {
+				closing.firstElementChild.click();
+			}
+			var opening = document.getElementById(this.sectionID(activeSection));
+			if (opening && !opening.classList.contains("active")) {
+				opening.firstElementChild.click();
+			}
+			this.setState({active: {section: activeSection, subsection: activeSubsection}});
+		} else if (this.state.active.subsection !== activeSubsection) {
+			this.setState({active: {section: acSec, subsection: activeSubsection}});
+		}
 	}
 	
 	componentDidMount() {
@@ -97,16 +111,10 @@ class SidebarNavSpy extends Component {
 		const activeSection = this.state.active.section;
 		const activeSubsection = this.state.active.subsection;
 		function createSubsection(subsection, sec, sub) {
+			const headSelect = (activeSection === sec && activeSubsection === sub)? "selectedElement":"";
 			const header = <a href={subsection.anchor}> {subsection.name} </a>;
-			if (activeSection === sec && activeSubsection === sub) {
 			return (
-				<li className="listEl hit" key={"sec"+sec+"sub"+sub}>
-					{header}
-				</li>
-			);
-			}
-			return (
-				<li className="listEl" key={"sec"+sec+"sub"+sub}>
+				<li className={"listEl "+headSelect} key={"sec"+sec+"sub"+sub}>
 					{header}
 				</li>
 			);
@@ -126,14 +134,15 @@ class SidebarNavSpy extends Component {
 			);
 		}
 		const sidebarHeaders = this.props.sections.map((section, sec) => {
+			const headSelect = (activeSection === sec && activeSubsection === -1)? "selectedElement":"";
 			const header = (
 				(section.children.length !== 0)?
-				(<div>
+				(<div className={"listTop "+headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
 					<img className="arrow" alt="arrow" src={arrow_right} />
 				</div>)
 			:
-				(<div>
+				(<div className={"listTop "+headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
 				</div>)
 			);
@@ -147,51 +156,26 @@ class SidebarNavSpy extends Component {
 					{section.children.map((el, sub) => createSubsection(el, sec, sub))}
 				</ul>)
 			);
-			if (activeSection === sec) {
-			if (activeSubsection === -1) {
+			const key = this.sectionID(sec);
 			return (
-				<li className="active" key={"sec"+sec}>
-					<div className="collapsible-header hit">
-						{header}	
-					</div>
-					<div className="collapsible-body hit">
-						{subsections}
-					</div>
-				</li>
-			);
-			}
-			return (
-				<li className="active" key={"sec"+sec}>
-					<div className="collapsible-header">
-						{header}
-					</div>
-					<div className="collapsible-body hit">
-						{subsections}
-					</div>
-				</li>
-			);	
-			}
-			return (
-				<CollapsibleItem key={"sec"+sec} header={header}>
+				<CollapsibleItem id={key} key={key} header={header} > 
 					{subsections}
 				</CollapsibleItem>
 			);
 		}); 
 		return ( 
-			<div>
-				<SideNav className="sidebarMarg">
-				<div className='fadeout-top'/>
-				<div className='static sidebarlogo'>
-					<SidebarHeader />
-				</div>
-				<div className='scrollable'>
-					<Collapsible accordion={false}>
-						{sidebarHeaders}
-					</Collapsible>
-				</div>
-				<div className='fadeout-bottom'/>
-				</SideNav>
+			<SideNav className="sidebarMarg">
+			<div className='fadeout-top'/>
+			<div className='static sidebarlogo'>
+				<SidebarHeader />
 			</div>
+			<div className='scrollable'>
+				<Collapsible accordion={false}>
+					{sidebarHeaders}
+				</Collapsible>
+			</div>
+			<div className='fadeout-bottom'/>
+			</SideNav>
 		);
 	}
 }

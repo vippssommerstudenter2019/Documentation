@@ -3,7 +3,7 @@ import docupageCSS from "./docupage.module.css";
 
 const UrlElement = (LinkTitle, LinkURL) => (
     <div >
-        <a href={LinkURL}>
+        <a href={LinkURL} target="_blank" rel="noopener noreferrer">
             <div>
                 {LinkTitle}
                 <p>{String.fromCharCode(10132)}</p>

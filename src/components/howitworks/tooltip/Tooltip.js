@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import 'rc-tooltip/assets/bootstrap.css';
 import Tooltip from "rc-tooltip";
 import PropTypes from "prop-types";
@@ -12,8 +12,7 @@ const customToolTipPropTypes = {
     linkTitle: PropTypes.string.isRequired,
 }
 
-class CustomTooltip extends React.Component {
-
+class CustomTooltip extends Component {
     render() {
         return (
             <Tooltip
@@ -51,7 +50,7 @@ const tooltipTextPropTypes = {
 /**
  * Injects tooltips (popups on hover) for a given input for some keywords.
  */
-class TooltipText extends React.Component {
+class TooltipText extends Component {
 
     render() {
         // Find the words in the input which has got square brackets, e.g. [access token]

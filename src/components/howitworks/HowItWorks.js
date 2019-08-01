@@ -30,12 +30,17 @@ class HowItWorks extends React.Component {
 		super(props);
 
 		this.state = {
+			pageWidth: window.innerWidth,
 			intro: yaml.safeLoad(this.props.intro),
 			outro: yaml.safeLoad(this.props.outro),
 			flowchart: this.props.flowchart? yaml.safeLoad(this.props.flowchart) : false,
 			metaData: yaml.safeLoad(this.props.sections),
 			swaggerData: {}
 		};
+	
+		const resize = () => this.setState({pageWidth: window.innerWidth});
+		resize.bind(this);
+		window.onresize = resize;
 	}
 
 	componentDidMount() {
@@ -63,39 +68,45 @@ class HowItWorks extends React.Component {
 			});    
 		});
 	}
-
-	render() {
-
-		let subsectionSideBarData = [];
-
-		for (const subsections of Object.values(this.state.metaData)) {
-			for (const [subsectionName, subsection] of Object.entries(subsections)) {
-				subsectionSideBarData.push({ 
-					name: subsection.title,
-					anchor: "#" + subsectionName
-				})
+	
+	sidebar() {
+		if (this.state.pageWidth <= 812) return;
+		var sideBarData = [];
+		const toSub = (subsection, content) => {
+			return {
+				name: content.title, 
+				anchor: "#"+subsection
+			};
+		};
+		
+		const toSec = (section) => {
+			var children = [];
+			sideBarData.push({
+				name: section,
+				anchor: "#"+section,
+				children: children
+			});
+			return children;
+		};		
+		
+		for (const [section, subsections] of Object.entries(this.state.metaData)) {
+			var children = toSec(section);
+			for (const [subsection, content] of Object.entries(subsections)) {
+				children.push(toSub(subsection, content));
 			}
 		}
-
-		var sideBarData = 
-		[{
-			name: "How it works",
-			anchor: "#" + this.props.apiName,
-			children: subsectionSideBarData
-		}];
 		
+		return <Sidebar headers={sideBarData} api="#ecom"/>;
+	}
+
+	render() {
 		return (
 			<div className="App">
 				<div id={this.props.apiName}/>
-				<div className="Sidebar">
-					<Sidebar headers={sideBarData} api="#ecom"/>
-				</div>
+				{this.sidebar()}
 				<IntroBox content={this.state.intro} />
-				{this.state.flowchart? <Flowchart content={this.state.flowchart} /> : null}
-				<Content 
-					swaggerData={this.state.swaggerData}	
-					sections={this.state.metaData}
-				/>
+				{this.state.flowchart? <Flowchart content={this.state.flowchart} pagewidth={this.state.pageWidth}/> : null}
+				<Content swaggerData={this.state.swaggerData} sections={this.state.metaData} />
 				<OutroBox content={this.state.outro} />
 			</div>
 		);
