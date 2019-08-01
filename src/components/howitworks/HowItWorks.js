@@ -66,23 +66,24 @@ class HowItWorks extends React.Component {
 
 	render() {
 
-		let subsectionSideBarData = [];
-
-		for (const subsections of Object.values(this.state.metaData)) {
-			for (const [subsectionName, subsection] of Object.entries(subsections)) {
-				subsectionSideBarData.push({ 
-					name: subsection.title,
-					anchor: "#" + subsectionName
-				})
+		var sideBarData = [];
+		const toSub = (subsection, content) => {return{name: content.title, anchor: "#"+subsection};};
+		const toSec = (section) => {
+			var children = [];
+			sideBarData.push({
+				name: section,
+				anchor: "#"+section,
+				children: children
+			});
+			return children;
+		}			
+		
+		for (const [section, subsections] of Object.entries(this.state.metaData)) {
+			var children = toSec(section);
+			for (const [subsection, content] of Object.entries(subsections)) {
+				children.push(toSub(subsection, content));
 			}
 		}
-
-		var sideBarData = 
-		[{
-			name: "How it works",
-			anchor: "#" + this.props.apiName,
-			children: subsectionSideBarData
-		}];
 		
 		return (
 			<div className="App">
