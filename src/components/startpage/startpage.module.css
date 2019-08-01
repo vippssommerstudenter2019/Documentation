@@ -102,6 +102,7 @@ h2 {
 }
 
 .DocCardTitle {
+  color: var(--vippsorange);
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
