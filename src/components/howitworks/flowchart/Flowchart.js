@@ -23,12 +23,6 @@ class Flowchart extends Component {
 		}
 		return <img src={this.props.content.mobileImage} alt="flowchart" />;
 	}
-	createFlexList() {
-		if (!this.props.content.stepTitles) return;
-		return this.props.content.stepTitles.map((val, i) => {
-			
-		});
-	}
 	render() {
 		return (
 			<div className="flow-wrapper">
@@ -37,9 +31,6 @@ class Flowchart extends Component {
 				</div>
 				<div className="FlowChart">
 					{this.createImageComponent()}
-				</div>
-				<div className="FlowSteps">
-					{this.createFlexList()}
 				</div>
 			</div>
 		);
