@@ -8,12 +8,20 @@ const propTypes = {
 
 class Flowchart extends Component {
 	createImageComponent() {
-		console.log("Rendering Flowchart!");
-		if (this.props.content.imagePath) {
-			return <img src={this.props.content.imagePath} alt="flowchart" />
-		} else {
-			return <div className="img-circle"></div>
+		const width = window.innerWidth; 
+		if (width <= 812 && this.props.content.mobileImage) {
+			return <img src={this.props.content.mobileImage} alt="flowchart" />;
 		}
+		if (width <= 1100 && this.props.content.tabletImage) {
+			return <img src={this.props.content.tabletImage} alt="flowchart" />;
+		}
+		if (this.props.content.browserImage) {
+			return <img src={this.props.content.browserImage} alt="flowchart" />;
+		}
+		if (this.props.content.tabletImage) {
+			return <img src={this.props.content.tabletImage} alt="flowchart" />;
+		}
+		return <img src={this.props.content.mobileImage} alt="flowchart" />;
 	}
 	createFlexList() {
 		if (!this.props.content.stepTitles) return;
@@ -24,7 +32,7 @@ class Flowchart extends Component {
 	render() {
 		return (
 			<div className="flow-wrapper">
-				<div className="FlowTitle">
+				<div className="FlowTitle xlarge-font-size">
 					{this.props.content.title}
 				</div>
 				<div className="FlowChart">
