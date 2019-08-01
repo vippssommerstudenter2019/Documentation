@@ -24,10 +24,11 @@ Prerequisites:
         introduction: Before sending an invoice to a customer, it is important to do a customer registry lookup to ensure that the invoice is sent to the right customer. This could either be done by using [Vipps Customer Data Query Service] or by your own systems. 
         imagePath:
         endpoints:
-            -  registry washing
+            -  registry_washing
         descriptions:
-            registry washing
+            registry_washing:
         modes:
+            registry_washing:
         responses: false
         keywords:
             Vipps Customer Data Query Service:
@@ -51,7 +52,7 @@ Prerequisites:
         keywords:
             recipient token:
                 title: What is a recipient token?
-                description:  The recipient token grants access for the ISP to deliver an invoice to the specific user of Vipps. The recipient token has a 15 minute lifetime.
+                description:  The recipient token grants access for the ISP to deliver an invoice to the specific customer in Vipps. The recipient token has a 15 minute lifetime.
                 linkTitle: API documentation
                 link: http://localhost:3000/documentation/invoice/#recipient-token
             requirements:
@@ -75,14 +76,14 @@ The invoice process:
         keywords:
             necessary credentials:
                 title: What necessary credentials?
-                description: An invoice need to contain some necessary information and credentials. Read about what information to include and what rules to be aware of:
+                description: An invoice need to contain some necessary information and credentials. Read about what information to include and what rules to be aware of
                 linkTitle: API documentation invoice validation
                 link: https://github.com/vippsas/vipps-invoice-api/blob/master/vipps-invoice-api.md#invoice-validation
 
 
     checking_status:
         title: Checking status of an invoice
-        introduction: After the invoice is sent, you can check if the [state] has changed from "created" to "pending". This will usually happen within 5 seconds. Other states may also occur at this point. When the status is pending, the invoice is visible for the customer in Vipps. Note: if the customer wants to open the attached invoice pdf. the IPP/invoice hotel need to perform a [validation] of the Jason Web Token included in the URL.
+        introduction: After the invoice is sent, you can check if the [state] has changed from "created" to "pending". This will usually happen within 5 seconds. Other states may also occur at this point. When the status is pending, the invoice is visible for the customer in Vipps. Note that if the customer wants to open the attached invoice pdf. the IPP/invoice hotel need to perform a [validation] of the Jason Web Token included in the URL.
         imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
         endpoints:
             - "/invoices/{invoiceId}" 
@@ -104,8 +105,8 @@ The invoice process:
                 link: https://github.com/vippsas/vipps-invoice-api/blob/master/vipps-invoice-api.md#validating-the-json-web-token-jwt-and-the-request
 
     customer_confirms:
-        title: Customer is notified and confirms the invoice
-        introduction: As the state has gone from created to pending, the invoice will pop up in the user's app. If the customer confirms the invoice the status will change from pending to approved. Note: after due date it is useful to know if the customer has confirmed the invoice. This is easily done by checking the status once again.
+        title: Customer confirms the invoice
+        introduction: As the state has gone from created to pending, the customer will be notified and the invoice will appear in customers Vipps app. If the customer confirms the invoice the status will change from pending to approved. Note that after due date it is useful to know if invoice is confirmed by the customer. This is easily done by checking the status once again.
         imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
         endpoints:
             - customer_pays
@@ -118,23 +119,23 @@ The invoice process:
 
 
     paid_invoice:
-    title: Invoice is payed
-    introduction: The payment is fulfilled as the customers bank is transferring money to the issuers bank as stated in the information sent with the invoice. Neither Vipps or the ISP is included in this step or is given any further information.
-    imagePath:
-    endpoints:
-        - paid_invoice
-    descriptions:
-        paid_invoice:
-    modes:
-        paid_invoice: NA
-    responses: false
-    keywords:
+        title: Payment is transferred 
+        introduction: The payment is fulfilled when the customers bank is transferring money to the issuers bank. This happens at the date specified by the customer. Neither Vipps or the ISP is included in this step or is given any further information.
+        imagePath:
+        endpoints:
+            - paid_invoice
+        descriptions:
+            paid_invoice:
+        modes:
+            paid_invoice: NA
+        responses: false
+        keywords:
 
-Nice to know:
+Important to implement:
 
     revoke_invoice:
         title: Revoking an invoice
-        introduction: If something goes wrong with the invoice, you should be able to revoke it from the customer. A revoked invoice is not shown to the recipient. Note: Invoices can be revoked if they currently are in the states created, pending or rejected. If an invoice has been approved, deleted or expired it cannot be revoked anymore.
+        introduction: If something goes wrong with the invoice, you should be able to revoke it from the customer. A revoked invoice is not shown to the recipient. Note that invoices can be revoked if they currently are in the states created, pending or rejected. If an invoice has been approved, deleted or expired it cannot be revoked anymore.
         imagePath: ../../assets/ecom-steps/Cancel.svg
         endpoints:
             - "/invoices/{invoiceId}/status/revoked" 
