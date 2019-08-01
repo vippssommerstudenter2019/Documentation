@@ -22,12 +22,12 @@ const CodeBlock = (props) =>  {
     document.execCommand('copy');
     // Remove temporary element
     document.body.removeChild(el);
-    targetButton.changeText='Copied';
+    targetButton.innerHTML="Copied";
 
     setTimeout(
       function changeText() {
         // Vipps black
-        targetButton.changeText='Copy';
+        targetButton.innerHTML="Copy";
       }.bind(this),
       1000)
   }
@@ -38,7 +38,7 @@ const CodeBlock = (props) =>  {
       <div className={codeblockCSS.codeblockLanguage}>
         {language}
       </div>
-      <button className={codeblockCSS.copyButton} onClick={e => handleCopyClick(e)}>Cop</button>
+      <button className={codeblockCSS.copyButton} onClick={e => handleCopyClick(e)}>Copy</button>
     </div>
     <div className={codeblockCSS.codeblockBody}>
       <div className={codeblockCSS.codeblockNumbering}>
