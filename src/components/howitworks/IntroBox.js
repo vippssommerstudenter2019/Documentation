@@ -12,8 +12,8 @@ class IntroBox extends React.Component {
     render() {
         return (
 			<div className="intro-wrapper">
-				<div className="intro-text" >
-					<div className="xxlarge-font-size intro-title">
+
+					<div className="hero-font-size text-color-primary">
 						{this.props.content.title}
 					</div>
 
@@ -28,7 +28,6 @@ class IntroBox extends React.Component {
 					<div className="intro-description">
 						{this.props.content.descriptiontwo} 
 					</div>
-				</div>
 			</div>
         );
 	}
