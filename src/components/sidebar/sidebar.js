@@ -31,7 +31,7 @@ const SidebarHeader = () => (
 // Structures the sidebar content
 const SidebarMenu = props => (
   <div className="SidebarMenu">
-	<SidebarNavSpy offset={10} percent={20} sections={props.headers} api={props.api}/>
+	<SidebarNavSpy offset={0} percent={25} sections={props.headers} api={props.api}/>
   </div>
 );
 

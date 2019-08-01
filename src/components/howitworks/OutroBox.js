@@ -12,8 +12,8 @@ class OutroBox extends React.Component {
 
     render() {
        return (
-			<div className="outro-element">
-				<div className="outro-wrapper">
+			<div className="outro-wrapper">
+				<div className="outro-element">
 					<div className="outro-image">
 						<img src={this.props.content.imagePath} alt="Springing into action!"/>
 					</div>

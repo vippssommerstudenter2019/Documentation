@@ -8,7 +8,7 @@ const propTypes = {
 
 class Flowchart extends Component {
 	createImageComponent() {
-		const width = window.innerWidth; 
+		const width = this.props.pagewidth; 
 		if (width <= 812 && this.props.content.mobileImage) {
 			return <img src={this.props.content.mobileImage} alt="flowchart" />;
 		}
