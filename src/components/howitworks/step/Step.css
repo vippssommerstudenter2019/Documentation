@@ -103,9 +103,11 @@
 		display:flex;
 		flex-flow:column;
 		margin-bottom:70px;
+		max-width:812px;
 	}
 	.step-wrapper img {
 		width:40vw;
+		height:auto;
 	}
 	.step-img {
 		flex:1;
@@ -118,23 +120,30 @@
 		height:30px;
 		border-radius:50%;
 		border:6px solid var(--vippsorange);
-		margin-right:15px;
 		margin-bottom:20px;
 		flex:1;
+		margin-top:11px;
 	}
 	.step-title {
-		flex:2 1;
-		height:50px;
+		flex:8;
+		height:30px;
 		margin-bottom:20px;
 		font-size:24px;
+		align-self:center;
 	}
 	.step-introduction {
 		margin:1rem 0 1rem 0;
-		padding:0 1rem 0 3rem;
-		width:100%;
+		padding:1rem 1rem 1rem 3rem;
+		flex:1;
+		width:350px;
 	}
 	.step-data {
 		flex:1;
+		width:350px;
+	}
+	.step-description {
+		flex:1;
+		width:350px;
 	}
   }
 
