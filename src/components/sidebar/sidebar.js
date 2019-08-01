@@ -35,6 +35,30 @@ const SidebarMenu = props => (
   </div>
 );
 
+class CollapsibleItem2 extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			expanded: false,
+		}
+	}
+	
+	render() {
+		if (this.props.expanded && !this.state.expanded) this.setState({expanded:true});
+		//const active = this.state.expanded? "active" : "";
+		return (
+		<li className="" key={this.props.key}>
+			<div className={"collapsible-header"}>
+				{this.props.section}	
+			</div>
+			<div className={"collapsible-body"}>
+				{this.props.subsections}
+			</div>
+		</li>
+		);
+	};
+};
+
 // Navigation Menu
 class SidebarNavSpy extends Component {
 	constructor(props) {
@@ -47,7 +71,7 @@ class SidebarNavSpy extends Component {
 		
 		this.state = {
 			line: offset + window.innerHeight * percent,
-			active: {section: 0, subsection: -1},
+			active: {section: -1, subsection: -1},
 		}
 		
 		this.elementSpy.bind(this);
@@ -64,24 +88,40 @@ class SidebarNavSpy extends Component {
 		return rect.bottom <= line;
 	}
 	
-	getElement(el) {
-		return document.getElementById(el.anchor.replace("#",""));
+	sectionID(sec) {
+		return "secid-"+sec;
 	}
 	
 	// This function spies on all the elements on the
 	// Requires a Section to be visible by ID, to find it's subsections
 	elementSpy() {
+		const getElement = (el) => document.getElementById(el.anchor.replace("#",""));
 		const sections = this.props.sections;
 		const activeSection = sections.map((section, i) => {
-			const element = this.getElement(section);
+			const element = getElement(section);
 			return element && this.elementAboveLine(element);
 		}).lastIndexOf(true);
 		if (activeSection === -1) return;
 		const activeSubsection = sections[activeSection].children.map((subsection, i) => {
-			const element = this.getElement(subsection); 
+			const element = getElement(subsection); 
 			return element && this.elementAboveLine(element);
 		}).lastIndexOf(true);
-		this.setState({active: {section: activeSection, subsection: activeSubsection}});
+		
+		const acSec =  this.state.active.section;
+		if (acSec !== activeSection) {
+			var closing = document.getElementById(this.sectionID(acSec));
+			console.log(this.state.active, closing);
+			if (closing && closing.classList.contains("active")) {
+				closing.firstElementChild.click();
+			}
+			var opening = document.getElementById(this.sectionID(activeSection));
+			if (opening && !opening.classList.contains("active")) {
+				opening.firstElementChild.click();
+			}
+			this.setState({active: {section: activeSection, subsection: activeSubsection}});
+		} else if (this.state.active.subsection !== activeSubsection) {
+			this.setState({active: {section: acSec, subsection: activeSubsection}});
+		}
 	}
 	
 	componentDidMount() {
@@ -147,51 +187,26 @@ class SidebarNavSpy extends Component {
 					{section.children.map((el, sub) => createSubsection(el, sec, sub))}
 				</ul>)
 			);
-			if (activeSection === sec) {
-			if (activeSubsection === -1) {
+			const key = this.sectionID(sec);
 			return (
-				<li className="active" key={"sec"+sec}>
-					<div className="collapsible-header hit">
-						{header}	
-					</div>
-					<div className="collapsible-body hit">
-						{subsections}
-					</div>
-				</li>
-			);
-			}
-			return (
-				<li className="active" key={"sec"+sec}>
-					<div className="collapsible-header">
-						{header}
-					</div>
-					<div className="collapsible-body hit">
-						{subsections}
-					</div>
-				</li>
-			);	
-			}
-			return (
-				<CollapsibleItem key={"sec"+sec} header={header}>
+				<CollapsibleItem id={key} key={key} header={header} > 
 					{subsections}
 				</CollapsibleItem>
 			);
 		}); 
 		return ( 
-			<div>
-				<SideNav className="sidebarMarg">
-				<div className='fadeout-top'/>
-				<div className='static sidebarlogo'>
-					<SidebarHeader />
-				</div>
-				<div className='scrollable'>
-					<Collapsible accordion={false}>
-						{sidebarHeaders}
-					</Collapsible>
-				</div>
-				<div className='fadeout-bottom'/>
-				</SideNav>
+			<SideNav className="sidebarMarg">
+			<div className='fadeout-top'/>
+			<div className='static sidebarlogo'>
+				<SidebarHeader />
 			</div>
+			<div className='scrollable'>
+				<Collapsible accordion={false}>
+					{sidebarHeaders}
+				</Collapsible>
+			</div>
+			<div className='fadeout-bottom'/>
+			</SideNav>
 		);
 	}
 }
