@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DataView from "../dataview/DataView"
-import ResponseTable from "../responses/ResponseTable";
 import PropTypes from "prop-types";
 import {TooltipText} from "../tooltip/Tooltip"
 import "./Step.css"
@@ -50,8 +49,6 @@ class Step extends Component {
 		} else {
 			return <div className="img-circle"></div>
 		}
-
-		return;
 	}
 
 	/**
@@ -59,21 +56,19 @@ class Step extends Component {
 	 * 
 	 * @param {*} endpoint The endpoint to create header and body components for.
 	 */
-	createBodyAndHeaderComponentsForEndpoint(endpoint) {
-		let items = [];
-
+	createEndpointDataComponent(endpoint) {
 		if (!objectIsEmpty(this.props.endpointData[endpoint].header)) {
-			items.push(
+			return(
 				<DataView key={endpoint}
 					title={this.props.metaData.modes[endpoint] + " " + endpoint}
 					header={this.props.endpointData[endpoint].header}
 					body={this.props.endpointData[endpoint].body}
+					responses={this.props.endpointData[endpoint].responses}
 					shouldCollapse={true}
-					spaceForJson={spaceForJson} />
+					spaceForJson={spaceForJson} 
+				/>
 			);
 		}
-
-		return items;
 	}
 
 	/**
@@ -82,40 +77,18 @@ class Step extends Component {
 	 * @param {*} endpoint The endpoint to construct for.
 	 */
 	createEndpointContent(endpoint) {
-		let content = [];
-
-		// Left part of the step: text and responses
-		let textAndReponseComponents = [];
-		textAndReponseComponents.push(
-			<div key="description" className="step-description">
-				<TooltipText input={this.props.metaData.descriptions[endpoint]}
-					keywordsData={this.props.metaData.keywords} />
+		// is both step-text-response & step-description neccesary?
+		return [ 
+		<div key={endpoint + "-text-responses"} className="step-text-responses">
+			<div key={endpoint+"-description"} className="step-description">
+				<TooltipText input={this.props.metaData.descriptions[endpoint]} keywordsData={this.props.metaData.keywords} />
 			</div>
-		);
-
-		// Not all endpoints have responses, so we include them only if they are given
-		/*
-		if (this.props.metaData.responses) {
-			textAndReponseComponents.push(
-				<ResponseTable key={"response" + endpoint} responses={this.props.endpointData[endpoint].responses} />
-			);
-		}
-*/
-		content.push(
-			<div key={endpoint + "-text-responses"} className="step-text-responses">
-				{textAndReponseComponents}
-			</div>
-		);
-
-		content.push(
-			<div key={endpoint + "-data"} className="step-data">
-				{this.createBodyAndHeaderComponentsForEndpoint(endpoint)}
-			</div>
-		);
-
-		
-
-		return content;
+		</div>
+		,
+		<div key={endpoint + "-data"} className="step-data">
+			{this.createEndpointDataComponent(endpoint)}
+		</div>
+		];
 	} 
 
 	render() {
@@ -129,27 +102,24 @@ class Step extends Component {
 		}
 
 		// Only add the introduction component if there is one provided. This will prevent the extra padding on steps that don't have a introduction.
-		let introductionComponent = [];
-		if (this.props.metaData.introduction) {
-			introductionComponent = (
-				
-					<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
-				
-			);
-		}
+		const introductionComponent = (
+		(this.props.metaData.introduction)?
+			<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
+			: null
+		);
 
 		return (
 			<div className="step-wrapper" >
-					<div className="step-img">
-						{this.createImageComponent()}
-					</div>
-					<div id={this.props.titleid} key="title" className="step-title">
-						{this.props.metaData.title}
-					</div>
-				  <div className="step-introduction">
-					  {introductionComponent}
-				  </div>
-					{content}
+				<div className="step-img">
+					{this.createImageComponent()}
+				</div>
+				<div id={this.props.titleid} key="title" className="step-title">
+					{this.props.metaData.title}
+				</div>
+				<div className="step-introduction">
+					{introductionComponent}
+				</div>
+				{content}
 			</div>
 		);
 	}

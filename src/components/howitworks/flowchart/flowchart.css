@@ -10,3 +10,8 @@
 .FlowSteps {
 	
 }
+
+.FlowTitle {
+    font-family: Vippsheader;
+    color:var(--vippsorange);
+}

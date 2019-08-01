@@ -140,7 +140,7 @@ Nice to know:
     refund:
         title: Refunding of payment
         introduction: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full.
-        imagePath: ../../assets/ecom-illustrations/refund.svg
+        imagePath: ../../assets/ecom-illustrations/refund2.svg
         endpoints:
             - /ecomm/v2/payments/{orderId}/refund
         descriptions:
@@ -163,7 +163,9 @@ imagePath: "../../assets/images/womanWithPhone.svg"
 const eComFlowChart = `
 ---
 title: Steps to implement for eCom
-imagePath: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+browserImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+tabletImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
+mobileImage: "../../assets/ecom-illustrations/ecom-flowchart.svg"
 stepTitles: false
 `;
 

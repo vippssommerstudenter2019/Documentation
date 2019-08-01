@@ -31,23 +31,8 @@ class IntroBox extends React.Component {
 				</div>
 			</div>
         );
-    }
-};
-
-class IntroPoints extends React.Component {
-	render() {
-		return (
-			<div className="top-list">
-				<div className="col-1">
-					<li>test</li>
-				</div>
-				<div className="col-2">
-
-				</div>
-			</div>
-		);
 	}
-}
+};
 
 IntroBox.propTypes = propTypes;
 

@@ -56,16 +56,5 @@
 .response-content {
   max-height: 0;
   overflow: hidden;
-  background-color: var(--athensGreyLight);
   transition: max-height 0.2s ease-out;
-}
-
-/* Style the response json */ 
-.response-content pre,
-.response-content code {
-	font-family: 'PT Mono' , monospace;
-	font-size: .9rem;
-	line-height: 1.75rem;
-  letter-spacing: .01rem;
-  padding: 0px 0px 0px 25px !important;
 }
