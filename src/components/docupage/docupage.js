@@ -11,11 +11,13 @@ import { SOURCE_URLS,
           DEV_SIDEBAR_HEADER } from './Constants.js'
 import "./../../styles/vipps-style.css";
 import docupageCSS from "./docupage.module.css";
+import LottieAnimation from "./LottieAnimation.js";
 
 class DocuPage extends React.Component {
   state = {
     content: "",
-    headers: []
+    headers: [],
+    loaded: false
   }
 
   srcURL = SOURCE_URLS[this.props.doc];
@@ -26,23 +28,28 @@ class DocuPage extends React.Component {
 
 
   componentDidMount() {
+    // Get source data, then process it, then set the content of the page
     fetch(this.srcURL).then(response =>
       response.text().then(fullText => 
-        this.displayContent(fullText).then(
-          this.goToAnchor
-        ))
+        this.setContent(fullText))
     );
   }
 
-  async displayContent(fullText) {
+  setContent(fullText) {
     const content = this.filterMarkdown(fullText);
     const headers = this.getHeaders(content);
-    this.setState({
-      content: content,
-      headers: headers
-    })
+    // Timeout is used to avoid choppy load-in
+    setTimeout(() => {
+      // After content is set, the page is loaded
+      this.setState({
+        content: content,
+        headers: headers,
+        loaded: true
+      }, () => this.goToAnchor()) // After the state is updated and the page re-rendered, we can navigate to the proper place in the text
+    }, 1000);
   }
 
+  // Scroll to link location on the page, if there is one
   goToAnchor() { 
     const hash = window.document.location.hash;
     if (hash !=="") {
@@ -126,11 +133,17 @@ class DocuPage extends React.Component {
     return filtered_markdown;
   }
 
+  // Creates the spinner
+  loadingScreen = () => (
+    <div className={docupageCSS.LoadingSpinner} >
+      <LottieAnimation path="/loading_spinner.json"/>
+    </div>
+  )
 
-
-  render = () => (
-      <div className={docupageCSS.Container}>
-          <Sidebar headers={this.state.headers} api={this.props.doc} />
+  // Creates the docupage screen
+  docuScreen = () => (
+    <div className={docupageCSS.Container}>
+        <Sidebar headers={this.state.headers} api={this.props.doc} />
         <div className={docupageCSS.Content}>
           <DeveloperResources devURLs={this.devURLs} pageTitle={this.pageTitle}/>
           <ReactMarkdown
@@ -140,7 +153,11 @@ class DocuPage extends React.Component {
                         heading: HeadingRenderer }}
           />
         </div>
-      </div>
+    </div>
+  )
+
+  render = () => (
+    this.state.loaded ? this.docuScreen() : this.loadingScreen()
     );
 }
 

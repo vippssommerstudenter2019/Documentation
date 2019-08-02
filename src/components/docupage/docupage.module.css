@@ -25,6 +25,15 @@
 }
 
 
+.LoadingSpinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 10%;
+  max-height: 10%;
+}
+
 
 h1,
 h2,

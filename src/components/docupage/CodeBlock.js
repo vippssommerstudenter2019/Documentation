@@ -2,17 +2,43 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import codeblockCSS from "./codeblock.module.css"
 import "./syntaxhighlighting.css"
+import lottie from "lottie-web";
 
 
-const CodeBlock = (props) =>  {
- const { language, value } = props;
 
- const handleCopyClick = (e) => {
+class LottieAnimation extends React.Component {
+   ref = null;
+
+   componentDidMount() {
+     lottie.loadAnimation({
+       container: this.ref,
+       renderer: "svg",
+       loop: true,
+       autoplay: true,
+       path: this.props.path
+     });
+   }
+
+   render() {
+     return <div ref={ref => this.ref = ref} />;
+   }
+ }
+
+
+
+
+class CodeBlock extends React.Component  {
+ state = {
+   showanimation: false
+ }
+ 
+
+ handleCopyClick = (e) => {
     let targetButton = e.target;
     // Create new element
     var el = document.createElement('textarea');
-    // Set value (string to be copied)
-    el.value =  value;
+    // Set this.props.value (string to be copied)
+    el.value =  this.props.value;
     // Set non-editable to avoid focus and move outside of view
     el.setAttribute('readonly', '');
     document.body.appendChild(el);
@@ -22,32 +48,40 @@ const CodeBlock = (props) =>  {
     document.execCommand('copy');
     // Remove temporary element
     document.body.removeChild(el);
-    targetButton.innerHTML="Copied";
+    
 
-    setTimeout(
-      function changeText() {
-        // Vipps black
-        targetButton.innerHTML="Copy";
-      }.bind(this),
-      1000)
+
+    // Change button text to Copied and change back after 1 sec
+    this.setState({showanimation: true}, () => {
+      setTimeout(() => {
+        this.setState({showanimation: false})
+      }, 1330);
+    });
   }
 
-  return (
+
+  render = () => {
+    const animation = <LottieAnimation path="/loading_spinner.json"></LottieAnimation>
+    return (
     <div className={codeblockCSS.codeblock}>
     <div className={codeblockCSS.codeblockHeader}>
       <div className={codeblockCSS.codeblockLanguage}>
-        {language}
+        {this.props.language}
       </div>
-      <button className={codeblockCSS.copyButton} onClick={e => handleCopyClick(e)}>Copy</button>
+      <button className={codeblockCSS.copyButton} onClick={e => this.handleCopyClick(e)}>
+        {(this.state.showanimation) ? animation : "Copy"}
+      </button>
     </div>
     <div className={codeblockCSS.codeblockBody}>
       <div className={codeblockCSS.codeblockNumbering}>
-        {value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
+        {this.props.value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
       </div>
-      <SyntaxHighlighter language={language} useInlineStyles={false} >{value}</SyntaxHighlighter>
+      {/* SyntaxHighlighter will inject inline styling if not explicitly denied */}
+      <SyntaxHighlighter language={this.props.language} useInlineStyles={false} style={""}>{this.props.value}</SyntaxHighlighter>
     </div>
   </div>
     );
+  }
 }
 
 export default CodeBlock;
