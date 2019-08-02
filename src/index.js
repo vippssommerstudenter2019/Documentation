@@ -15,7 +15,7 @@ const PageRouter = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={StartPage}/>
-            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks apiName="eCom" yamlContent={eComYaml} />}/>
+            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks apiName="eCom" yamlContentURL={eComYaml} />}/>
             <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks apiName="invoice" 
                                                                                        swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
                                                                                        intro={invoiceIntro} 

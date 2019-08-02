@@ -19,7 +19,7 @@ const propTypes = {
 	sections: PropTypes.string,//remove
 	outro: PropTypes.string,//remove
 	swaggerURL: PropTypes.string,//remove
-	yamlContent: PropTypes.string//.isRequired,
+	yamlContentURL: PropTypes.string//.isRequired,
 };
 
 /**
@@ -30,7 +30,7 @@ class HowItWorks extends React.Component {
 	constructor(props) {
 		super(props);
 		
-		if (this.props.yamlContent) {
+		if (this.props.yamlContentURL) {
 			this.state = {
 				pageWidth: window.innerWidth,
 				intro: null,
@@ -40,7 +40,7 @@ class HowItWorks extends React.Component {
 				loaded: false,
 				swaggerData: {}
 			};
-			fetch(this.props.yamlContent)
+			fetch(this.props.yamlContentURL)
 			.then(response => response.text())
 			.then((text) => {
 				const fullContent = yaml.safeLoad(text);
