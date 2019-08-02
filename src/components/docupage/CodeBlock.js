@@ -76,7 +76,8 @@ class CodeBlock extends React.Component  {
       <div className={codeblockCSS.codeblockNumbering}>
         {this.props.value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
       </div>
-      <SyntaxHighlighter language={this.props.language} useInlineStyles={false} >{this.props.value}</SyntaxHighlighter>
+      {/* SyntaxHighlighter will inject inline styling if not explicitly denied */}
+      <SyntaxHighlighter language={this.props.language} useInlineStyles={false} style={""}>{this.props.value}</SyntaxHighlighter>
     </div>
   </div>
     );
