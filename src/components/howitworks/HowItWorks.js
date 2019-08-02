@@ -15,10 +15,11 @@ import Sidebar from '../sidebar/sidebar';
  */
 const propTypes = {
 	apiName: PropTypes.string.isRequired,
-	intro: PropTypes.string.isRequired,
-	sections: PropTypes.string.isRequired,
-	outro: PropTypes.string.isRequired,
-	swaggerURL: PropTypes.string.isRequired,
+	intro: PropTypes.string,//remove
+	sections: PropTypes.string,//remove
+	outro: PropTypes.string,//remove
+	swaggerURL: PropTypes.string,//remove
+	yamlContent: PropTypes.string//.isRequired,
 };
 
 /**
@@ -28,27 +29,55 @@ class HowItWorks extends React.Component {
 	
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			pageWidth: window.innerWidth,
-			intro: yaml.safeLoad(this.props.intro),
-			outro: yaml.safeLoad(this.props.outro),
-			flowchart: this.props.flowchart? yaml.safeLoad(this.props.flowchart) : false,
-			metaData: yaml.safeLoad(this.props.sections),
-			swaggerData: {}
-		};
+		
+		if (this.props.yamlContent) {
+			this.state = {
+				pageWidth: window.innerWidth,
+				intro: null,
+				outro: null,
+				flowchart: null,
+				metaData: null,
+				loaded: false,
+				swaggerData: {}
+			};
+			fetch(this.props.yamlContent)
+			.then(response => response.text())
+			.then((text) => {
+				const fullContent = yaml.safeLoad(text);
+				this.setState({
+					intro: fullContent.Intro,
+					outro: fullContent.Outro,
+					flowchart: fullContent.FlowChart,
+					metaData: fullContent.Sections,
+					loaded: true,
+				});
+				this.loadSwagger(fullContent.SwaggerURL);
+			});
+			
+			
+		} else {
+			this.state = {
+				pageWidth: window.innerWidth,
+				intro: yaml.safeLoad(this.props.intro),
+				outro: yaml.safeLoad(this.props.outro),
+				flowchart: this.props.flowchart? yaml.safeLoad(this.props.flowchart) : false,
+				metaData: yaml.safeLoad(this.props.sections),
+				loaded: true,
+				swaggerData: {}
+			};
+			this.loadSwagger(this.props.swaggerURL);
+		}
 	
 		const resize = () => this.setState({pageWidth: window.innerWidth});
 		resize.bind(this);
 		window.onresize = resize;
 	}
 
-	componentDidMount() {
+	loadSwagger(swaggerURL) {
 		// Fetch the json data from the swagger file at the given url.
-		fetch(this.props.swaggerURL)
+		fetch(swaggerURL)
 		.then(response => response.json())
 		.then((response) => {
-
 			// We use a reference parser to inject all the references in the json file with content, 
 			// in that way we can extract bodies with examples for example.
 			$RefParser.dereference(response, (error, data) => {
@@ -59,10 +88,10 @@ class HowItWorks extends React.Component {
 				}
 				else {
 					this.setState({ 
-						intro: this.state.intro,
-						outro: this.state.outro,
+						//intro: this.state.intro,
+						//outro: this.state.outro,
 						swaggerData: data,
-						metaData: this.state.metaData
+						//metaData: this.state.metaData
 					}); 
 				}
 			});    
@@ -100,6 +129,7 @@ class HowItWorks extends React.Component {
 	}
 
 	render() {
+		if (!this.state.loaded) return <div className="App"/>;
 		return (
 			<div className="App">
 				<div id={this.props.apiName}/>

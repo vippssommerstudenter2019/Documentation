@@ -100,7 +100,7 @@ class SidebarNavSpy extends Component {
 	
 	expandAll() {
 		this.props.sections.map((section, sec) => {
-			if (section.children.length === 0) return;
+			if (section.children.length === 0) return null;
 			var opening = document.getElementById(this.sectionID(sec));
 			if (opening && !opening.classList.contains("active")) {
 				opening.firstElementChild.click();
