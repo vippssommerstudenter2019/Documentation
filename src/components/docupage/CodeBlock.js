@@ -3,10 +3,12 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import codeblockCSS from "./codeblock.module.css"
 import "./syntaxhighlighting.css"
 
-const CodeBlock = (props) =>  {
-  const { language, value } = props;
 
-  const handleCopyClick = (e) => {
+const CodeBlock = (props) =>  {
+ const { language, value } = props;
+
+ const handleCopyClick = (e) => {
+    let targetButton = e.target;
     // Create new element
     var el = document.createElement('textarea');
     // Set value (string to be copied)
@@ -20,23 +22,31 @@ const CodeBlock = (props) =>  {
     document.execCommand('copy');
     // Remove temporary element
     document.body.removeChild(el);
+
+    // Change button text to Copied and change back after 1 sec
+    targetButton.innerHTML="Copied";
+    setTimeout(
+      function changeText() {
+        targetButton.innerHTML="Copy";
+      }.bind(this),
+      1000)
   }
 
   return (
-      <div className={codeblockCSS.codeblock}>
-        <div className={codeblockCSS.codeblockHeader}>
-          <div className={codeblockCSS.codeblockLanguage}>
-            {language}
-          </div>
-          <button className={codeblockCSS.copyButton} onClick={e => handleCopyClick(e)}>Copy</button>
-        </div>
-        <div className={codeblockCSS.codeblockBody}>
-          <div className={codeblockCSS.codeblockNumbering}>
-            {value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
-          </div>
-          <SyntaxHighlighter language={language} useInlineStyles={false} >{value}</SyntaxHighlighter>
-        </div>
+    <div className={codeblockCSS.codeblock}>
+    <div className={codeblockCSS.codeblockHeader}>
+      <div className={codeblockCSS.codeblockLanguage}>
+        {language}
       </div>
+      <button className={codeblockCSS.copyButton} onClick={e => handleCopyClick(e)}>Copy</button>
+    </div>
+    <div className={codeblockCSS.codeblockBody}>
+      <div className={codeblockCSS.codeblockNumbering}>
+        {value.split('\n').map((line, number) => (<li>{number + 1}</li>))}
+      </div>
+      <SyntaxHighlighter language={language} useInlineStyles={false} >{value}</SyntaxHighlighter>
+    </div>
+  </div>
     );
 }
 
