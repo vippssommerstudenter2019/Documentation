@@ -61,7 +61,7 @@ Sections:
             endpoints:
                 - "/recipients/tokens"
             descriptions:
-                "/recipients/tokens": The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
+                "/recipients/tokens": The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients national identification number(nin) or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
             modes:
                 "/recipients/tokens": POST
             responses: true 
@@ -80,7 +80,7 @@ Sections:
     The invoice process:
         send_invoice:
             title: ISP sends invoice 
-            introduction: The first step in the invoice payment process is sending an invoice to the customer. As an ISP you should have recieved an invoice from your partner with a URL and [necessary credentials].
+            introduction: The first step in the invoice payment process is sending an invoice to the customer. As an ISP you should have recieved an invoice from your partner with a URL and [necessary invoice details].
             imagePath: ../../assets/ecom-steps/Initiate.svg
             endpoints:
                 - "/invoices/{invoiceId}"
@@ -90,16 +90,16 @@ Sections:
                 "/invoices/{invoiceId}": PUT 
             responses: true 
             keywords:
-                necessary credentials:
-                    title: What necessary credentials?
+                necessary invoice details:
+                    title: What necessary invoice details?
                     description: An invoice need to contain some necessary information and credentials. Read about what information to include and what rules to be aware of
                     linkTitle: API documentation invoice validation
                     link: https://github.com/vippsas/vipps-invoice-api/blob/master/vipps-invoice-api.md#invoice-validation
 
 
         checking_status:
-            title: Checking status of an invoice
-            introduction: After the invoice is sent, you can check if the [state] has changed from "created" to "pending". This will usually happen within 5 seconds, but during high load, it might take longer. Other states may also occur at this point and this can be seen in the [state machine diagram]. When the status is pending, the invoice is visible for the customer in Vipps. Note that if the customer wants to open the attached invoice pdf. the IPP/invoice hotel need to perform a [validation] of the JSON Web Token included in the URL.
+            title: ISP checks state of invoice
+            introduction: After the invoice is sent, you can check if the [state] has changed from "created" to "pending". This will usually happen within 5 seconds, but during high load, it might take longer. Other states may also occur at this point and this can be seen in the [state machine diagram]. When the status is pending, the invoice is visible for the customer in Vipps.
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
                 - "/invoices/{invoiceId}" 
@@ -119,15 +119,13 @@ Sections:
                     description: Go to documentation to see all possibles states for invoices throughout the process.
                     linkTitle: API documentation 
                     link: https://github.com/vippsas/vipps-invoice-api/blob/master/vipps-invoice-api.md#detailed-information-about-invoice-states-and-transitions
-                validation:
-                    title: What validation?
-                    description: The IPP/invoice hotel is responsible for validation the JWT before returning the document. This is necessary to make sure that the customer can only access the specific invoice.
-                    linkTitle: API documentation Validating JWT
-                    link: https://github.com/vippsas/vipps-invoice-api/blob/master/vipps-invoice-api.md#validating-the-json-web-token-jwt-and-the-request
+            
 
         customer_confirms:
-            title: Customer confirms the invoice
-            introduction: As the state has gone from created to pending, the customer will be notified and the invoice will appear in customers Vipps app. If the customer confirms the invoice the status will change from pending to approved. Note that after due date it is useful to know if the invoice was confirmed by the customer. This is easily done by checking the status once again.
+            title: Customer approves
+            introduction: >
+                As the state has gone from created to pending, the customer will now be notified and the invoice will appear in the customers Vipps app. The customer confirms the invoice and the status changes from pending to approved. If the customer wants to open the attached invoice pdf. before confirming, the IPP/invoice hotel need to perform a [validation] of the JSON Web Token included in the URL. This is to secure that the customer only access the given invoice. 
+                Note that after due date it is useful to know if the invoice was confirmed by the customer. This is easily done by checking the status once again.
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
                 - customer_pays
@@ -137,6 +135,11 @@ Sections:
                 customer_pays: NA
             responses: false
             keywords:
+                validation:
+                    title: What validation?
+                    description: The IPP/invoice hotel is responsible for validation the JWT before returning the document. This is necessary to make sure that the customer can only access the specific invoice.
+                    linkTitle: API documentation Validating JWT
+                    link: https://github.com/vippsas/vipps-invoice-api/blob/master/vipps-invoice-api.md#validating-the-json-web-token-jwt-and-the-request
 
 
         paid_invoice:
@@ -154,7 +157,7 @@ Sections:
 
     Important to implement:
         revoke_invoice:
-            title: Revoking an invoice
+            title: ISP revokes invoice
             introduction: If something is wrong with the invoice, you should be able to revoke so that the customer no longer sees it. Note that invoices can be revoked if they currently are in the states created, pending or rejected. If an invoice has been approved, deleted or expired it cannot be revoked anymore.
             imagePath: ../../assets/ecom-steps/Cancel.svg
             endpoints:

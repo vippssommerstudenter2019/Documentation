@@ -31,7 +31,7 @@ Sections:
                     link: https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#open-id-connect
 
         client_configuration:
-            title: Client-configuration setup with Vipps.
+            title: Client configuration.
             introduction: To be able to implement Vipps Login, you need do some configurations in cooperation with Vipps. This includes [application whitelisting], defining [scopes] and sharing of [client ID and client secret].
             imagePath:
             endpoints:
@@ -87,7 +87,7 @@ Sections:
 
     Important to implement:
         access_information:
-            title: Collect information using access token
+            title: Get updated information
             introduction: The access token collected can be used to access the information Vipps possesses about the user. This is usefull as the information about the user can be changed continously and new scopes might be added.
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
