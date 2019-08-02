@@ -82,11 +82,9 @@ Sections:
             title: Get access token
             introduction: In order to make API calls to Vipps, you need a valid [access token]. This token has to be renewned every 24 hours.
             endpoints:
-                - /accesstoken/get
-            descriptions:
-                /accesstoken/get: Gets called when you ask for a valid acess token from Vipps.
-            modes:
-                /accesstoken/get: POST
+                - name: /accesstoken/get
+                  description: Gets called when you ask for a valid acess token from Vipps.
+                  mode: POST
             responses: true
             keywords:
                 access token:

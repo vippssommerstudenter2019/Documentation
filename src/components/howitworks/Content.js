@@ -59,7 +59,7 @@ class Content extends React.Component {
 			<div className="section-line">
 				<div className="first-line"/>
 				<div className="section-end">
-					{"End " + title}
+					{"End of: " + title}
 				</div>
 				<div className="last-line"/>
 			</div> 
