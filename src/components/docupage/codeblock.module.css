@@ -28,6 +28,10 @@
 
 }
 
+.codeblockBody * {
+  font-family: inherit;
+}
+
 .codeblockNumbering {
   list-style-type: none;
   text-align: right;
