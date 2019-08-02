@@ -4,11 +4,11 @@ import DocuPage from './components/docupage/docupage.js'
 import HowItWorks from "./components/howitworks/HowItWorks"
 import { StartPage } from './components/startpage/startpage.js';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {eComSections, eComIntro, eComOutro, eComFlowChart} from "./model/eCom"
 import {invoiceSections, invoiceIntro, invoiceOutro} from "./model/invoice"
 import {loginSections, loginIntro, loginOutro} from "./model/login"
 import './styles/index.css';
 import './styles/vipps-style.css';
+import eComYaml from './model/eCom.yaml';
 
 
 // TODO: startpath should be "/documentation/" and not "/"
@@ -16,12 +16,7 @@ const PageRouter = () => (
     <Router>
         <Switch>
             <Route path="/" exact component={StartPage}/>
-            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks apiName="eCom"
-                                                                                         swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json" 
-                                                                                         intro={eComIntro} 
-                                                                                         sections={eComSections} 
-                                                                                         outro={eComOutro} 
-																						 flowchart={eComFlowChart}/>}/>
+            <Route path="/how-it-works/ecommerce/" exact component={props => <HowItWorks apiName="eCom" yamlContentURL={eComYaml} />}/>
             <Route path="/how-it-works/invoice/" exact component={props => <HowItWorks apiName="invoice" 
                                                                                        swaggerURL="https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
                                                                                        intro={invoiceIntro} 
