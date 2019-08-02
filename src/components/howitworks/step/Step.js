@@ -100,6 +100,7 @@ class Step extends Component {
 
 		// As one step can inlcude more than one endpoint, we loop through them 
 		// and append all of them
+		if (this.props.metaData.endpoints)
 		for (const endpoint of this.props.metaData.endpoints) {
 			content.push(this.createEndpointContent(endpoint));
 		}

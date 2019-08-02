@@ -21,8 +21,9 @@ class Content extends React.Component {
     for (const [id, subsection] of Object.entries(section)) {
             // We use the swagger extracter to get example headers, 
 			// bodies and responses for every endpoint in this step.
-
+			
             var endpointData = {};
+			if (subsection.endpoints)
             for (const endpoint of subsection.endpoints) {
 
                 let header, body, responses;
@@ -44,7 +45,7 @@ class Content extends React.Component {
             subsections.push(
                 <Step
                     titleid={id}
-                    key={subsection.endpoints[0] + subsection.title}
+                    key={id + subsection.title}
                     metaData={subsection}
                     endpointData={endpointData}
                 />
