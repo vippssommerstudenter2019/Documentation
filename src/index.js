@@ -10,6 +10,7 @@ import {loginSections, loginIntro, loginOutro} from "./model/login"
 import './styles/index.css';
 import './styles/vipps-style.css';
 
+
 // TODO: startpath should be "/documentation/" and not "/"
 const PageRouter = () => (
     <Router>
