@@ -82,11 +82,9 @@ Sections:
             title: Get access token
             introduction: In order to make API calls to Vipps, you need a valid [access token]. This token has to be renewned every 24 hours.
             endpoints:
-                - /accesstoken/get
-            descriptions:
-                /accesstoken/get: Gets called when you ask for a valid acess token from Vipps.
-            modes:
-                /accesstoken/get: POST
+                - name: /accesstoken/get
+                  description: Gets called when you ask for a valid acess token from Vipps.
+                  mode: POST
             responses: true
             keywords:
                 access token:
@@ -99,17 +97,18 @@ Sections:
             title: Set up endpoints
             introduction: To let Vipps send and receive information from you, you need to implement [endpoints] at your [backend]. They make it possible for you to for example get transaction updates and provide shipping details.
             endpoints:
-                - "[callbackPrefix]/v2/payments/{orderId}"
-                - "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails"
-                - "[consentRemovalPrefix]/v2/consents/{userId}"
-            descriptions:
-                "[callbackPrefix]/v2/payments/{orderId}": Gets called when there is an transaction update for an order. The callback prefix is the endpoint at your backend where Vipps will send this information to. You have to check this for updates during the payment process, we'll guide you through it.
-                "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails": A way for you to provide shipping details for your orders. The shipping details prefix is the endpoint at your backend where Vipps can get shipping details for a given order. The header will inlcude the order ID.
-                "[consentRemovalPrefix]/v2/consents/{userId}": If the user has notifed Vipps that they want their personal information removed from your site, their data has to be deleted permanently according to GDPR. The consent removal prefix is the endpoint at your backend where Vipps will issue this request.
-            modes:
-                "[callbackPrefix]/v2/payments/{orderId}" : POST
-                "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails" : POST
-                "[consentRemovalPrefix]/v2/consents/{userId}" : DELETE
+                - name: "[callbackPrefix]/v2/payments/{orderId}"
+                  description: Gets called when there is an transaction update for an order. The callback prefix is the endpoint at your backend where Vipps will send this information to. You have to check this for updates during the payment process, we'll guide you through it.
+                  mode: POST
+                
+                - name: "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails"
+                  description: A way for you to provide shipping details for your orders. The shipping details prefix is the endpoint at your backend where Vipps can get shipping details for a given order. The header will inlcude the order ID.
+                  mode: POST
+                 
+                - name: "[consentRemovalPrefix]/v2/consents/{userId}"
+                  description: If the user has notifed Vipps that they want their personal information removed from your site, their data has to be deleted permanently according to GDPR. The consent removal prefix is the endpoint at your backend where Vipps will issue this request.
+                  mode: DELETE
+                   
             responses: false
             keywords:
                 backend:
@@ -130,12 +129,10 @@ Sections:
             introduction: The customer is now selecting a service or item at your webstore, and wants to pay with Vipps. 
             imagePath: ../../assets/ecom-illustrations/initiatePayment.svg
             endpoints:
-                - /ecomm/v2/payments
-            descriptions:
-                /ecomm/v2/payments: Sends a request to Vipps to start the payment. Once the transaction is successfully initiated in Vipps, you will receive a URL in response which you can direct the customer to the [Vipps landing page] with. You need to provide a [fallbackURL] to you site which the customer will return to after confirming in the Vipps app. Passing ‘isApp’ as true will make Vipps respond with an [app-switch deeplink] that can take the customer directly to the Vipps app.
-
-            modes:
-                /ecomm/v2/payments: POST
+                - name: "/ecomm/v2/payments"
+                  description: Sends a request to Vipps to start the payment. Once the transaction is successfully initiated in Vipps, you will receive a URL in response which you can direct the customer to the [Vipps landing page] with. You need to provide a [fallbackURL] to you site which the customer will return to after confirming in the Vipps app. Passing ‘isApp’ as true will make Vipps respond with an [app-switch deeplink] that can take the customer directly to the Vipps app.
+                  mode: POST
+                  
             responses: true
             keywords:
                 Vipps landing page:
@@ -160,12 +157,9 @@ Sections:
             introduction: The customer is now being taken to the landing page and will confirm the [reservation of the payment] in the Vipps app. 
             imagePath: ../../assets/ecom-illustrations/customerConfirms.svg
             endpoints:
-                - "[callbackPrefix]/v2/payments/{orderId}"
-            descriptions:
-                "[callbackPrefix]/v2/payments/{orderId}": You have to check if the reservation of the payment was successful before doing anything else. This is where the endpoint for transaction updates comes into the picture. You'll have to check the information you get passed there to see if the status is 'reserve' as in the example to the right.
-
-            modes:
-                "[callbackPrefix]/v2/payments/{orderId}": POST
+                - name: "[callbackPrefix]/v2/payments/{orderId}"
+                  description: You have to check if the reservation of the payment was successful before doing anything else. This is where the endpoint for transaction updates comes into the picture. You'll have to check the information you get passed there to see if the status is 'reserve' as in the example to the right.
+                  mode: POST
             responses: false
             keywords:
                 reservation of the payment:
@@ -179,11 +173,6 @@ Sections:
             introduction: Now, you'll have to provide the customer with a confirmation of that you’ve been given the order and that payment is reserved. Next step is delivering the service or shipping the items ordered from the customer.
             imagePath: ../../assets/ecom-illustrations/confirmOrder.svg
             endpoints:
-                - ship_item
-            descriptions:
-                ship_item:
-        
-            modes:
             responses: false
             keywords:
 
@@ -192,11 +181,9 @@ Sections:
             introduction: Up to this point, the money is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped.  This is called a capture.
             imagePath: ../../assets/ecom-illustrations/capture2.svg
             endpoints:
-                - "/ecomm/v2/payments/{orderId}/capture"
-            descriptions:
-                "/ecomm/v2/payments/{orderId}/capture": You send a capture request to Vipps so the money can be withdrawn from the buyer's account.
-            modes:
-                "/ecomm/v2/payments/{orderId}/capture" : POST
+                - name: "/ecomm/v2/payments/{orderId}/capture"
+                  description: You send a capture request to Vipps so the money can be withdrawn from the buyer's account.
+                  mode: POST
             responses: true
             keywords:
 
@@ -206,11 +193,9 @@ Sections:
             introduction: If you as the seller can't deliver the ordered service or the item isn't in stock, you can send a cancel message to Vipps in order to free up the reservation of the payment.
             imagePath: ../../assets/ecom-illustrations/cancel.svg
             endpoints:
-                - /ecomm/v2/payments/{orderId}/cancel
-            descriptions:
-                /ecomm/v2/payments/{orderId}/cancel: Sends a request to Vipps for cancellation. The money will be availabe for the buyer.		
-            modes:
-                /ecomm/v2/payments/{orderId}/cancel: PUT
+                - name: "/ecomm/v2/payments/{orderId}/cancel"
+                  description: Sends a request to Vipps for cancellation. The money will be availabe for the buyer.		
+                  mode: PUT
             responses: true
             keywords:
 
@@ -219,11 +204,9 @@ Sections:
             introduction: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full.
             imagePath: ../../assets/ecom-illustrations/refund.svg
             endpoints:
-                - /ecomm/v2/payments/{orderId}/refund
-            descriptions:
-                /ecomm/v2/payments/{orderId}/refund: You initiate the refund by sending information as serial number, amount and transaction text.		
-            modes:
-                /ecomm/v2/payments/{orderId}/refund: POST
+                - name: /ecomm/v2/payments/{orderId}/refund
+                  description: You initiate the refund by sending information as serial number, amount and transaction text.		
+                  mode: POST
             responses: true
             keywords:
 
