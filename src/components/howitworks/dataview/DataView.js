@@ -4,6 +4,7 @@ import "./DataView.css"
 import { objectIsEmpty, getHashCodeFromString } from "../../../Util";
 import PrismView from "../prismview/PrismView";
 import ResponseTable from "../responses/ResponseTable";
+import lottie from "lottie-web";
 
 const propTypes = {
     title: PropTypes.string.isRequired,
@@ -12,6 +13,24 @@ const propTypes = {
 	responses: PropTypes.object.isRequired,
     spaceForJson: PropTypes.number.isRequired
 };
+
+class LottieAnimation extends React.Component {
+	ref = null;
+ 
+	componentDidMount() {
+	  lottie.loadAnimation({
+		container: this.ref,
+		renderer: "svg",
+		loop: true,
+		autoplay: true,
+		path: this.props.path
+	  });
+	}
+ 
+	render() {
+	  return <div ref={ref => this.ref = ref} />;
+	}
+  }
 
 /**
  * A component which displays some header and body data and has got the option to copy from it.
@@ -49,6 +68,7 @@ class DataView extends Component {
 			content: content,
 			selected: content[0].title,
 			copyID: getHashCodeFromString(title),
+			showAnimation: false
         };
 
 		// Binding callbacks to this instance
@@ -93,8 +113,14 @@ class DataView extends Component {
             document.execCommand("copy");
 
             // TODO: Implement overlay for successful copy when design is ready
-            // var successful = document.execCommand('copy');
-            // var msg = successful ? 'Copied' : 'Couldn\'t copy';
+            var successful = document.execCommand('copy');
+            if (successful) {
+				this.setState({showAnimation: true}, () => {
+					setTimeout(() => {
+					  this.setState({showAnimation: false})
+					}, 1330);
+				  });
+			}
         } catch (err) {
             console.error('Fallback: Oops, unable to copy', err);
         }
@@ -139,7 +165,7 @@ class DataView extends Component {
 			</button>
 			);
 		});
-
+		const animation = <LottieAnimation path="/loading_spinner.json"></LottieAnimation>;
         return (
             // Render a container with code with an utility bar and style it according to Vipps style.
             // We give the first div an id of an unique hash corresponding to the code so when
@@ -147,7 +173,9 @@ class DataView extends Component {
             <div className="dataview" id={this.state.copyID}>
                 <div className="dataview-title">{this.props.title}</div>
                 <div className="dataview-utility-bar">
-                    <button className="copy-button" onClick={this.handleCopyClick}>Copy</button>
+                    <button className="copy-button" onClick={this.handleCopyClick}>
+						{this.state.showAnimation ? animation : "copy"}
+					</button>
                     {buttonComponents}
                 </div>
 				{elements}
