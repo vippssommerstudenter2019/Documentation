@@ -55,7 +55,7 @@ class CodeBlock extends React.Component  {
     this.setState({showanimation: true}, () => {
       setTimeout(() => {
         this.setState({showanimation: false})
-      }, 1000);
+      }, 1330);
     });
   }
 
