@@ -45,7 +45,7 @@ class Step extends Component {
 	 */
 	createImageComponent() {
 		if (this.props.metaData.imagePath) {
-			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />  //hmm
+			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />
 		} else {
 			return <div className="img-circle"></div>
 		}
@@ -78,6 +78,9 @@ class Step extends Component {
 	 */
 	createEndpointContent(endpoint) {
 		// is both step-text-response & step-description neccesary?
+		const description = this.props.metaData.descriptions[endpoint];
+		if (!description || objectIsEmpty(description)) 
+		return <div key={endpoint+"-data"} className="step-data">{this.createEndpointDataComponent(endpoint)}</div>;
 		return [ 
 		<div key={endpoint + "-text-responses"} className="step-text-responses">
 			<div key={endpoint+"-description"} className="step-description">
@@ -110,7 +113,7 @@ class Step extends Component {
 
 		return (
 			<div className="step-wrapper" >
-				<div class="step-headline">
+				<div className="step-headline">
 					<div className="step-img">
 						{this.createImageComponent()}
 					</div>

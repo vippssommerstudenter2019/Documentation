@@ -52,19 +52,16 @@ class Content extends React.Component {
         }
 
         return (
-         <div>
-         <div id={title} className="xxlarge-font-size text-color-primary">{title}</div>
-          {subsections}
-         <div class="section-line">
-					<div class="first-line">
-
-					</div>
-					<div class="section-end">
-						{"End " + title}
-					</div>
-					<div class="last-line">
-					</div>
-				</div> 
+        <div key={"wrapper-"+title} >
+			<div id={title} className="intro-title">{title}</div>
+				{subsections}
+			<div className="section-line">
+				<div className="first-line"/>
+				<div className="section-end">
+					{"End " + title}
+				</div>
+				<div className="last-line"/>
+			</div> 
         </div>
         );
     }

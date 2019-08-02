@@ -7,7 +7,7 @@ export default function ResponseTable(props) {
     const statusCodes = Object.keys(props.responses).sort();
 
     for (const statusCode of statusCodes) {
-
+        
         items.push(
             <div key={statusCode} className="responsetable" >
                 <ResponseBox 
