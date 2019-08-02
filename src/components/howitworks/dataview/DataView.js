@@ -80,6 +80,12 @@ class DataView extends Component {
 	 * Handles the click when the user wants to copy the code.
 	 */
     handleCopyClick() {
+		// Change button text to Copied and change back after 1 sec
+		this.setState({showanimation: true}, () => {
+		  setTimeout(() => {
+			this.setState({showanimation: false})
+		  }, 1330);
+		});
 
         // We create a fake text area that we can inject the code into
         let textArea = document.createElement("textarea");
