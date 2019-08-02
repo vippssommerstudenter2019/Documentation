@@ -11,11 +11,13 @@ import { SOURCE_URLS,
           DEV_SIDEBAR_HEADER } from './Constants.js'
 import "./../../styles/vipps-style.css";
 import docupageCSS from "./docupage.module.css";
+import LottieAnimation from "./LottieAnimation.js";
 
 class DocuPage extends React.Component {
   state = {
     content: "",
-    headers: []
+    headers: [],
+    loaded: false
   }
 
   srcURL = SOURCE_URLS[this.props.doc];
@@ -28,19 +30,23 @@ class DocuPage extends React.Component {
   componentDidMount() {
     fetch(this.srcURL).then(response =>
       response.text().then(fullText => 
-        this.displayContent(fullText).then(
+        this.setContent(fullText).then(
           this.goToAnchor
         ))
     );
   }
 
-  async displayContent(fullText) {
+  async setContent(fullText) {
     const content = this.filterMarkdown(fullText);
     const headers = this.getHeaders(content);
-    this.setState({
-      content: content,
-      headers: headers
-    })
+    setTimeout(() => {
+      this.setState({
+        content: content,
+        headers: headers,
+        loaded: true
+      })
+    }, 1000);
+    
   }
 
   goToAnchor() { 
@@ -126,11 +132,15 @@ class DocuPage extends React.Component {
     return filtered_markdown;
   }
 
+  loadingScreen = () => (
+    <div className={docupageCSS.LoadingSpinner} >
+      <LottieAnimation path="/loading_spinner.json"/>
+    </div>
+  )
 
-
-  render = () => (
-      <div className={docupageCSS.Container}>
-          <Sidebar headers={this.state.headers} api={this.props.doc} />
+  docuScreen = () => (
+    <div className={docupageCSS.Container}>
+        <Sidebar headers={this.state.headers} api={this.props.doc} />
         <div className={docupageCSS.Content}>
           <DeveloperResources devURLs={this.devURLs} pageTitle={this.pageTitle}/>
           <ReactMarkdown
@@ -140,7 +150,11 @@ class DocuPage extends React.Component {
                         heading: HeadingRenderer }}
           />
         </div>
-      </div>
+    </div>
+  )
+
+  render = () => (
+    this.state.loaded ? this.docuScreen() : this.loadingScreen()
     );
 }
 
