@@ -42,6 +42,7 @@ class HowItWorks extends React.Component {
 		fetch(this.props.yamlContentURL)
 		.then(response => response.text())
 		.then((text) => {
+			console.log("Loading\n\n", text);
 			const fullContent = yaml.safeLoad(text);
 			this.setState({
 				intro: fullContent.Intro,
@@ -51,6 +52,7 @@ class HowItWorks extends React.Component {
 				loaded: true,
 			});
 			this.loadSwagger(fullContent.SwaggerURL);
+			console.log("Loaded");
 		});
 	
 		const resize = () => this.setState({pageWidth: window.innerWidth});

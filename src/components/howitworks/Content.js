@@ -25,17 +25,18 @@ class Content extends React.Component {
             var endpointData = {};
 			if (subsection.endpoints)
             for (const endpoint of subsection.endpoints) {
-
+				const {name, mode} = endpoint;
+				
                 let header, body, responses;
 
                 if (this.props.swaggerData.hasOwnProperty("openapi")) {
-                    [header, body, responses] = openAPIExtracter.getExampleData(endpoint, this.props.swaggerData);
+                    [header, body, responses] = openAPIExtracter.getExampleData(name, this.props.swaggerData);
                 }
                 else if (this.props.swaggerData.hasOwnProperty("swagger")) {
-                    [header, body, responses] = swaggerExtracter.getExampleData(endpoint, subsection.modes[endpoint], this.props.swaggerData);
+                    [header, body, responses] = swaggerExtracter.getExampleData(name, mode, this.props.swaggerData);
                 }
-
-                endpointData[endpoint] = {
+				//console.log(endpoint, header);
+                endpointData[name] = {
                     header: header,
                     body: body,
                     responses: responses

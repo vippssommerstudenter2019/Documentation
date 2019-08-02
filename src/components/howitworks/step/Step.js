@@ -47,27 +47,7 @@ class Step extends Component {
 		if (this.props.metaData.imagePath) {
 			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />
 		} else {
-			return <div className="img-circle"></div>
-		}
-	}
-
-	/**
-	 * Returns a container with the header and body codeviews for a given endpoint.
-	 * 
-	 * @param {*} endpoint The endpoint to create header and body components for.
-	 */
-	createEndpointDataComponent(endpoint) {
-		if (!objectIsEmpty(this.props.endpointData[endpoint].header)) {
-			return(
-				<DataView key={endpoint}
-					title={this.props.metaData.modes[endpoint] + " " + endpoint}
-					header={this.props.endpointData[endpoint].header}
-					body={this.props.endpointData[endpoint].body}
-					responses={this.props.endpointData[endpoint].responses}
-					shouldCollapse={true}
-					spaceForJson={spaceForJson} 
-				/>
-			);
+			return <div className="img-circle"/>
 		}
 	}
 
@@ -77,21 +57,36 @@ class Step extends Component {
 	 * @param {*} endpoint The endpoint to construct for.
 	 */
 	createEndpointContent(endpoint) {
-		// is both step-text-response & step-description neccesary?
-		const description = this.props.metaData.descriptions[endpoint];
-		if (!description || objectIsEmpty(description)) 
-		return <div key={endpoint+"-data"} className="step-data">{this.createEndpointDataComponent(endpoint)}</div>;
-		return [ 
-		<div key={endpoint + "-text-responses"} className="step-text-responses">
-			<div key={endpoint+"-description"} className="step-description">
-				<TooltipText input={this.props.metaData.descriptions[endpoint]} keywordsData={this.props.metaData.keywords} />
+		const {name, description, mode} = endpoint;
+		const {header, body, responses} = this.props.endpointData[name];
+		const check = (el) => (el && !objectIsEmpty(el));
+		console.log(name, description, mode);
+		
+		var out = [];
+		if (check(description)) {
+			out.push(
+			<div key={endpoint.name + "-text-responses"} className="step-text-responses">
+				<div key={endpoint.name+"-description"} className="step-description">
+					<TooltipText input={description} keywordsData={this.props.metaData.keywords} />
+				</div>
 			</div>
-		</div>
-		,
-		<div key={endpoint + "-data"} className="step-data">
-			{this.createEndpointDataComponent(endpoint)}
-		</div>
-		];
+			);
+		}
+		if (check(header) || check(body) || check(responses)) {
+			out.push(
+			<div key={name + "-data"} className="step-data">
+				<DataView 
+					key={name}
+					title={mode + " " + name}
+					header={header}
+					body={body}
+					responses={responses}
+					spaceForJson={spaceForJson} 
+				/>
+			</div>
+			);
+		}			
+		return out;
 	} 
 
 	render() {

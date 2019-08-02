@@ -21,11 +21,9 @@ Sections:
             introduction: In order to make API calls to Vipps, you need a valid [access token]. The token is valid for 24 hours.
             imagePath: ../../assets/ecom-steps/PayWithVipps.svg
             endpoints:
-                - "/accesstoken/get"
-            descriptions:
-                "/accesstoken/get": Gets called when you ask for a valid acess token from Vipps		
-            modes:
-                "/accesstoken/get": POST
+                - name: "/accesstoken/get"
+                  description: Gets called when you ask for a valid acess token from Vipps		
+                  mode: POST
                 
             responses: true
             keywords:
@@ -40,11 +38,10 @@ Sections:
             introduction: Before sending an invoice to a customer, it is important to do a customer registry lookup to ensure that the invoice is sent to the right customer. This could either be done by using [Vipps Customer Data Query Service] or other washing systems by your choice. 
             imagePath:
             endpoints:
-                -  registry_washing
-            descriptions:
-                registry_washing: Filler
-            modes:
-                registry_washing: NA
+                - name: "registry_washing"
+                  description: Filler
+                  mode: NA
+                  
             responses: false
             keywords:
                 Vipps Customer Data Query Service:
@@ -59,11 +56,9 @@ Sections:
             introduction: To submit an invoice, you need both an access token and a [recipient token]. You will only receive a recipient token if your customer fulfills the [requirements] specified for receiving invoices through Vipps. 
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
-                - "/recipients/tokens"
-            descriptions:
-                "/recipients/tokens": The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
-            modes:
-                "/recipients/tokens": POST
+                - name: "/recipients/tokens"
+                  description: The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
+                  mode: POST
             responses: true 
             keywords:
                 recipient token:
@@ -83,11 +78,9 @@ Sections:
             introduction: The first step in the invoice payment process is sending an invoice to the customer. As an ISP you should have recieved an invoice from your partner with a URL and [necessary credentials].
             imagePath: ../../assets/ecom-steps/Initiate.svg
             endpoints:
-                - "/invoices/{invoiceId}"
-            descriptions:
-                "/invoices/{invoiceId}": Submits an invoice to Vipps for processing.
-            modes:
-                "/invoices/{invoiceId}": PUT 
+                - name: "/invoices/{invoiceId}"
+                  description: Submits an invoice to Vipps for processing.
+                  mode: PUT 
             responses: true 
             keywords:
                 necessary credentials:
@@ -102,11 +95,9 @@ Sections:
             introduction: After the invoice is sent, you can check if the [state] has changed from "created" to "pending". This will usually happen within 5 seconds, but during high load, it might take longer. Other states may also occur at this point and this can be seen in the [state machine diagram]. When the status is pending, the invoice is visible for the customer in Vipps. Note that if the customer wants to open the attached invoice pdf. the IPP/invoice hotel need to perform a [validation] of the JSON Web Token included in the URL.
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
-                - "/invoices/{invoiceId}" 
-            descriptions:
-                "/invoices/{invoiceId}": In order to verify the state of an invoice, e.g. if it has been validated and now is available for recipients, call this endpoint with the invoice ID. 
-            modes:
-                "/invoices/{invoiceId}": GET
+                - name: "/invoices/{invoiceId}" 
+                  description: In order to verify the state of an invoice, e.g. if it has been validated and now is available for recipients, call this endpoint with the invoice ID. 
+                  mode: GET
             responses: true 
             keywords: 
                 state:
@@ -130,11 +121,9 @@ Sections:
             introduction: As the state has gone from created to pending, the customer will be notified and the invoice will appear in customers Vipps app. If the customer confirms the invoice the status will change from pending to approved. Note that after due date it is useful to know if the invoice was confirmed by the customer. This is easily done by checking the status once again.
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
-                - customer_pays
-            descriptions:
-                customer_pays: Filler
-            modes:
-                customer_pays: NA
+                - name: customer_pays
+                  description: Filler
+                  mode: NA
             responses: false
             keywords:
 
@@ -144,11 +133,9 @@ Sections:
             introduction: The payment is fulfilled when the customers bank is transferring money to the issuers bank. This happens at the date specified by the customer. Neither Vipps or the ISP is included in this step or is given any further information about the result of the payment.
             imagePath:
             endpoints:
-                - paid_invoice
-            descriptions:
-                paid_invoice: Filler
-            modes:
-                paid_invoice: NA
+                - name: paid_invoice
+                  description: Filler
+                  mode: NA
             responses: false
             keywords:
 
@@ -158,11 +145,9 @@ Sections:
             introduction: If something is wrong with the invoice, you should be able to revoke so that the customer no longer sees it. Note that invoices can be revoked if they currently are in the states created, pending or rejected. If an invoice has been approved, deleted or expired it cannot be revoked anymore.
             imagePath: ../../assets/ecom-steps/Cancel.svg
             endpoints:
-                - "/invoices/{invoiceId}/status/revoked" 
-            descriptions:
-                "/invoices/{invoiceId}/status/revoked": An ISP can revoke an invoice by calling this endpoint. It cointains the unique invoice id, a property for optimistic concurrency control, a unique identifier for the requested state transition and an authorization token obtained from Access Token API.
-            modes:
-                "/invoices/{invoiceId}/status/revoked": PUT
+                - name: "/invoices/{invoiceId}/status/revoked" 
+                  description: An ISP can revoke an invoice by calling this endpoint. It cointains the unique invoice id, a property for optimistic concurrency control, a unique identifier for the requested state transition and an authorization token obtained from Access Token API.
+                  mode: PUT
             responses: true 
             keywords:  
 
