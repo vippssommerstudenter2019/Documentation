@@ -16,8 +16,7 @@ class Content extends React.Component {
 
     contentFromSection(title, section) {
     var subsections = [];
-		// No Section-Title:
-		// var subsections = [<div id={title} className="SectionTitle"/>];	
+	
     for (const [id, subsection] of Object.entries(section)) {
             // We use the swagger extracter to get example headers, 
 			// bodies and responses for every endpoint in this step.

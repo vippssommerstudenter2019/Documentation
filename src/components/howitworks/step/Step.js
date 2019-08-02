@@ -65,8 +65,8 @@ class Step extends Component {
 		var out = [];
 		if (check(description)) {
 			out.push(
-			<div key={endpoint.name + "-text-responses"} className="step-text-responses">
-				<div key={endpoint.name+"-description"} className="step-description">
+			<div key={name + "-text-responses"} className="step-text-responses">
+				<div key={name+"-description"} className="step-description">
 					<TooltipText input={description} keywordsData={this.props.metaData.keywords} />
 				</div>
 			</div>
