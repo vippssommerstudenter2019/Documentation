@@ -16,7 +16,7 @@ import arrow_right from "../../img/arrowRight.svg";
 // Contains the menuitems and backlink
 const Sidebar = props => (
   <section className="Sidebar">
-    <SidebarMenu headers={props.headers} api={props.api} />
+    <SidebarMenu headers={props.headers} api={props.api} expandAll={props.expandAll}/>
   </section>
 );
 
@@ -30,7 +30,7 @@ const SidebarHeader = () => (
 // Structures the sidebar content
 const SidebarMenu = props => (
   <div className="SidebarMenu">
-	<SidebarNavSpy offset={0} percent={25} sections={props.headers} api={props.api}/>
+	<SidebarNavSpy offset={0} percent={25} sections={props.headers} api={props.api} expandAll={props.expandAll} />
   </div>
 );
 
@@ -98,7 +98,19 @@ class SidebarNavSpy extends Component {
 		}
 	}
 	
+	expandAll() {
+		this.props.sections.map((section, sec) => {
+			if (section.children.length === 0) return null;
+			var opening = document.getElementById(this.sectionID(sec));
+			if (opening && !opening.classList.contains("active")) {
+				opening.firstElementChild.click();
+			}
+			return null;
+		});
+	}
+	
 	componentDidMount() {
+		if (this.props.expandAll) this.expandAll();
 		this.elementSpy();
 		this.timerID = window.setInterval(() => this.elementSpy(), 300);
 	}
@@ -136,14 +148,14 @@ class SidebarNavSpy extends Component {
 		const sidebarHeaders = this.props.sections.map((section, sec) => {
 			const headSelect = (activeSection === sec && activeSubsection === -1)? "selectedElement":"";
 			const header = (
-				(section.children.length !== 0)?
+				(section.children.length === 0)?
 				(<div className={"listTop "+headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
-					<img className="arrow" alt="arrow" src={arrow_right} />
 				</div>)
 			:
 				(<div className={"listTop "+headSelect} >
 					<a className="sidebarLink" href={section.anchor}>{section.name}</a>
+					<img className="arrow" alt="arrow" src={arrow_right} />
 				</div>)
 			);
 			const subsections = (
