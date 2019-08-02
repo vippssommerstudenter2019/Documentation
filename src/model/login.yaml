@@ -1,6 +1,6 @@
 ---
 # Login API introduction
-SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json"
+SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json" #eCom?
 
 Intro:
     title: Vipps Login API
@@ -16,8 +16,6 @@ Sections:
             introduction: Before implementing Vipps Login, we recommend you to take a look at the coore concepts of [OAuth 2.0] and [OpenID Connect] if you're new to the subjects.
             imagePath:
             endpoints:
-            modes:
-            responses:
             keywords:
                 OAuth 2.0:
                     title: What is OAuth 2.0?
@@ -35,15 +33,16 @@ Sections:
             introduction: To be able to implement Vipps Login, you need do some configurations in cooperation with Vipps. This includes [application whitelisting], defining [scopes] and sharing of [client ID and client secret].
             imagePath:
             endpoints:
-            modes:
-            responses:
             keywords:
                 application whitelisting:
                     title: What is application whitelisting?
+                    description: empty...
                 scopes:
                     title: What do you mean by scopes?
+                    description: empty...
                 client ID and client secret:
-                    title: What about client ID and client secret? 
+                    title: What about client ID and client secret?
+                    description: empty...
 
 
 
@@ -53,11 +52,9 @@ Sections:
             introduction: When the user is at your website and chooses to pay with Vipps, you need to start authorization.
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
-                - /oauth2/auth
-            descriptions:
-                /oauth2/auth: Start authorization against Vipps login by redirect the user to Vipps authorization page. The user is sent with state, redirect URI and the scopes you already selected as necessary when login to your website.
-            modes:
-                /oauth2/auth: GET
+                - name: "/oauth2/auth"
+                  description: Start authorization against Vipps login by redirect the user to Vipps authorization page. The user is sent with state, redirect URI and the scopes you already selected as necessary when login to your website.
+                  mode: GET
             responses: true
             keywords:
 
@@ -66,8 +63,6 @@ Sections:
             introduction: The user will now need to fill in his mobile number to activate login through the Vipps app. Thereafter, the user is asked to confirm that the Vipps logo shown on screen is identitical to the one shown in Vipps. By confirming, the user approves that Vipps can share personal information to your website. Lastly, the user is sent to the redirect-uri, as specified in beforehand, with associated state and code in body.
             imagePath:
             endpoints:
-            descriptions:
-            modes:
             responses:
             keywords:
 
@@ -76,12 +71,9 @@ Sections:
             introduction: As the user is redirected to your page, you can now collect information about the user logged in. 
             imagePath: ../../assets/ecom-steps/Initiate.svg
             endpoints:
-                - /oauth2/token
-            descriptions:
-                /oauth2/token: Collect information about the user by requesting ID Token and Access token from the Vipps API. The request needs to include code, client id, and client secret sent with the user when redirected to your site from the Vipps login portal. The ID Token contains all the information specified with the scopes.
-
-            modes:
-                /oauth2/token: POST
+                - name: "/oauth2/token"
+                  description: Collect information about the user by requesting ID Token and Access token from the Vipps API. The request needs to include code, client id, and client secret sent with the user when redirected to your site from the Vipps login portal. The ID Token contains all the information specified with the scopes.
+                  mode: POST
             responses: true
             keywords:
 
@@ -91,11 +83,9 @@ Sections:
             introduction: The access token collected can be used to access the information Vipps possesses about the user. This is usefull as the information about the user can be changed continously and new scopes might be added.
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
-                - /userinfo
-            descriptions:
-                /userinfo: Retrieves the user information.
-            modes:
-                /userinfo: POST
+                - name: "/userinfo"
+                  description: Retrieves the user information.
+                  mode: POST
             responses: true
             keywords:
 
