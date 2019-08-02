@@ -56,17 +56,10 @@ Sections:
             introduction: To submit an invoice, you need both an access token and a [recipient token]. You will only receive a recipient token if your customer fulfills the [requirements] specified for receiving invoices through Vipps. 
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
-<<<<<<< HEAD
-                - "/recipients/tokens"
-            descriptions:
-                "/recipients/tokens": The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients national identification number(nin) or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
-            modes:
-                "/recipients/tokens": POST
-=======
                 - name: "/recipients/tokens"
                   description: The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
                   mode: POST
->>>>>>> 6739046b06a77a0e101d1b9cbf333abf78f6b6dd
+                  
             responses: true 
             keywords:
                 recipient token:
