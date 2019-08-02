@@ -63,7 +63,7 @@ Prerequisites:
 
 The invoice process:
     send_invoice:
-        title: Send invoice
+        title: ISP sends invoice 
         introduction: The first step in the invoice payment process is sending an invoice to the customer. As an ISP you should have recieved an invoice from your partner with a URL and [necessary credentials].
         imagePath: ../../assets/ecom-steps/Initiate.svg
         endpoints:
