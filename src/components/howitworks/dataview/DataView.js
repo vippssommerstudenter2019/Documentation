@@ -4,6 +4,7 @@ import "./DataView.css"
 import { objectIsEmpty, getHashCodeFromString } from "../../../Util";
 import PrismView from "../prismview/PrismView";
 import ResponseTable from "../responses/ResponseTable";
+import lottie from "lottie-web";
 
 const propTypes = {
     title: PropTypes.string.isRequired,
@@ -12,6 +13,24 @@ const propTypes = {
 	responses: PropTypes.object.isRequired,
     spaceForJson: PropTypes.number.isRequired
 };
+
+class LottieAnimation extends Component {
+   ref = null;
+
+   componentDidMount() {
+     lottie.loadAnimation({
+       container: this.ref,
+       renderer: "svg",
+       loop: true,
+       autoplay: true,
+       path: this.props.path
+     });
+   }
+
+   render() {
+     return <div ref={ref => this.ref = ref} />;
+   }
+}
 
 /**
  * A component which displays some header and body data and has got the option to copy from it.
@@ -49,6 +68,7 @@ class DataView extends Component {
 			content: content,
 			selected: content[0].title,
 			copyID: getHashCodeFromString(title),
+			showanimation: false,
         };
 
 		// Binding callbacks to this instance
@@ -60,6 +80,12 @@ class DataView extends Component {
 	 * Handles the click when the user wants to copy the code.
 	 */
     handleCopyClick() {
+		// Change button text to Copied and change back after 1 sec
+		this.setState({showanimation: true}, () => {
+		  setTimeout(() => {
+			this.setState({showanimation: false})
+		  }, 1330);
+		});
 
         // We create a fake text area that we can inject the code into
         let textArea = document.createElement("textarea");
@@ -140,6 +166,7 @@ class DataView extends Component {
 			);
 		});
 
+		const animation = <LottieAnimation path="/loading_spinner.json"/>;
         return (
             // Render a container with code with an utility bar and style it according to Vipps style.
             // We give the first div an id of an unique hash corresponding to the code so when
@@ -147,7 +174,9 @@ class DataView extends Component {
             <div className="dataview" id={this.state.copyID}>
                 <div className="dataview-title">{this.props.title}</div>
                 <div className="dataview-utility-bar">
-                    <button className="copy-button" onClick={this.handleCopyClick}>Copy</button>
+                    <button className="copy-button" onClick={this.handleCopyClick}>
+						{this.state.showanimation? animation : "Copy"}
+					</button>
                     {buttonComponents}
                 </div>
 				{elements}
