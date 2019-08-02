@@ -22,11 +22,11 @@ const CodeBlock = (props) =>  {
     document.execCommand('copy');
     // Remove temporary element
     document.body.removeChild(el);
-    targetButton.innerHTML="Copied";
 
+    // Change button text to Copied and change back after 1 sec
+    targetButton.innerHTML="Copied";
     setTimeout(
       function changeText() {
-        // Vipps black
         targetButton.innerHTML="Copy";
       }.bind(this),
       1000)
