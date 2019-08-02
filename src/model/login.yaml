@@ -1,6 +1,6 @@
 ---
 # Login API introduction
-swaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json"
+SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json"
 
 Intro:
     title: Vipps Login API

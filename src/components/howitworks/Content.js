@@ -40,7 +40,7 @@ class Content extends React.Component {
                     responses: responses
                 }
             }
-
+			
             subsections.push(
                 <Step
                     titleid={id}

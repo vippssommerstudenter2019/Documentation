@@ -1,6 +1,6 @@
 --- 
-# Invoice API
-swaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
+# Invoice API introductions
+SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
 
 Intro:
     title: Vipps Invoice API
@@ -10,9 +10,9 @@ Intro:
     
 FlowChart:
     title: Steps to implement for Invoice
-    browserImage: "../../assets/ecom-illustrations/ecom-flowchart2.svg"
+    browserImage: "../../assets/ecom-illustrations/invoice desktop.svg"
     tabletImage:
-    mobileImage: "../../assets/ecom-illustrations/ecom-flow-mobile.svg"
+    mobileImage: "../../assets/ecom-illustrations/invoice mobile.svg"
     
 Sections:
     Prerequisites:
@@ -21,11 +21,12 @@ Sections:
             introduction: In order to make API calls to Vipps, you need a valid [access token]. The token is valid for 24 hours.
             imagePath: ../../assets/ecom-steps/PayWithVipps.svg
             endpoints:
-                - /accesstoken/get
+                - "/accesstoken/get"
             descriptions:
-                /accesstoken/get: Gets called when you ask for a valid acess token from Vipps		
+                "/accesstoken/get": Gets called when you ask for a valid acess token from Vipps		
             modes:
-                /accesstoken/get: POST
+                "/accesstoken/get": POST
+                
             responses: true
             keywords:
                 access token:
@@ -41,9 +42,9 @@ Sections:
             endpoints:
                 -  registry_washing
             descriptions:
-                registry_washing:
+                registry_washing: Filler
             modes:
-                registry_washing:
+                registry_washing: NA
             responses: false
             keywords:
                 Vipps Customer Data Query Service:
@@ -60,9 +61,9 @@ Sections:
             endpoints:
                 - "/recipients/tokens"
             descriptions:
-                "/recipients/tokens" : The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
+                "/recipients/tokens": The shown body is called when requesting a valid recipient token from Vipps. You have to provide either the recipients Norwegian national identification or mobile number (with prefix e.g. 47 for Norway) for the value in the body, for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
             modes:
-                "/recipients/tokens" : POST
+                "/recipients/tokens": POST
             responses: true 
             keywords:
                 recipient token:
@@ -84,9 +85,9 @@ Sections:
             endpoints:
                 - "/invoices/{invoiceId}"
             descriptions:
-                "/invoices/{invoiceId}" : Submits an invoice to Vipps for processing.
+                "/invoices/{invoiceId}": Submits an invoice to Vipps for processing.
             modes:
-                "/invoices/{invoiceId}" : PUT 
+                "/invoices/{invoiceId}": PUT 
             responses: true 
             keywords:
                 necessary credentials:
@@ -103,9 +104,9 @@ Sections:
             endpoints:
                 - "/invoices/{invoiceId}" 
             descriptions:
-                "/invoices/{invoiceId}" : In order to verify the state of an invoice, e.g. if it has been validated and now is available for recipients, call this endpoint with the invoice ID. 
+                "/invoices/{invoiceId}": In order to verify the state of an invoice, e.g. if it has been validated and now is available for recipients, call this endpoint with the invoice ID. 
             modes:
-                "/invoices/{invoiceId}" : GET
+                "/invoices/{invoiceId}": GET
             responses: true 
             keywords: 
                 state:
@@ -131,7 +132,7 @@ Sections:
             endpoints:
                 - customer_pays
             descriptions:
-                customer_pays:
+                customer_pays: Filler
             modes:
                 customer_pays: NA
             responses: false
@@ -145,14 +146,13 @@ Sections:
             endpoints:
                 - paid_invoice
             descriptions:
-                paid_invoice:
+                paid_invoice: Filler
             modes:
                 paid_invoice: NA
             responses: false
             keywords:
 
     Important to implement:
-
         revoke_invoice:
             title: Revoking an invoice
             introduction: If something is wrong with the invoice, you should be able to revoke so that the customer no longer sees it. Note that invoices can be revoked if they currently are in the states created, pending or rejected. If an invoice has been approved, deleted or expired it cannot be revoked anymore.
@@ -160,9 +160,9 @@ Sections:
             endpoints:
                 - "/invoices/{invoiceId}/status/revoked" 
             descriptions:
-                "/invoices/{invoiceId}/status/revoked" : An ISP can revoke an invoice by calling this endpoint. It cointains the unique invoice id, a property for optimistic concurrency control, a unique identifier for the requested state transition and an authorization token obtained from Access Token API.
+                "/invoices/{invoiceId}/status/revoked": An ISP can revoke an invoice by calling this endpoint. It cointains the unique invoice id, a property for optimistic concurrency control, a unique identifier for the requested state transition and an authorization token obtained from Access Token API.
             modes:
-                "/invoices/{invoiceId}/status/revoked" : PUT
+                "/invoices/{invoiceId}/status/revoked": PUT
             responses: true 
             keywords:  
 
