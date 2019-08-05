@@ -48,8 +48,12 @@ export default class SwaggerExtracter {
 
             // Get the endpoint data which includes request body (if any), responeses etc.
             const endpointData = swaggerData.paths[endpoint][type.toLowerCase()];
+			
+			// this line will make sure that Login works, as it does not contain a head/body or responses.
+			if (!endpointData) return [null, null, null];
 
             // We ectract the header and body if there is any
+			if (endpointData.parameters)
             for (const parameter of endpointData.parameters) {
                 if (parameter.in === "header") {
                     header[parameter.name] = parameter.type;
