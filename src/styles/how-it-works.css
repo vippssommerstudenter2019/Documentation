@@ -41,6 +41,15 @@ html, body {
  --responseRed: #E16060;
 }
 
+.LoadingSpinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 10%;
+  max-height: 10%;
+}
+
 .App {
   text-align: left;
   color: var(--vippsblack) !important;
@@ -68,7 +77,6 @@ html, body {
  */
 .intro-wrapper,
 .content-wrapper,
-.outro-wrapper,
 .flow-wrapper {
 	margin-left: 120px;
 }

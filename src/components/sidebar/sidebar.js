@@ -176,7 +176,7 @@ class SidebarNavSpy extends Component {
 			);
 		}); 
 		return ( 
-			<SideNav className="sidebarMarg">
+			<SideNav className="sidebarPadding">
 			<div className='static sidebarlogo'>
 				<SidebarHeader />
 			</div>

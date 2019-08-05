@@ -1,5 +1,8 @@
 ---
 # Login API introduction
+# This Introduction / Process guide is not yet complete
+# We are currently looking into wording and possible extras 
+# that will help to give a simple but broad understanding of this API.
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-login-api/master/docs/swagger.json"
 
 Intro:
@@ -48,14 +51,54 @@ Sections:
 
     The login process:
         start_authorization:
-            title: User choose login with Vipps.
+            title: User chooses to login with Vipps.
             introduction: When the user is at your website and chooses to pay with Vipps, you need to start authorization.
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
                 - name: "/oauth2/auth" #"[callbackPrefix]/v2/oauth2/auth"
                   description: Start authorization against Vipps login by redirect the user to Vipps authorization page. The user is sent with state, redirect URI and the scopes you already selected as necessary when login to your website.
                   mode: GET
-            responses: true
+                  extra: # Using the -extra- option to give some additional info about the formatted call.
+                    name: Params
+                    code: |
+                        // This is just an example use, 
+                        // and can be removed or edited in the yaml file.
+                        // The only avaliable highlighting at 
+                        // the time is javascript, but could be expanded
+                        /*
+                        The complete call:
+                            GET:/oauth2/auth
+                            ?client_id={client_id}
+                            &response_type=code
+                            &scope={scopes}
+                            &state={state}
+                            &redirect_uri={redirect_uri}
+                        */
+                        {response_type}	
+                            /*  Value MUST be set to "code".
+                            */
+                        {client_id}	
+                            /*  The client identifier, issued by Vipps.
+                            */
+                        {redirect_uri}
+                            /*  Redirect URL which the user agent
+                                is redirected to after finishing a login.
+                                See API endpoints required by Vipps 
+                                from the merchant.
+                            */
+                        {scope} 	
+                            /*  Scope of the access request,
+                                space-separated list.
+                            */
+                        {state}
+                            /*  An opaque value used by the client to
+                                maintain state between 
+                                the request and callback.
+                                The authorization server 
+                                includes this value 
+                                when redirecting the 
+                                user-agent back to the client.
+                            */
             keywords:
 
         user_login:
@@ -63,7 +106,6 @@ Sections:
             introduction: The user will now need to fill in his mobile number to activate login through the Vipps app. Thereafter, the user is asked to confirm that the Vipps logo shown on screen is identitical to the one shown in Vipps. By confirming, the user approves that Vipps can share personal information to your website. Lastly, the user is sent to the redirect-uri, as specified in beforehand, with associated state and code in body.
             imagePath:
             endpoints:
-            responses:
             keywords:
 
         get_information:
@@ -74,7 +116,6 @@ Sections:
                 - name: "/oauth2/token"
                   description: Collect information about the user by requesting ID Token and Access token from the Vipps API. The request needs to include code, client id, and client secret sent with the user when redirected to your site from the Vipps login portal. The ID Token contains all the information specified with the scopes.
                   mode: POST
-            responses: true
             keywords:
 
     Important to implement:
@@ -85,13 +126,25 @@ Sections:
             endpoints:
                 - name: "/userinfo"
                   description: Retrieves the user information.
-                  mode: POST
-            responses: true
+                  mode: GET
             keywords:
-
+            
+        well_known:
+            title: "Get's for configuration and jwt-keys for OpenID."
+            introduction: This is just a filler for the moment, more and better explanation is on it's way
+            imagePath:
+            endpoints:
+                - name: "/.well-known/openid-configuration"
+                  description:
+                  mode: GET
+                  
+                - name: "/.well-known/jwks.json"
+                  description:
+                  mode: GET
+            keywords:
 
 Outro:
     title: Great! Now you know how the payment process works
     description: You're ready to move forward to the documentation
-    imagePath: "../../assets/images/jumpingMan.svg"
+    imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
     link: http://localhost:3000/documentation/secure-login/

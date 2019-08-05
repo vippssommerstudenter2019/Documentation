@@ -1,11 +1,22 @@
 /* SIDEBAR */
+.Sidebar {
+  background: white !important;
+  margin-left: 5vw !important;
+}
 
 .sidenav {
+  width: 25vw;
+  max-width: 300px;
   box-shadow: none;
 }
 
 .scrollable ul {
   margin-top: 0 !important;
+}
+
+.listTop {
+  width: 17vw;
+  max-width: 210px;
 }
 
 @media only screen and (max-width: 700px)  {
@@ -15,6 +26,7 @@
   .sidenav {
     background:none;
     box-shadow:none;
+    visibility: hidden;
   }
   .SidebarHeader {
     width:100%;
@@ -29,7 +41,6 @@
     display:none;
   }
 }
-
 
 .SidebarHeader {
   height: 10vh;
@@ -81,6 +92,10 @@
 .collapsible-header:hover {
   background-color: transparent !important;
   color: #5e3dc2 !important;
+}
+
+.keyboard-focused .collapsible-header:focus {
+  background-color: #fff;
 }
 
 .collapsible-header:hover > div > a {
@@ -138,6 +153,8 @@
 }
 
 .collapsible {
+  width: 25vw;
+  max-width: 300px;
   margin-bottom: 10vh !important;
   border-top-color: white;
   border-top: 0px;
@@ -154,8 +171,8 @@
   padding: 22px 0px 0px 0px !important;
 }
 
-.sidebarMarg {
-  margin-left: 50px !important;
+.sidebarPadding {
+  padding-left: 50px !important;
 }
 
 .button:focus {
@@ -223,9 +240,11 @@ li > div > a {
 
 
 .scrollable {
-  width: 100%;
+  width: 25vw;
+  max-width: 300px;
+  padding-right: 1vw;
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 90vh;
   -ms-overflow-style: none;
   scrollbar-width: none;
