@@ -12,6 +12,13 @@ const propTypes = {
  * A component which displays some header and body data and has got the option to copy from it.
  */
 class PrismView extends Component {
+	constructor(props) {
+		super(props);
+		this.getCode.bind(this);
+	}
+	
+	getCode() {return this.props.code;};
+	
     /**
      * Need to re-run Prism when the component mounts to get syntax highlightning.
      */
