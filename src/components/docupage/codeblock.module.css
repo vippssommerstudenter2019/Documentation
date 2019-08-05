@@ -103,4 +103,19 @@
 }
 
 
+pre {
+  margin-right: 20px !important;
+}
 
+pre::-webkit-scrollbar {
+  z-index: 0;
+  height: 5px;
+}
+
+pre::-webkit-scrollbar-track {
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #c9c6d7;
+  border-radius: 5px;
+}

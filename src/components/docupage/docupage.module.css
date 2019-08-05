@@ -265,7 +265,20 @@ h1:first-child, h1:nth-child(2) {
   font-family: Arial, sans-serif !important;
 }
 
+:root::-webkit-scrollbar {
+  z-index: 0;
+  width: 10px;
+}
 
+:root::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px 6px transparent !important;
+}
+
+:root::-webkit-scrollbar-thumb {
+  box-shadow: inset -2px 0px 0px 2px white;
+  background: var(--vippsorange);
+  border-radius: 110px;
+}
 
 /* Variables */
 

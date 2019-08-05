@@ -35,8 +35,8 @@
   .prismview pre,
   .prismview code {
     font-family: 'PT Mono' , monospace;
-    font-size: 14px;
-    line-height: 25px;
+    font-size: 11px;
+    line-height: 24px;
     letter-spacing: .01rem;
     margin-top: 0px;
     padding: 0px 0px 0px 35px !important;
