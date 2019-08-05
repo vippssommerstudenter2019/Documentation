@@ -5,6 +5,7 @@
   background-size: 40VW;
   background-image: url(../../img/smiliesBackground.svg);
   background-repeat: repeat-y;
+  overflow-wrap: break-word;
 }
 
 #pageTitle {
