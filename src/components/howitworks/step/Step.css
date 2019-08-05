@@ -102,7 +102,7 @@
 	.step-wrapper {
 		display:flex;
 		flex-flow:column;
-		margin-bottom:70px;
+		margin-bottom:20px;
 	}
 	.step-wrapper img {
 		width:60vw;
@@ -125,9 +125,8 @@
 	}
 	.step-title {
 		flex:3;
-		height:30px;
-		margin-bottom:20px;
-		font-size:24px;
+		font-size:21px;
+		line-height:29px;
 		align-self:center;
 	}
 	.step-introduction {
@@ -143,17 +142,17 @@
 
 	.step-data {
 		flex:1;
-		width:345px;
 	}
 	.step-description {
 		flex:1;
 	}
-	.step-introduction, .step-description {
-		width:100%;
-	}
+/* 	.step-introduction, .step-description {
+		width:100vw;
+	} */
 
 	.step-headline {
-		height:100px;
+		margin-bottom:2rem;
+		height:90px;
 	}
   }
 

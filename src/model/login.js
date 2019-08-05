@@ -54,7 +54,7 @@ const loginOutro = `
 ---
 title: Great! Now you know how the payment process works
 description: You're ready to move forward to the documentation
-imagePath: "../../assets/images/jumpingMan.svg"
+imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
 link: http://localhost:3000/documentation/secure-login/
 `;
 

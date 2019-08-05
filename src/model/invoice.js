@@ -160,7 +160,7 @@ const invoiceOutro = `
 ---
 title: Great! Now you know how invoices with Vipps works
 description: You're ready to move forward to the documentation
-imagePath: "../../assets/images/jumpingMan.svg"
+imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
 link: http://localhost:3000/documentation/invoice/
 `;
 
