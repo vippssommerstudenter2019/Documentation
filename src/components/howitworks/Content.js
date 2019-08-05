@@ -54,7 +54,7 @@ class Content extends React.Component {
 
         return (
         <div key={"wrapper-"+title} >
-			<div id={title} className="intro-title">{title}</div>
+			<div id={title} className="sub-section-title">{title}</div>
 				{subsections}
 			<div className="section-line">
 				<div className="first-line"/>

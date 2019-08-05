@@ -8,6 +8,11 @@ Intro:
     description: Before implementing the Vipps login API, you’ll need to get keys for testing and production through the developer portal. 
     imagePath: "../../assets/images/womanWithPhone.svg"
 
+FlowChart:
+    title: Steps to implement for Login
+    browserImage: "../../assets/ecom-illustrations/login-flow.svg"
+    tabletImage:
+    mobileImage: "../../assets/ecom-illustrations/login-flow-mobile.svg"
 
 Sections:
     Prerequisites:

@@ -10,9 +10,9 @@ Intro:
     
 FlowChart:
     title: Steps to implement for Invoice
-    browserImage: "../../assets/ecom-illustrations/invoice desktop.svg"
+    browserImage: "../../assets/ecom-illustrations/invoice-flow.svg"
     tabletImage:
-    mobileImage: "../../assets/ecom-illustrations/invoice mobile.svg"
+    mobileImage: "../../assets/ecom-illustrations/invoice-flow-mobile.svg"
     
 Sections:
     Prerequisites:

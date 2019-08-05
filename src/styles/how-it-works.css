@@ -118,19 +118,29 @@ html, body {
 	color: var(--vippsorange);
 	font-family: VippsHeader;
 	margin:2rem 0 2rem 0;
+	font-size:40px;
+	line-height:58px;
+}
+
+.sub-section-title {
+	color:var(--vippsorange);
+	font-family:VippsHeader;
+	font-size:32px;
+	line-height:48px;
+	margin:2rem 0 2rem 0;
 }
 
 .intro-sub {
 	margin:2rem 0 2rem 0;
 	font-size:23px;
+	line-height:31px;
 }
 
 .intro-description {
-	font-size: calc(.4rem + .8vw);
-	line-height: calc(1rem + 1vw);
-	margin:1rem 0 1rem 0;
-	white-space:initial;
-	width:50vw;
+	font-size: 16px;
+	font-weight:300;
+	line-height: 27px;
+	margin:1rem 1rem 1rem 0;
 }
 
 /*
@@ -390,6 +400,14 @@ html, body {
 		font-size:22px;
 		line-height:28px;
 		width:100%;
+	}
+
+	.content-wrapper {
+		max-width:1100px;
+	}
+
+	.intro-wrapper {
+		max-width:1100px;
 	}
 }
 

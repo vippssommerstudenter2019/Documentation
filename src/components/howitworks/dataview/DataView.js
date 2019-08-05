@@ -139,10 +139,12 @@ class DataView extends Component {
             <div className="dataview" id={this.state.copyID}>
                 <div className="dataview-title">{this.props.title}</div>
                 <div className="dataview-utility-bar">
+                    
+                        {buttonComponents}
+                    
                     <button className="copy-button" onClick={this.handleCopyClick}>
 						{this.state.copyStatus}
 					</button>
-                    {buttonComponents}
                 </div>
 				{component}
 			</div>

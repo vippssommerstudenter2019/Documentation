@@ -30,6 +30,13 @@
   }
 }
 
+@media (min-width:768px) and (max-width:1100px) {
+  .response-button-collapsible,
+  .response-displayer-collapsible {
+    
+  }
+}
+
 .response-button-collapsible {
   cursor: pointer;
 }

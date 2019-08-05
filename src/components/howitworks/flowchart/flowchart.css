@@ -1,5 +1,5 @@
 .flow-wrapper {
-    margin:0px 0 0 20px;
+    
 }
 
 .FlowChart {
@@ -14,4 +14,10 @@
 .FlowTitle {
     font-family: Vippsheader;
     color:var(--vippsorange);
+}
+
+@media (max-width:812px) {
+    .flow-wrapper {
+        margin:0px 0 0 20px;
+    }
 }

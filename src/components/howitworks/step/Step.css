@@ -7,7 +7,7 @@
 	grid-template-columns: repeat(6, 9.9vw);
 	grid-column-gap: 1.4vw;
 	grid-row-gap: 1vw;
-	margin-bottom:150px;
+	margin-bottom:100px;
 }
 
 /* grid items */
@@ -17,7 +17,7 @@
 	flex-flow:row wrap;
 	grid-column:1/7;
 	align-items:center;
-	height:150px;
+	height:auto;
 	width:100%;
 }
 
@@ -33,7 +33,7 @@
 	padding:1rem 0rem 1rem 3rem;
 	border-left:3px solid var(--rum);
 	grid-column: 1/6;
-	margin-bottom:3rem;
+	margin:1rem 0 3rem 0;
 }
 
 
@@ -77,7 +77,7 @@
 .step-data, 
 .step-description {
 	padding-top: 16px;
-	padding-bottom: 48px;
+	padding-bottom: 40px;
 } 
 
 .step-description {
@@ -133,11 +133,11 @@
 		margin:1rem 0 1rem 0;
 		padding:1rem 0rem 1rem 3rem;
 		flex:1;
-		
 	}
 	.step-introduction, .step-description {
 		font-size:18px;
 		line-height:28px;
+		padding-bottom:20px;
 	}
 
 	.step-data {
@@ -176,7 +176,6 @@
 		margin-right:20px;
 		flex:2;
 		width:100px;
-		height:100px;
 	}
 
 	.step-wrapper img {
@@ -194,6 +193,8 @@
 	}
 	.step-data {
 		flex:1;
+		margin-right:20px;
+		width:100%;
 	}
   }
 
