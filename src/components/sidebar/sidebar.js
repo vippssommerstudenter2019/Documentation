@@ -177,7 +177,6 @@ class SidebarNavSpy extends Component {
 		}); 
 		return ( 
 			<SideNav className="sidebarMarg">
-			<div className='fadeout-top'/>
 			<div className='static sidebarlogo'>
 				<SidebarHeader />
 			</div>
@@ -186,7 +185,6 @@ class SidebarNavSpy extends Component {
 					{sidebarHeaders}
 				</Collapsible>
 			</div>
-			<div className='fadeout-bottom'/>
 			</SideNav>
 		);
 	}
