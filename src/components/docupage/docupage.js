@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import HeadingRenderer from "./HeadingRenderer";
 import InlineCodeRenderer from "./InlineCodeRenderer";
 import CodeBlockRenderer from "./CodeBlockRenderer";
+import TableRenderer from "./TableRenderer"
 import Sidebar from "../sidebar/sidebar";
 import DeveloperResources from './DeveloperResources'
 import { SOURCE_URLS,
@@ -150,7 +151,8 @@ class DocuPage extends React.Component {
             source={this.state.content}
             renderers={{code: CodeBlockRenderer,
                         inlineCode: InlineCodeRenderer,
-                        heading: HeadingRenderer}}
+                        heading: HeadingRenderer,
+                        table: TableRenderer}}
           />
         </div>
     </div>

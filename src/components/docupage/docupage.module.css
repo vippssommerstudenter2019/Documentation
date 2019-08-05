@@ -184,12 +184,26 @@ th {
   padding: 8px 8px 8px 8px !important;
 }
 
-.Content table {
+.Tables {
+  margin: 2em 0 2em;
+  overflow: auto;
+}
+
+.Tables::-webkit-scrollbar {
+  z-index: 0;
+  height: 5px;
+}
+
+.Tables::-webkit-scrollbar-thumb {
+  background: #c9c6d7;
+  border-radius: 5px;
+}
+
+.Tables table{
   border: 1px solid #d8d8d8;
 }
 
-
-.Content table thead th {
+.Tables thead th {
   border-bottom: 1px solid #d8d8d8 ;
   border-left: 1px solid #d8d8d8 ;
   border-right: 1px solid #d8d8d8 ;
@@ -198,7 +212,7 @@ th {
 
 
 
-.Content td {
+.Tables td {
   font-size: 15px !important;
   border-left: 1px solid #d8d8d8 ;
   border-right: 1px solid #d8d8d8 ;
