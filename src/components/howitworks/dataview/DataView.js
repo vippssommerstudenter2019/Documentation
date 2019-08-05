@@ -132,7 +132,6 @@ class DataView extends Component {
 			</button>
 			);
 		});
-
         return (
             // Render a container with code with an utility bar and style it according to Vipps style.
             // We give the first div an id of an unique hash corresponding to the code so when
