@@ -312,7 +312,6 @@ li > div > a {
 ::-webkit-scrollbar {
   z-index: 0;
   width: 6px;
-  margin-right: 100px;
 }
 
 ::-webkit-scrollbar-track {
