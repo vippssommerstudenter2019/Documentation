@@ -247,27 +247,12 @@ li > div > a {
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  width: 5px;
   background: white !important; /*f6f6f9*/
   border-radius: 110px;
-  box-shadow: inset 10px 0px 0px 10px white;
+  box-shadow: inset -10px 0px 0px 10px white;
 }
 
-::-webkit-scrollbar {
-  z-index: 0;
-  width: 6px;
-}
 
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px 6px rgba(0, 0, 0, 0.05);
-}
-
-::-webkit-scrollbar-thumb {
-  box-shadow: inset 0 0 6px 6px rgba(0, 0, 0, 0.05);
-  width: 5px;
-  background: var(--vippsorange);
-  border-radius: 110px;
-}
 
 /* Vipps-colors */
 
