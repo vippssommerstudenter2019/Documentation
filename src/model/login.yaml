@@ -51,14 +51,14 @@ Sections:
 
     The login process:
         start_authorization:
-            title: User choose login with Vipps.
+            title: User chooses to login with Vipps.
             introduction: When the user is at your website and chooses to pay with Vipps, you need to start authorization.
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
                 - name: "/oauth2/auth" #"[callbackPrefix]/v2/oauth2/auth"
                   description: Start authorization against Vipps login by redirect the user to Vipps authorization page. The user is sent with state, redirect URI and the scopes you already selected as necessary when login to your website.
                   mode: GET
-                  extra:
+                  extra: # Using the -extra- option to give some additional info about the formatted call.
                     name: Params
                     code: |
                         // This is just an example use, 
