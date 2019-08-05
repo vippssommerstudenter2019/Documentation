@@ -15,11 +15,11 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 1em;
+  margin: 2em 0 2em !important;
   max-width: 100%;
   background-color: var(--athensGreyLight);
 }
-
+ 
 .codeblockBody {
   width: 100%;
   font-family: 'PT Mono', monospace;
@@ -28,7 +28,12 @@
 
 }
 
+.codeblockBody * {
+  font-family: inherit;
+}
+
 .codeblockNumbering {
+  line-height: 1.5;
   list-style-type: none;
   text-align: right;
   padding: 0 15px 0 25px;
@@ -39,6 +44,10 @@
       -ms-user-select: none; /* Internet Explorer/Edge */
           user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome and Opera */
+}
+
+.codeblockNumbering li {
+  margin-top: 0;
 }
 
 .codeblockBody pre{
@@ -76,16 +85,21 @@
   width: 65px;
   border-radius: 40px;
   border: 0.8px solid var(--ghost);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .copyButton:hover {
-  color: var(--manatee);
+  color: var(--vippsorange);
 }
 
 .copyButton.selected {
   color: var(--rum);
 }
 
-.copyButton:focus {
-  outline: none;
+.copyButton:active {
+  color: var(--vippsorange);
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
 }
+
+
+

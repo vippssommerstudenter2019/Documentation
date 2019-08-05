@@ -15,10 +15,11 @@ import Sidebar from '../sidebar/sidebar';
  */
 const propTypes = {
 	apiName: PropTypes.string.isRequired,
-	intro: PropTypes.string.isRequired,
-	sections: PropTypes.string.isRequired,
-	outro: PropTypes.string.isRequired,
-	swaggerURL: PropTypes.string.isRequired,
+	intro: PropTypes.string,//remove
+	sections: PropTypes.string,//remove
+	outro: PropTypes.string,//remove
+	swaggerURL: PropTypes.string,//remove
+	yamlContentURL: PropTypes.string//.isRequired,
 };
 
 /**
@@ -28,42 +29,50 @@ class HowItWorks extends React.Component {
 	
 	constructor(props) {
 		super(props);
-
+		
 		this.state = {
 			pageWidth: window.innerWidth,
-			intro: yaml.safeLoad(this.props.intro),
-			outro: yaml.safeLoad(this.props.outro),
-			flowchart: this.props.flowchart? yaml.safeLoad(this.props.flowchart) : false,
-			metaData: yaml.safeLoad(this.props.sections),
+			intro: null,
+			outro: null,
+			flowchart: null,
+			metaData: null,
+			loaded: false,
 			swaggerData: {}
 		};
+		fetch(this.props.yamlContentURL)
+		.then(response => response.text())
+		.then((text) => {
+			const fullContent = yaml.safeLoad(text);
+			this.setState({
+				intro: fullContent.Intro,
+				outro: fullContent.Outro,
+				flowchart: fullContent.FlowChart,
+				metaData: fullContent.Sections,
+				loaded: true,
+			});
+			this.loadSwagger(fullContent.SwaggerURL);
+		});
 	
 		const resize = () => this.setState({pageWidth: window.innerWidth});
 		resize.bind(this);
 		window.onresize = resize;
 	}
 
-	componentDidMount() {
+	loadSwagger(swaggerURL) {
 		// Fetch the json data from the swagger file at the given url.
-		fetch(this.props.swaggerURL)
+		fetch(swaggerURL)
 		.then(response => response.json())
 		.then((response) => {
-
 			// We use a reference parser to inject all the references in the json file with content, 
 			// in that way we can extract bodies with examples for example.
 			$RefParser.dereference(response, (error, data) => {
 				if (error) {
-					console.error(error);
+					console.error("SwaggerLoadError: ", error);
 
 					// TODO: Handle error
 				}
 				else {
-					this.setState({ 
-						intro: this.state.intro,
-						outro: this.state.outro,
-						swaggerData: data,
-						metaData: this.state.metaData
-					}); 
+					this.setState({swaggerData: data}); 
 				}
 			});    
 		});
@@ -89,17 +98,19 @@ class HowItWorks extends React.Component {
 			return children;
 		};		
 		
-		for (const [section, subsections] of Object.entries(this.state.metaData)) {
+		const sections = Object.entries(this.state.metaData)
+		for (const [section, subsections] of sections) {
 			var children = toSec(section);
 			for (const [subsection, content] of Object.entries(subsections)) {
 				children.push(toSub(subsection, content));
 			}
 		}
 		
-		return <Sidebar headers={sideBarData} api="#ecom"/>;
+		return <Sidebar headers={sideBarData} expandAll api="#ecom"/>;
 	}
 
 	render() {
+		if (!this.state.loaded) return <div className="App"/>;
 		return (
 			<div className="App">
 				<div id={this.props.apiName}/>

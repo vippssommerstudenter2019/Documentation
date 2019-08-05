@@ -2,53 +2,51 @@ import PropTypes from "prop-types";
 import React, { Component } from 'react';
 import "./DataView.css"
 import { objectIsEmpty, getHashCodeFromString } from "../../../Util";
-import PrismView from "../prismview/PrismView";
-import ResponseTable from "../responses/ResponseTable";
+import lottie from "lottie-web";
+
+// Animation object
+class LottieAnimation extends Component {
+   ref = null;
+
+   componentDidMount() {
+     lottie.loadAnimation({
+       container: this.ref,
+       renderer: "svg",
+       loop: true,
+       autoplay: true,
+       path: this.props.path
+     });
+   }
+
+   render() {
+     return <div ref={ref => this.ref = ref} />;
+   }
+}
 
 const propTypes = {
     title: PropTypes.string.isRequired,
-    header: PropTypes.object.isRequired,
-    body: PropTypes.object.isRequired,
-	responses: PropTypes.object.isRequired,
-    spaceForJson: PropTypes.number.isRequired
+	contents: PropTypes.object.isRequired,
 };
 
 /**
- * A component which displays some header and body data and has got the option to copy from it.
+ * A Component that takes in a list of 'selectable' and 'copyable' content:
+ * The expected components:
+ *	{
+ *		title: string,				// The displayed title for the object
+ *		copyText: string, 			// What the copy call to this element should return
+ *		component: reactComponent, 	// The component to render
+ *	}
+ *
  */
 class DataView extends Component {
     constructor(props) {
         super(props);
 		
-		// how much whitespace the json's will use for indentation 
-		const jsonSpace = this.props.spaceForJson;
-		const title = this.props.title;
-		
-		
-		// Defining how the different elements should look
-		function makeElement(str, el) { return{title: str, element: el}; };
-		const code = (json) => JSON.stringify(json, null, jsonSpace);
-		
-		//Checking which json's that actually have content 
-		let content = [];
-		if (!objectIsEmpty(this.props.header)) content.push(makeElement(
-			"Header", 
-			<PrismView key={title+"-header"} className="prismview-1" code={code(this.props.header)}/>
-		));
-		if (!objectIsEmpty(this.props.body)) content.push(makeElement(
-			"Body", 
-			<PrismView key={title+"-body"} className="prismview-1" code={code(this.props.body)}/>
-		));
-		if (!objectIsEmpty(this.props.responses)) content.push(makeElement(
-			"Responses", 
-			<ResponseTable key={title+"-responses"} className="prismview-2" responses={this.props.responses} spaceForJson={jsonSpace}/>
-		));
-		
 		// Setting the content, and selecting the first.
         this.state = {
-			content: content,
-			selected: content[0].title,
-			copyID: getHashCodeFromString(title),
+			selected: this.props.content[0].title,
+			copyID: getHashCodeFromString(this.props.title),
+			copyStatus: "Copy",
         };
 
 		// Binding callbacks to this instance
@@ -60,42 +58,37 @@ class DataView extends Component {
 	 * Handles the click when the user wants to copy the code.
 	 */
     handleCopyClick() {
-
+		// Function to monentarily display something inside of the copy button.
+		const setCopy = (el) => 
+			this.setState({copyStatus: el}, () => {
+			  setTimeout(() => {this.setState({copyStatus: "Copy"})}, 1330);
+			});
+		
+		const selected = this.state.selected;
+		// We check which state that is selected
+		// Assumes uniqueness in the titles
+		const value = this.props.content.find((cont) => (cont.title === selected)).copyText;
+		// an animation with sad-smiley?
+		if (!value) {setCopy("Empty"); return;}
+		
         // We create a fake text area that we can inject the code into
         let textArea = document.createElement("textarea");
-		
-		// We check which state that is selected
-		const json = (()=>{
-			const selected = this.state.selected;
-			if (selected === "Header") return this.props.header;
-			if (selected === "Body") return this.props.body;
-			if (selected === "Responses") {
-				for (const json of Object.values(this.props.responses)) {
-					if (!objectIsEmpty(json)) return json;
-				}
-			}
-			return null;
-		})();
-		if (json === null) return;
-		
-		// Injection of the code into the text field
-        const value = JSON.stringify(json, null, this.props.spaceForJson);
         const id = this.state.copyID;
         textArea.value = value;
-
-        // Append the textarea under this code view.
+		// Append the textarea under this code view.
         document.getElementById(id).appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-
-        // Try to copy from that text area
-        try {
+        
+        
+		// Try to copy from that text area
+		try {
+			textArea.focus();
+			textArea.select();
             document.execCommand("copy");
-
-            // TODO: Implement overlay for successful copy when design is ready
-            // var successful = document.execCommand('copy');
-            // var msg = successful ? 'Copied' : 'Couldn\'t copy';
+			// Change button text to an animation and change back after 1 sec
+			setCopy(<LottieAnimation path="/loading_spinner.json"/>);
         } catch (err) {
+			// an animation with sad-smiley?
+			setCopy("Error");
             console.error('Fallback: Oops, unable to copy', err);
         }
 
@@ -107,7 +100,6 @@ class DataView extends Component {
      * Switches to showing body or header depending on what is currently viewed.
      */
     switchMode(event) {
-
         const button = event.target;
         const title = button.innerHTML;
         if (title === this.state.selected) return;
@@ -115,17 +107,18 @@ class DataView extends Component {
 	}
 
     render() {
-		const selected = this.state.selected;
-        let elements = this.state.content.map((comp, i) => {
-			const title = comp.title;
-			if (title === selected) 
-			return comp.element;
+		if (objectIsEmpty(this.props.content)) {
+			console.warn("Empty content: ", this.props.title);
 			return null;
-		});
+		}
+		
+		const selected = this.state.selected;
+		// Assumes uniqueness in the titles
+        let component = this.props.content.find((cont) => (cont.title === selected)).component;
 
         // We add the components for switching between header, body and responses. If they exists.
 		const mainTitle = this.props.title;
-        let buttonComponents = this.state.content.map((comp, i) => {
+        let buttonComponents = this.props.content.map((comp, i) => {
 			const title = comp.title;
 			if (title === selected) 
 			return (
@@ -139,18 +132,19 @@ class DataView extends Component {
 			</button>
 			);
 		});
-
         return (
             // Render a container with code with an utility bar and style it according to Vipps style.
             // We give the first div an id of an unique hash corresponding to the code so when
-            // we want to copy something out of it, we know which component to grab the codde from
+            // we want to copy something out of it, we know which component to grab the code from
             <div className="dataview" id={this.state.copyID}>
                 <div className="dataview-title">{this.props.title}</div>
                 <div className="dataview-utility-bar">
-                    <button className="copy-button" onClick={this.handleCopyClick}>Copy</button>
+                    <button className="copy-button" onClick={this.handleCopyClick}>
+						{this.state.copyStatus}
+					</button>
                     {buttonComponents}
                 </div>
-				{elements}
+				{component}
 			</div>
 		);
     }

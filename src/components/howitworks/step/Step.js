@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import DataView from "../dataview/DataView"
 import PropTypes from "prop-types";
-import {TooltipText} from "../tooltip/Tooltip"
+import {TooltipText} from "../tooltip/Tooltip";
+import PrismView from "../prismview/PrismView";
+import ResponseTable from "../responses/ResponseTable";
 import "./Step.css"
 import { objectIsEmpty } from '../../../Util';
 
@@ -47,27 +49,7 @@ class Step extends Component {
 		if (this.props.metaData.imagePath) {
 			return <img src={this.props.metaData.imagePath} alt={this.props.metaData.title} />
 		} else {
-			return <div className="img-circle"></div>
-		}
-	}
-
-	/**
-	 * Returns a container with the header and body codeviews for a given endpoint.
-	 * 
-	 * @param {*} endpoint The endpoint to create header and body components for.
-	 */
-	createEndpointDataComponent(endpoint) {
-		if (!objectIsEmpty(this.props.endpointData[endpoint].header)) {
-			return(
-				<DataView key={endpoint}
-					title={this.props.metaData.modes[endpoint] + " " + endpoint}
-					header={this.props.endpointData[endpoint].header}
-					body={this.props.endpointData[endpoint].body}
-					responses={this.props.endpointData[endpoint].responses}
-					shouldCollapse={true}
-					spaceForJson={spaceForJson} 
-				/>
-			);
+			return <div className="img-circle"/>
 		}
 	}
 
@@ -77,21 +59,59 @@ class Step extends Component {
 	 * @param {*} endpoint The endpoint to construct for.
 	 */
 	createEndpointContent(endpoint) {
-		// is both step-text-response & step-description neccesary?
-		const description = this.props.metaData.descriptions[endpoint];
-		if (!description || objectIsEmpty(description)) 
-		return <div key={endpoint+"-data"} className="step-data">{this.createEndpointDataComponent(endpoint)}</div>;
-		return [ 
-		<div key={endpoint + "-text-responses"} className="step-text-responses">
-			<div key={endpoint+"-description"} className="step-description">
-				<TooltipText input={this.props.metaData.descriptions[endpoint]} keywordsData={this.props.metaData.keywords} />
+		const {name, description, mode} = endpoint;
+		const {header, body, responses} = this.props.endpointData[name];
+		const check = (el) => (el && !objectIsEmpty(el));
+		const toCode = (json) => JSON.stringify(json, null, spaceForJson);
+		const toData = (title, text, component) => {return {title: title, copyText: text, component: component};};
+		const keyTitle = mode + " " + name;
+		
+		var dataList = [];
+		if (check(header)) {
+			const code = toCode(header);
+			const component = <PrismView key={keyTitle+"-header"} className="prismview-1" code={code}/>;
+			dataList.push(toData("Header", code, component));
+		}
+		if (check(body)) {
+			const code = toCode(body);
+			const component = <PrismView key={keyTitle+"-body"} className="prismview-1" code={code}/>;
+			dataList.push(toData("Body", code, component));
+		}
+		if (check(responses)) {
+			const code = (() => {
+				const statusCodes = Object.keys(responses).sort()
+				for (const statusCode of statusCodes) {
+					const json = responses[statusCode].json;
+					if (check(json)) return toCode(json);
+				}
+				return null;
+			})();
+			const component = <ResponseTable key={keyTitle+"-responses"} className="prismview-2" responses={responses} spaceForJson={spaceForJson}/>;
+			dataList.push(toData("Responses", code, component));
+		}
+		
+		var out = [];
+		if (check(description)) {
+			out.push(
+			<div key={keyTitle + "-text-responses"} className="step-text-responses">
+				<div key={keyTitle+"-description"} className="step-description">
+					<TooltipText input={description} keywordsData={this.props.metaData.keywords} />
+				</div>
 			</div>
-		</div>
-		,
-		<div key={endpoint + "-data"} className="step-data">
-			{this.createEndpointDataComponent(endpoint)}
-		</div>
-		];
+			);
+		}
+		if (dataList.length !== 0) {
+			out.push(
+			<div key={keyTitle + "-data"} className="step-data">
+				<DataView 
+					key={keyTitle}
+					title={keyTitle}
+					content={dataList}
+				/>
+			</div>
+			);
+		}			
+		return out;
 	} 
 
 	render() {
@@ -100,6 +120,7 @@ class Step extends Component {
 
 		// As one step can inlcude more than one endpoint, we loop through them 
 		// and append all of them
+		if (this.props.metaData.endpoints)
 		for (const endpoint of this.props.metaData.endpoints) {
 			content.push(this.createEndpointContent(endpoint));
 		}

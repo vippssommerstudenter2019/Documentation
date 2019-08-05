@@ -8,12 +8,18 @@ const customToolTipPropTypes = {
     keyword: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    linkTitle: PropTypes.string.isRequired,
+    link: PropTypes.string,
+    linkTitle: PropTypes.string,
 }
 
 class CustomTooltip extends Component {
     render() {
+		const link = (
+		(this.props.link && this.props.linkTitle)? 
+		<a className="rc-custom-link" href={this.props.link} target="_blank" rel="noopener noreferrer">
+		{this.props.linkTitle}
+		</a> : null
+		);
         return (
             <Tooltip
                 key={this.props.keyword}
@@ -28,7 +34,7 @@ class CustomTooltip extends Component {
                         </div>
                         <br />
                         <br />
-                        <a className="rc-custom-link" href={this.props.link} target="_blank" rel="noopener noreferrer">{this.props.linkTitle}</a>
+                        {link}
                     </div>
                 }
                 placement="bottom">

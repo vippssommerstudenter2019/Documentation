@@ -7,19 +7,30 @@ const SOURCE_URLS = {
       "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/vipps-invoice-api.md"
   };
 
+const getStarted = ["Getting started", "https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md"]
 const DEV_URLS = {
+
     ecom: [
+      getStarted,
       [
         "Postman",
         "https://github.com/vippsas/vipps-ecom-api/tree/master/tools"
       ],
+      ["Swagger", "https://vippsas.github.io/vipps-ecom-api/"],
       [
         "FAQ",
         "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md"
       ],
-      ["Swagger", "https://vippsas.github.io/vipps-ecom-api/"]
+      ["Checklist",
+       "https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md"
+      ],
+      [
+        "Python code examples",
+        "https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example"
+      ]
     ],
     login: [
+      getStarted,
       [
         "Postman",
         "https://github.com/vippsas/vipps-login-api/tree/master/tools"
@@ -27,6 +38,7 @@ const DEV_URLS = {
       ["Swagger", "https://vippsas.github.io/vipps-login-api/"]
     ],
     invoice: [
+      getStarted,
       [
         "Postman",
         "https://github.com/vippsas/vipps-invoice-api/tree/master/tools"
