@@ -15,6 +15,7 @@
   .sidenav {
     background:none;
     box-shadow:none;
+    visibility: hidden;
   }
   .SidebarHeader {
     width:100%;
