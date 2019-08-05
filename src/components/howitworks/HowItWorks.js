@@ -9,6 +9,7 @@ import '../../styles/how-it-works.css';
 import $RefParser from "json-schema-ref-parser";
 import yaml from "js-yaml";
 import Sidebar from '../sidebar/sidebar';
+import LottieAnimation from "./LottieAnimation";
 
 /**
  * The input props. 
@@ -29,9 +30,9 @@ class HowItWorks extends React.Component {
 	
 	constructor(props) {
 		super(props);
-		
+		const getWidth = () => window.innerWidth;
 		this.state = {
-			pageWidth: window.innerWidth,
+			pageWidth: getWidth(),
 			intro: null,
 			outro: null,
 			flowchart: null,
@@ -48,12 +49,12 @@ class HowItWorks extends React.Component {
 				outro: fullContent.Outro,
 				flowchart: fullContent.FlowChart,
 				metaData: fullContent.Sections,
-				loaded: true,
 			});
 			this.loadSwagger(fullContent.SwaggerURL);
+			setTimeout(() => this.setState({loaded: true}), 1000);
 		});
 	
-		const resize = () => this.setState({pageWidth: window.innerWidth});
+		const resize = () => this.setState({pageWidth: getWidth()});
 		resize.bind(this);
 		window.onresize = resize;
 	}
@@ -110,7 +111,7 @@ class HowItWorks extends React.Component {
 	}
 
 	render() {
-		if (!this.state.loaded) return <div className="App"/>;
+		if (!this.state.loaded) return <LottieAnimation className="LoadingSpinner" path="/loading_spinner.json"/>;
 		return (
 			<div className="App">
 				<div id={this.props.apiName}/>

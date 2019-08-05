@@ -26,6 +26,7 @@
   .sidenav {
     background:none;
     box-shadow:none;
+    visibility: hidden;
   }
   .SidebarHeader {
     width:100%;
@@ -40,7 +41,6 @@
     display:none;
   }
 }
-
 
 .SidebarHeader {
   height: 10vh;
@@ -92,6 +92,10 @@
 .collapsible-header:hover {
   background-color: transparent !important;
   color: #5e3dc2 !important;
+}
+
+.keyboard-focused .collapsible-header:focus {
+  background-color: #fff;
 }
 
 .collapsible-header:hover > div > a {
@@ -167,6 +171,10 @@
   padding: 22px 0px 0px 0px !important;
 }
 
+.sidebarPadding {
+  padding-left: 50px !important;
+}
+
 .button:focus {
   background-color: white !important; /*f6f6f9*/
 }
@@ -236,7 +244,7 @@ li > div > a {
   max-width: 300px;
   padding-right: 1vw;
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 90vh;
   -ms-overflow-style: none;
   scrollbar-width: none;
