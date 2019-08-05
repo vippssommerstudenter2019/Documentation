@@ -15,6 +15,11 @@
   margin-bottom: 20px !important;
 }
 
+.InlineCode {
+  background-color: var(--athensGreyLight);
+  color: var(--vippsblack);
+}
+
 
 .Content img {
   margin: 10px 0 10px;
