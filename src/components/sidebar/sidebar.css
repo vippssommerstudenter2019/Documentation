@@ -158,8 +158,8 @@
   padding: 22px 0px 0px 0px !important;
 }
 
-.sidebarMarg {
-  margin-left: 50px !important;
+.sidebarPadding {
+  padding-left: 50px !important;
 }
 
 .button:focus {
