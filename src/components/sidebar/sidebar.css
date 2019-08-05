@@ -95,7 +95,7 @@
   display: inline-block;
   width: 100%;
   height: 100%;
-  font-weight: 300;
+  font-weight: lighter;
 }
 
 .collapsible-header > div {
@@ -200,7 +200,7 @@ li > div > a {
   height:100% !important;
   line-height: 16px !important;
   padding: 5px 40px 5px 35px !important;
-  font-weight: 300;
+  font-weight: lighter;
   vertical-align: middle;
   color: #161225 !important;
   line-height: 32px;
