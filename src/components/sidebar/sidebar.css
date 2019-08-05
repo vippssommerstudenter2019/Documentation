@@ -123,7 +123,6 @@
 
 .active {
   background-color: white !important;
-  
 }
 
 .active .arrow {
@@ -152,7 +151,7 @@
 }
 
 .collapsible-body {
-  padding: 0px 0px 0px 0px !important;
+  padding: 22px 0px 0px 0px !important;
 }
 
 .sidebarMarg {
@@ -166,7 +165,6 @@
 #sidenav_2 {
   transform: none !important;
 }
-
 
 li > div > a:hover {
   display: block;
@@ -190,7 +188,7 @@ li > div > a {
 }
 
 .collapsible-header{
-  margin-top: 26px !important;
+  margin-top: 31px !important;
 }
 
 

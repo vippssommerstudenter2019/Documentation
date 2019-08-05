@@ -8,6 +8,7 @@
   --vippsblue: #59cbe8;
   --vippsblack: #161225;
   --vippsblueberry: #49367e;
+  -ms-overflow-style: none;
 }
 
 .codeblock {
