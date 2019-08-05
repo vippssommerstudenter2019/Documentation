@@ -1,11 +1,22 @@
 /* SIDEBAR */
+.Sidebar {
+  background: white !important;
+  margin-left: 5vw !important;
+}
 
 .sidenav {
+  width: 25vw;
+  max-width: 300px;
   box-shadow: none;
 }
 
 .scrollable ul {
   margin-top: 0 !important;
+}
+
+.listTop {
+  width: 17vw;
+  max-width: 210px;
 }
 
 @media only screen and (max-width: 700px)  {
@@ -138,6 +149,8 @@
 }
 
 .collapsible {
+  width: 25vw;
+  max-width: 300px;
   margin-bottom: 10vh !important;
   border-top-color: white;
   border-top: 0px;
@@ -152,10 +165,6 @@
 
 .collapsible-body {
   padding: 22px 0px 0px 0px !important;
-}
-
-.sidebarMarg {
-  margin-left: 50px !important;
 }
 
 .button:focus {
@@ -223,7 +232,9 @@ li > div > a {
 
 
 .scrollable {
-  width: 100%;
+  width: 25vw;
+  max-width: 300px;
+  padding-right: 1vw;
   position: absolute;
   overflow-y: scroll;
   height: 90vh;
