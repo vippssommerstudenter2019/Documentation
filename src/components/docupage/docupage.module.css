@@ -15,6 +15,11 @@
   margin-bottom: 20px !important;
 }
 
+.InlineCode {
+  background-color: var(--athensGreyLight);
+  color: var(--vippsblack);
+}
+
 
 .Content img {
   margin: 10px 0 10px;
@@ -272,4 +277,16 @@ h1:first-child, h1:nth-child(2) {
   --vippsblue: #59cbe8;
   --vippsblack: #161225;
   --vippsblueberry: #49367e;
+}
+
+@media only screen and (max-width: 700px)  {
+  .Container {
+    margin-left: 5vw !important;
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns:  auto;
+    grid-template-areas:
+      "content1 "
+  }
+
 }

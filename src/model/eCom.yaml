@@ -14,13 +14,12 @@
 #   The subsections contains the following:
 #       -title 
 #       -introduction 
-#       -endpoints      : The endpoint(s)-keys that belongs to this subsection
-#       -descriptions   : The description(s) per supplied endpoint
-#       -modes          : The mode(s) per supplied endpoint [GET/POST/PUT/...]
+#       -endpoints      : A list of endpoints for -This- step, contains: name[endpoint swagger name], description, mode[GET/POST/PUT/...]
 #       -keywords       : The supplied text-fields for this subsection will be parsed for >> [text keyword]
 #
 #   Note:
 #       keywords is used to create a popup on the page displaying some additional information
+#       This includes both the subsection introduction, and the endpoint descriptions.
 #       The keywords looks like this in the text: [example word] or [phrase]
 #       keywords might not be needed and can be left empty
 #       

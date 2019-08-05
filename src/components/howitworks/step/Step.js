@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import DataView from "../dataview/DataView"
 import PropTypes from "prop-types";
-import {TooltipText} from "../tooltip/Tooltip"
+import {TooltipText} from "../tooltip/Tooltip";
+import PrismView from "../prismview/PrismView";
+import ResponseTable from "../responses/ResponseTable";
 import "./Step.css"
 import { objectIsEmpty } from '../../../Util';
 
@@ -60,28 +62,51 @@ class Step extends Component {
 		const {name, description, mode} = endpoint;
 		const {header, body, responses} = this.props.endpointData[name];
 		const check = (el) => (el && !objectIsEmpty(el));
-		console.log(name, description, mode);
+		const toCode = (json) => JSON.stringify(json, null, spaceForJson);
+		const toData = (title, text, component) => {return {title: title, copyText: text, component: component};};
+		const keyTitle = mode + " " + name;
+		
+		var dataList = [];
+		if (check(header)) {
+			const code = toCode(header);
+			const component = <PrismView key={keyTitle+"-header"} className="prismview-1" code={code}/>;
+			dataList.push(toData("Header", code, component));
+		}
+		if (check(body)) {
+			const code = toCode(body);
+			const component = <PrismView key={keyTitle+"-body"} className="prismview-1" code={code}/>;
+			dataList.push(toData("Body", code, component));
+		}
+		if (check(responses)) {
+			const code = (() => {
+				const statusCodes = Object.keys(responses).sort()
+				for (const statusCode of statusCodes) {
+					const json = responses[statusCode].json;
+					if (check(json)) return toCode(json);
+				}
+				return null;
+			})();
+			const component = <ResponseTable key={keyTitle+"-responses"} className="prismview-2" responses={responses} spaceForJson={spaceForJson}/>;
+			dataList.push(toData("Responses", code, component));
+		}
 		
 		var out = [];
 		if (check(description)) {
 			out.push(
-			<div key={name + "-text-responses"} className="step-text-responses">
-				<div key={name+"-description"} className="step-description">
+			<div key={keyTitle + "-text-responses"} className="step-text-responses">
+				<div key={keyTitle+"-description"} className="step-description">
 					<TooltipText input={description} keywordsData={this.props.metaData.keywords} />
 				</div>
 			</div>
 			);
 		}
-		if (check(header) || check(body) || check(responses)) {
+		if (dataList.length !== 0) {
 			out.push(
-			<div key={name + "-data"} className="step-data">
+			<div key={keyTitle + "-data"} className="step-data">
 				<DataView 
-					key={name}
-					title={mode + " " + name}
-					header={header}
-					body={body}
-					responses={responses}
-					spaceForJson={spaceForJson} 
+					key={keyTitle}
+					title={keyTitle}
+					content={dataList}
 				/>
 			</div>
 			);

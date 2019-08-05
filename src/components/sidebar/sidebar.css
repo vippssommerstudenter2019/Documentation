@@ -8,10 +8,9 @@
   margin-top: 0 !important;
 }
 
-@media (max-width:50em) {
+@media only screen and (max-width: 700px)  {
   .scrollable {
-    visibility:hidden;
-    display:none;
+    display: none;
   }
   .sidenav {
     background:none;
@@ -27,20 +26,13 @@
   .sidebarlogo {
     width:100%;
     background:#fff;
-    display:block;
+    display:none;
   }
 }
 
-.Sidebar {
-  background: white;
-  display: grid;
-  grid-template-rows: 5% auto;
-  margin-top: 20px;
-}
 
 .SidebarHeader {
   height: 10vh;
-  background: white;
   display: flex;
   padding-left: 30px;
   align-items: left !important;
@@ -53,50 +45,10 @@
   margin-bottom: 24px;
 }
 
-.SidebarMenu {
-  background: white;
-  color: #49367e;
+
+.listEl a:hover{
+  background-color: transparent !important;  
 }
-
-.SidebarNav {
-  background: white;
-  padding: 10%;
-  margin-left: 10%;
-  text-align: left;
-}
-
-.NavListTop {
-  width: 75%;
-  margin: auto;
-  list-style-type: none;
-  padding: 0;
-  /* display: inline-block; */
-}
-
-.NavListBot {
-  width: 75%;
-  margin: auto;
-  list-style-type: none;
-  padding-left: 20%;
-  padding-bottom: 5%;
-
-  /* display: inline-block; */
-}
-
-.NavElemTop {
-  background: white;
-  border-radius: 15px;
-  padding: 2% 2%;
-  margin-bottom: 2%;
-}
-
-.NavElemBot {
-  background: white;
-  border-radius: 15px;
-  padding: 2% 2%;
-  margin-bottom: 2%;
-}
-
 
 .listEl {
   text-decoration: none;
@@ -104,12 +56,8 @@
   color: #49367e;
   display: block;
   background-color: white;
-  border-radius: 20px;
-  width: 50%px !important;
-  /*line-height: 32px !important;*/
 }
 .listEl:hover {
-  background: white;
   color: #5E3DC2!important;
 }
 
@@ -131,7 +79,7 @@
 }
 
 .collapsible-header:hover {
-  background: white !important; /* #f6f6f9*/
+  background-color: transparent !important;
   color: #5e3dc2 !important;
 }
 
@@ -165,10 +113,6 @@
 }
 
 
-.arrow::after {
-  content:url("../../img/arrowRight.svg");
-}
-
 .arrow {
   margin-right: 0 !important;
   transition-duration:0.2s;
@@ -179,6 +123,7 @@
 
 .active {
   background-color: white !important;
+  
 }
 
 .active .arrow {
@@ -266,7 +211,6 @@ li > div > a {
 
 
 .sidenav li > a:hover {
-  background-color: white !important; /*#f6f6f9*/
   color: #5E3DC2!important;
 }
 
@@ -312,14 +256,15 @@ li > div > a {
 
 ::-webkit-scrollbar {
   z-index: 0;
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 20px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 6px 6px rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px 6px rgba(0, 0, 0, 0.05);
   width: 5px;
   background: var(--vippsorange);
   border-radius: 110px;
