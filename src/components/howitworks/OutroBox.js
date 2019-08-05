@@ -23,13 +23,13 @@ class OutroBox extends React.Component {
 								{this.props.content.title}
 							</div>
 						</div>
-						<div className="large-font-size">
+						<div className="outro-sub">
 							{this.props.content.description} 
 						</div>
 					</div>
 					<div className="outro-link" >
 						<a href={this.props.content.link}>
-							<button className="button" > 
+							<button className="outro-button" > 
 								eCom API Documentation
 							</button>
 						</a>

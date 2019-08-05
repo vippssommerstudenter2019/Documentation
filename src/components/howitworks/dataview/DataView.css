@@ -121,17 +121,23 @@
 
 @media (max-width: 812px) {
   .dataview-utility-bar {
-    display:inline-block;
+    display:flex;
+    justify-content: flex-start;
+    width:100%;
+    padding: 0 3rem 0 1rem;
   }
   .dataview-title {
     font-family: Vipps;
     font-size: 10px;
     color: var(--ghost);
-    padding: 25px 0px 0px 35px; 
+    padding: 4rem 2rem 2rem 4rem;
     border-radius: 5px 5px 0px 0px;
+    word-break:break-all;
+    -ms-word-break: break-all;
   }
   .prismview-1 {
-    margin-left:0;
+    padding:0;
+    margin:0;
   }
   
   .prismview-2 {
@@ -141,7 +147,19 @@
 
   .header-body-button {
     height: 10px;
-    max-width:60px;
-    margin-right:5px;
+    padding: 2rem 2rem 0 3rem;
+  }
+
+  .copy-button {
+    display:none;
+  }
+
+  .prisview {
+    word-break: break-all;
+    -ms-word-break: break-all;
+  }
+
+  .dataview .responsetable {
+    margin:1rem 3rem 2rem 3rem;
   }
 } 
