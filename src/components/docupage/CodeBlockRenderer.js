@@ -4,7 +4,7 @@ import codeblockCSS from "./codeblock.module.css";
 import LottieAnimation from "./LottieAnimation";
 import "./syntaxhighlighting.css";
 
-class CodeBlock extends React.Component  {
+class CodeBlockRenderer extends React.Component  {
  state = {
    showanimation: false
  }
@@ -61,4 +61,4 @@ class CodeBlock extends React.Component  {
   }
 }
 
-export default CodeBlock;
+export default CodeBlockRenderer;
