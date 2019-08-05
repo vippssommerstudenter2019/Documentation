@@ -125,14 +125,14 @@ Sections:
 
     The payment process:
         initate:
-            title: Initiate payment
+            title: Customer chooses to pay with Vipps
             introduction: The customer is now selecting a service or item at your webstore, and wants to pay with Vipps. 
             imagePath: ../../assets/ecom-illustrations/initiatePayment.svg
             endpoints:
                 - name: "/ecomm/v2/payments"
-                  description: Sends a request to Vipps to start the payment. Once the transaction is successfully initiated in Vipps, you will receive a URL in response which you can direct the customer to the [Vipps landing page] with. You need to provide a [fallbackURL] to you site which the customer will return to after confirming in the Vipps app. Passing ‘isApp’ as true will make Vipps respond with an [app-switch deeplink] that can take the customer directly to the Vipps app.
+                  description: Sends a request to Vipps to initiate the payment. Once the transaction is successfully initiated in Vipps, you will receive a URL in response which you can direct the customer to the [Vipps landing page] with. You need to provide a [fallbackURL] to you site which the customer will return to after confirming in the Vipps app. Passing ‘isApp’ as true will make Vipps respond with an [app-switch deeplink] that can take the customer directly to the Vipps app.
                   mode: POST
-                  
+
             responses: true
             keywords:
                 Vipps landing page:
@@ -153,7 +153,7 @@ Sections:
 
 
         customer_confirms:
-            title: Customer confirmation and checking status
+            title: Customer confirms
             introduction: The customer is now being taken to the landing page and will confirm the [reservation of the payment] in the Vipps app. 
             imagePath: ../../assets/ecom-illustrations/customerConfirms.svg
             endpoints:
@@ -169,7 +169,7 @@ Sections:
                     link: http://localhost:3000/documentation/ecommerce/#reserve
 
         ship_item:
-            title: Confirm the order and ship/deliver the item
+            title: Confirm order and send item
             introduction: Now, you'll have to provide the customer with a confirmation of that you’ve been given the order and that payment is reserved. Next step is delivering the service or shipping the items ordered from the customer.
             imagePath: ../../assets/ecom-illustrations/confirmOrder.svg
             endpoints:
@@ -177,8 +177,8 @@ Sections:
             keywords:
 
         capture:
-            title: Withdraw the money
-            introduction: Up to this point, the money is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped.  This is called a capture.
+            title: Withdraw payment
+            introduction: Up to this point, the payment is only reserved. According to Norwegian law, you can't withdraw money before the services are delivered or the items are shipped. This is called a capture.
             imagePath: ../../assets/ecom-illustrations/capture2.svg
             endpoints:
                 - name: "/ecomm/v2/payments/{orderId}/capture"
@@ -200,7 +200,7 @@ Sections:
             keywords:
 
         refund:
-            title: Refunding of payment
+            title: Refund
             introduction: If the customer wants a refund, you’ll have to send a refund request to Vipps. A refund can be either partial or full.
             imagePath: ../../assets/ecom-illustrations/refund.svg
             endpoints:
