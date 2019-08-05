@@ -1,31 +1,8 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import codeblockCSS from "./codeblock.module.css"
-import "./syntaxhighlighting.css"
-import lottie from "lottie-web";
-
-
-
-class LottieAnimation extends React.Component {
-   ref = null;
-
-   componentDidMount() {
-     lottie.loadAnimation({
-       container: this.ref,
-       renderer: "svg",
-       loop: true,
-       autoplay: true,
-       path: this.props.path
-     });
-   }
-
-   render() {
-     return <div ref={ref => this.ref = ref} />;
-   }
- }
-
-
-
+import codeblockCSS from "./codeblock.module.css";
+import LottieAnimation from "./LottieAnimation";
+import "./syntaxhighlighting.css";
 
 class CodeBlock extends React.Component  {
  state = {
