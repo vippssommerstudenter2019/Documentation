@@ -244,7 +244,7 @@ li > div > a {
   max-width: 300px;
   padding-right: 1vw;
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 90vh;
   -ms-overflow-style: none;
   scrollbar-width: none;
