@@ -31,7 +31,6 @@
   }
 }
 
-
 .SidebarHeader {
   height: 10vh;
   display: flex;
@@ -82,6 +81,10 @@
 .collapsible-header:hover {
   background-color: transparent !important;
   color: #5e3dc2 !important;
+}
+
+.keyboard-focused .collapsible-header:focus {
+  background-color: #fff;
 }
 
 .collapsible-header:hover > div > a {
