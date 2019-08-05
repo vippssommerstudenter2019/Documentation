@@ -228,6 +228,8 @@ li > div > a {
   position: absolute;
   overflow-y: scroll;
   height: 90vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 
