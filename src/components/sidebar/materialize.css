@@ -5572,7 +5572,7 @@ button.btn-floating {
 }
 
 .dropdown-content li:hover, .dropdown-content li.active {
-  background-color: #eee;
+  background-color: white;
 }
 
 .dropdown-content li:focus {
@@ -5872,7 +5872,7 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 
 .keyboard-focused .collapsible-header:focus {
-  background-color: #eee;
+  background-color: white;
 }
 
 .collapsible-body {
@@ -7269,7 +7269,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 }
 
 .select-dropdown li.optgroup {
-  border-top: 1px solid #eee;
+  border-top: 1px solid white;
 }
 
 .select-dropdown li.optgroup.selected > span {
@@ -8940,7 +8940,7 @@ input[type=range]::-ms-thumb {
 }
 
 .timepicker-plate {
-  background-color: #eee;
+  background-color: white;
   border-radius: 50%;
   width: 270px;
   height: 270px;
