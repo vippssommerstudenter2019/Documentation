@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from 'react';
 import Prism from 'prismjs';
-import 'prismjs/themes/prism.css';
+import "./PrismContent.css"
 import "./PrismView.css"
 
 const propTypes = {
@@ -34,16 +34,16 @@ class PrismView extends Component {
     }
 
     render() {
-        const className = this.props.className? this.props.className : "";
-        return (
-		<div className={"prismview " + className}>
-            <pre>
-                <code className={"language-javascript"}>
-                    {/* We have to add a new line here to get correct indentation in the code view. */}
-                    {"\n" + this.props.code}
-                </code>
-            </pre>
-		</div>
+        const className = this.props.className ? this.props.className : "";
+          return (
+            <div className={"prismview " + className}>
+                <pre>
+                    <code className={"language-javascript"}>
+                        {/* We have to add a new line here to get correct indentation in the code view. */}
+                        {"\n" + this.props.code}
+                    </code>
+                </pre>
+            </div>
         );
     }
 }
