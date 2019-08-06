@@ -22,8 +22,8 @@ const Sidebar = props => (
 
 // Header for logo and backlink
 const SidebarHeader = () => (
-  <Link to="/" className="SidebarHeader ">
-    <img className="Logo logoMarg" src={vipps_dev} alt="logo" />
+  <Link to="/">
+    <img src={vipps_dev} alt="logo" />
   </Link>
 );
 
@@ -175,7 +175,7 @@ class SidebarNavSpy extends Component {
 		}); 
 		return ( 
 			<SideNav className="sidebarPadding">
-			<div className='static sidebarlogo'>
+			<div className='SidebarHeader'>
 				<SidebarHeader />
 			</div>
 			<div className='scrollable'>
