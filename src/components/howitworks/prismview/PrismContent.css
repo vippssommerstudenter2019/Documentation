@@ -1,5 +1,5 @@
 /**
- * prism.js theme for JavaScript, CSS and HTML
+ * prism.js custom theme for JavaScript, CSS and HTML
  */
 
 code[class*="language-"],
@@ -47,8 +47,9 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-	padding: 1em;
-	overflow: scroll;
+	overflow: auto;
+	width: 100%;
+
 }
 
 :not(pre) > code[class*="language-"],
@@ -58,7 +59,6 @@ pre[class*="language-"] {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-	padding: .1em;
 	border-radius: .3em;
 	white-space: normal;
 }
