@@ -43,15 +43,16 @@
 }
 
 .SidebarHeader {
-  height: 10vh;
+  /*height: 10vh;*/
   display: flex;
-  padding-left: 30px;
+  padding-left: 20px;
   align-items: left !important;
   justify-content: left !important;
 }
 
 .Logo {
-  width: 100%;
+  height: 30px;
+  width: 186px;
   margin-top: 30px;
 }
 
@@ -124,6 +125,8 @@
 
 
 .arrow {
+  min-width: 8px;
+  max-width: 13px;
   right: 0;
   overflow: visible;
   z-index: 999;
