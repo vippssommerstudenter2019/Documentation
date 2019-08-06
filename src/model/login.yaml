@@ -6,7 +6,7 @@
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-login-api/master/docs/swagger.json"
 
 Intro:
-    title: Vipps Login API
+    title: How Vipps Login API works
     introduction: Understanding the process of logging in with Vipps
     description: Before implementing the Vipps login API, you’ll need to get keys for testing and production through the developer portal. 
     imagePath: "../../assets/images/womanWithPhone.svg"

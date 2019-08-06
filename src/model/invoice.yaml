@@ -3,7 +3,7 @@
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
 
 Intro:
-    title: Vipps Invoice API
+    title: How Vipps Invoice API works
     introduction: Understanding the process of digital invoices
     description: >
         Before implementing the Vipps Invoice API, 
@@ -11,7 +11,7 @@ Intro:
     imagePath: "../../assets/images/womanWithPhone.svg"
     
 FlowChart:
-    title: Steps to implement for Invoice
+    title: Steps in the invoice process
     browserImage: "../../assets/ecom-illustrations/invoice desktop.svg"
     tabletImage:
     mobileImage: "../../assets/ecom-illustrations/invoice mobile.svg"
