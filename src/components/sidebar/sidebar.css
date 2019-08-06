@@ -1,12 +1,13 @@
 /* SIDEBAR */
-.Sidebar {
+#root.Sidebar {
+  width: 100%;
+  transform: none !important;
   background: white !important;
-  margin-left: 5vw !important;
+  padding-left: 1vw;
 }
 
 .sidenav {
-  width: 25vw;
-  max-width: 300px;
+  padding: 0 !important;
   box-shadow: none;
 }
 
@@ -15,7 +16,7 @@
 }
 
 .listTop {
-  max-width: 15vw;
+  width: 90%;
 }
 
 @media only screen and (max-width: 830px)  {
@@ -75,15 +76,13 @@
 }
 
 .collapsible-header {
-  padding: 0px 30px 0px 30px !important;
+  padding: 0px 0px 0px 20px !important;
   text-decoration: none;
   line-height: 25px !important;
   font-size: 16px;
   color: #49367e;
   display: block;
   background-color: white;
-  border-radius: 20px;
-  width: 100%;
   border-bottom: white;
 }
 
@@ -106,8 +105,6 @@
   line-height: 25px !important;
   font-size: 16px !important;
   display: inline-block;
-  width: 100%;
-  height: 100%;
   font-weight: lighter;
 }
 
@@ -122,11 +119,12 @@
 
 .sidebarLink {
   margin-left: 0 !important;
-  padding-right: 11px;
+  padding-right: 10px; 
 }
 
 
 .arrow {
+  right: 0;
   overflow: visible;
   z-index: 999;
   margin-right: 0 !important;
@@ -153,8 +151,6 @@
 }
 
 .collapsible {
-  width: 25vw;
-  max-width: 300px;
   margin-bottom: 10vh !important;
   border-top-color: white;
   border-top: 0px;
@@ -172,16 +168,13 @@
 }
 
 .sidebarPadding {
-  margin-left: 50px !important;
+  padding-left: 10px !important;
 }
 
 .button:focus {
   background-color: white !important; /*f6f6f9*/
 }
 
-#sidenav_2 {
-  transform: none !important;
-}
 
 li > div > a:hover {
   display: block;
@@ -240,8 +233,6 @@ li > div > a {
 
 
 .scrollable {
-  width: 25vw;
-  padding-right: 1vw;
   position: absolute;
   overflow-y: auto;
   height: 90vh;

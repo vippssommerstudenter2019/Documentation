@@ -15,9 +15,9 @@ import arrow_right from "../../img/arrowRight.svg";
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
-  <section className="Sidebar">
+  <div className="Sidebar">
     <SidebarMenu headers={props.headers} api={props.api} expandAll={props.expandAll}/>
-  </section>
+  </div>
 );
 
 // Header for logo and backlink
