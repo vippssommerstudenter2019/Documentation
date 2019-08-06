@@ -6,7 +6,7 @@
 
 .sidenav {
   width: 25vw;
-  max-width: 300px;
+  max-width: 600px;
   box-shadow: none;
 }
 
@@ -241,7 +241,7 @@ li > div > a {
 
 
 .scrollable {
-  width: 25vw;
+  width: 20vw;
   padding-right: 1vw;
   position: absolute;
   overflow-y: auto;
