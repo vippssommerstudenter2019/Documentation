@@ -89,19 +89,47 @@ Sections:
                     title: What do you mean by scopes?
                     description: >
                         Scopes define the personal information you want from the user.
-                        Is defined as a space seperated list, containing the wanted parametres.
+                        Is defined as a space seperated list, containing the wanted parameters.
                 client ID and client secret:
                     title: What about client ID and client secret?
                     description: >
                         The client ID and the client secret is the client identifiers issued by Vipps.
 
-        client_endpoint:
+        client_endpoint: # Move this into the actual steps?
             title: Required endpoint.
             introduction: >
                 This endpoint is required by the OAuth 2.0 API, and is the main way to recieve the User's information and authorisation.
             imagePath:
             endpoint:
+                - name: "[callbackClient]/[callback]"
+                  mode: POST
+                  description: >
+                    Information is passed to the endpoint throught the [URI parameters].
+                    The parameters that will be recieved is the autentification code for a User and 
+                    a state equal to the one passed in the request.
+                    The actual name of the callback is not important as the entire URI is sendt in the request.
+                  extras: # Using the -extra- option to give some additional info about the formated call.
+                    - name: Params
+                      code: |
+                        {
+                            "code"  : "string",
+                            "state" : "string",
+                        }
+                        /*
+                        A call with all parameters:
+                            /[callback]
+                            ?code={code}
+                            &state={state}
+                        */
+           
             keywords:
+                URI parameters:
+                    title: What is a URI parameter?
+                    description: >
+                        A URI parameter is a way to pass information throught a call.
+                        It allows setting values for different expected variables,
+                        and it is used a lot by this API.
+                        
 
     The login process:
         start_authorization:
@@ -121,17 +149,17 @@ Sections:
                     - name: Params
                       code: |
                         {
-                            "response_type" : "string"	
-                            "client_id"     : "string"
-                            "redirect_uri"  : "string"  
-                            "scope"         : "string" 
-                            "state"         : "string"
+                            "response_type" : "string",
+                            "client_id"     : "string", 
+                            "scope"         : "string",
+                            "state"         : "string",
+                            "redirect_uri"  : "string",
                         }
                         /*
-                        A call with all parametres:
+                        A call with all parameters:
                             /oauth2/auth
-                            ?client_id={client_id}
-                            &response_type=code
+                            ?response_type=code
+                            &client_id={client_id}
                             &scope={scopes}
                             &state={state}
                             &redirect_uri={redirect_uri}
@@ -141,7 +169,7 @@ Sections:
                     title: What is state?
                     description: >
                         The state is an opaque value used by the client to maintain state between the request and callback. 
-                        The authorization server includes this value when redirecting the user-agent back to the client. 
+                        The authorisation server includes this value when redirecting the user-agent back to the client. 
                         
                 redirect URI:
                     title: Which redirect URI?
@@ -187,9 +215,9 @@ Sections:
                     - name: Params
                       code: |
                         {
-                            "grant_type"    : "string"	
-                            "code"          : "string"
-                            "redirect_uri"  : "string"
+                            "grant_type"    : "string",	
+                            "code"          : "string",
+                            "redirect_uri"  : "string",
                         }
                         /*
                         A call with all parametres:

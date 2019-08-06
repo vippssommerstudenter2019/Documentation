@@ -100,7 +100,6 @@ Sections:
                 - name: /accesstoken/get
                   description: Gets called when you ask for a valid acess token from Vipps.
                   mode: POST
-            responses: true
             keywords:
                 access token:
                     title: What is an access token?
