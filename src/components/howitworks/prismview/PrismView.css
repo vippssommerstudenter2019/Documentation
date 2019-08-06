@@ -1,4 +1,5 @@
 .prismview {
+  word-break:break-all;
 }
 
 .prismview pre,
@@ -23,7 +24,6 @@
   .prismview pre,
   .prismview code {
     font-family: 'PT Mono' , monospace;
-    font-size: 14px;
     line-height: 25px;
     letter-spacing: .01rem;
     margin-top: 0px;

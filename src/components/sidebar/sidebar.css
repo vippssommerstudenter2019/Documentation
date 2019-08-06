@@ -184,7 +184,9 @@ li > div > a {
   margin: 0px 10px 0px 0px !important;
 }
 
-.sidenav li {
+
+
+li {
   line-height: 32px !important;
   margin-top: 9px !important;
 }
@@ -251,16 +253,17 @@ li > div > a {
   width: 5px;
   background: white !important; /*f6f6f9*/
   border-radius: 110px;
-  box-shadow: inset 10px 0px 0px 10px white;
+  /* box-shadow: inset 10px 0px 0px 10px white; */
 }
 
 ::-webkit-scrollbar {
   z-index: 0;
-  width: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 2px 0px rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
