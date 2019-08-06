@@ -238,11 +238,6 @@ li > div > a {
 
 
 .scrollable {
-<<<<<<< HEAD
-  width: 20vw;
-  padding-right: 1vw;
-=======
->>>>>>> 2646fecfc3e4e57868493c04a6cadef2d88e35f2
   position: absolute;
   overflow-y: auto;
   height: 90vh;
