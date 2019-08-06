@@ -1,7 +1,7 @@
 import React, {Component}from "react";
 import {SideNav, Collapsible, CollapsibleItem} from "react-materialize";
 import "materialize-css";
-import "./materialize.css";
+// import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 import vipps_dev from "../../img/vipps_dev.svg";
