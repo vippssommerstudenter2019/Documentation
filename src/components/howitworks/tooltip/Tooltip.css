@@ -4,24 +4,24 @@
 	opacity: 1;
     z-index: 1000;
     max-width: 400px;
-	border-radius: 100px 25px 25px 25px;
+	border-radius: 100px 25px 25px 25px
 }
 
 .underlined-purple {
 	color: var(--vippspurple);
-	text-decoration: none;
+	text-decoration: none
 }
 
 .underlined-purple:hover {
-	color: var(--signalPurple);
+	color: var(--signalPurple)
 }
 
 /* adds '?' after tool-tip links in text */
 
 .underlined-purple:after {
 	content: ' ?';
-	font-size:12px;
-	font-weight:600;
+	font-size: 12px;
+	font-weight: 600
 }
 
 .rc-custom-link {
@@ -47,6 +47,9 @@
 	font-size: 14px;
 	line-height: 23px
 }
+
+
+/* mobile and small screens */
 
 @media (max-width:812px) {
 	.tool-top {

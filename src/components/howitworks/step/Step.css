@@ -92,7 +92,7 @@
 	font-style: normal;
 	font-weight: normal;
 	font-size: 20px;
-	line-height: 33px;
+	line-height: 33px
 }
 
 
@@ -177,7 +177,7 @@
 		height: 50px;
 		border-radius: 50%;
 		border: 6px solid var(--vippsorange);
-		line-height: 100px;
+		line-height: 100px
 	}
 
 	.img-circle,
@@ -187,7 +187,7 @@
 
 	.step-wrapper img,
 	.step-headline {
-		height:100px;
+		height:100px
 	}
 
 	.step-img,
@@ -218,6 +218,6 @@
   @media (min-width:1300px) {
 
 	.step-title {
-		flex: 18;
+		flex: 18
 	}
 }

@@ -5,48 +5,48 @@
  */
 .dataview {
   background-color: var(--athensGreyMedio);
-  border-radius: 5px;
   border:1px solid var(--athensGreyLight);
+  border-radius: 5px
 }
 
 .dataview:hover {
   background-color: var(--athensGreyLight);
-  border-radius: 5px;
-  border:1px solid var(--athensGrey);
+  border:1px solid var(--athensGrey)
 }
 
 .dataview-title {
   font-family: Vipps;
   font-size: 1rem;
   color: var(--ghost);
+
   padding: 25px 0px 0px 35px; 
   border-radius: 5px 5px 0px 0px;
   word-break:break-all;
   -ms-word-break: break-all;
-  -webkit-word-break:break-all;
+  -webkit-word-break:break-all
 }
-
-
-
 
 /**
  * The styling for the top bar of the data view. Is where we see the title and can copy the data.
  */
+
 .dataview-utility-bar {
-  height: 50px;
-  width: 100%;
-  display:flex;
-  flex-flow:row;
+  display: flex;
+  flex-flow: row;
   justify-content: space-between;
+  height: 50px;
+  width: 100%
 }
 
+.copy-button,
+.header-body-button {
+  font-family: Vipps;
+  color: var(--rum);
+}
 
 .copy-button {
-	font-family: Vipps;
 	font-weight: lighter;
 	background-color:none;
-  color: var(--rum);
-  float: right;
 
   margin: 15px 25px 15px 15px;
   font-size: 13px;
@@ -54,12 +54,10 @@
 
   height: 30px;
   width: 70px;
-  padding:.8rem;
+  
   border-radius: 40px;
   border: 1px solid var(--rum);
-  transition:1s ease;
-
-  align-items: flex-end;
+  transition:1s ease
 }
 
 .copy-button:hover {
@@ -79,43 +77,43 @@
 }
 
 .header-body-button {
-	font-family: Vipps;
   font-size: 13px;
-  color: var(--rum);
   outline: none;
   width: auto;
   margin-right: 5px;
   padding: 25px 0px 0px 35px;  
   height: 20px;
-  align-self:flex-start;
+  align-self: flex-start
 }
+
+
 
 .header-body-button-activated {
   font-weight: 600;
-  color: var(--rum);
+  color: var(--rum)
 }
 
 .header-body-button:hover {
-    color: var(--manatee);
+    color: var(--manatee)
 }
 
 /**
  * Adjustements on the padding on the stored containters
  */
 .dataview .prismview {
-  margin-bottom: 20px;
+  margin-bottom: 20px
 }
 
 .prismview-1 {
-  margin-left:35px;
+  margin-left: 35px
 }
 
 .prismview-2 {
-  margin-left:0;
+  margin-left: 0
 }
 
 .dataview .responsetable {
-  margin: 5px 35px 10px 35px;
+  margin: 5px 35px 10px 35px
 }
 
 
@@ -125,30 +123,26 @@
     font-size: 12px;
     color: var(--ghost);
     padding: 25px 0px 0px 35px; 
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px
   }
 
    .dataview-utility-bar {
-     display:flex;
+     display: flex;
      justify-content: space-between;
-     width:100%;
-  } 
-
-  .header-body-button {
-    width:auto;
+     width: 100%
   }
 
-/*   .copy-button {
-    margin:0 2rem 0 0;
-  } */
+  .header-body-button {
+    width: auto
+  }
 } 
 
 @media (max-width: 812px) {
   .dataview-utility-bar {
-    display:flex;
+    display: flex;
     justify-content: flex-start;
-    width:100%;
-    padding: 0 3rem 0 1rem;
+    width: 100%;
+    padding: 0 3rem 0 1rem
   }
   .dataview-title {
     font-family: Vipps;
@@ -156,34 +150,36 @@
     color: var(--ghost);
     padding: 4rem 2rem 2rem 4rem;
     border-radius: 5px 5px 0px 0px;
-    word-break:break-all;
+    word-break: break-all;
     -ms-word-break: break-all;
+    -webkit-word-break: break-all
   }
+
   .prismview-1 {
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0
   }
   
   .prismview-2 {
-    margin-left:0!important;
-    padding:0;
+    margin-left: 0!important;
+    padding: 0
   }
 
   .header-body-button {
     height: 10px;
-    padding: 2rem 2rem 0 3rem;
+    padding: 2rem 2rem 0 3rem
   }
 
   .copy-button {
-    display:none;
+    display: none
   }
 
   .prisview {
     word-break: break-all;
-    -ms-word-break: break-all;
+    -ms-word-break: break-all
   }
 
   .dataview .responsetable {
-    margin:1rem 3rem 2rem 3rem;
+    margin: 1rem 3rem 2rem 3rem
   }
 } 
