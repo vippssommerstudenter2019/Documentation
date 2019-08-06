@@ -7299,10 +7299,10 @@ input[type=radio]:focus~.checkmark {
 	left: -20px;
 	top: 37px
 }
-
+/* 
 table {
 	font-size: .875rem
-}
+} */
 
 table thead th {
 	border-bottom: .125rem solid #938fa8;

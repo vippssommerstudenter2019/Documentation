@@ -98,7 +98,7 @@ Sections:
                 This token has to be renewned every 24 hours.
             endpoints:
                 - name: /accesstoken/get
-                  description: Gets called when you ask for a valid acess token from Vipps.
+                  description: Initiate a request to Vipps to retrieve the access token.
                   mode: POST
             responses: true
             keywords:
@@ -109,7 +109,7 @@ Sections:
                         An access token, is a system object representing the subject of access control operations. 
                         All API calls are authenticated and authorized based on the application access token (JWT bearer token).
                     linkTitle: API documentation
-                    link: http://localhost:3000/documentation/ecommerce/#authentication
+                    link: /documentation/ecommerce/#authentication
 
         endpoints:
             title: Set up endpoints
@@ -169,7 +169,7 @@ Sections:
                 - name: "/ecomm/v2/payments"
                   mode: POST
                   description: >
-                    Sends a request to Vipps to initiate the payment. 
+                    Send a request to Vipps to initiate the payment. 
                     Once the transaction is successfully initiated in Vipps, 
                     you will receive a URL in response which you can direct 
                     the customer to the [Vipps landing page] with. 
@@ -183,17 +183,17 @@ Sections:
                     title: What is the Vipps landing page?
                     description: The Vipps landing page provides a consistent and recognizable user experience, that helps guide the user through the payment flow. In this way Vipps takes responsibility for helping the user from the browser to the app, and to complete the payment in a familiar way.
                     linkTitle: API Documentation
-                    link: http://localhost:3000/documentation/ecommerce/#initiate-payment 
+                    link: /documentation/ecommerce/#initiate-payment 
                 fallbackURL:
                     title: What is the fallback URL?
                     description: An URL on your site that the customer willl be redirected to after they have confirmed the payment in the Vipps app, which makes it possible for you to provide an order confirmation or a receipt. 
                     linkTitle: API Documentation
-                    link: http://localhost:3000/documentation/ecommerce/#initiate-payment 
+                    link: /documentation/ecommerce/#initiate-payment 
                 app-switch deeplink:
                     title: What is app-switch?
                     description: If you are implementing Vipps in an iOS or Android App, you can – with the help of the app-switch deeplink – guide your customers directly towards the Vipps app to make a more streamlined experience.
                     linkTitle: API Documentation
-                    link: http://localhost:3000/documentation/ecommerce/#initiate-payment
+                    link: /documentation/ecommerce/#initiate-payment
 
 
         customer_confirms:
@@ -216,7 +216,7 @@ Sections:
                     title: Reservation of the payment 
                     description: According to Norwegian law, the seller may only reserve the amount in the buyer's account until the item is sent or service is delivered. This money will not be available to the buyer, but remain in the buyer’s possession.
                     linkTitle: API Documentation
-                    link: http://localhost:3000/documentation/ecommerce/#reserve
+                    link: /documentation/ecommerce/#reserve
 
         ship_item:
             title: Confirm order and send item
@@ -254,7 +254,7 @@ Sections:
             endpoints:
                 - name: "/ecomm/v2/payments/{orderId}/cancel"
                   mode: PUT
-                  description: Sends a request to Vipps for cancellation. The money will be availabe for the buyer.		
+                  description: Send a request to Vipps for cancellation. The money will be availabe for the buyer.		
                   
             keywords:
 
@@ -279,4 +279,4 @@ Outro:
     title: Great! Now you know how the payment process works
     description: You're ready to move forward to the documentation
     imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
-    link: http://localhost:3000/documentation/ecommerce/
+    link: /documentation/ecommerce/
