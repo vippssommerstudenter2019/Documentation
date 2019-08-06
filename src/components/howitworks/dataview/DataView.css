@@ -31,9 +31,7 @@
  */
 
 .dataview-utility-bar {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
+  display: block;
   height: 50px;
   width: 100%
 }
@@ -51,6 +49,7 @@
   margin: 15px 25px 15px 15px;
   font-size: 13px;
   text-align: center;
+  float:right;
 
   height: 30px;
   width: 70px;
@@ -118,7 +117,6 @@
 
 @media (min-width:768px) and (max-width:1100px) {
   .dataview-title {
-    font-family: Vipps;
     font-size: 12px;
     color: var(--ghost);
     padding: 25px 0px 0px 35px; 
@@ -126,11 +124,11 @@
   }
 
    .dataview-utility-bar {
-     justify-content: flex-start;
+     display:block
   }
 
   .copy-button {
-    align-items:flex-end
+    float:right
   }
 
   .header-body-button {

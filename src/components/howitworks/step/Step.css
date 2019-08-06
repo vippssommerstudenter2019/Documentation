@@ -37,7 +37,7 @@
 	padding: 1rem 0rem 1rem 3rem;
 	border-left: 3px solid var(--rum);
 	grid-column: 1/6;
-	margin: 1rem 0 3rem 0
+	margin: 1rem 0 1rem 0
 }
 
 /* The image component */
@@ -86,13 +86,12 @@
 	padding-right: 1rem
 }
 
-.step-description,
-.step-introduction {
+.content-text {
 	font-family: Arial;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 20px;
-	line-height: 33px
+	line-height: 30px
 }
 
 
@@ -101,7 +100,7 @@
 
 @media (max-width: 812px) {
 
-	/* bruker flex som alternativ til grid */
+	/* using flex as an alternative for grid on mobile */
 
 	.step-wrapper {
 		display: flex;
@@ -148,10 +147,9 @@
 		padding: 1rem 0rem 1rem 3rem
 	}
 
-	.step-introduction, .step-description {
-		font-size: 18px;
-		line-height: 28px;
-		padding-bottom: 20px
+	.content-text {
+		font-size:18px;
+		line-height:26px;
 	}
 
 	.step-headline {
@@ -213,6 +211,7 @@
 	.step-data {
 		flex: 1
 	}
+
   }
 
   @media (min-width:1300px) {
@@ -220,4 +219,5 @@
 	.step-title {
 		flex: 18
 	}
+
 }
