@@ -70,13 +70,6 @@ class Content extends React.Component {
     render() {
         let components = [];
 
-        // Check if the swagger data has loaded.
-        if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
-            // TODO: add some sort of animation here.
-            return <div></div>;
-        }
-
-
         for (const [title, section] of Object.entries(this.props.sections)) {
             components.push(this.contentFromSection(title, section));
         }
