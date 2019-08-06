@@ -98,7 +98,7 @@ Sections:
                 This token has to be renewned every 24 hours.
             endpoints:
                 - name: /accesstoken/get
-                  description: Gets called when you ask for a valid acess token from Vipps.
+                  description: Initiate a request to Vipps to retrieve the access token.
                   mode: POST
             responses: true
             keywords:
@@ -169,7 +169,7 @@ Sections:
                 - name: "/ecomm/v2/payments"
                   mode: POST
                   description: >
-                    Sends a request to Vipps to initiate the payment. 
+                    Send a request to Vipps to initiate the payment. 
                     Once the transaction is successfully initiated in Vipps, 
                     you will receive a URL in response which you can direct 
                     the customer to the [Vipps landing page] with. 
@@ -254,7 +254,7 @@ Sections:
             endpoints:
                 - name: "/ecomm/v2/payments/{orderId}/cancel"
                   mode: PUT
-                  description: Sends a request to Vipps for cancellation. The money will be availabe for the buyer.		
+                  description: Send a request to Vipps for cancellation. The money will be availabe for the buyer.		
                   
             keywords:
 

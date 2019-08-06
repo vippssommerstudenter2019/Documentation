@@ -26,7 +26,7 @@ Sections:
             imagePath: ../../assets/ecom-steps/PayWithVipps.svg
             endpoints:
                 - name: "/accesstoken/get"
-                  description: Gets called when you ask for a valid acess token from Vipps		
+                  description: Initiate a request to Vipps to retrieve the access token.
                   mode: POST
                 
             responses: true
@@ -104,7 +104,7 @@ Sections:
             imagePath: ../../assets/ecom-steps/Initiate.svg
             endpoints:
                 - name: "/invoices/{invoiceId}"
-                  description: Submits an invoice to Vipps for processing.
+                  description: Submit an invoice to Vipps for processing.
                   mode: PUT 
             keywords:
                 necessary invoice details:
