@@ -253,11 +253,13 @@ Sections:
         access_information:
             title: Get updated information
             introduction: >
-                The Access token collected can be used to access the information Vipps possesses about the user. 
-                This is usefull as the information about the user can be changed continously and new scopes might be added.
+                The collected Access token can be used to access the 
+                information Vipps possesses about the user. 
+                This is usefull as the information about the user can 
+                be changed continously and new scopes might be added.
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
-                - name: "/userinfo"
+                - name: "/userinfo" # This endpoint also has a header that is not shown in the Swagger file.
                   description: Retrieves the newest user information.
                   mode: GET
             keywords:
