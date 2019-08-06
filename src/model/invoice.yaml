@@ -29,7 +29,6 @@ Sections:
                   description: Gets called when you ask for a valid acess token from Vipps		
                   mode: POST
                 
-            responses: true
             keywords:
                 access token:
                     title: What is an access token?
@@ -50,7 +49,6 @@ Sections:
                   description: Filler
                   mode: NA
                   
-            responses: false
             keywords:
                 Vipps Customer Data Query Service:
                     title: What is Vipps Customer Data Query Service?
@@ -76,8 +74,7 @@ Sections:
                     (with prefix e.g. 47 for Norway) for the value in the body, 
                     for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
                   mode: POST
-                  
-            responses: true 
+                   
             keywords:
                 recipient token:
                     title: What is a recipient token?
