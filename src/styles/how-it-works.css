@@ -249,7 +249,7 @@ html, body {
 }
 
 .section-line {
-	grid-column:1/8;
+	grid-column:1/12;
 	display:flex;
 	flex-flow:row wrap;
 	width:100%;
@@ -269,7 +269,7 @@ html, body {
 }
 
 .last-line {
-	flex:8;
+	flex:7;
 }
 
 .section-end {
