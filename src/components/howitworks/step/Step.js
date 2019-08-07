@@ -82,7 +82,7 @@ class Step extends Component {
 		// But only if it will -NOT- be listed in the body, header or responses field!
 		if (check(extras)) {
 			for (const {name, code} of extras) {
-				const component = <PrismView key={keyTitle+"-"+name} className="prismview-1" code={code}/>;
+				const component = <PrismView key={keyTitle+"-"+name} className="prismview1" code={code}/>;
 				dataList.push(toData(name, code, component));
 			}
 		}
