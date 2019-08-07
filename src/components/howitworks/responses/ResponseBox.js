@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { objectIsEmpty } from '../../../Util';
 import "./ResponseBox.css"
 import PrismView from "../prismview/PrismView";
-import Prism from 'prismjs';
 
 const propTypes = {
     statusCode: PropTypes.string.isRequired,
@@ -18,17 +17,15 @@ class ResponseBox extends React.Component {
         super(props);
         this.expandCollapsible = this.expandCollapsible.bind(this);
     }
-
-    componentDidMount() {
-        Prism.highlightAll();
-    }
-
+	
     /**
      * Expands the collapsible.
      */
     expandCollapsible(event) {
-        event.target.classList.toggle("response-active");
-        var content = event.target.nextElementSibling;
+		const current = event.currentTarget;
+        current.classList.toggle("response-active");
+        var content = current.nextElementSibling;
+		
 		if (content.style.maxHeight) {
 			content.style.maxHeight = null;
 		} else {
@@ -41,6 +38,7 @@ class ResponseBox extends React.Component {
         const error = !this.props.statusCode.startsWith("2");
         const buttonClassName = "response-button-collapsible" + (error ? " error" : "");
         const displayerClassName = "response-displayer-collapsible" + (error ? " error" : "");
+		
 
         // There is content in the response, we'll add a collapsible to display the response. 
         if (!objectIsEmpty(this.props.json)) {

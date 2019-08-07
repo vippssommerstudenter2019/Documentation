@@ -81,7 +81,8 @@
   width: auto;
   margin-right: 5px;
   padding: 25px 0px 0px 35px;  
-  height: 20px;
+  height: 3em;
+  width: fit-content;
   align-self: flex-start
 }
 
@@ -100,14 +101,6 @@
 
 .dataview .prismview {
   margin-bottom: 20px
-}
-
-.prismview-1 {
-  margin-left: 35px
-}
-
-.prismview-2 {
-  margin-left: 0
 }
 
 .dataview .responsetable {
@@ -158,22 +151,9 @@
     -webkit-word-break: break-all
   }
 
-  .prismview-1,
-  .prismview-2 {
-    padding: 0
-  }
-
-  .prismview-1 {
-    margin: 0
-  }
-  
-  .prismview-2 {
-    margin-left: 0!important
-  } 
-
   .header-body-button {
-    height: 10px;
-    padding: 2rem 2rem 0 3rem
+    height: 4rem;
+    padding: 2rem 2rem 0 3rem;
   }
 
   .copy-button {

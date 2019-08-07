@@ -59,7 +59,7 @@ class Step extends Component {
 	 * @param {*} endpoint The endpoint to construct for.
 	 */
 	createEndpointContent(endpoint) {
-		const {name, description, mode} = endpoint;
+		const {name, description, mode, extras} = endpoint;
 		const {header, body, responses} = this.props.endpointData[name];
 		const check = (el) => (el && !objectIsEmpty(el));
 		const toCode = (json) => JSON.stringify(json, null, spaceForJson);
@@ -69,13 +69,22 @@ class Step extends Component {
 		var dataList = [];
 		if (check(header)) {
 			const code = toCode(header);
-			const component = <PrismView key={keyTitle+"-header"} className="prismview-1" code={code}/>;
+			const component = <PrismView key={keyTitle+"-header"} className="prismview1" code={code}/>;
 			dataList.push(toData("Header", code, component));
 		}
 		if (check(body)) {
 			const code = toCode(body);
-			const component = <PrismView key={keyTitle+"-body"} className="prismview-1" code={code}/>;
+			const component = <PrismView key={keyTitle+"-body"} className="prismview1" code={code}/>;
 			dataList.push(toData("Body", code, component));
+		}
+		// This is the allowance of one additional DataViewField, that is purely listed in the .yaml file
+		// Use it carefully, for quickly listing important parametres
+		// But only if it will -NOT- be listed in the body, header or responses field!
+		if (check(extras)) {
+			for (const {name, code} of extras) {
+				const component = <PrismView key={keyTitle+"-"+name} className="prismview-1" code={code}/>;
+				dataList.push(toData(name, code, component));
+			}
 		}
 		if (check(responses)) {
 			const code = (() => {
@@ -86,10 +95,10 @@ class Step extends Component {
 				}
 				return null;
 			})();
-			const component = <ResponseTable key={keyTitle+"-responses"} className="prismview-2" responses={responses} spaceForJson={spaceForJson}/>;
+			const component = <ResponseTable key={keyTitle+"-responses"} className="prismview2" responses={responses} spaceForJson={spaceForJson}/>;
 			dataList.push(toData("Responses", code, component));
 		}
-		
+
 		var out = [];
 		if (check(description)) {
 			out.push(
@@ -128,7 +137,9 @@ class Step extends Component {
 		// Only add the introduction component if there is one provided. This will prevent the extra padding on steps that don't have a introduction.
 		const introductionComponent = (
 		(this.props.metaData.introduction)?
-			<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
+			<div className="step-introduction">
+				<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
+			</div>
 			: null
 		);
 
@@ -142,9 +153,7 @@ class Step extends Component {
 						{this.props.metaData.title}
 					</div>
 				</div>
-				<div className="step-introduction content-text">
-					{introductionComponent}
-				</div>
+				{introductionComponent}
 				{content}
 			</div>
 		);

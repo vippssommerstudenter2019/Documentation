@@ -1,9 +1,12 @@
 ---
 # Login API introduction
+# This Introduction / Process guide is not yet complete
+# We are currently looking into wording and possible extras 
+# that will help to give a simple but broad understanding of this API.
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-login-api/master/docs/swagger.json"
 
 Intro:
-    title: Vipps Login API
+    title: How Vipps Login API works
     introduction: Understanding the process of logging in with Vipps
     description: Before implementing the Vipps login API, you’ll need to get keys for testing and production through the developer portal. 
     imagePath: "../../assets/images/womanWithPhone.svg"
@@ -53,14 +56,32 @@ Sections:
 
     The login process:
         start_authorization:
-            title: User choose login with Vipps.
+            title: User chooses to login with Vipps.
             introduction: When the user is at your website and chooses to pay with Vipps, you need to start authorization.
             imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
                 - name: "/oauth2/auth" #"[callbackPrefix]/v2/oauth2/auth"
                   description: Start authorization against Vipps login by redirect the user to Vipps authorization page. The user is sent with state, redirect URI and the scopes you already selected as necessary when login to your website.
                   mode: GET
-            responses: true
+                  extras: # Using the -extra- option to give some additional info about the formated call. And might just be a temporary solution.
+                    - name: Params
+                      code: |
+                        {
+                            "response_type" : "string",
+                            "client_id"     : "string", 
+                            "scope"         : "string",
+                            "state"         : "string",
+                            "redirect_uri"  : "string",
+                        }
+                        /*
+                        A call with all parameters:
+                            /oauth2/auth
+                            ?response_type=code
+                            &client_id={client_id}
+                            &scope={scopes}
+                            &state={state}
+                            &redirect_uri={redirect_uri}
+                        */
             keywords:
 
         user_login:
@@ -68,7 +89,6 @@ Sections:
             introduction: The user will now need to fill in his mobile number to activate login through the Vipps app. Thereafter, the user is asked to confirm that the Vipps logo shown on screen is identitical to the one shown in Vipps. By confirming, the user approves that Vipps can share personal information to your website. Lastly, the user is sent to the redirect-uri, as specified in beforehand, with associated state and code in body.
             imagePath:
             endpoints:
-            responses:
             keywords:
 
         get_information:
@@ -79,7 +99,22 @@ Sections:
                 - name: "/oauth2/token"
                   description: Collect information about the user by requesting ID Token and Access token from the Vipps API. The request needs to include code, client id, and client secret sent with the user when redirected to your site from the Vipps login portal. The ID Token contains all the information specified with the scopes.
                   mode: POST
-            responses: true
+                  extras: # Using the -extra- option to give some additional info about the formated call.
+                    - name: Params
+                      code: |
+                        {
+                            "grant_type"    : "string",	
+                            "code"          : "string",
+                            "redirect_uri"  : "string",
+                        }
+                        /*
+                        A call with all parametres:
+                            /oauth2/auth
+                            ?grant_type=authorization_code
+                            &code={code}
+                            &redirect_uri={redirect_uri}
+                        */
+                        
             keywords:
 
     Important to implement:
@@ -90,13 +125,25 @@ Sections:
             endpoints:
                 - name: "/userinfo"
                   description: Retrieves the user information.
-                  mode: POST
-            responses: true
+                  mode: GET
             keywords:
-
+            
+        well_known:
+            title: "Get's for configuration and jwt-keys for OpenID."
+            introduction: This is just a filler for the moment, more and better explanation is on it's way
+            imagePath:
+            endpoints:
+                - name: "/.well-known/openid-configuration"
+                  description:
+                  mode: GET
+                  
+                - name: "/.well-known/jwks.json"
+                  description:
+                  mode: GET
+            keywords:
 
 Outro:
     title: Great! Now you know how the payment process works
     description: You're ready to move forward to the documentation
-    imagePath: "../../assets/images/jumpingMan.svg"
-    link: http://localhost:3000/documentation/secure-login/
+    imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
+    link: /documentation/secure-login/

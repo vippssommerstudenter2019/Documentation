@@ -2,30 +2,10 @@ import PropTypes from "prop-types";
 import React, { Component } from 'react';
 import "./DataView.css"
 import { objectIsEmpty, getHashCodeFromString } from "../../../Util";
-import lottie from "lottie-web";
-
-// Animation object
-class LottieAnimation extends Component {
-   ref = null;
-
-   componentDidMount() {
-     lottie.loadAnimation({
-       container: this.ref,
-       renderer: "svg",
-       loop: true,
-       autoplay: true,
-       path: this.props.path
-     });
-   }
-
-   render() {
-     return <div ref={ref => this.ref = ref} />;
-   }
-}
+import LottieAnimation from "../LottieAnimation";
 
 const propTypes = {
     title: PropTypes.string.isRequired,
-	contents: PropTypes.object.isRequired,
 };
 
 /**

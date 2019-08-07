@@ -3,6 +3,7 @@ import React, {Component} from "react";
  */import Tooltip from "rc-tooltip";
 import PropTypes from "prop-types";
 import "./Tooltip.css"
+import { Link } from "react-router-dom";
 
 const customToolTipPropTypes = {
     keyword: PropTypes.string.isRequired,
@@ -16,9 +17,9 @@ class CustomTooltip extends Component {
     render() {
 		const link = (
 		(this.props.link && this.props.linkTitle)? 
-		<a className="rc-custom-link" href={this.props.link} target="_blank" rel="noopener noreferrer">
+		<Link className="rc-custom-link" to={this.props.link} target="_blank" rel="noopener noreferrer">
 		{this.props.linkTitle}
-		</a> : null
+		</Link> : null
 		);
         return (
             <Tooltip

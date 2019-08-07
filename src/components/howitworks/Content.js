@@ -15,15 +15,14 @@ const swaggerExtracter = new SwaggerExtracter();
 class Content extends React.Component {
 
     contentFromSection(title, section) {
-    var subsections = [];
+    var steps = [];
 	
-    for (const [id, subsection] of Object.entries(section)) {
-            // We use the swagger extracter to get example headers, 
-			// bodies and responses for every endpoint in this step.
-			
+    for (const [id, step] of Object.entries(section)) {
+            // We use the swagger and openapi extracter to get example headers, 
+			// bodies and responses for every endpoint in this step
             var endpointData = {};
-			if (subsection.endpoints)
-            for (const endpoint of subsection.endpoints) {
+			if (step.endpoints)
+            for (const endpoint of step.endpoints) {
 				const {name, mode} = endpoint;
 				
                 let header, body, responses;
@@ -42,21 +41,23 @@ class Content extends React.Component {
                 }
             }
 			
-            subsections.push(
+            steps.push(
                 <Step
                     titleid={id}
-                    key={id + subsection.title}
-                    metaData={subsection}
+                    key={id + step.title}
+                    metaData={step}
                     endpointData={endpointData}
                 />
             );
         }
 
+
+        // Wrap every step in a section
         return (
         <div key={"wrapper-"+title} >
-			<div id={title} className="sub-section-title">{title}</div>
-				{subsections}
-			<div className="section-line">
+    			<div id={title} className="intro-title">{title}</div>
+		    		{steps}
+    			<div className="section-line">
 				<div className="first-line"/>
 				<div className="section-end">
 					{"End of: " + title}
@@ -69,13 +70,6 @@ class Content extends React.Component {
 
     render() {
         let components = [];
-
-        // Check if the swagger data has loaded.
-        if (Object.keys(this.props.swaggerData).length === 0 && this.props.swaggerData.constructor === Object) {
-            // TODO: add some sort of animation here.
-            return <div></div>;
-        }
-
 
         for (const [title, section] of Object.entries(this.props.sections)) {
             components.push(this.contentFromSection(title, section));
