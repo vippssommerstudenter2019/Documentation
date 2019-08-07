@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from 'react';
 import Prism from 'prismjs';
-import "./PrismContent.css"
+import "../../../styles/syntaxhighlighting.css"
 import "./PrismView.css"
 
 const propTypes = {

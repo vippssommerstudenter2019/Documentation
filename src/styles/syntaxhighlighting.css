@@ -27,7 +27,7 @@ span.token.boolean {
   color: var(--vippspurple)
   }
 span.token.number {
-  color: var(--vippspurple)
+  color: var(--vippsred)
   }
 span.token.function-name {
   color: var(--vippspurple)
@@ -48,7 +48,7 @@ span.token.attr-name {
   color: var(--vippsblue)
   }
 span.token.string {
-  color: var(--vippsblue)
+  color: var(--vippspurple)
   }
 span.token.char {
   color: var(--vippsblue)

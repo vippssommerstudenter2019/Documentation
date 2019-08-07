@@ -2,7 +2,7 @@ import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import codeblockCSS from "./codeblock.module.css";
 import LottieAnimation from "./LottieAnimation";
-import "./syntaxhighlighting.css";
+import "../../styles/syntaxhighlighting.css";
 
 class CodeBlockRenderer extends React.Component  {
  state = {
