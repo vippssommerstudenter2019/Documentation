@@ -312,12 +312,12 @@ h1:first-child, h1:nth-child(2) {
 
 @media only screen and (max-width: 830px)  {
   .Container {
-    margin-left: 8vw !important;
+    padding-left: 8vw !important;
     max-width: 100vw;
     display: grid;
     grid-template-columns:  auto;
     grid-template-areas:
-      "content1 "
+      "content1"
   }
 
 }

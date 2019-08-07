@@ -19,6 +19,15 @@
   width: 90%;
 }
 
+.SidebarHeader a img {
+  padding-top: 4vh;
+}
+
+.sidenav.sidenav.sidenav-fixed.sidebarPadding {
+  transform: translateX(0%) !important;
+  
+}
+
 @media only screen and (max-width: 830px)  {
   .scrollable {
     display: none;
@@ -43,7 +52,7 @@
 }
 
 .SidebarHeader {
-  /*height: 10vh;*/
+  height: 10vh;
   display: flex;
   padding-left: 20px;
   align-items: left !important;
