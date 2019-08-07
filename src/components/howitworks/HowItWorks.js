@@ -30,7 +30,8 @@ class HowItWorks extends React.Component {
 	
 	constructor(props) {
 		super(props);
-		const getWidth = () => window.innerWidth;
+		const getWidth = () => (window.innerWidth > 0) ? window.innerWidth : window.screen.width;
+		const setLoaded = () => setTimeout(() => this.setState({loaded: true}), 1000);
 		this.state = {
 			pageWidth: getWidth(),
 			intro: null,
@@ -51,7 +52,7 @@ class HowItWorks extends React.Component {
 				metaData: fullContent.Sections,
 			});
 			this.loadSwagger(fullContent.SwaggerURL);
-			setTimeout(() => this.setState({loaded: true}), 1000);
+			setLoaded();
 		});
 	
 		const resize = () => this.setState({pageWidth: getWidth()});

@@ -15,15 +15,14 @@ const swaggerExtracter = new SwaggerExtracter();
 class Content extends React.Component {
 
     contentFromSection(title, section) {
-    var subsections = [];
+    var steps = [];
 	
-    for (const [id, subsection] of Object.entries(section)) {
-            // We use the swagger extracter to get example headers, 
-			// bodies and responses for every endpoint in this step.
-			
+    for (const [id, step] of Object.entries(section)) {
+            // We use the swagger and openapi extracter to get example headers, 
+			// bodies and responses for every endpoint in this step
             var endpointData = {};
-			if (subsection.endpoints)
-            for (const endpoint of subsection.endpoints) {
+			if (step.endpoints)
+            for (const endpoint of step.endpoints) {
 				const {name, mode} = endpoint;
 				
                 let header, body, responses;
@@ -42,20 +41,22 @@ class Content extends React.Component {
                 }
             }
 			
-            subsections.push(
+            steps.push(
                 <Step
                     titleid={id}
-                    key={id + subsection.title}
-                    metaData={subsection}
+                    key={id + step.title}
+                    metaData={step}
                     endpointData={endpointData}
                 />
             );
         }
 
+
+        // Wrap every step in a section
         return (
         <div key={"wrapper-"+title} >
 			<div id={title} className="intro-title">{title}</div>
-				{subsections}
+				{steps}
 			<div className="section-line">
 				<div className="first-line"/>
 				<div className="section-end">
