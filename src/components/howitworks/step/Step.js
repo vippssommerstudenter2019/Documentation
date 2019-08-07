@@ -59,7 +59,7 @@ class Step extends Component {
 	 * @param {*} endpoint The endpoint to construct for.
 	 */
 	createEndpointContent(endpoint) {
-		const {name, description, mode, extra} = endpoint;
+		const {name, description, mode, extras} = endpoint;
 		const {header, body, responses} = this.props.endpointData[name];
 		const check = (el) => (el && !objectIsEmpty(el));
 		const toCode = (json) => JSON.stringify(json, null, spaceForJson);
@@ -77,6 +77,15 @@ class Step extends Component {
 			const component = <PrismView key={keyTitle+"-body"} className="prismview1" code={code}/>;
 			dataList.push(toData("Body", code, component));
 		}
+		// This is the allowance of one additional DataViewField, that is purely listed in the .yaml file
+		// Use it carefully, for quickly listing important parametres
+		// But only if it will -NOT- be listed in the body, header or responses field!
+		if (check(extras)) {
+			for (const {name, code} of extras) {
+				const component = <PrismView key={keyTitle+"-"+name} className="prismview-1" code={code}/>;
+				dataList.push(toData(name, code, component));
+			}
+		}
 		if (check(responses)) {
 			const code = (() => {
 				const statusCodes = Object.keys(responses).sort()
@@ -89,16 +98,7 @@ class Step extends Component {
 			const component = <ResponseTable key={keyTitle+"-responses"} className="prismview2" responses={responses} spaceForJson={spaceForJson}/>;
 			dataList.push(toData("Responses", code, component));
 		}
-		
-		// This is the allowance of one additional DataViewField, that is purely listed in the .yaml file
-		// Use it carefully, for quickly listing important parametres
-		// But only if it will -NOT- be listed in the body, header or responses field!
-		if (check(extra)) {
-			const {name, code} = extra;
-			const component = <PrismView key={keyTitle+"-"+name} className="prismview1" code={code}/>;
-			dataList.push(toData(name, code, component));
-		}
-		
+
 		var out = [];
 		if (check(description)) {
 			out.push(
