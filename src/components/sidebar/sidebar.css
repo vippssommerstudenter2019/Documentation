@@ -20,11 +20,11 @@
 }
 
 .SidebarHeader a img {
+  position: fixed;
   padding-top: 4vh;
 }
 
 .sidenav.sidenav.sidenav-fixed.sidebarPadding {
-  transform: translateX(0%) !important;
   
 }
 
