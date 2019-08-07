@@ -137,7 +137,7 @@ class Step extends Component {
 		// Only add the introduction component if there is one provided. This will prevent the extra padding on steps that don't have a introduction.
 		const introductionComponent = (
 		(this.props.metaData.introduction)?
-			<div className="step-introduction">
+			<div className="step-introduction content-text">
 				<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
 			</div>
 			: null

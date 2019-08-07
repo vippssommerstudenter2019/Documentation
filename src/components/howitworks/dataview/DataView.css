@@ -33,7 +33,8 @@
 .dataview-utility-bar {
   display: block;
   height: 50px;
-  width: 100%
+  width: 100%;
+  padding: 25px 25px 30px 35px;
 }
 
 .copy-button,
@@ -46,7 +47,7 @@
 	font-weight: lighter;
 	background-color:none;
 
-  margin: 15px 25px 15px 15px;
+  margin: 5px 0px 0px 0px;
   font-size: 13px;
   text-align: center;
   float:right;
@@ -80,7 +81,7 @@
   outline: none;
   width: auto;
   margin-right: 5px;
-  padding: 25px 0px 0px 35px;  
+  padding: 0px 15px 0px 0px;  
   height: 3em;
   width: fit-content;
   align-self: flex-start

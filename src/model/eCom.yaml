@@ -86,9 +86,9 @@ Intro:
 FlowChart:
 
     title: Steps in the eCom process
-    browserImage: "../../assets/ecom-illustrations/ecom-flowchart-1.svg"
-    tabletImage: "../../assets/ecom-illustrations/ecom-flowchart2.svg"
-    mobileImage: "../../assets/ecom-illustrations/ecom-flow-mobile2.svg"
+    browserImage: "../../assets/ecom-illustrations/ecom-flowchart-final.svg"
+    tabletImage: "../../assets/ecom-illustrations/ecom-flowchart-final.svg"
+    mobileImage: "../../assets/ecom-illustrations/ecom-flowchart-mobile-final.svg"
     
 Sections:
     Prerequisites:
