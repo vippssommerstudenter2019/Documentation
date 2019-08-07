@@ -24,7 +24,7 @@
 }
 
 .sidenav.sidenav.sidenav-fixed.sidebarPadding {
-  transform: none !important;
+  transform: translateX(0%) !important;
   
 }
 
