@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express-favicon": "^2.0.1",
     "js-yaml": "^3.13.1",
     "json-schema-ref-parser": "^7.1.0",
     "lottie-web": "^5.5.7",
