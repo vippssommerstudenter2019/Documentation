@@ -25,7 +25,6 @@
 
 .sidenav.sidenav.sidenav-fixed.sidebarPadding {
   transform: translateX(0%) !important;
-  
 }
 
 @media only screen and (max-width: 830px)  {
@@ -54,12 +53,17 @@
 .SidebarHeader {
   height: 10vh;
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
   padding-left: 20px;
   align-items: left !important;
   justify-content: left !important;
 }
 
 .Logo {
+  position: fixed;
   height: 30px;
   width: 186px;
   margin-top: 30px;
@@ -248,8 +252,7 @@ li {
 
 .scrollable {
   position: absolute;
-  overflow-y: hidden;
-  height: 90vh;
+  height: 90vh !important;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -291,6 +294,20 @@ li {
   width: 5px;
   background: var(--vippsorange);
   border-radius: 110px;
+}
+
+
+
+.sidenav.sidenav-fixed.sidebarPadding::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px 6px rgba(0, 0, 0, 0.05);
+  width: 5px;
+  background: white;
+  border-radius: 110px;
+}
+
+.sidenav.sidenav-fixed.sidebarPadding::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 2px 0px white;
+
 }
 
 /* Vipps-colors */

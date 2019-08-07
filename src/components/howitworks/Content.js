@@ -50,20 +50,23 @@ class Content extends React.Component {
                 />
             );
         }
-
-
-        // Wrap every step in a section
-        return (
-        <div key={"wrapper-"+title} >
-    			<div id={title} className="intro-title">{title}</div>
-		    		{steps}
-    			<div className="section-line">
+		
+		/*
+		Old line: 
+			<div className="section-line">
 				<div className="first-line"/>
 				<div className="section-end">
 					{"End of: " + title}
 				</div>
 				<div className="last-line"/>
 			</div> 
+		*/
+
+        // Wrap every step in a section
+        return (
+        <div key={"wrapper-"+title} >
+    		<div id={title} className="intro-title">{title}</div>
+		    {steps}
         </div>
         );
     }

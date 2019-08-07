@@ -11,16 +11,24 @@ import yaml from "js-yaml";
 import Sidebar from '../sidebar/sidebar';
 import LottieAnimation from "./LottieAnimation";
 
+
+// This component is currently just copied from sidebar.js
+// And this should probably be fixed
+// Header for logo and backlink
+import { Link } from "react-router-dom";
+import vipps_dev from "../../img/vipps_dev.svg";
+const LandingLogo = () => (
+  <Link to="/">
+    <img src={vipps_dev} alt="logo" />
+  </Link>
+);
+
 /**
  * The input props. 
  */
 const propTypes = {
 	apiName: PropTypes.string.isRequired,
-	intro: PropTypes.string,//remove
-	sections: PropTypes.string,//remove
-	outro: PropTypes.string,//remove
-	swaggerURL: PropTypes.string,//remove
-	yamlContentURL: PropTypes.string//.isRequired,
+	yamlContentURL: PropTypes.string.isRequired,
 };
 
 /**
@@ -81,7 +89,7 @@ class HowItWorks extends React.Component {
 	}
 	
 	sidebar() {
-		if (this.state.pageWidth <= 812) return;
+		if (this.state.pageWidth <= 812) return <div className="topLogo" ><LandingLogo/></div>;
 		var sideBarData = [];
 		const toSub = (subsection, content) => {
 			return {
@@ -115,12 +123,11 @@ class HowItWorks extends React.Component {
 		if (!this.state.loaded) return <LottieAnimation className="LoadingSpinner" path="/loading_spinner.json"/>;
 		return (
 			<div className="App">
-				<div id={this.props.apiName}/>
-				{this.sidebar()}
 				<IntroBox content={this.state.intro} />
 				{this.state.flowchart? <Flowchart content={this.state.flowchart} pagewidth={this.state.pageWidth}/> : null}
 				<Content swaggerData={this.state.swaggerData} sections={this.state.metaData} />
 				<OutroBox content={this.state.outro} />
+				{this.sidebar()}
 			</div>
 		);
 	}
