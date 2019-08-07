@@ -69,12 +69,12 @@ class Step extends Component {
 		var dataList = [];
 		if (check(header)) {
 			const code = toCode(header);
-			const component = <PrismView key={keyTitle+"-header"} className="prismview-1" code={code}/>;
+			const component = <PrismView key={keyTitle+"-header"} className="prismview1" code={code}/>;
 			dataList.push(toData("Header", code, component));
 		}
 		if (check(body)) {
 			const code = toCode(body);
-			const component = <PrismView key={keyTitle+"-body"} className="prismview-1" code={code}/>;
+			const component = <PrismView key={keyTitle+"-body"} className="prismview1" code={code}/>;
 			dataList.push(toData("Body", code, component));
 		}
 		// This is the allowance of one additional DataViewField, that is purely listed in the .yaml file
@@ -95,10 +95,10 @@ class Step extends Component {
 				}
 				return null;
 			})();
-			const component = <ResponseTable key={keyTitle+"-responses"} className="prismview-2" responses={responses} spaceForJson={spaceForJson}/>;
+			const component = <ResponseTable key={keyTitle+"-responses"} className="prismview2" responses={responses} spaceForJson={spaceForJson}/>;
 			dataList.push(toData("Responses", code, component));
 		}
-		
+
 		var out = [];
 		if (check(description)) {
 			out.push(

@@ -76,8 +76,8 @@
   width: 100%;
   margin-right: 25px;
   padding: 25px 0px 0px 35px;  
-  height: 20px;
-  width: 65px;
+  height: 3em;
+  width: fit-content;
 }
 
 .header-body-button-activated {
@@ -92,16 +92,8 @@
 /**
  * Adjustements on the padding on the stored containters
  */
-.dataview .prismview {
+.dataview {
   margin-bottom: 20px;
-}
-
-.prismview-1 {
-  margin-left:35px;
-}
-
-.prismview-2 {
-  margin-left:0;
 }
 
 .dataview .responsetable {
@@ -135,18 +127,10 @@
     word-break:break-all;
     -ms-word-break: break-all;
   }
-  .prismview-1 {
-    padding:0;
-    margin:0;
-  }
-  
-  .prismview-2 {
-    margin-left:0!important;
-    padding:0;
-  }
+
 
   .header-body-button {
-    height: 10px;
+    height: 4rem;
     padding: 2rem 2rem 0 3rem;
   }
 

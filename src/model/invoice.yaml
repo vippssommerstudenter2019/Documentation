@@ -3,7 +3,7 @@
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
 
 Intro:
-    title: Vipps Invoice API
+    title: How Vipps Invoice API works
     introduction: Understanding the process of digital invoices
     description: >
         Before implementing the Vipps Invoice API, 
@@ -11,7 +11,7 @@ Intro:
     imagePath: "../../assets/images/womanWithPhone.svg"
     
 FlowChart:
-    title: Steps to implement for Invoice
+    title: Steps in the invoice process
     browserImage: "../../assets/ecom-illustrations/invoice desktop.svg"
     tabletImage:
     mobileImage: "../../assets/ecom-illustrations/invoice mobile.svg"
@@ -26,7 +26,7 @@ Sections:
             imagePath: ../../assets/ecom-steps/PayWithVipps.svg
             endpoints:
                 - name: "/accesstoken/get"
-                  description: Gets called when you ask for a valid acess token from Vipps		
+                  description: Initiate a request to Vipps to retrieve the access token.
                   mode: POST
                 
             keywords:
@@ -38,7 +38,7 @@ Sections:
                         All API calls are authenticated and authorized based on the application access token 
                         (JWT bearer token).
                     linkTitle: API documentation
-                    link: http://localhost:3000/documentation/invoice/#api-access-token
+                    link: /documentation/invoice/#api-access-token
         
         customer_registry_washing:
             title: Registry washing and customer lookup
@@ -82,7 +82,7 @@ Sections:
                         The recipient token grants access for the ISP to deliver an invoice to 
                         the specific customer in Vipps. The recipient token has is valid for 15 minutes.
                     linkTitle: API documentation
-                    link: http://localhost:3000/documentation/invoice/#recipient-token
+                    link: /documentation/invoice/#recipient-token
                 requirements:
                     title: What requirements?
                     description: >
@@ -90,7 +90,7 @@ Sections:
                         and have a bank account that can be used with Vipps Regninger. 
                         Read more about it in the documentation.
                     linkTitle: API documentation
-                    link: http://localhost:3000/documentation/invoice/#recipient-token
+                    link: /documentation/invoice/#recipient-token
 
     The invoice process:
         send_invoice:
@@ -101,7 +101,7 @@ Sections:
             imagePath: ../../assets/ecom-steps/Initiate.svg
             endpoints:
                 - name: "/invoices/{invoiceId}"
-                  description: Submits an invoice to Vipps for processing.
+                  description: Submit an invoice to Vipps for processing.
                   mode: PUT 
             keywords:
                 necessary invoice details:
@@ -133,7 +133,7 @@ Sections:
                     title: States?
                     description: An invoice will go through several states, and it's important to keep track of these. Read more in the API documentation.
                     linkTitle: API documentation
-                    link: http://localhost:3000/documentation/invoice/#invoice-states
+                    link: /documentation/invoice/#invoice-states
                 state machine diagram:
                     title: What state machine diagram?
                     description: Go to documentation to see all possibles states for invoices throughout the process.
@@ -192,4 +192,4 @@ Outro:
     title: Great! Now you know how invoices with Vipps works
     description: You're ready to move forward to the documentation
     imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
-    link: http://localhost:3000/documentation/invoice/
+    link: /documentation/invoice/

@@ -1,7 +1,7 @@
 import React, {Component}from "react";
 import {SideNav, Collapsible, CollapsibleItem} from "react-materialize";
 import "materialize-css";
-import "./materialize.css";
+// import "./materialize.css";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 import vipps_dev from "../../img/vipps_dev.svg";
@@ -15,9 +15,9 @@ import arrow_right from "../../img/arrowRight.svg";
 
 // Contains the menuitems and backlink
 const Sidebar = props => (
-  <section className="Sidebar">
+  <div className="Sidebar">
     <SidebarMenu headers={props.headers} api={props.api} expandAll={props.expandAll}/>
-  </section>
+  </div>
 );
 
 // Header for logo and backlink
@@ -29,9 +29,7 @@ const SidebarHeader = () => (
 
 // Structures the sidebar content
 const SidebarMenu = props => (
-  <div className="SidebarMenu">
 	<SidebarNavSpy offset={0} percent={25} sections={props.headers} api={props.api} expandAll={props.expandAll} />
-  </div>
 );
 
 // Navigation Menu
