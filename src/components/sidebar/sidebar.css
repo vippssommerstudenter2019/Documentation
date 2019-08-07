@@ -25,7 +25,6 @@
 
 .sidenav.sidenav.sidenav-fixed.sidebarPadding {
   transform: translateX(0%) !important;
-  
 }
 
 @media only screen and (max-width: 830px)  {
@@ -54,12 +53,17 @@
 .SidebarHeader {
   height: 10vh;
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
   padding-left: 20px;
   align-items: left !important;
   justify-content: left !important;
 }
 
 .Logo {
+  position: fixed;
   height: 30px;
   width: 186px;
   margin-top: 30px;
@@ -248,7 +252,7 @@ li {
 
 .scrollable {
   position: absolute;
-  height: 90vh;
+  height: 90vh !important;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
