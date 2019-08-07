@@ -116,8 +116,8 @@ class DataView extends Component {
             // Render a container with code with an utility bar and style it according to Vipps style.
             // We give the first div an id of an unique hash corresponding to the code so when
             // we want to copy something out of it, we know which component to grab the code from
-            <div className="dataview" id={this.state.copyID}>
-                <div className="dataview-title">{this.props.title}</div>
+            <div className="dataview">
+                <div className="dataview-title" id={this.state.copyID}>{this.props.title}</div>
                 <div className="dataview-utility-bar">
                     
                         {buttonComponents}
