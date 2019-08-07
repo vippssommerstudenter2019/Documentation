@@ -265,7 +265,9 @@ Sections:
                     that was granted in the scope.
                   mode: GET
             keywords:
-            
+
+not included: #remove theese two lines to get "well_known" to show up again
+    excluded:
         well_known: #this step could easily be split into two, and it lacks descriptions and a introduction.
             title: "Get's for configuration and jwt-keys for OpenID Connect."
             introduction: >
