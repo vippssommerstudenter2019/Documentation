@@ -46,7 +46,7 @@ Sections:
             imagePath:
             endpoints:
                 - name: "registry_washing"
-                  description: Filler
+                  description: 
                   mode: NA
                   
             keywords:
@@ -149,7 +149,7 @@ Sections:
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
                 - name: customer_pays
-                  description: Filler
+                  description: 
                   mode: NA
             keywords:
                 validation:
@@ -165,7 +165,7 @@ Sections:
             imagePath:
             endpoints:
                 - name: paid_invoice
-                  description: Filler
+                  description: 
                   mode: NA
             keywords:
 
