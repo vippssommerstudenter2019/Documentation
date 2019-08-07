@@ -234,7 +234,7 @@ Sections:
                         The ID Token is a signed JSON Web Token that both
                         represents the authenticated user and 
                         contains the personal information that was requested by the scope.
-                        It is important to to validate it before using any of the data contained in it.
+                        Make sure to validate it before using any of the data contained in it.
                         
                 Access token:
                     title: What is the purpose of the Access token?
@@ -260,7 +260,9 @@ Sections:
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
                 - name: "/userinfo" # This endpoint also has a header that is not shown in the Swagger file.
-                  description: Retrieves the newest user information.
+                  description: >
+                    Retrieves the newest user information,
+                    that was granted in the scope.
                   mode: GET
             keywords:
             
@@ -272,11 +274,11 @@ Sections:
             imagePath:
             endpoints:
                 - name: "/.well-known/openid-configuration"
-                  description:
+                  description: Retrieve the configuration.
                   mode: GET
                   
                 - name: "/.well-known/jwks.json"
-                  description:
+                  description: Get the JSON Web Key Set.
                   mode: GET
             keywords:
 
