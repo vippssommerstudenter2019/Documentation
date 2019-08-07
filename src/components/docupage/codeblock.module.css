@@ -48,6 +48,7 @@
 
 .codeblockNumbering li {
   margin-top: 0;
+  line-height: inherit;
 }
 
 .codeblockBody pre{
