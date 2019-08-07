@@ -140,6 +140,7 @@ table code {
     ". content1 "
 }
 .Content {
+  padding: 10px;
   grid-area: content1 ;
   max-width: 50em ;
   margin-bottom: 30vh;
