@@ -198,8 +198,8 @@ li > div > a {
 
 
 li {
-  line-height: 32px !important;
-  margin-top: 9px !important;
+  line-height: 32px;
+  margin-top: 9px;
 }
 
 .collapsible-header{
