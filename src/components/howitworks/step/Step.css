@@ -47,7 +47,6 @@
 
 .step-img {
 	flex:2;
-/* 	height:150px; */
 	width:100px;
 }
 
@@ -146,9 +145,6 @@
 	.step-description {
 		flex:1;
 	}
-/* 	.step-introduction, .step-description {
-		width:100vw;
-	} */
 
 	.step-headline {
 		margin-bottom:2rem;
