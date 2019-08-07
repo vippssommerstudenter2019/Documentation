@@ -18,12 +18,12 @@
 }
 
 /* adds '?' after tool-tip links in text */
-
+/* 
 .underlined-purple:after {
 	content: ' ?';
 	font-size: 12px;
 	font-weight: 600
-}
+} */
 
 .rc-custom-link {
 	color: white;
