@@ -252,7 +252,7 @@ li {
 
 .scrollable {
   position: absolute;
-  height: 90vh;
+  height: 90vh !important;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
