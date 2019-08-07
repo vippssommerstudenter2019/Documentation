@@ -129,7 +129,9 @@ Sections:
             imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
             endpoints:
                 - name: "/userinfo"
-                  description: Retrieves the user information.
+                  description: >
+                    Retrieves the newest user information, 
+                    that was granted by the scope.
                   mode: GET
             keywords:
 
