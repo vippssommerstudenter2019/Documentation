@@ -12,7 +12,7 @@ Intro:
     
 FlowChart:
     title: Steps in the invoice process
-    browserImage: "../../assets/ecom-illustrations/invoice desktop.svg"
+    browserImage: "../../assets/ecom-illustrations/invoice-flowchart-1.svg"
     tabletImage:
     mobileImage: "../../assets/ecom-illustrations/invoice-flow-mobile.svg"
     
