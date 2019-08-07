@@ -75,7 +75,7 @@ class DocuPage extends React.Component {
     );
   }
 
-  // Return one or two swagger subheaders
+  // Return the subheaders for developer resources
   getChildren() {
     let children = [];
     this.devURLs.forEach(header => {
@@ -85,6 +85,7 @@ class DocuPage extends React.Component {
   }
 
   // Filters the content fetched from Github into headers
+  // Assumes that the there is no ##-heading before the first #-heading
   getHeaders(data) {
     const lines = data.split("\n");
     let navbarHeaders = [];
@@ -107,8 +108,7 @@ class DocuPage extends React.Component {
       }
     })
     navbarHeaders.push(navbarHeader);
-    ;
-    {/* First element is empty*/}
+    /* First element is empty*/
     let sidebarHeaders = navbarHeaders.slice(1);
     sidebarHeaders.unshift(this.devResourceHeader(this.getChildren()));
     return sidebarHeaders;

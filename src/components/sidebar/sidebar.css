@@ -19,6 +19,15 @@
   width: 90%;
 }
 
+.SidebarHeader a img {
+  padding-top: 4vh;
+}
+
+.sidenav.sidenav.sidenav-fixed.sidebarPadding {
+  transform: translateX(0%) !important;
+  
+}
+
 @media only screen and (max-width: 830px)  {
   .scrollable {
     display: none;
@@ -43,7 +52,7 @@
 }
 
 .SidebarHeader {
-  /*height: 10vh;*/
+  height: 10vh;
   display: flex;
   padding-left: 20px;
   align-items: left !important;
@@ -198,8 +207,8 @@ li > div > a {
 
 
 li {
-  line-height: 32px !important;
-  margin-top: 9px !important;
+  line-height: 32px;
+  margin-top: 9px;
 }
 
 .collapsible-header{
@@ -412,7 +421,7 @@ a:hover {
   color: rgba(0, 0, 0, 0.87);
   display: block;
   font-size: 14px;
-  font-weight: 500;
+  /* font-weight: 500; */
   height: 48px;
   line-height: 48px;
   padding: 0 32px;
