@@ -11,6 +11,18 @@ import yaml from "js-yaml";
 import Sidebar from '../sidebar/sidebar';
 import LottieAnimation from "./LottieAnimation";
 
+
+// This component is currently just copied from sidebar.js
+// And this should probably be fixed
+// Header for logo and backlink
+import { Link } from "react-router-dom";
+import vipps_dev from "../../img/vipps_dev.svg";
+const LandingLogo = () => (
+  <Link to="/">
+    <img src={vipps_dev} alt="logo" />
+  </Link>
+);
+
 /**
  * The input props. 
  */
@@ -77,7 +89,7 @@ class HowItWorks extends React.Component {
 	}
 	
 	sidebar() {
-		if (this.state.pageWidth <= 812) return;
+		if (this.state.pageWidth <= 812) return <div className="topLogo" ><LandingLogo/></div>;
 		var sideBarData = [];
 		const toSub = (subsection, content) => {
 			return {

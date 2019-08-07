@@ -98,9 +98,21 @@ html, body {
 	color: var(--vippsblack) !important;
 }
 
+.topLogo {display: none;}
 
 @media (max-width:812px) {
 	/* container on mobile */
+	.topLogo {
+		display: block;
+		position: fixed;
+		height: auto;
+		width: 100%;
+		top: 0;
+		left: 0;
+		padding: 10px;
+		background-color: white;
+		text-align: center;
+	}
 	.App {
 		display:flex;
 		flex-flow:column;
@@ -142,6 +154,8 @@ html, body {
 	margin-top: 64px;
 	height: 100vh;
 }
+
+
 
 /*
  *The layout for the intro elements
