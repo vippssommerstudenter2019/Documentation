@@ -84,10 +84,11 @@ Intro:
     imagePath: "../../assets/images/womanWithPhone.svg"
 
 FlowChart:
+
     title: Steps in the eCom process
     browserImage: "../../assets/ecom-illustrations/ecom-flowchart2.svg"
     tabletImage: "../../assets/ecom-illustrations/ecom-flowchart2.svg"
-    mobileImage: "../../assets/ecom-illustrations/ecom-flow-mobile.svg"
+    mobileImage: "../../assets/ecom-illustrations/ecom-flow-mobile2.svg"
     
 Sections:
     Prerequisites:

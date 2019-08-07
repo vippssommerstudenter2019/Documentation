@@ -21,11 +21,11 @@ class IntroBox extends React.Component {
 						{this.props.content.introduction}
 					</div>
 
-					<div className="intro-description">
+					<div className="intro-description content-text">
 						{this.props.content.description} 
 					</div>
 
-					<div className="intro-description">
+					<div className="intro-description content-text">
 						{this.props.content.descriptiontwo} 
 					</div>
 			</div>

@@ -4,16 +4,25 @@
 	opacity: 1;
     z-index: 1000;
     max-width: 400px;
-	border-radius: 100px 25px 25px 25px;
+	border-radius: 100px 25px 25px 25px
 }
 
 .underlined-purple {
 	color: var(--vippspurple);
 	text-decoration: none;
+	font-weight: 600
 }
 
 .underlined-purple:hover {
-	color: var(--signalPurple);
+	color: var(--signalPurple)
+}
+
+/* adds '?' after tool-tip links in text */
+
+.underlined-purple:after {
+	content: ' ?';
+	font-size: 12px;
+	font-weight: 600
 }
 
 .rc-custom-link {
@@ -22,7 +31,29 @@
 }
 
 .tool-tip {
-	padding:2rem!important;
-	font-weight:300;
-	line-height:24px!important;
+	padding: 3rem!important;
+	font-weight: 300;
+	line-height: 22px!important
 }
+
+.tool-tip-head {
+	font-size: 18px;
+	line-height: 28px;
+	letter-spacing: .2px;
+	margin-bottom: 0;
+	padding-bottom: 0
+}
+
+.tool-tip-text {
+	font-size: 14px;
+	line-height: 23px
+}
+
+
+/* mobile and small screens */
+
+@media (max-width:812px) {
+	.tool-top {
+		font-size: 14px!important
+	}
+} 

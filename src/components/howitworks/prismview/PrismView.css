@@ -1,8 +1,12 @@
+.prismview {
+  word-break:break-all;
+}
+
 .prismview pre,
 .prismview code {
 	font-family: 'PT Mono' , monospace;
-	font-size: .9rem;
-	line-height: 1.75rem;
+	font-size: 1.2rem;
+	line-height: 2.2rem;
 	letter-spacing: .01rem;
 }
 
@@ -27,10 +31,10 @@
   .prismview pre,
   .prismview code {
     font-family: 'PT Mono' , monospace;
-    font-size: 14px;
     line-height: 25px;
     letter-spacing: .01rem;
     padding: 0px 0px 0px 35px !important;
+    word-break: break-all;
   }
 }
 

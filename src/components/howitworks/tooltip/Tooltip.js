@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import 'rc-tooltip/assets/bootstrap.css';
-import Tooltip from "rc-tooltip";
+/* import 'rc-tooltip/assets/bootstrap.css';
+ */import Tooltip from "rc-tooltip";
 import PropTypes from "prop-types";
 import "./Tooltip.css"
 import { Link } from "react-router-dom";
@@ -25,12 +25,12 @@ class CustomTooltip extends Component {
             <Tooltip
                 key={this.props.keyword}
                 overlay={
-                    <div className="default-font-size keyword-overlay tool-tip">
-                        <div className="large-font-size">
+                    <div className="keyword-overlay tool-tip">
+                        <div className="tool-tip-head">
                             <b>{this.props.title}</b>
                         </div>
                         <br />
-                        <div className="default-font-size">
+                        <div className="tool-tip-text">
                             {this.props.description}
                         </div>
                         <br />
