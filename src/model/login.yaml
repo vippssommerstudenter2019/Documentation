@@ -6,11 +6,16 @@
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-login-api/master/docs/swagger.json"
 
 Intro:
-    title: Vipps Login API
+    title: How Vipps Login API works
     introduction: Understanding the process of logging in with Vipps
     description: Before implementing the Vipps login API, you’ll need to get keys for testing and production through the developer portal. 
     imagePath: "../../assets/images/womanWithPhone.svg"
 
+FlowChart:
+    title: Steps to implement for Login
+    browserImage: "../../assets/ecom-illustrations/login-flowchart-1.svg"
+    tabletImage:
+    mobileImage: "../../assets/ecom-illustrations/login-flow-mobile.svg"
 
 Sections:
     Prerequisites:
@@ -58,47 +63,25 @@ Sections:
                 - name: "/oauth2/auth" #"[callbackPrefix]/v2/oauth2/auth"
                   description: Start authorization against Vipps login by redirect the user to Vipps authorization page. The user is sent with state, redirect URI and the scopes you already selected as necessary when login to your website.
                   mode: GET
-                  extra: # Using the -extra- option to give some additional info about the formatted call.
-                    name: Params
-                    code: |
-                        // This is just an example use, 
-                        // and can be removed or edited in the yaml file.
-                        // The only avaliable highlighting at 
-                        // the time is javascript, but could be expanded
+                  extras: # Using the -extra- option to give some additional info about the formated call. And might just be a temporary solution.
+                    - name: Params
+                      code: |
+                        {
+                            "response_type" : "string",
+                            "client_id"     : "string", 
+                            "scope"         : "string",
+                            "state"         : "string",
+                            "redirect_uri"  : "string",
+                        }
                         /*
-                        The complete call:
-                            GET:/oauth2/auth
-                            ?client_id={client_id}
-                            &response_type=code
+                        A call with all parameters:
+                            /oauth2/auth
+                            ?response_type=code
+                            &client_id={client_id}
                             &scope={scopes}
                             &state={state}
                             &redirect_uri={redirect_uri}
                         */
-                        {response_type}	
-                            /*  Value MUST be set to "code".
-                            */
-                        {client_id}	
-                            /*  The client identifier, issued by Vipps.
-                            */
-                        {redirect_uri}
-                            /*  Redirect URL which the user agent
-                                is redirected to after finishing a login.
-                                See API endpoints required by Vipps 
-                                from the merchant.
-                            */
-                        {scope} 	
-                            /*  Scope of the access request,
-                                space-separated list.
-                            */
-                        {state}
-                            /*  An opaque value used by the client to
-                                maintain state between 
-                                the request and callback.
-                                The authorization server 
-                                includes this value 
-                                when redirecting the 
-                                user-agent back to the client.
-                            */
             keywords:
 
         user_login:
@@ -116,6 +99,22 @@ Sections:
                 - name: "/oauth2/token"
                   description: Collect information about the user by requesting ID Token and Access token from the Vipps API. The request needs to include code, client id, and client secret sent with the user when redirected to your site from the Vipps login portal. The ID Token contains all the information specified with the scopes.
                   mode: POST
+                  extras: # Using the -extra- option to give some additional info about the formated call.
+                    - name: Params
+                      code: |
+                        {
+                            "grant_type"    : "string",	
+                            "code"          : "string",
+                            "redirect_uri"  : "string",
+                        }
+                        /*
+                        A call with all parametres:
+                            /oauth2/auth
+                            ?grant_type=authorization_code
+                            &code={code}
+                            &redirect_uri={redirect_uri}
+                        */
+                        
             keywords:
 
     Important to implement:

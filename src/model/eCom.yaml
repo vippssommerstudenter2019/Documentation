@@ -18,13 +18,13 @@
 #       -keywords       : The supplied text-fields for this subsection will be parsed for >> [text keyword]
 #
 #   Note:
-#       keywords is used to create a popup on the page displaying some additional information
+#       keywords is used to create a tooltips on the page displaying some additional information
 #       This includes both the subsection introduction, and the endpoint descriptions.
 #       The keywords looks like this in the text: [example word] or [phrase]
 #       keywords might not be needed and can be left empty
 #       
 #       keywords:
-#           example word: ##The word or phrase it will try to match in the text fields
+#           example word: The word or phrase it will try to match in the text fields
 #               title: example title
 #               description: example description
 #               linkTitle:  example link title
@@ -32,10 +32,10 @@
 #
 #       Also, here is the internal fields of a endpoint:
 #       endpoints:
-#           contains: 
 #               -name[endpoint swagger name], 
-#               -description, 
-#               -mode[GET/POST/PUT/...]
+#                mode[GET/POST/PUT/...]
+#                description
+#                
 #       
 # Intro:
 #   contains:
@@ -70,8 +70,8 @@
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json"
 
 Intro:
-    title: Vipps eCom API
-    introduction: Understanding how the process of online payments works
+    title: How Vipps eCom API works
+    introduction: Understanding the process of online payments
     description: >
         Before implementing the Vipps eCom API, 
         you’ll need to get keys for testing and production through the developer portal. 
@@ -84,10 +84,11 @@ Intro:
     imagePath: "../../assets/images/womanWithPhone.svg"
 
 FlowChart:
-    title: Steps to implement for eCom
-    browserImage: "../../assets/ecom-illustrations/ecom-flowchart2.svg"
+
+    title: Steps in the eCom process
+    browserImage: "../../assets/ecom-illustrations/ecom-flowchart-1.svg"
     tabletImage: "../../assets/ecom-illustrations/ecom-flowchart2.svg"
-    mobileImage: "../../assets/ecom-illustrations/ecom-flow-mobile.svg"
+    mobileImage: "../../assets/ecom-illustrations/ecom-flow-mobile2.svg"
     
 Sections:
     Prerequisites:
@@ -100,7 +101,6 @@ Sections:
                 - name: /accesstoken/get
                   description: Initiate a request to Vipps to retrieve the access token.
                   mode: POST
-            responses: true
             keywords:
                 access token:
                     title: What is an access token?
@@ -243,7 +243,7 @@ Sections:
                   
             keywords:
 
-    Nice to know:
+    Important to implement:
         cancellation:
             title: Cancellation of payment
             introduction: >

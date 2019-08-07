@@ -43,15 +43,16 @@
 }
 
 .SidebarHeader {
-  height: 10vh;
+  /*height: 10vh;*/
   display: flex;
-  padding-left: 30px;
+  padding-left: 20px;
   align-items: left !important;
   justify-content: left !important;
 }
 
 .Logo {
-  width: 100%;
+  height: 30px;
+  width: 186px;
   margin-top: 30px;
 }
 
@@ -124,6 +125,8 @@
 
 
 .arrow {
+  min-width: 8px;
+  max-width: 13px;
   right: 0;
   overflow: visible;
   z-index: 999;
@@ -192,7 +195,9 @@ li > div > a {
   margin: 0px 10px 0px 0px !important;
 }
 
-.sidenav li {
+
+
+li {
   line-height: 32px !important;
   margin-top: 9px !important;
 }
@@ -234,7 +239,7 @@ li > div > a {
 
 .scrollable {
   position: absolute;
-  overflow-y: auto;
+  overflow-y: hidden;
   height: 90vh;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -259,10 +264,25 @@ li > div > a {
 .scrollable::-webkit-scrollbar-thumb {
   background: white !important; /*f6f6f9*/
   border-radius: 110px;
-  box-shadow: inset -10px 0px 0px 10px white;
+  /* box-shadow: inset 10px 0px 0px 10px white; */
 }
 
+::-webkit-scrollbar {
+  z-index: 0;
+  width: 5px;
+  height: 5px;
+}
 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px 6px rgba(0, 0, 0, 0.05);
+  width: 5px;
+  background: var(--vippsorange);
+  border-radius: 110px;
+}
 
 /* Vipps-colors */
 

@@ -48,6 +48,7 @@ h2 {
   grid-area: cards;
   grid-template-columns: 30vw 30vw 30vw;
   justify-content: space-evenly;
+  min-width: 250px;
 }
 
 .DocCard {
@@ -293,4 +294,37 @@ h2 {
 
 .button:focus {
   background-color: #f6f6f9 !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .Cards {
+    margin: auto;
+    display: block;
+    width: 50%;
+  }
+
+  .DocCard {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .StartPage {
+    display: block;
+    height: unset;
+  }
+
+  .VippsDev {
+    grid-area: unset;
+    position: unset;
+  }
+  
+  .VippsDev img {
+    position: unset;
+    width: 50vw !important;
+    bottom: unset;
+    left: unset;
+  }
+
 }

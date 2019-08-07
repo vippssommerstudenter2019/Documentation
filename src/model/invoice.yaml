@@ -3,7 +3,7 @@
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
 
 Intro:
-    title: Vipps Invoice API
+    title: How Vipps Invoice API works
     introduction: Understanding the process of digital invoices
     description: >
         Before implementing the Vipps Invoice API, 
@@ -11,10 +11,10 @@ Intro:
     imagePath: "../../assets/images/womanWithPhone.svg"
     
 FlowChart:
-    title: Steps to implement for Invoice
-    browserImage: "../../assets/ecom-illustrations/invoice desktop.svg"
+    title: Steps in the invoice process
+    browserImage: "../../assets/ecom-illustrations/invoice-flowchart-1.svg"
     tabletImage:
-    mobileImage: "../../assets/ecom-illustrations/invoice mobile.svg"
+    mobileImage: "../../assets/ecom-illustrations/invoice-flow-mobile.svg"
     
 Sections:
     Prerequisites:
@@ -29,7 +29,6 @@ Sections:
                   description: Initiate a request to Vipps to retrieve the access token.
                   mode: POST
                 
-            responses: true
             keywords:
                 access token:
                     title: What is an access token?
@@ -50,7 +49,6 @@ Sections:
                   description: Filler
                   mode: NA
                   
-            responses: false
             keywords:
                 Vipps Customer Data Query Service:
                     title: What is Vipps Customer Data Query Service?
@@ -76,8 +74,7 @@ Sections:
                     (with prefix e.g. 47 for Norway) for the value in the body, 
                     for national indentification number set type as 'nin-no' and for phone, set type as 'msisdn'.
                   mode: POST
-                  
-            responses: true 
+                   
             keywords:
                 recipient token:
                     title: What is a recipient token?
