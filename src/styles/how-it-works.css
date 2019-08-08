@@ -16,36 +16,6 @@ html, body {
 	box-sizing:border-box;
 }
 
-/**
- * Predefined Vipps colours.
- */
-:root {
- --debug: #FF00FF;
- --vippsblack: #161225;
- --vippsblue: #59cbe8;
- --vippsgray: #6f6f6f;
- --vippspurple: #49367E;
- --vippsred: #EB5858;
- --vippsorange: #FF5B24;
- --vippsrust: #9B3716;
- --signalPurple: #5E3DC2;
-
- --ghost: #C9C6D7;
- --seashellPeach: #FFF4EC;
- --gallery: #F0F0F0;
- --athensGrey: #EFEEF3;
- --athensGreyLight: #F6F6F9;
- --athensGreyMedio: #FCFBFE;
- --manatee: #938FA8;
- --rum: #706B8B;
-
- --responseLightGreen: #E9FBE7;
- --responseGreen: #6EC06A;
- --responseLightRed: #FAEAEA;
- --responseRed: #E16060;
-}
-
-/* text colors */
 
 .txt-bk {
 	color: var(--vippsblack)

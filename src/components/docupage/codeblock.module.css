@@ -1,14 +1,5 @@
 
-/* Vipps-colors */
-:root {
-  --lightgrey: #f6f6f9;
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
-}
+
 
 .codeblock {
   font-size: 15px;
@@ -48,7 +39,6 @@
 
 .codeblockNumbering li {
   margin-top: 0;
-  line-height: inherit;
 }
 
 .codeblockBody pre{
@@ -103,17 +93,16 @@
 }
 
 
-.content pre {
+pre {
   margin-right: 20px !important;
 }
 
 pre::-webkit-scrollbar {
   z-index: 0;
   height: 5px;
+  background: red;
 }
 
-pre::-webkit-scrollbar-track {
-}
 
 pre::-webkit-scrollbar-thumb {
   background: #c9c6d7;

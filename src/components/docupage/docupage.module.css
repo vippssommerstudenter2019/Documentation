@@ -83,20 +83,6 @@ h5 {
 
 
 
-/* Vipps-colors */
-
-:root {
-  --lightgrey: #f6f6f9;
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
-}
-
-
-
 .developerResources {
   border: none !important;
 }
@@ -301,15 +287,7 @@ h1:first-child, h1:nth-child(2) {
 
 /* Variables */
 
-:root {
-  --sidebarwidth: 25vw;
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
-}
+
 
 @media only screen and (max-width: 830px)  {
   .Container {

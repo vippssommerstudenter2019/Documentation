@@ -310,17 +310,6 @@ li {
 
 }
 
-/* Vipps-colors */
-
-:root {
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
-}
-
 #myDR:hover {
   color: white;
 }
