@@ -31,4 +31,6 @@
     --athensGreyLight: #F6F6F9;
     --manatee: #938FA8;
     --rum: #706B8B;
+	/* This color is used in 'syntaxhighlighting.css'*/
+	--syntaxgray: #7D8B99;
    }
