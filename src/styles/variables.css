@@ -3,7 +3,7 @@
   /* Functional variables*/
 
     --sidebarwidth: 300px;
-    --contentwidth: 50em;
+    --contentwidth: 50em;  /* Max-width of readable content in docupage */
     --totalwidth: calc( var(--sidebarwidth) + var(--contentwidth) );
 
 
