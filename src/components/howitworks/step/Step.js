@@ -84,18 +84,26 @@ class Step extends Component {
     // Use it carefully, for quickly listing important parametres
     // But only if it will -NOT- be listed in the body, header or responses field!
     if (check(extras)) {
-      for (const { name: extrasName, code } of extras) {
-        const component = <PrismView key={`${keyTitle}-${extrasName}`} className="prismview1" code={code} />;
-        dataList.push(toData(extrasName, code, component));
-      }
+      extras.forEach((extra) => {
+        const component = <PrismView key={`${keyTitle}-${extra.name}`} className="prismview1" code={extra.code} />;
+        dataList.push(toData(extra.name, extra.code, component));
+      });
     }
+
     if (check(responses)) {
       const code = (() => {
         const statusCodes = Object.keys(responses).sort();
-        for (const statusCode of statusCodes) {
-          const json = responses[statusCode].json;
-          if (check(json)) return toCode(json);
-        }
+
+        statusCodes.forEach((statusCode) => {
+          const { json } = responses[statusCode];
+
+          if (check(json)) {
+            return toCode(json);
+          }
+
+          return null;
+        });
+
         return null;
       })();
       const component = <ResponseTable key={`${keyTitle}-responses`} className="prismview2" responses={responses} spaceForJson={spaceForJson} />;
@@ -133,9 +141,9 @@ class Step extends Component {
     // As one step can inlcude more than one endpoint, we loop through them
     // and append all of them
     if (metaData.endpoints) {
-      for (const endpoint of metaData.endpoints) {
+      metaData.endpoints.forEach((endpoint) => {
         content.push(this.createEndpointContent(endpoint));
-      }
+      });
     }
 
     // Only add the introduction component if there is one provided.
