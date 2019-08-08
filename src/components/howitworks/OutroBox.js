@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom"
 
 const propTypes = {
     content: PropTypes.object.isRequired,
@@ -28,11 +29,11 @@ class OutroBox extends React.Component {
 						</div>
 					</div>
 					<div className="outro-link" >
-						<a href={this.props.content.link}>
+						<Link to={this.props.content.link}> 
 							<button className="outro-button" > 
-								eCom API Documentation
+								{this.props.content.buttonTitle}
 							</button>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>
