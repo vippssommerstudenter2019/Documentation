@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import './flowchart.css';
 
 const propTypes = {
-	content: PropTypes.object.isRequired,
-	pagewidth: PropTypes.object.isRequired,
+  content: PropTypes.object.isRequired,
+  pagewidth: PropTypes.object.isRequired,
 };
 
 class Flowchart extends Component {
@@ -26,6 +26,7 @@ class Flowchart extends Component {
   }
 
   render() {
+    const { content } = this.props;
     return (
       <div className="flow-wrapper">
         <div className="step-title">
