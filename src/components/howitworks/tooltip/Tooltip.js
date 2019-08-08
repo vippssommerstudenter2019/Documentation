@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-/* import 'rc-tooltip/assets/bootstrap.css';
- */import Tooltip from 'rc-tooltip';
+import Tooltip from 'rc-tooltip';
 import PropTypes from 'prop-types';
 import './Tooltip.css';
 import { Link } from 'react-router-dom';
@@ -11,37 +11,41 @@ const customToolTipPropTypes = {
   description: PropTypes.string.isRequired,
 };
 
-class CustomTooltip extends Component {
-  render() {
-    const link = (
-      (this.props.link && this.props.linkTitle) ?
-  <Link className="rc-custom-link" to={this.props.link} target="_blank" rel="noopener noreferrer">
-  {this.props.linkTitle}
-		</Link> : null
-    );
-    return (
-          <Tooltip
-              key={this.props.keyword}
-              overlay={(
-<div className="keyword-overlay tool-tip">
-                        <div className="tool-tip-head">
-                            <b>{this.props.title}</b>
-                        </div>
-                        <br />
-                        <div className="tool-tip-text">
-                            {this.props.description}
-                        </div>
-                        <br />
-                        <br />
-                        {link}
-                    </div>
-)}
-              placement="bottom"
-            >
-              <button className="underlined-purple">{this.props.keyword}</button>
-            </Tooltip>
-    );
-  }
+function CustomTooltip(props) {
+  const {
+    title, description, link, linkTitle, keyword,
+  } = props;
+
+  const linkComponent = (
+    (link && linkTitle)
+      ? (
+        <Link className="rc-custom-link" to={link} target="_blank" rel="noopener noreferrer">
+          {linkTitle}
+        </Link>
+      ) : null
+  );
+  return (
+    <Tooltip
+      key={keyword}
+      overlay={(
+        <div className="keyword-overlay tool-tip">
+          <div className="tool-tip-head">
+            <b>{title}</b>
+          </div>
+          <br />
+          <div className="tool-tip-text">
+            {description}
+          </div>
+          <br />
+          <br />
+          {linkComponent}
+        </div>
+      )}
+      placement="bottom"
+    >
+      <button type="button" className="underlined-purple">{keyword}</button>
+    </Tooltip>
+  );
 }
 
 /**
@@ -50,7 +54,7 @@ class CustomTooltip extends Component {
  */
 const tooltipTextPropTypes = {
   input: PropTypes.string.isRequired,
-  keywordsData: PropTypes.object,
+  keywordsData: PropTypes.object.isRequired,
 };
 
 /**
@@ -58,36 +62,39 @@ const tooltipTextPropTypes = {
  */
 class TooltipText extends Component {
   render() {
+    const { input, keywordsData } = this.props;
+
     // Find the words in the input which has got square brackets, e.g. [access token]
-    if (!this.props.input) return [];
-    const matches = this.props.input.match(/\[.*?\]/g);
+    if (!input) return [];
+    const matches = input.match(/\[.*?\]/g);
     const result = [];
 
-    if (matches && this.props.keywordsData) {
+    if (matches && keywordsData) {
       let currentIndex = 0;
 
       // Loop through all the matches and inject a tooltip
-      for (const match of matches) {
-        const indexOfMatch = this.props.input.indexOf(match);
-        result.push(this.props.input.substring(currentIndex, indexOfMatch));
+
+      matches.forEach((match) => {
+        const indexOfMatch = input.indexOf(match);
+        result.push(input.substring(currentIndex, indexOfMatch));
 
         const matchWithoutBrackets = match.replace(/[[\]]/g, '');
         result.push(
-                  <CustomTooltip
-key={this.props.keywordsData[matchWithoutBrackets].title}
-                      keyword={matchWithoutBrackets}
-                      title={this.props.keywordsData[matchWithoutBrackets].title}
-                      description={this.props.keywordsData[matchWithoutBrackets].description}
-                      link={this.props.keywordsData[matchWithoutBrackets].link}
-                      linkTitle={this.props.keywordsData[matchWithoutBrackets].linkTitle}
-                    />,
+          <CustomTooltip
+            key={keywordsData[matchWithoutBrackets].title}
+            keyword={matchWithoutBrackets}
+            title={keywordsData[matchWithoutBrackets].title}
+            description={keywordsData[matchWithoutBrackets].description}
+            link={keywordsData[matchWithoutBrackets].link}
+            linkTitle={keywordsData[matchWithoutBrackets].linkTitle}
+          />,
         );
         currentIndex = indexOfMatch + match.length;
-      }
+      });
 
-      result.push(this.props.input.substring(currentIndex, this.props.input.length));
+      result.push(input.substring(currentIndex, input.length));
     } else {
-      result.push(this.props.input.replace(/[[\]]/g, ''));
+      result.push(input.replace(/[[\]]/g, ''));
     }
 
     return result;
