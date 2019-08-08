@@ -2,7 +2,10 @@
 
   /* Functional variables*/
 
-    --sidebarwidth: 25vw;
+    --sidebarwidth: 300px;
+    --contentwidth: 50em;
+    --totalwidth: calc( var(--sidebarwidth) + var(--contentwidth) );
+
 
 
     /* Vipps Colors */
