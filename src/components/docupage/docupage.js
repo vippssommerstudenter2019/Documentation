@@ -15,7 +15,7 @@ import {
 } from './Constants';
 import '../../styles/vipps-style.css';
 import docupageCSS from './docupage.module.css';
-import LottieAnimation from './LottieAnimation';
+import LottieAnimation from '../../LottieAnimation';
 
 const goToAnchor = () => {
   const { hash } = window.document.location;
@@ -118,7 +118,7 @@ class DocuPage extends React.Component {
 
   // Creates the spinner
   loadingScreen = () => (
-    <div className={docupageCSS.LoadingSpinner}>
+    <div className="LoadingSpinner">
       <LottieAnimation path="/loading_spinner.json" />
     </div>
   )

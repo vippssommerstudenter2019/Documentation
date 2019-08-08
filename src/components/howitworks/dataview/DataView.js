@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import './DataView.css';
 import { objectIsEmpty } from '../../../Util';
-import LottieAnimation from '../LottieAnimation';
+import LottieAnimation from '../../../LottieAnimation';
 
 const propTypes = {
   mainTitle: PropTypes.string.isRequired,
@@ -69,7 +69,6 @@ class DataView extends Component {
     } catch (err) {
       // an animation with sad-smiley?
       setCopy('Error');
-      console.error('Fallback: Oops, unable to copy', err);
     }
 
     document.getElementById(copyID).removeChild(textArea);

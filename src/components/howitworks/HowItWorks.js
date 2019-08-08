@@ -10,8 +10,7 @@ import OutroBox from './OutroBox';
 import '../../model/SwaggerExtracter';
 import '../../styles/how-it-works.css';
 import Sidebar from '../sidebar/sidebar';
-import LottieAnimation from './LottieAnimation';
-
+import LottieAnimation from '../../LottieAnimation';
 
 // This component is currently just copied from sidebar.js
 // And this should probably be fixed
@@ -76,9 +75,8 @@ class HowItWorks extends React.Component {
         // in that way we can extract bodies with examples for example.
         $RefParser.dereference(response, (error, data) => {
           if (error) {
-            console.error('SwaggerLoadError: ', error);
-
-            // TODO: Handle error
+            /* eslint no-alert: 0 */
+            window.alert('Could not load data.');
           } else {
             this.setState({ swaggerData: data });
           }
@@ -106,12 +104,14 @@ class HowItWorks extends React.Component {
     };
 
     const sections = Object.entries(metaData);
-    for (const [section, subsections] of sections) {
-      const children = toSec(section);
-      for (const [subsection, content] of Object.entries(subsections)) {
-        children.push(toSub(subsection, content));
-      }
-    }
+
+    Object.keys(sections).forEach((sectionKey) => {
+      const children = toSec(sections[sectionKey]);
+
+      Object.keys(sections[sectionKey]).forEach((stepKey) => {
+        children.push(toSub(stepKey, sections[sectionKey][stepKey]));
+      });
+    });
 
     return <Sidebar headers={sideBarData} expandAll api="#ecom" />;
   }
@@ -120,7 +120,13 @@ class HowItWorks extends React.Component {
     const {
       loaded, intro, flowchart, swaggerData, metaData, pageWidth, outro,
     } = this.state;
-    if (!loaded) return <LottieAnimation className="LoadingSpinner" path="/loading_spinner.json" />;
+    if (!loaded) {
+      return (
+        <div className="LoadingSpinner">
+          <LottieAnimation path="/loading_spinner.json" />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <IntroBox content={intro} />
