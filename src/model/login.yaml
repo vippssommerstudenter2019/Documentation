@@ -13,9 +13,9 @@ Intro:
 
 FlowChart:
     title: Steps in the Login process
-    browserImage: "../../assets/ecom-illustrations/login-flowchart-1.svg"
-    tabletImage:
-    mobileImage: "../../assets/ecom-illustrations/login-flow-mobile.svg"
+    browserImage: "../../assets/ecom-illustrations/login-flowchart-final.svg"
+    tabletImage: "../../assets/ecom-illustrations/login-flowchart-final.svg"
+    mobileImage: "../../assets/ecom-illustrations/login-flowchart-mobile-final.svg"
 
 Sections:
     Prerequisites:
@@ -63,7 +63,7 @@ Sections:
         start_authorization:
             title: User chooses to login with Vipps.
             introduction: When the user is at your website and chooses to pay with Vipps, you need to start authorization.
-            imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
+            imagePath: ../../assets/ecom-illustrations/initiateLogin.svg
             endpoints:
                 - name: "/oauth2/auth" #"[callbackPrefix]/v2/oauth2/auth"
                   description: Start authorization against Vipps login by redirect the user to Vipps authorization page. The user is sent with state, redirect URI and the scopes you already selected as necessary when login to your website.
@@ -92,14 +92,14 @@ Sections:
         user_login:
             title: User confirms
             introduction: The user will now need to fill in his mobile number to activate login through the Vipps app. Thereafter, the user is asked to confirm that the Vipps logo shown on screen is identitical to the one shown in Vipps. By confirming, the user approves that Vipps can share personal information to your website. Lastly, the user is sent to the redirect-uri, as specified in beforehand, with associated state and code in body.
-            imagePath:
+            imagePath: ../../assets/ecom-illustrations/customerConfirms-2.svg
             endpoints:
             keywords:
 
         get_information:
             title: Get information about user
             introduction: As the user is redirected to your page, you can now collect information about the user logged in. 
-            imagePath: ../../assets/ecom-steps/Initiate.svg
+            imagePath: ../../assets/ecom-illustrations/GetInformation.svg
             endpoints:
                 - name: "/oauth2/token"
                   description: Collect information about the user by requesting ID Token and Access token from the Vipps API. The request needs to include code, client id, and client secret sent with the user when redirected to your site from the Vipps login portal. The ID Token contains all the information specified with the scopes.
@@ -126,7 +126,7 @@ Sections:
         access_information:
             title: Get updated information
             introduction: The access token collected can be used to access the information Vipps possesses about the user. This is usefull as the information about the user can be changed continously and new scopes might be added.
-            imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
+            imagePath: ../../assets/ecom-illustrations/GetUpdatedInformation.svg
             endpoints:
                 - name: "/userinfo"
                   description: >
@@ -152,7 +152,8 @@ not included: #remove theese two lines to get "well_known" to show up again
             keywords:
 
 Outro:
-    title: Great! Now you know how the payment process works
+    title: Great! Now you know how secure login works
     description: You're ready to move forward to the documentation
     imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
+    buttonTitle: Login API Documentation
     link: /documentation/secure-login/

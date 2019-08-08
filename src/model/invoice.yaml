@@ -12,9 +12,9 @@ Intro:
     
 FlowChart:
     title: Steps in the invoice process
-    browserImage: "../../assets/ecom-illustrations/invoice-flowchart-1.svg"
-    tabletImage:
-    mobileImage: "../../assets/ecom-illustrations/invoice-flow-mobile.svg"
+    browserImage: "../../assets/ecom-illustrations/invoice-flowchart-final.svg"
+    tabletImage: "../../assets/ecom-illustrations/invoice-flowchart-final.svg"
+    mobileImage: "../../assets/ecom-illustrations/invoice-flowchart-mobile-final.svg"
     
 Sections:
     Prerequisites:
@@ -23,7 +23,6 @@ Sections:
             introduction: >
                 In order to make API calls to Vipps, you need a valid [access token]. 
                 The token is valid for 24 hours.
-            imagePath: ../../assets/ecom-steps/PayWithVipps.svg
             endpoints:
                 - name: "/accesstoken/get"
                   description: Initiate a request to Vipps to retrieve the access token.
@@ -65,7 +64,6 @@ Sections:
                 To submit an invoice, you need both an access token and a [recipient token]. 
                 You will only receive a recipient token if your customer fulfills the [requirements] 
                 specified for receiving invoices through Vipps. 
-            imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
                 - name: "/recipients/tokens"
                   description: >
@@ -98,7 +96,7 @@ Sections:
             introduction: >
                 The first step in the invoice payment process is sending an invoice to the customer. 
                 As an ISP you should have recieved an invoice from your partner with a URL and [necessary invoice details].
-            imagePath: ../../assets/ecom-steps/Initiate.svg
+            imagePath: ../../assets/ecom-illustrations/send-invoice.svg
             endpoints:
                 - name: "/invoices/{invoiceId}"
                   description: Submit an invoice to Vipps for processing.
@@ -120,7 +118,6 @@ Sections:
                 This will usually happen within 5 seconds, but during high load, it might take longer. 
                 Other states may also occur at this point and this can be seen in the [state machine diagram]. 
                 When the status is pending, the invoice is visible for the customer in Vipps.
-            imagePath: ../../assets/ecom-steps/MobileAndBrowser.svg
             endpoints:
                 - name: "/invoices/{invoiceId}" 
                   description: >
@@ -146,7 +143,7 @@ Sections:
             introduction: >
                 As the state has gone from created to pending, the customer will now be notified and the invoice will appear in the customers Vipps app. The customer confirms the invoice and the status changes from pending to approved. If the customer wants to open the attached invoice pdf. before confirming, the IPP/invoice hotel need to perform a [validation] of the JSON Web Token included in the URL. This is to secure that the customer only access the given invoice. 
                 Note that after due date it is useful to know if the invoice was confirmed by the customer. This is easily done by checking the status once again.
-            imagePath: ../../assets/ecom-steps/ConfirmInApp.svg
+            imagePath: ../../assets/ecom-illustrations/customerConfirms-2.svg
             endpoints:
                 - name: customer_pays
                   description: 
@@ -177,7 +174,7 @@ Sections:
                 you should be able to revoke so that the customer no longer sees it. 
                 Note that invoices can be revoked if they currently are in the states created, pending or rejected. 
                 If an invoice has been approved, deleted or expired it cannot be revoked anymore.
-            imagePath: ../../assets/ecom-steps/Cancel.svg
+            imagePath: ../../assets/ecom-illustrations/payment.svg
             endpoints:
                 - name: "/invoices/{invoiceId}/status/revoked" 
                   description: >
@@ -192,4 +189,5 @@ Outro:
     title: Great! Now you know how invoices with Vipps works
     description: You're ready to move forward to the documentation
     imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
+    buttonTitle: Invoice API Documentation
     link: /documentation/invoice/
