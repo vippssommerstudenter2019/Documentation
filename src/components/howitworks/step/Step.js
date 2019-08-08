@@ -58,7 +58,7 @@ class Step extends Component {
    * @param {*} endpoint The endpoint to construct for.
    */
   createEndpointContent(endpoint) {
-    const { endpointData } = this.props;
+    const { endpointData, metaData } = this.props;
     const {
       name, description, mode, extras,
     } = endpoint;
@@ -107,7 +107,7 @@ class Step extends Component {
       out.push(
         <div key={`${keyTitle}-text-responses`} className="step-text-responses content-text">
           <div key={`${keyTitle}-description`} className="step-description content-text">
-            <TooltipText input={description} keywordsData={this.props.metaData.keywords} />
+            <TooltipText input={description} keywordsData={metaData.keywords} />
           </div>
         </div>,
       );
@@ -127,12 +127,13 @@ class Step extends Component {
   }
 
   render() {
+    const { metaData, titleid } = this.props;
     const content = [];
 
     // As one step can inlcude more than one endpoint, we loop through them
     // and append all of them
-    if (this.props.metaData.endpoints) {
-      for (const endpoint of this.props.metaData.endpoints) {
+    if (metaData.endpoints) {
+      for (const endpoint of metaData.endpoints) {
         content.push(this.createEndpointContent(endpoint));
       }
     }
@@ -140,12 +141,12 @@ class Step extends Component {
     // Only add the introduction component if there is one provided.
     // This will prevent the extra padding on steps that don't have a introduction.
     const introductionComponent = (
-      (this.props.metaData.introduction)
+      (metaData.introduction)
         ? (
           <div className="step-introduction content-text">
             <TooltipText
-              input={this.props.metaData.introduction}
-              keywordsData={this.props.metaData.keywords}
+              input={metaData.introduction}
+              keywordsData={metaData.keywords}
             />
           </div>
         )
@@ -158,8 +159,8 @@ class Step extends Component {
           <div className="step-img">
             {this.createImageComponent()}
           </div>
-          <div id={this.props.titleid} key="title" className="step-title">
-            {this.props.metaData.title}
+          <div id={titleid} key="title" className="step-title">
+            {metaData.title}
           </div>
         </div>
         {introductionComponent}
