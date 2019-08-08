@@ -21,6 +21,7 @@
 
 .codeblockBody * {
   font-family: inherit;
+  line-height: inherit;
 }
 
 .codeblockNumbering {
