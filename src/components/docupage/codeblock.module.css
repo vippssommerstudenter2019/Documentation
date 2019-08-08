@@ -100,11 +100,10 @@ pre {
 pre::-webkit-scrollbar {
   z-index: 0;
   height: 5px;
-  background: red;
 }
 
 
 pre::-webkit-scrollbar-thumb {
-  background: #c9c6d7;
+  background: var(--ghost);
   border-radius: 5px;
 }
