@@ -7,6 +7,7 @@ import OpenAPIExtracter from '../../model/OpenAPIExtracter';
 const propTypes = {
   sections: PropTypes.object.isRequired,
   swaggerData: PropTypes.object.isRequired,
+
 };
 
 const openAPIExtracter = new OpenAPIExtracter();

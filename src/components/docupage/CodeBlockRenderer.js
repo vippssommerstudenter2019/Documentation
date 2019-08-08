@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import codeblockCSS from './codeblock.module.css';
 import LottieAnimation from './LottieAnimation';
@@ -60,5 +61,10 @@ class CodeBlockRenderer extends React.Component {
     );
   }
 }
+
+CodeBlockRenderer.propTypes = {
+  language: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 export default CodeBlockRenderer;

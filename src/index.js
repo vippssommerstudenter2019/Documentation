@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import DocuPage from './components/docupage/docupage';
 import HowItWorks from './components/howitworks/HowItWorks';
-import { StartPage } from './components/startpage/startpage';
+import StartPage from './components/startpage/startpage';
 import './styles/index.css';
 import './styles/vipps-style.css';
 import eComYaml from './model/eCom.yaml';

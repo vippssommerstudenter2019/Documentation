@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import HeadingRenderer from './HeadingRenderer';
 import InlineCodeRenderer from './InlineCodeRenderer';
@@ -16,29 +17,48 @@ import '../../styles/vipps-style.css';
 import docupageCSS from './docupage.module.css';
 import LottieAnimation from './LottieAnimation';
 
-class DocuPage extends React.Component {
-  state = {
-    content: '',
-    headers: [],
-    loaded: false,
+const goToAnchor = () => {
+  const { hash } = window.document.location;
+  if (hash !== '') {
+    setTimeout(() => {
+      if (window.location.hash) {
+        window.scrollTo(0, 0);
+        window.location.href = hash;
+      }
+    }, 1);
   }
+};
 
-  srcURL = SOURCE_URLS[this.props.doc];
+// Returns a HTML anchor from a given header
+const makeAnchor = string => (
+  `#${
+    string
+      .replace(new RegExp("[|&;:$%@<>()+,#']", 'g'), '')
+      .trim()
+      .replace(new RegExp(' ', 'g'), '-')
+      .toLowerCase()}`
+);
 
-  devURLs = DEV_URLS[this.props.doc];
 
-  pageTitle = PAGE_TITLES[this.props.doc];
-
-  devResourceHeader = DEV_SIDEBAR_HEADER;
-
-
+class DocuPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      content: '',
+      headers: [],
+      loaded: false,
+    };
+    this.srcURL = SOURCE_URLS[props.doc];
+    this.devURLs = DEV_URLS[props.doc];
+    this.pageTitle = PAGE_TITLES[props.doc];
+    this.devResourceHeader = DEV_SIDEBAR_HEADER;
+  }
 
   componentDidMount() {
     // Get source data, then process it, then set the content of the page
-    fetch(this.srcURL).then(response =>
-      response.text().then(fullText =>
-        this.setContent(fullText)),
-    );
+    fetch(this.srcURL)
+      .then(response => response.text()
+        .then(fullText => this.setContent(fullText)));
   }
 
   setContent(fullText) {
@@ -51,34 +71,12 @@ class DocuPage extends React.Component {
         content,
         headers,
         loaded: true,
-      }, () => this.goToAnchor()); // After the state is updated and the page re-rendered, we can navigate to the proper place in the text
+      }, () => goToAnchor());
+      // After the state is updated and the page re-rendered,
+      // we can navigate to the proper place in the text
     }, 1000);
   }
 
-  // Scroll to link location on the page, if there is one
-  goToAnchor() {
-    const { hash } = window.document.location;
-    if (hash !== '') {
-      setTimeout(() => {
-        if (window.location.hash) {
-          window.scrollTo(0, 0);
-          window.location.href = hash;
-        }
-      }, 1);
-    }
-  }
-
-  // Returns a HTML anchor from a given header
-  makeAnchor(string) {
-    return (
-      `#${
-        string
-          .replace(new RegExp("[|&;:$%@<>()+,#']", 'g'), '')
-          .trim()
-          .replace(new RegExp(' ', 'g'), '-')
-          .toLowerCase()}`
-    );
-  }
 
   // Return the subheaders for developer resources
   getChildren() {
@@ -97,19 +95,17 @@ class DocuPage extends React.Component {
     let navbarHeader = { name: '', anchor: '', children: [] };
     lines.forEach((line) => {
       if (line.startsWith('###')) {
-        
+        // Do nothing here, so that we don't catch level 3 headings.
       } else if (line.startsWith('##')) {
         navbarHeader.children.push({
           name: line.replace('##', '').trim(),
-          anchor: this.makeAnchor(line),
+          anchor: makeAnchor(line),
         });
       } else if (line.startsWith('#')) {
         navbarHeaders.push(navbarHeader);
         navbarHeader = { name: '', anchor: '', children: [] };
         navbarHeader.name = line.replace('#', '').trim();
-        navbarHeader.anchor = this.makeAnchor(line);
-      } else {
-        
+        navbarHeader.anchor = makeAnchor(line);
       }
     });
     navbarHeaders.push(navbarHeader);
@@ -119,25 +115,6 @@ class DocuPage extends React.Component {
     return sidebarHeaders;
   }
 
-  // Filters out table of content and first heading + paragraph
-  filterMarkdown(text) {
-    let filteredMarkdown = '';
-    let filterOut = false;
-    for (const line of text.split('\n')) {
-      if (
-        (line.startsWith('# ') && line.toLowerCase().includes(this.pageTitle.toLowerCase()))
-          || line.toLowerCase().includes('table of content')
-      ) {
-        filterOut = true;
-      } else if (filterOut === true && line.startsWith('#')) {
-        filteredMarkdown += `${line.toString()}\n`;
-        filterOut = false;
-      } else if (filterOut === false) {
-        filteredMarkdown += `${line.toString()}\n`;
-      }
-    }
-    return filteredMarkdown;
-  }
 
   // Creates the spinner
   loadingScreen = () => (
@@ -147,27 +124,57 @@ class DocuPage extends React.Component {
   )
 
   // Creates the docupage screen
-  docuScreen = () => (
-    <div className={docupageCSS.Container}>
-      <Sidebar headers={this.state.headers} api={this.props.doc} />
-      <div className={docupageCSS.Content}>
-        <DeveloperResources devURLs={this.devURLs} pageTitle={this.pageTitle} />
-        <ReactMarkdown
-          source={this.state.content}
-          renderers={{
+  docuScreen = () => {
+    const { headers, content } = this.state;
+    const { doc } = this.props;
+    return (
+      <div className={docupageCSS.Container}>
+        <Sidebar headers={headers} api={doc} />
+        <div className={docupageCSS.Content}>
+          <DeveloperResources devURLs={this.devURLs} pageTitle={this.pageTitle} />
+          <ReactMarkdown
+            source={content}
+            renderers={{
               code: CodeBlockRenderer,
               inlineCode: InlineCodeRenderer,
               heading: HeadingRenderer,
               table: TableRenderer,
             }}
           />
+        </div>
       </div>
-    </div>
-  )
+    );
+  }
 
-  render = () => (
-    this.state.loaded ? this.docuScreen() : this.loadingScreen()
-  );
+  // Filters out table of content and first heading + paragraph
+  filterMarkdown(text) {
+    let filteredMarkdown = '';
+    let filterOut = false;
+    text.split('\n').forEach((line) => {
+      if (
+        (line.startsWith('# ') && line.toLowerCase().includes(this.pageTitle.toLowerCase()))
+            || line.toLowerCase().includes('table of content')
+      ) {
+        filterOut = true;
+      } else if (filterOut === true && line.startsWith('#')) {
+        filteredMarkdown += `${line.toString()}\n`;
+        filterOut = false;
+      } else if (filterOut === false) {
+        filteredMarkdown += `${line.toString()}\n`;
+      }
+    });
+    return filteredMarkdown;
+  }
+
+  render = () => {
+    const { loaded } = this.state;
+    return (loaded ? this.docuScreen() : this.loadingScreen());
+  }
 }
+
+DocuPage.propTypes = {
+  doc: PropTypes.string.isRequired,
+};
+
 
 export default DocuPage;

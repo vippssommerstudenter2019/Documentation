@@ -1,9 +1,7 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb","plugin:import/react"],
-  "settings": {"import/resolver": {
-    "node": {
-      "extensions": [".js",".jsx"]
-     }
-  }}
+  "extends": "airbnb",
+  "globals": { "fetch": false, "document": false, "window": false },
+  "rules": {"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+             "react/forbid-prop-types": 0}
 }

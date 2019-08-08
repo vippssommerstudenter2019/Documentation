@@ -16,7 +16,7 @@ const UrlElement = (LinkTitle, LinkURL) => (
 const DeveloperResources = args => (
   <div className={docupageCSS.devResources}>
     <h1 id={docupageCSS.pageTitle}>
-                Documentation -
+      Documentation -
       {' '}
       {args.pageTitle}
     </h1>
