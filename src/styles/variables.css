@@ -33,4 +33,6 @@
     --rum: #706B8B;
 	/* This color is used in 'syntaxhighlighting.css'*/
 	--syntaxgray: #7D8B99;
+	/* This color is used to have correct transparency */
+	--safetransparent: rgba(1, 1, 1, 0.5);
    }
