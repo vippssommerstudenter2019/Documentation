@@ -5,17 +5,8 @@
     --sidebarwidth: 25vw;
 
 
-    /* Colors */
+    /* Vipps Colors */
     
-    --lightvippsorange: #fdf4ed;
-    --vippsblueberry: #49367e;
-    --lightgrey: #f6f6f9; 
-    --athensGreyMedio: #FCFBFE;
-    --responseLightGreen: #E9FBE7;
-    --responseGreen: #6EC06A;
-    --responseLightRed: #FAEAEA;
-    --responseRed: #E16060;
-    --debug: #FF00FF;
     --vippsblack: #161225;
     --vippsblue: #59cbe8;
     --vippsgray: #6f6f6f;
@@ -23,6 +14,17 @@
     --vippsred: #EB5858;
     --vippsorange: #FF5B24;
     --vippsrust: #9B3716;
+    --vippslightorange: #fdf4ed;
+
+    /* Custom Colors */
+    
+    --lightgrey: #f6f6f9; 
+    --athensGreyMedio: #FCFBFE;
+    --responseLightGreen: #E9FBE7;
+    --responseGreen: #6EC06A;
+    --responseLightRed: #FAEAEA;
+    --responseRed: #E16060;
+    --debug: #FF00FF;
     --signalPurple: #5E3DC2;
     --ghost: #C9C6D7;
     --seashellPeach: #FFF4EC;
@@ -31,4 +33,8 @@
     --athensGreyLight: #F6F6F9;
     --manatee: #938FA8;
     --rum: #706B8B;
+	/* This color is used in 'syntaxhighlighting.css'*/
+	--syntaxgray: #7D8B99;
+	/* This color is used to have correct transparency */
+	--safetransparent: rgba(1, 1, 1, 0);
    }
