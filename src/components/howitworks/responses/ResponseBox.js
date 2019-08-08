@@ -11,22 +11,22 @@ const propTypes = {
   spaceForJson: PropTypes.number.isRequired,
 };
 
-expandCollapsible(event) {
-    const current = event.currentTarget;
-    current.classList.toggle('response-active');
-    const content = current.nextElementSibling;
+function expandCollapsible(event) {
+  const current = event.currentTarget;
+  current.classList.toggle('response-active');
+  const content = current.nextElementSibling;
 
-    if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-    } else {
-        content.style.maxHeight = `${content.scrollHeight}px`;
-    }
+  if (content.style.maxHeight) {
+    content.style.maxHeight = null;
+  } else {
+    content.style.maxHeight = `${content.scrollHeight}px`;
+  }
 }
 
 class ResponseBox extends React.Component {
   constructor(props) {
     super(props);
-    this.expandCollapsible = this.expandCollapsible.bind(this);
+    this.expandCollapsible = expandCollapsible.bind(this);
   }
 
   render() {
@@ -36,7 +36,7 @@ class ResponseBox extends React.Component {
       spaceForJson,
       description,
     } = this.props;
-    
+
     const error = !statusCode.startsWith('2');
     const buttonClassName = `response-button-collapsible${error ? ' error' : ''}`;
     const displayerClassName = `response-displayer-collapsible${error ? ' error' : ''}`;
