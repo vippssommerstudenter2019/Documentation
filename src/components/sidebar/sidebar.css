@@ -142,7 +142,7 @@
   max-width: 13px;
   right: 0;
   overflow: visible;
-  z-index: 999;
+  z-index: 0;
   margin-right: 0 !important;
   transition-duration:0.2s;
   transition-timing-function: ease-in-out;
@@ -392,7 +392,7 @@ a:hover {
   height: -moz-calc(100%);
   padding-bottom: 60px;
   background-color: #fff;
-  z-index: 999;
+  z-index: 1;
   overflow-y: auto;
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -586,7 +586,7 @@ a:hover {
   opacity: 0;
   height: 120vh;
   background-color: var(--safetransparent);
-  z-index: 900;
+  z-index: 2;
   display: none;
 }
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
