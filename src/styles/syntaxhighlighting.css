@@ -1,18 +1,18 @@
 
 span.token.comment {
-    color: #7D8B99
+    color: var(--syntaxgray)
   }
 span.token.block-comment {
-  color: #7D8B99
+  color: var(--syntaxgray)
   }
 span.token.prolog {
-  color: #7D8B99
+  color: var(--syntaxgray)
   }
 span.token.doctype {
-  color: #7D8B99
+  color: var(--syntaxgray)
   }
 span.token.cdata {
-  color: #7D8B99
+  color: var(--syntaxgray)
   }
 span.token.punctuation {
   color: var(--vippsblack)
