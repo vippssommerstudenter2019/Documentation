@@ -10,8 +10,12 @@ This guide describes how the code is structured for the «documentation» sectio
 ## Retrieving content and getting data from the API files 
 
 ## The flow
+
+
  
 ## The components
+
+Inside docupage.js we render both the loading screen and the documentation screen. The documentation screen consists of the sidebar, the developer resourses part, and the markdown file from github. The react markdown element has four renderers: CodeBlockRenderer, InlineCodeRenderer, HeadingRenderer and TableRenderer. Each of these has their own .js file. 
 
 ## Styling
 
