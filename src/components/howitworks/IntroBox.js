@@ -1,38 +1,27 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-const propTypes = {
-    content: PropTypes.object.isRequired,
-};
+import React from 'react';
 
 /**
  * Represents a box with a short overview over the content.
  */
-class IntroBox extends React.Component {
-    render() {
-        return (
-			<div className="intro-wrapper">
+const IntroBox = args => (
+  <div className="intro-wrapper">
 
-					<div className="intro-title">
-						{this.props.content.title}
-					</div>
+    <div className="intro-title">
+      {args.content.title}
+    </div>
 
-					<div className="intro-sub">
-						{this.props.content.introduction}
-					</div>
+    <div className="intro-sub">
+      {args.content.introduction}
+    </div>
 
-					<div className="intro-description content-text">
-						{this.props.content.description} 
-					</div>
+    <div className="intro-description content-text">
+      {args.content.description}
+    </div>
 
-					<div className="intro-description content-text">
-						{this.props.content.descriptiontwo} 
-					</div>
-			</div>
-        );
-	}
-};
-
-IntroBox.propTypes = propTypes;
+    <div className="intro-description content-text">
+      {args.content.descriptiontwo}
+    </div>
+  </div>
+);
 
 export default IntroBox;
