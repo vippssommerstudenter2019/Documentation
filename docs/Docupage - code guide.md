@@ -10,7 +10,6 @@ This guide describes how the code is structured for the «documentation» sectio
 ## Retrieving content and getting data from the API files 
 
 ## The flow
-
  
 ## The components
 
