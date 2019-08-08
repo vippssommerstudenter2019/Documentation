@@ -71,14 +71,6 @@ class SidebarNavSpy extends Component {
     window.clearInterval(this.timerID);
   }
 
-  // returns a value based on the position of a element,
-  // the higest value should be the selected element
-  elementAboveLine(element) {
-    const { line } = this.state;
-    const rect = element.getBoundingClientRect();
-    // return rect.top >= 0 - offset && rect.bottom <= window.innerHeight + offset;
-    return rect.bottom <= line;
-  }
 
   // This function spies on all the elements on the
   // Requires a Section to be visible by ID, to find it's subsections
@@ -124,90 +116,105 @@ class SidebarNavSpy extends Component {
     });
   }
 
-  // TODO: Please re-write and split up this mammoth render function, avoid nested functions.
-  render() {
-    const { active } = this.state;
-    const { sections } = this.props;
-    const activeSection = active.section;
-    const activeSubsection = active.subsection;
-
-    function createSubsection(subsection, sec, sub) {
-      const headSelect = (activeSection === sec && activeSubsection === sub) ? 'selectedElement' : '';
-      const header = (
-        <a href={subsection.anchor}>
-          {' '}
-          {subsection.name}
-          {' '}
-        </a>
-      );
-      return (
-        <li className={`listEl ${headSelect}`} key={`sec${sec}sub${sub}`}>
-          {header}
-        </li>
-      );
-    }
-
-    const createLinks = (link, sec, sub) => (
-      <li className="listEl" key={`sec${sec}sub${sub}`}>
-        <a
-          key={`sec${sec}sub${sub}`}
-          href={link.anchor}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {` ${link.name} `}
-        </a>
+  createSubsection = (subsection, sec, sub, activeSection, activeSubsection) => {
+    const headSelect = (activeSection === sec && activeSubsection === sub) ? 'selectedElement' : '';
+    const header = (
+      <a href={subsection.anchor}>
+        {' '}
+        {subsection.name}
+        {' '}
+      </a>
+    );
+    return (
+      <li className={`listEl ${headSelect}`} key={`sec${sec}sub${sub}`}>
+        {header}
       </li>
     );
-    const sidebarHeaders = sections.map((section, sec) => {
-      const headSelect = (activeSection === sec && activeSubsection === -1) ? 'selectedElement' : '';
-      const header = (
-        (section.children.length === 0)
-          ? (
-            <div className={`listTop ${headSelect}`}>
-              <a className="sidebarLink" href={section.anchor}>{section.name}</a>
-            </div>
-          )
-          : (
-            <div className={`listTop ${headSelect}`}>
-              <a className="sidebarLink" href={section.anchor}>{section.name}</a>
-              <img className="arrow" alt="arrow" src={arrowRight} />
-            </div>
-          )
-      );
-      const subsections = (
-        (section.name === 'Developer resources')
-          ? (
-            <ul>
-              {section.children.map((el, sub) => createLinks(el, sec, sub))}
-            </ul>
-          )
-          : (
-            <ul>
-              {section.children.map((el, sub) => createSubsection(el, sec, sub))}
-            </ul>
-          )
-      );
-      const key = `secid-${sec}`;
-      return (
-        <CollapsibleItem id={key} key={key} header={header}>
-          {subsections}
-        </CollapsibleItem>
-      );
-    });
-    return (
-      <SideNav className="sidebarPadding">
-        <div className="SidebarHeader">
-          <SidebarHeader />
-        </div>
-        <div className="scrollable">
-          <Collapsible accordion={false}>
-            {sidebarHeaders}
-          </Collapsible>
-        </div>
-      </SideNav>
-    );
   }
+
+  createLinks = (link, sec, sub) => (
+    <li className="listEl" key={`sec${sec}sub${sub}`}>
+      <a
+        key={`sec${sec}sub${sub}`}
+        href={link.anchor}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {` ${link.name} `}
+      </a>
+    </li>
+  );
+
+createSidebarHeaders = (sections, activeSection, activeSubsection) => (
+  sections.map((section, sec) => {
+    const headSelect = (activeSection === sec && activeSubsection === -1) ? 'selectedElement' : '';
+    const header = (
+      (section.children.length === 0)
+        ? (
+          <div className={`listTop ${headSelect}`}>
+            <a className="sidebarLink" href={section.anchor}>{section.name}</a>
+          </div>
+        )
+        : (
+          <div className={`listTop ${headSelect}`}>
+            <a className="sidebarLink" href={section.anchor}>{section.name}</a>
+            <img className="arrow" alt="arrow" src={arrowRight} />
+          </div>
+        )
+    );
+    const subsections = (
+      (section.name === 'Developer resources')
+        ? (
+          <ul>
+            {section.children.map((el, sub) => this.createLinks(el, sec, sub))}
+          </ul>
+        )
+        : (
+          <ul>
+            {section.children.map(
+              (el, sub) => this.createSubsection(el, sec, sub, activeSection, activeSubsection),
+            )}
+          </ul>
+        )
+    );
+    const key = `secid-${sec}`;
+    return (
+      <CollapsibleItem id={key} key={key} header={header}>
+        {subsections}
+      </CollapsibleItem>
+    );
+  })
+)
+
+// returns a value based on the position of a element,
+// the higest value should be the selected element
+elementAboveLine(element) {
+  const { line } = this.state;
+  const rect = element.getBoundingClientRect();
+  // return rect.top >= 0 - offset && rect.bottom <= window.innerHeight + offset;
+  return rect.bottom <= line;
+}
+
+// TODO: Please re-write and split up this mammoth render function, avoid nested functions.
+render() {
+  const { active } = this.state;
+  const { sections } = this.props;
+  const activeSection = active.section;
+  const activeSubsection = active.subsection;
+  const sidebarHeaders = this.createSidebarHeaders(sections, activeSection, activeSubsection);
+  return (
+    <SideNav className="sidebarPadding">
+      <div className="SidebarHeader">
+        <SidebarHeader />
+      </div>
+      <div className="scrollable">
+        <Collapsible accordion={false}>
+          {sidebarHeaders}
+        </Collapsible>
+      </div>
+    </SideNav>
+  );
+}
 }
 
 SidebarNavSpy.propTypes = {
