@@ -30,7 +30,6 @@ import { objectIsEmpty } from '../../../Util';
  * EndpointData inlcudes a dictionary of endpoints with example headers, bodies and responses.
  */
 const propTypes = {
-  titleid: PropTypes.string.isRequired,
   metaData: PropTypes.object.isRequired,
   endpointData: PropTypes.object.isRequired,
 };
@@ -43,7 +42,6 @@ const spaceForJson = 4;
 
 
 class Step extends Component {
-// Returns a container containing the image (if there was provided one).
   createImageComponent() {
     const { metaData } = this.props;
     if (metaData.imagePath) {
@@ -123,9 +121,9 @@ class Step extends Component {
     const out = [];
     if (check(description)) {
       out.push(
-        <div key={`${keyTitle}-text-responses`} className="step-text-responses content-text">
+        <div key={`${keyTitle}-text-responses`} className="step-text-responses body-text">
           {endpointTitleComponent}
-          <div key={`${keyTitle}-description`} className="step-description content-text">
+          <div key={`${keyTitle}-description`} className="step-description body-text">
             <TooltipText input={description} keywordsData={metaData.keywords} />
           </div>
         </div>,
@@ -147,7 +145,7 @@ class Step extends Component {
   }
 
   render() {
-    const { metaData, titleid } = this.props;
+    const { metaData } = this.props;
     const content = [];
 
     // As one step can inlcude more than one endpoint, we loop through them
@@ -173,20 +171,21 @@ class Step extends Component {
         : null
     );
 
-    return (
-      <div className="step-wrapper">
-        <div className="step-headline">
-          <div className="step-img">
-            {this.createImageComponent()}
-          </div>
-          <div id={titleid} key="title" className="step-title">
-            {metaData.title}
-          </div>
-        </div>
-        {introductionComponent}
-        {content}
-      </div>
-    );
+
+		return (
+			<div className="step-wrapper" >
+				<div className="step-headline">
+					<div className="step-img">
+						{this.createImageComponent()}
+					</div>
+					<div id={this.props.titleid} key="title" className="third-headline step-title">
+						{this.props.metaData.title}
+					</div>
+				</div>
+				{introductionComponent}
+				{content}
+			</div>
+		);
   }
 }
 
