@@ -55,7 +55,7 @@ class CodeBlockRenderer extends React.Component {
             {value.split('\n').map((line, number) => (<li key={`${number + 1}-${language}-${line}`}>{number + 1}</li>))}
           </div>
           { /* SyntaxHighlighter will inject inline styling if not explicitly denied */ }
-          <SyntaxHighlighter language={language} useInlineStyles={false}>{value}</SyntaxHighlighter>
+          <SyntaxHighlighter language={language} useInlineStyles={false} style=''>{value}</SyntaxHighlighter>
         </div>
       </div>
     );
