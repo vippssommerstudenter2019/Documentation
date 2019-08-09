@@ -1,0 +1,523 @@
+/* How It Works */
+
+@import url("../../node_modules/rc-tooltip/assets/bootstrap.css");
+@import url("vipps-style.css");
+
+@viewport {
+	width: device-width;
+  }
+
+
+html, body {
+	height:100%;
+}
+
+* {
+	box-sizing:border-box;
+}
+
+
+.txt-bk {
+	color: var(--vippsblack)
+}
+
+.txt-orng {
+	color: var(--vippsorange)
+}
+
+.txt-prpl {
+	color: var(--vippspurple)
+}
+
+/* backgrounds */
+
+.bg-bk {
+	background-color: var(--vippsblack)
+}
+
+.bg-orng {
+	background-color: var(--vippsorange)
+}
+
+.bg-prpl {
+	background-color: var(--vippspurple)
+}
+
+
+/* container for whole site */
+
+.LoadingSpinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 10%;
+  max-height: 10%;
+}
+
+.App {
+	display: grid;
+  	grid-template-columns: 380px auto;
+  	grid-template-rows: auto auto auto auto;
+  	grid-template-areas:
+    	"sidebar intro-wrapper"
+		"sidebar flow-wrapper"
+		"sidebar content-wrapper"
+		"sidebar outro-wrapper";
+	
+	color: var(--vippsblack) !important;
+}
+
+.topLogo {display: none;}
+
+@media (max-width:812px) {
+	/* container on mobile */
+	.topLogo {
+		display: block;
+		position: fixed;
+		height: auto;
+		width: 100%;
+		top: 0;
+		left: 0;
+		padding: 10px;
+		background-color: white;
+		text-align: center;
+	}
+	.App {
+		display:flex;
+		flex-flow:column;
+		margin:0;
+	}
+}
+
+/* 
+ * The main wrapper for the content of the application
+ * Apllication content does not include the vipps header or footer
+ */
+
+/* .intro-wrapper,
+.content-wrapper,
+.flow-wrapper {
+	margin-left: 10px !important;
+}  */
+
+.intro-wrapper   {
+	grid-area: intro-wrapper
+}
+
+.content-wrapper {
+	grid-area: content-wrapper
+}
+
+.intro-wrapper,
+.content-wrapper,
+.flow-wrapper {
+	max-width:1000px
+}
+
+.flow-wrapper {
+	grid-area: flow-wrapper;
+}
+
+.outro-wrapper {
+	grid-area: outro-wrapper;
+	margin-top: 64px;
+	height: 100vh;
+}
+
+
+
+/*
+ *The layout for the intro elements
+ */
+
+.intro-wrapper {
+	margin-top: 50px;
+	margin-bottom: 64px
+}
+
+.intro-text,
+.intro-image {
+	align-self:center
+}
+
+.intro-text {
+	justify-self: end; 
+	font-weight:300
+}
+
+.intro-image { 
+	grid-area: intro-image;
+	justify-self: start
+}
+
+/* headline styling */
+
+.first-headline,
+.second-headline,
+.third-headline {
+	font-family:VippsHeader;
+}
+
+.first-headline { /* h1 */
+	font-size:48px;
+	line-height:58px;
+	letter-spacing:0.2px;
+}
+
+.second-headline { /* h2 */
+	font-size:32px;
+	line-height:41px;
+	letter-spacing:0.2px;
+	margin-bottom:30px;
+}
+
+.third-headline { /* h3 */
+	font-size:21px;
+	line-height:30px;
+	letter-spacing:0.2px;
+}
+
+.preamble { /* styling for preamle */
+	font-size: 28px;
+	line-height: 38px;
+	letter-spacing:0.2px;
+	margin:3rem 0 3rem 0;
+}
+
+.vippsorange { /* some headlines will be orange */
+	color:var(--vippsorange);
+}
+
+.body-text { /* predefined text style for all body text */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing:0.2px;
+}
+
+.p-spacing { /* own spacing for paragraphs */
+	margin: 1rem 1rem 1rem 0
+}
+
+/*
+ *The layout for the outro elements
+ */
+
+.outro-element {
+	grid-area:outro-wrapper;
+
+	height: 100%;
+	width: 100%;
+	z-index: 1000; /* Goddamnit Docu Group, why is scrollbar @ z: 999 ?? */
+	background-color: var(--seashellPeach);
+	color: var(--vippsblack);
+	margin: 0;
+	padding: 128px;
+	text-align: center
+}
+
+.outro-text {
+	margin: auto;
+	max-width: 800px;
+	overflow-y: auto
+}
+
+.outro-image, 
+.outro-image img { 
+	width:  250px;
+	height: 250px;
+	margin: auto
+}
+
+.outro-link {  
+	margin-top: 50px
+}
+
+.outro-title {
+	margin-bottom: 40px;
+	font-weight: bold;
+	font-size: 28px
+}
+
+.outro-button {
+	cursor: pointer;
+	text-decoration: none;
+	border-radius: 30px;
+	background: var(--vippspurple);
+	padding: 1.3rem 2rem 1.3rem 2rem;
+	font-size: 14px;
+	color: #fff
+}
+
+.outro-sub {
+	font-size:20px;
+	line-height:30px
+}
+
+/* Styling for the sections */
+
+.section-title {
+	color: var(--vippsorange);
+	font-size:40px;
+	font-family: Vippsheader
+}
+
+.section-line {
+	grid-column:1/12;
+	display:flex;
+	flex-flow:row wrap;
+	width:100%;
+	margin:20px 0 80px 0
+}
+
+.first-line,
+.last-line {
+	height:2px;
+	background-color:var(--rum);
+	width:100%;
+	align-self:center
+}
+
+.first-line {
+	flex:1;
+}
+
+.last-line {
+	flex:7;
+}
+
+.section-end {
+	flex:2;
+	color:var(--rum);
+	text-transform:uppercase;
+	font-size:1rem;
+	margin:0 2rem 0 2rem
+}
+
+
+/* mobilie */
+@media (max-width:812px) {
+
+	.first-headline,
+	.second-headline,
+	.third-headline {
+		font-family:VippsHeader;
+	}
+
+	.first-headline {
+		color:var(--vippsorange)!important;
+		font-size:28px;
+		line-height:32px;
+	}
+	
+	.second-headline {
+		color:var(--vippsorange);
+		font-size:24px;
+		line-height:30px;
+	}
+	
+	.third-headline {
+		color:var(--vippsblack);
+		font-size:18px;
+		line-height:26px;
+	}
+
+	.preamble {
+		font-size:20px;
+		line-height:30px;
+	}
+
+	.body-text {
+		font-size:16px;
+		line-height:28px;
+		font-weight:300;
+	}
+
+	.intro-description {
+		font-size:18px;
+		line-height:28px;
+		font-weight:300;
+		font-family: Arial, sans-serif;
+		margin-top:10px
+	}
+
+	.intro-description,
+	.intro-sub {
+		width:100%
+	}
+
+	.intro-title {
+		font-size:33px;
+		line-height:47px;
+		margin-top:70px
+	}
+
+	.intro-sub {
+		font-size:22px;
+		line-height:34px;
+		padding:2rem 0 2rem 0
+	}
+
+	.content-wrapper {
+		margin: 20px;
+		flex: 1 0 auto;
+		max-width:100vw
+	}
+
+	.intro-wrapper {
+		margin: 20px 10px 50px 20px
+	}
+
+	.first-line,
+	.flow-wrapper,
+	.intro-wrapper {
+		flex:1
+	}
+
+	.outro-wrapper {
+		display:flex;
+		flex-flow:column;
+		flex-shrink:0;
+		margin:60px 0 0 0;
+		padding:0;
+		width:100vw;
+		height:auto;
+		background-color: var(--seashellPeach)
+	}
+
+	.outro-element {
+		left: 0;
+		width: 100vw;
+		z-index: 1000; 
+		color: var(--vippsblack);
+		margin: 0px;
+		text-align: center;
+		padding:4rem 2rem 6rem 2rem;
+		align-items:center
+	}
+	
+	.outro-text {
+		margin: auto;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 800px;
+		overflow-y: auto
+	}
+	
+	.outro-image, 
+	.outro-image img { 
+		width:  160px;
+		height: 160px;
+		align-self:center
+	}
+	
+	.outro-link {  
+		margin-top: 30px;
+	}
+	
+	.outro-title {
+		font-weight: bold;
+		font-size:18px
+	}
+
+	.outro-button {
+		padding:2rem 3rem 2rem 3rem;
+		font-size:14px;
+		color: white;
+	}
+
+	.outro-sub {
+		font-size:14px
+	}
+	
+	.section-line {
+		display:flex;
+		flex-flow:row wrap;
+		width:100%;
+		margin:0 0 30px 0
+	}
+
+	.first-line,
+	.last-line {
+		height:3px;
+		background-color:var(--rum);
+		width:100%;
+		align-self:center
+	}
+	
+	.section-end {
+		flex:2;
+		color:var(--rum);
+		text-transform:uppercase;
+		font-size:12px;
+		margin:0 2rem 0 2rem
+	}
+	
+	.last-line {
+		flex:8;
+		align-items:flex-end;
+		width:40vw
+	}
+
+	.flow-wrapper {
+		margin:0;
+		padding:0
+	}
+
+	.flow-wrapper img {
+		width:100%
+	}
+}
+
+/* tablet and small screens */
+
+@media (min-width:768px) and (max-width:1100px) {
+
+	.intro-description {
+		font-size:15px;
+		line-height:24px
+	}
+
+	.intro-description,
+	.intro-wrapper {
+		width:100%
+	}
+
+	.intro-title {
+		font-size:35px;
+		line-height:45px;
+		margin-top:70px
+	}
+
+	.intro-sub {
+		font-size:22px;
+		line-height:28px
+	}
+
+	.content-wrapper,
+	.intro-wrapper {
+		max-width:1100px
+	}
+}
+
+
+/* big screens */
+
+@media (min-width:1200px) {
+	.intro-description {
+		font-size: 18px;
+		line-height: 27px;
+		width: 100%
+	}
+	.intro-title {
+		font-size: 43px;
+		line-height: 60px;
+		margin-top: 70px
+	}
+	.intro-sub {
+		font-size: 23px;
+		line-height: 32px;
+		width: 100%
+	}
+}

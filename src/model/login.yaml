@@ -1,0 +1,324 @@
+---
+# Login API introduction
+# This Introduction / Process guide is not yet complete
+# We are currently looking into wording and possible extras 
+# that will help to give a simple but broad understanding of this API.
+#
+# As the Login API is in a pre-release version, 
+# the content in this should propably be updated and changed as it moves closer to Relase.
+# So, this should be seen as a opportunity to document the core concepts in a simple fashion.
+# Where you can easily cover everything that should help with the basic understanding and a good overview, 
+# with the most important details included.
+#
+# As login deals with user info and the access to that info across the web, 
+# this is a nice place to put some emphasis on the critical parts.
+#
+# There is a lot of resources to introduce elements with:
+# Sections, subsections, introductions, endpoints and keywords
+# 
+# Where the endpoints also include their own description, and will pull header, body and responses from the Swagger file.
+# You can even supply them with custom titled codeblocks, which we put under a list marked 'extras'
+# The higlighting is currently only javascript, so keep that in mind
+#
+# The keywords will make cards on [keywords],
+# They will show when a reader howers over the keyword in the subsection-introduction or any of 
+# that subsections endpoints-descriptions. 
+# They have their own title and description. 
+# And, they also have the possibility to contain a link to the documentation or other useful resources.
+# 
+# But, remember that this is not the actual documentation just something to get you started quickly.
+# So keep it short, this is not ment to explain everything. 
+# Only the most critical parts, with some 'good to know' injected into it.
+#
+#
+
+## Important: endpoint: titles is now avaliable and should be made for subsections with multiple endpoints!!
+
+SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-login-api/master/docs/swagger.json"
+
+Intro:
+    title: Vipps Login API
+    introduction: Understanding the process of logging in with Vipps
+    description: |
+        Before implementing the Vipps login API, 
+        you’ll need to get keys for testing and production through the developer portal. 
+    imagePath: "../../assets/images/womanWithPhone.svg"
+
+FlowChart:
+    title: Steps in the Login process
+    browserImage: "../../assets/ecom-illustrations/login-flowchart-final.svg"
+    tabletImage: "../../assets/ecom-illustrations/login-flowchart-final.svg"
+    mobileImage: "../../assets/ecom-illustrations/login-flowchart-mobile-final.svg"
+
+
+Sections:
+    Prerequisites:
+        core_concepts:
+            title: Get started with core concepts
+            introduction: >
+                Before implementing Vipps Login, 
+                we recommend you to take a look at the 
+                coore concepts of [OAuth 2.0] and [OpenID Connect] 
+                if you're new to the subjects.
+            imagePath:
+            endpoints:
+            keywords:
+                OAuth 2.0:
+                    title: What is OAuth 2.0?
+                    description: OAuth 2.0 is the industry-standard protocol for authorization. 
+                    linkTitle: API documentation Core concepts
+                    link: https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#oauth-20
+                OpenID Connect:
+                    title: What is OpenID Connect?
+                    description: >
+                        OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. 
+                        It enables Clients to verify the identity of the End-User based on 
+                        the authentication performed by an Authorization Server, 
+                        as well as to obtain basic profile information about the End-User in a REST-like manner. 
+                    linkTitle: API documentation OpenID Connect
+                    link: https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#open-id-connect
+
+        client_configuration:
+            title: Client configuration.
+            introduction: >
+                To be able to implement Vipps Login, 
+                you need do some configurations in cooperation with Vipps. 
+                This includes [application whitelisting], 
+                defining [scopes] and sharing of [client ID and client secret].
+            imagePath:
+            endpoints:
+            keywords:
+                application whitelisting:
+                    title: What is application whitelisting?
+                    description: >
+                        It is a process with Vipps where the application will be verified, checked and approved before 
+                        it can be put on Vipps's whitelist of integrated applications.
+                scopes:
+                    title: What do you mean by scopes?
+                    description: >
+                        Scopes define the personal information you want from the user.
+                        Is defined as a space seperated list, containing the wanted parameters.
+                client ID and client secret:
+                    title: What about client ID and client secret?
+                    description: >
+                        The client ID and the client secret is the client identifiers issued by Vipps.
+                        
+
+    The login process:
+        start_authorization:
+            title: User chooses to login with Vipps.
+            introduction: When the user is at your website and chooses to pay with Vipps, you need to start authorization.
+            imagePath: ../../assets/ecom-illustrations/initiateLogin.svg
+            endpoints:
+                - name: "/oauth2/auth" #"[callbackPrefix]/v2/oauth2/auth"
+                  description: >
+                    Start authorization against Vipps login by redirect the user to Vipps authorization page. 
+                    The user is sent with [state], 
+                    [redirect URI] and the scopes you already selected as necessary when login to your website.
+                    The parameters are sendt throught the URI as [URI parameters].
+                    The response type must also be specified, but as the intention of this call is to recieve the [authorisation code]
+                    it must be set to 'code'.
+                  mode: GET
+                  extras: # Using the -extra- option to give some additional info about the formated call. And might just be a temporary solution.
+                    - name: Params
+                      code: |
+                        {
+                            "response_type" : "string",
+                            "client_id"     : "string", 
+                            "scope"         : "string",
+                            "state"         : "string",
+                            "redirect_uri"  : "string",
+                        }
+                        /*
+                        A call with all parameters:
+                            /oauth2/auth
+                            ?response_type=code
+                            &client_id={client_id}
+                            &scope={scopes}
+                            &state={state}
+                            &redirect_uri={redirect_uri}
+                        */
+            keywords:
+                state:
+                    title: What is state?
+                    description: >
+                        The state is an opaque value used by the client to maintain state between the request and callback. 
+                        The authorisation server includes this value when redirecting the user-agent back to the client. 
+                        
+                redirect URI:
+                    title: Which redirect URI?
+                    description: >
+                        This is the endpoint that you will be hosting.
+                        To which Vipps will send you the authorisation code,
+                        and the exact state you passed into the request.
+                        
+                authorisation code:
+                    title: What information is in the authorisation code?
+                    description: >
+                        The authorisation code is only a one time key to recieve the user authentication,
+                        and the user information that was granted by the scope. 
+                        It does not contain any actual information about the user.
+                
+                URI parameters:
+                    title: What is a URI parameter?
+                    description: >
+                        A URI parameter is a way to pass information throught a call.
+                        It allows setting values for different expected variables,
+                        and it is used a lot by this API.
+
+        user_login: #  > Registrering opp mot exsisterende brukerprofiler.. ?!
+            title: User confirms
+            imagePath: ../../assets/ecom-illustrations/customerConfirms-2.svg
+            introduction: >                
+                The user will now be asked to fill in their mobile number, 
+                login through the [Vipps app] and approve sharing the requested personal information.
+                So, this step is entirely handeled by Vipps, but might look different for reoccurring user's.
+                As they will be led throught different [paths based on previous logins] they have done. 
+                After the User have proceeded all the way throught their login path, 
+                the redirect-uri will be called.
+                
+                
+            
+            endpoints:
+            keywords:
+                paths based on previous logins:
+                    title: What decides the different paths?
+                    description: >
+                        The user will go throught different paths based on if they have previously 
+                        logged into the same browser before and choose to be remembered, 
+                        or if they already have confirmed the scopes of the application.
+                        So the path will only include the steps that they are lacking.
+                        For some paths you might not recieve the newest user information
+                        throught this standard flow, 
+                        and in theese cases it is necessary to explicitly fetch it.
+                    
+                    linkTitle: API documentation
+                    link: /documentation/secure-login/#automatic-recognition #change to a better place in the documentation?
+                Vipps app:
+                    title: Is this the right login attempt?
+                    description: >
+                        To make sure that the login attempt in the Vipps app is your login attempt,
+                        there should be matching Vipps logos in the different applications.
+                        
+            
+        client_endpoint: # Move this into the actual steps?
+            title: Recieve the authorization code.
+            introduction: >
+                This endpoint is required by the OAuth 2.0 API, and is used to recieve the authorisation code.
+            imagePath:
+            endpoints:
+                - name: "[callbackClient]/[callback]"
+                  mode: POST
+                  description: >
+                    This endpoint will recieve parameters as URI parameters,
+                    and they are the autentification code for the User and 
+                    a state equal to the one passed in the request.
+                    The actual name of the callback is not important 
+                    as the entire URI is sendt in the request.
+                  extras: # Using the -extra- option to give some additional info about the formated call.
+                    - name: Params
+                      code: |
+                        {
+                            "code"  : "string",
+                            "state" : "string",
+                        }
+                        /*
+                        A call with all parameters:
+                            /[callback]
+                            ?code={code}
+                            &state={state}
+                        */
+           
+            keywords:
+
+        get_information:
+            title: Get information about user
+            introduction: As the user is redirected to your page, you can now collect information about the user logged in. 
+            imagePath: ../../assets/ecom-illustrations/GetInformation.svg
+            endpoints:
+                - name: "/oauth2/token" # This step also contains a -Header- but it is unfortunelately not listed in the Swagger file.
+                  mode: POST
+                  description: >
+                    Collect information about the user by requesting [ID Token] and [Access token] from the Vipps API. 
+                    The request needs to include [code], client id, 
+                    and client secret sent with the user when redirected to your site from the Vipps login portal. 
+                    The ID Token contains all the information specified with the scopes.
+                  extras: # Using the -extra- option to give some additional info about the formated call.
+                    - name: Params
+                      code: |
+                        {
+                            "grant_type"    : "string",	
+                            "code"          : "string",
+                            "redirect_uri"  : "string",
+                        }
+                        /*
+                        A call with all parametres:
+                            /oauth2/auth
+                            ?grant_type=authorization_code
+                            &code={code}
+                            &redirect_uri={redirect_uri}
+                        */
+                  
+            keywords:
+                ID Token:
+                    title: What does the ID Token contain?
+                    description: >
+                        The ID Token is a signed JSON Web Token that both
+                        represents the authenticated user and 
+                        contains the personal information that was requested by the scope.
+                        Make sure to validate it before using any of the data contained in it.
+                        
+                Access token:
+                    title: What is the purpose of the Access token?
+                    description: >
+                        The Access token is a random string that represents an applications access to the scoped parts of a User's data,
+                        and can be used to later retrieve updated information about the user.                        
+                        It is important that the Access token is kept confidential in transit and storage.
+                        
+                code:
+                    title: Which code?
+                    description: >
+                        This code is the autorisation code your endpoint recieved from Vipps after the user logged in.                        
+                        
+
+    Important to implement:
+        access_information:
+            title: Get updated information
+            introduction: >
+                The collected Access token can be used to access the 
+                information Vipps possesses about the user. 
+                This is usefull as the information about the user can 
+                be changed continously and new scopes might be added.
+            imagePath: ../../assets/ecom-illustrations/GetUpdatedInformation.svg
+            endpoints:
+                - name: "/userinfo" # This endpoint also has a header that is not shown in the Swagger file.
+                  description: >
+                    Retrieves the newest user information,
+                    that was granted in the scope.
+                  mode: GET
+            keywords:
+
+not included: #remove theese two lines to get "well_known" to show up again
+    excluded:
+        well_known: #this step could easily be split into two, and it lacks descriptions and a introduction.
+            title: "Get's for configuration and jwt-keys for OpenID Connect."
+            introduction: >
+                This is just a filler for the moment, 
+                more and better explanation is on it's way
+            imagePath:
+            endpoints:
+                - name: "/.well-known/openid-configuration"
+                  description: Retrieve the configuration.
+                  mode: GET
+                  
+                - name: "/.well-known/jwks.json"
+                  description: Get the JSON Web Key Set.
+                  mode: GET
+            keywords:
+
+Outro:
+    title: Great! Now you know how secure login works
+    description: You're ready to move forward to the documentation
+    imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
+    buttonTitle: Login API Documentation
+    link: /documentation/secure-login/

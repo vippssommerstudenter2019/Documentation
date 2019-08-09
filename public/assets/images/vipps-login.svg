@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="20px" viewBox="0 0 16 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Header-loddrett" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1033.000000, -33.000000)">
+        <g id="Group-4" transform="translate(1034.000000, 34.000000)">
+            <ellipse id="Oval" fill="#49367E" cx="12.953125" cy="17" rx="1.953125" ry="2"></ellipse>
+            <polyline id="Path-6" stroke="#FF6633" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="9 18 0 18 0 13"></polyline>
+            <path d="M13,13 C13,9.6862915 10.0898509,7 6.5,7 C2.91014913,7 0,9.6862915 0,13" id="Oval-2" stroke="#FF6633" stroke-width="2" stroke-linecap="round"></path>
+            <circle id="Oval-Copy-3" stroke="#FF6633" stroke-width="2" cx="6.5" cy="3.5" r="3.5"></circle>
+        </g>
+    </g>
+</svg>

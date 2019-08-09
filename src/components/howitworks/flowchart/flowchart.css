@@ -1,0 +1,22 @@
+.flow-wrapper {
+    max-width: 1300px!important
+}
+
+.FlowChart {
+    margin:2rem 0 2rem 0
+}
+
+.FlowChart img {
+    width:90vw;
+}
+
+.FlowTitle {
+    font-family: Vippsheader;
+    color:var(--vippsorange)
+}
+
+@media (max-width:812px) {
+    .flow-wrapper {
+        margin:0px 0 0 20px
+    }
+}

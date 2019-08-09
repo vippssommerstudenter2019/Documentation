@@ -1,0 +1,110 @@
+
+
+
+.codeblock {
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  margin: 2em 0 2em !important;
+  max-width: 100%;
+  background-color: var(--athensGreyLight);
+}
+ 
+.codeblockBody {
+  width: 100%;
+  font-family: 'PT Mono', monospace;
+  padding-bottom: 1em;
+  display: flex;
+
+}
+
+.codeblockBody * {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+.codeblockNumbering {
+  line-height: 1.5;
+  list-style-type: none;
+  text-align: right;
+  padding: 0 15px 0 25px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+.codeblockNumbering li {
+  margin-top: 0;
+}
+
+.codeblockBody pre{
+  overflow: auto;
+}
+
+.codeblockHeader {
+  width: 100%;
+  margin: auto;
+}
+
+.codeblockLanguage {
+  font-family: Vipps;
+  line-height: 25px;
+  color: var(--var(--vippsblack));
+  float: left;
+  margin: 25px 15px 15px 25px;
+}
+
+.codeblockHeader button {
+  color: var(--var(--vippsblack));
+}
+
+.copyButton {
+  font-family: Vipps;
+  font-weight: lighter;
+  color: var(--var(--vippsblack));
+  float: right;
+
+  margin: 25px 25px 15px 15px;
+  font-size: 13px;
+  text-align: center;
+
+  height: 30px;
+  width: 65px;
+  border-radius: 40px;
+  border: 0.8px solid var(--ghost);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.copyButton:hover {
+  color: var(--vippsorange);
+}
+
+.copyButton.selected {
+  color: var(--rum);
+}
+
+.copyButton:active {
+  color: var(--vippsorange);
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+pre {
+  margin-right: 20px !important;
+}
+
+pre::-webkit-scrollbar {
+  z-index: 0;
+  height: 5px;
+}
+
+
+pre::-webkit-scrollbar-thumb {
+  background: var(--ghost);
+  border-radius: 5px;
+}
