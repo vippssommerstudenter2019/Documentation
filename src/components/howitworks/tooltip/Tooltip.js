@@ -54,7 +54,6 @@ function CustomTooltip(props) {
  */
 const tooltipTextPropTypes = {
   input: PropTypes.string.isRequired,
-  keywordsData: PropTypes.object.isRequired,
 };
 
 /**

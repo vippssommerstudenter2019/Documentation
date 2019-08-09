@@ -4,7 +4,7 @@ import './flowchart.css';
 
 const propTypes = {
   content: PropTypes.object.isRequired,
-  pagewidth: PropTypes.object.isRequired,
+  pagewidth: PropTypes.number.isRequired,
 };
 
 class Flowchart extends Component {

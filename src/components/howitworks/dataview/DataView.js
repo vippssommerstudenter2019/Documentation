@@ -6,7 +6,7 @@ import LottieAnimation from '../../../LottieAnimation';
 
 const propTypes = {
   mainTitle: PropTypes.string.isRequired,
-  content: PropTypes.object.isRequired,
+  content: PropTypes.array.isRequired,
 };
 
 /**
