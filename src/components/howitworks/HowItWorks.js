@@ -88,29 +88,22 @@ class HowItWorks extends React.Component {
     const { pageWidth, metaData } = this.state;
     if (pageWidth <= 812) return <div className="topLogo"><LandingLogo /></div>;
     const sideBarData = [];
-    const toSub = (subsection, content) => ({
-      name: content.title,
-      anchor: `#${subsection}`,
-    });
 
-    const toSec = (section) => {
-      const children = [];
-      sideBarData.push({
-        name: section,
-        anchor: `#${section}`,
+    Object.keys(metaData).forEach((sectionTitle) => {
+      const steps = metaData[sectionTitle];
+
+      const children = Object.keys(steps).map(stepKey => ({
+        name: steps[stepKey].title,
+        anchor: `#${stepKey}`,
+      }));
+
+      const sectionElement = {
+        name: sectionTitle,
+        anchor: `#${sectionTitle}`,
         children,
-      });
-      return children;
-    };
+      };
 
-    const sections = Object.entries(metaData);
-
-    Object.keys(sections).forEach((sectionKey) => {
-      const children = toSec(sections[sectionKey]);
-
-      Object.keys(sections[sectionKey]).forEach((stepKey) => {
-        children.push(toSub(stepKey, sections[sectionKey][stepKey]));
-      });
+      sideBarData.push(sectionElement);
     });
 
     return <Sidebar headers={sideBarData} expandAll api="#ecom" />;
