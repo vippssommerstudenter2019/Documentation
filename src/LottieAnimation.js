@@ -1,5 +1,5 @@
 import React from 'react';
-import lottie from 'lottie-web';
+import lottie from 'lottie-web/build/player/lottie_light.min';
 import PropTypes from 'prop-types';
 
 class LottieAnimation extends React.Component {
