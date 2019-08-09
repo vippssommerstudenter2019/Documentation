@@ -12,25 +12,25 @@
 	
 	
 # SwaggerURL
-	It is not optional (as of now), and needs to link to the Swagger JSON.
+	It is not optional, and needs to link to the Swagger JSON.
 	
 
 # Intro
 	Non optional, but is should be quite short.
 	Contains:
 		- title				: The name of the API
-		- introduction		: Present what they are about to read. [Understanding how the process of -API- works]
-		- description		: Should mention if the API has some prerequisites. [API keys or testing environment]
-		- descriptiontwo	: Optional, additional paragraph
-		- imagePath			: Optional, image / illustration
+		- introduction		: Present what they are about to read. "Understanding how the process of -API- works"
+		- description		: Should mention if the API has some prerequisites. -API keys or testing environment-
+		- descriptiontwo	: [optional] additional paragraph
+		- imagePath			: [optional] image / illustration
 		
 # Flowchart
 	Optional, but if provided can give the reader a quick and useful overview of the entire process.
 	Contains:
-		- title			: Title of the chart. [Steps to implement API]
+		- title			: Title of the chart. "Steps to implement API"
 		- browserImage	: Image to be displayed on browser.
-		- tabletImage	: -- || -- tablet.
-		- mobileImage	: -- || -- mobile.
+		- tabletImage	: [optional] -- || -- tablet.
+		- mobileImage	: [optional] -- || -- mobile.
 		
 	Note: If one, or more, of the images are lacking, we will select between the remaining.
 
@@ -45,10 +45,10 @@
 	The name of a Subsection will -not- be the name on the website, or in the sidebar.
 	Contains:
 		- title			: The subsection title
-		- introduction	: The optional introduction of the coming endpoint(s)
-		- endpoints		: The optional list of formatted endpoint(s)
-		- keywords		: The optional list of keyword(s) that will create hover-cards.
-		- imagePath		: An optional link to an image / illustration.
+		- introduction	: [optional] The introduction of the coming endpoint(s)
+		- endpoints		: [optional] The list of formatted endpoint(s)
+		- keywords		: [optional] The list of keyword(s) that will create hover-cards.
+		- imagePath		: [optional] An link to an image / illustration.
 		
 	Notes: 
 		- Words / phrases in the introduction encapsulated in [brackets] will be replaced by the keyword function.
@@ -66,7 +66,7 @@
 		- name			: The name of the endpoint in the swagger file. F.ex: "/path/endpoint"
 		- mode			: The mode of the endpoint in the swagger file. [GET, PUT, POST, ...]
 		- description	: A description of the endpoint or which actions that is relevant.
-		- extras		: An optional list of extra things to display.
+		- extras		: [optional] An list of extra things to display.
 		
 	Notes:
 		- Extras should not really be needed if the swagger file is good enought,
@@ -97,8 +97,8 @@
 	Contains:
 		- title			: The title of the popup.
 		- description	: The description / explanation of the element / phrase.
-		- linkTitle		: An, optional Title of the optional link.
-		- link			: Requires linkTitle, use to link to documentation / other resources.
+		- linkTitle		: [optional] An Title of the optional link.
+		- link			: [optional] Requires linkTitle, use to link to documentation / other resources.
 	
 	Note: If you are stuck at creating a titles use simple questions or leading questions.
 	
@@ -112,6 +112,7 @@
 		- title			: Something on completing the guide. "Great! Now you know how the -API- works!"
 		- description	: Guiding them on their way. "You're now ready to move forward to the documentation."
 		- imagePath		: Link to generic image, thypically the "jumpiong_man" svg.
+		- buttonTitle	: Tekst on the link. "-API- API Docmentation"
 		- link			: Link to the relevant documentation page for the API.
 
 
