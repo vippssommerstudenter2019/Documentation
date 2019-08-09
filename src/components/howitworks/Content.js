@@ -75,7 +75,7 @@ class Content extends React.Component {
     // Wrap every step in a section
     return (
       <div key={`wrapper-${title}`}>
-        <div id={title} className="intro-title">{title}</div>
+        <div id={title} className="intro-title vippsorange">{title}</div>
         {steps}
       </div>
     );
