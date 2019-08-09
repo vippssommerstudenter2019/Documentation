@@ -15,12 +15,9 @@
 }
 
 .dataview-title {
-  font-family: Vipps;
-  font-size: 1rem;
   color: var(--ghost);
 
-  padding: 25px 0px 0px 35px; 
-  border-radius: 5px 5px 0px 0px;
+  padding: 20px 25px 0px 25px; 
   word-break:break-all;
   -ms-word-break: break-all;
   -webkit-word-break:break-all
@@ -34,7 +31,7 @@
   display: block;
   height: 50px;
   width: 100%;
-  padding: 25px 25px 30px 35px;
+  padding: 15px 25px 30px 25px;
 }
 
 .copy-button,

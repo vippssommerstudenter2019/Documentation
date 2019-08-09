@@ -43,6 +43,7 @@ const spaceForJson = 4;
 
 
 class Step extends Component {
+
 // Returns a container containing the image (if there was provided one).
   createImageComponent() {
     const { metaData } = this.props;
@@ -123,9 +124,9 @@ class Step extends Component {
     const out = [];
     if (check(description)) {
       out.push(
-        <div key={`${keyTitle}-text-responses`} className="step-text-responses content-text">
+        <div key={`${keyTitle}-text-responses`} className="step-text-responses body-text">
           {endpointTitleComponent}
-          <div key={`${keyTitle}-description`} className="step-description content-text">
+          <div key={`${keyTitle}-description`} className="step-description body-text">
             <TooltipText input={description} keywordsData={metaData.keywords} />
           </div>
         </div>,
@@ -173,20 +174,21 @@ class Step extends Component {
         : null
     );
 
-    return (
-      <div className="step-wrapper">
-        <div className="step-headline">
-          <div className="step-img">
-            {this.createImageComponent()}
-          </div>
-          <div id={titleid} key="title" className="step-title">
-            {metaData.title}
-          </div>
-        </div>
-        {introductionComponent}
-        {content}
-      </div>
-    );
+
+		return (
+			<div className="step-wrapper" >
+				<div className="step-headline">
+					<div className="step-img">
+						{this.createImageComponent()}
+					</div>
+					<div id={this.props.titleid} key="title" className="third-headline step-title">
+						{this.props.metaData.title}
+					</div>
+				</div>
+				{introductionComponent}
+				{content}
+			</div>
+		);
   }
 }
 

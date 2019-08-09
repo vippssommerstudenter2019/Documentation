@@ -1,5 +1,9 @@
 @import url("../../../styles/how-it-works.css");
 
+.response-container {
+  margin: 20px 0;
+}
+
 .response-wrapper {
   margin-bottom: 10px;  
 }
