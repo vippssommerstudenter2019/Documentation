@@ -21,6 +21,6 @@ class LottieAnimation extends React.Component {
   }
 }
 
-LottieAnimation.propTypes = { path: PropTypes.object.isRequired };
+LottieAnimation.propTypes = { path: PropTypes.string.isRequired };
 
 export default LottieAnimation;

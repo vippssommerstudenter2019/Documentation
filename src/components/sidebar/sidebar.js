@@ -218,10 +218,10 @@ render() {
 }
 
 SidebarNavSpy.propTypes = {
-  offset: PropTypes.object.isRequired,
-  percent: PropTypes.object.isRequired,
-  sections: PropTypes.object.isRequired,
-  expandAll: PropTypes.object.isRequired,
+  offset: PropTypes.number.isRequired,
+  percent: PropTypes.number.isRequired,
+  sections: PropTypes.array.isRequired,
+  expandAll: PropTypes.bool.isRequired,
 };
 
 export default Sidebar;
