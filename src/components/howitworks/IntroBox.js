@@ -1,9 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-const propTypes = {
-    content: PropTypes.object.isRequired,
-};
+import React from 'react';
 
 /**
  * Represents a box with a short overview over the content.
@@ -32,7 +27,5 @@ class IntroBox extends React.Component {
         );
 	}
 };
-
-IntroBox.propTypes = propTypes;
 
 export default IntroBox;

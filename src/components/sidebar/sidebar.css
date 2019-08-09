@@ -73,22 +73,22 @@ li.listEl {
 }
 
 .listEl a:hover{
-  background-color: transparent !important;  
+  background-color: var(--safetransparent) !important;  
 }
 
 .listEl {
   text-decoration: none;
   font-size: 16px;
-  color: #49367e;
+  color: var(--vippspurple);
   display: block;
   background-color: white;
 }
 .listEl:hover {
-  color: #5E3DC2!important;
+  color: var(--signalPurple)!important;
 }
 
 .listTop.selectedElement > .sidebarLink, .listEl.selectedElement > a {
-  color: #5E3DC2!important;
+  color: var(--signalPurple)!important;
 }
 
 .collapsible-header {
@@ -96,7 +96,7 @@ li.listEl {
   text-decoration: none;
   line-height: 25px !important;
   font-size: 16px;
-  color: #49367e;
+  color: var(--vippspurple);
   display: block;
   background-color: white;
   border-bottom: white;
@@ -112,7 +112,7 @@ li.listEl {
 }
 
 .collapsible-header:hover > div > a {
-  color: #5E3DC2!important;
+  color: var(--signalPurple)!important;
 }
 
 .collapsible-header > div > a {
@@ -144,7 +144,7 @@ li.listEl {
   max-width: 13px;
   right: 0;
   overflow: visible;
-  z-index: 999;
+  z-index: 0;
   margin-right: 0 !important;
   transition-duration:0.2s;
   transition-timing-function: ease-in-out;
@@ -196,7 +196,7 @@ li.listEl {
 
 li > div > a:hover {
   display: block;
-  color: #49367e;
+  color: var(--vippspurple);
 }
 /* SIDEBAR HEADERS */
 li > div > a {
@@ -239,7 +239,7 @@ li {
 
 
 .sidenav li > a:hover {
-  color: #5E3DC2!important;
+  color: var(--signalPurple)!important;
 }
 
 
@@ -288,7 +288,7 @@ li {
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 2px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: inset white;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -310,17 +310,6 @@ li {
 .sidenav.sidenav-fixed.sidebarPadding::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 2px 0px white;
 
-}
-
-/* Vipps-colors */
-
-:root {
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
 }
 
 #myDR:hover {
@@ -363,7 +352,7 @@ a:hover {
 
 .sidenav .collapsible-header,
 .sidenav.fixed .collapsible-header {
-  background-color: transparent;
+  background-color: var(--safetransparent);
   border: none;
   line-height: inherit;
   height: inherit;
@@ -405,7 +394,7 @@ a:hover {
   height: -moz-calc(100%);
   padding-bottom: 60px;
   background-color: #fff;
-  z-index: 999;
+  z-index: 1;
   overflow-y: auto;
   will-change: transform;
   -webkit-backface-visibility: hidden;
@@ -495,7 +484,7 @@ a:hover {
 }
 
 .sidenav .subheader:hover {
-  background-color: transparent;
+  background-color: var(--safetransparent);
 }
 
 .sidenav .user-view {
@@ -510,7 +499,7 @@ a:hover {
 }
 
 .sidenav .user-view > a:hover {
-  background-color: transparent;
+  background-color: var(--safetransparent);
 }
 
 .sidenav .user-view .background {
@@ -579,12 +568,12 @@ a:hover {
 
 .sidenav .collapsible-body > ul:not(.collapsible) > li.active,
 .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active {
-  background-color: #ee6e73;
+  background-color: var(--safetransparent);
 }
 
 .sidenav .collapsible-body > ul:not(.collapsible) > li.active a,
 .sidenav.sidenav-fixed .collapsible-body > ul:not(.collapsible) > li.active a {
-  color: #fff;
+  color: white;
 }
 
 .sidenav .collapsible-body {
@@ -598,8 +587,8 @@ a:hover {
   right: 0;
   opacity: 0;
   height: 120vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 997;
+  background-color: var(--safetransparent);
+  z-index: 2;
   display: none;
 }
 .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
@@ -658,10 +647,10 @@ nav .sidenav-trigger i {
 
   display: flex;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: var(--safetransparent);
   line-height: 1.5;
   padding: 1rem;
-  background-color: #fff;
+  background-color: white;
 
 }
 

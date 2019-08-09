@@ -1,9 +1,10 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
-import "./flowchart.css"
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './flowchart.css';
 
 const propTypes = {
-    content: PropTypes.object.isRequired,
+  content: PropTypes.object.isRequired,
+  pagewidth: PropTypes.number.isRequired,
 };
 
 class Flowchart extends Component {

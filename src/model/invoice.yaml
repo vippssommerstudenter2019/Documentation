@@ -1,5 +1,9 @@
 --- 
 # Invoice API introductions
+
+## Important: endpoint: titles is now avaliable and should be made for subsections with multiple endpoints!!
+
+
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
 
 Intro:
@@ -189,4 +193,5 @@ Outro:
     title: Great! Now you know how invoices with Vipps works
     description: You're ready to move forward to the documentation
     imagePath: ../../assets/ecom-illustrations/jumpingMan.svg
+    buttonTitle: Invoice API Documentation
     link: /documentation/invoice/

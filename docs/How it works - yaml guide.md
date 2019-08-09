@@ -62,6 +62,7 @@
 	and display them if found.
 	But they also have an option to list some custom fields as well, with a custom title.
 	Contains:
+		- title			: [optional] use this to distinguish between endpoints in a subsection that contains multiple.
 		- name			: The name of the endpoint in the swagger file. F.ex: "/path/endpoint"
 		- mode			: The mode of the endpoint in the swagger file. [GET, PUT, POST, ...]
 		- description	: A description of the endpoint or which actions that is relevant.

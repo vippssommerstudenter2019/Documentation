@@ -1,9 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-
-const propTypes = {
-    content: PropTypes.object.isRequired,
-};
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Represents a box with a short overview over the content.
@@ -40,6 +36,5 @@ class OutroBox extends React.Component {
     }
 }
 
-OutroBox.propTypes = propTypes;
 
 export default OutroBox;
