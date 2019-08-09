@@ -16,9 +16,9 @@ Intro:
     
 FlowChart:
     title: Steps in the invoice process
-    browserImage: "../../assets/ecom-illustrations/invoice-flowchart-final.svg"
-    tabletImage: "../../assets/ecom-illustrations/invoice-flowchart-final.svg"
-    mobileImage: "../../assets/ecom-illustrations/invoice-flowchart-mobile-final.svg"
+    browserImage: "../../assets/ecom-illustrations/invoice-flowchart.svg"
+    tabletImage: "../../assets/ecom-illustrations/invoice-flowchart.svg"
+    mobileImage: "../../assets/ecom-illustrations/invoice-flowchart-mobile.svg"
     
 Sections:
     Prerequisites:
