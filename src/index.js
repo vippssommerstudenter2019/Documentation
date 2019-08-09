@@ -7,7 +7,7 @@ import HowItWorks from './components/howitworks/HowItWorks';
 import StartPage from './components/startpage/startpage';
 import './styles/index.css';
 import './styles/vipps-style.css';
-import './styles/variables.css'
+import './styles/variables.css';
 import eComYaml from './model/eCom.yaml';
 import invoiceYaml from './model/invoice.yaml';
 import loginYaml from './model/login.yaml';
