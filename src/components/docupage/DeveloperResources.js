@@ -2,7 +2,7 @@ import React from 'react';
 import docupageCSS from './docupage.module.css';
 
 const UrlElement = (LinkTitle, LinkURL) => (
-  <div>
+  <div key={`${LinkTitle}-${LinkURL}`}>
     <a href={LinkURL} target="_blank" rel="noopener noreferrer">
       <div>
         {LinkTitle}
