@@ -1,5 +1,9 @@
 --- 
 # Invoice API introductions
+
+## Important: endpoint: titles is now avaliable and should be made for subsections with multiple endpoints!!
+
+
 SwaggerURL: "https://raw.githubusercontent.com/vippsas/vipps-invoice-api/master/docs/swagger-isp.json"
 
 Intro:
