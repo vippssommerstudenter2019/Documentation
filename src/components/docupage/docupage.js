@@ -112,18 +112,17 @@ class DocuPage extends React.Component {
     /* First element is empty */
     const sidebarHeaders = navbarHeaders.slice(1);
     sidebarHeaders.unshift(this.devResourceHeader(this.getChildren()));
+
     return sidebarHeaders;
   }
 
 
-  // Creates the spinner
   loadingScreen = () => (
     <div className="LoadingSpinner">
       <LottieAnimation path="/loading_spinner.json" />
     </div>
   )
 
-  // Creates the docupage screen
   docuScreen = () => {
     const { headers, content } = this.state;
     const { doc } = this.props;
