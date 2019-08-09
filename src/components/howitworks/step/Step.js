@@ -30,7 +30,6 @@ import { objectIsEmpty } from '../../../Util';
  * EndpointData inlcudes a dictionary of endpoints with example headers, bodies and responses.
  */
 const propTypes = {
-  titleid: PropTypes.string.isRequired,
   metaData: PropTypes.object.isRequired,
   endpointData: PropTypes.object.isRequired,
 };
@@ -43,8 +42,6 @@ const spaceForJson = 4;
 
 
 class Step extends Component {
-
-// Returns a container containing the image (if there was provided one).
   createImageComponent() {
     const { metaData } = this.props;
     if (metaData.imagePath) {
@@ -148,7 +145,7 @@ class Step extends Component {
   }
 
   render() {
-    const { metaData, titleid } = this.props;
+    const { metaData } = this.props;
     const content = [];
 
     // As one step can inlcude more than one endpoint, we loop through them
