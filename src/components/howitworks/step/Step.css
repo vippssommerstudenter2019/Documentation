@@ -33,6 +33,11 @@
 	width: 100%
 }
 
+.endpoint-title {
+	width: 100%;
+	font-weight: bold;
+}
+
 .step-introduction {
 	padding: 1rem 0rem 1rem 3rem;
 	border-left: 3px solid var(--rum);

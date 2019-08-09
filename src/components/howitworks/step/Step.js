@@ -60,7 +60,7 @@ class Step extends Component {
   createEndpointContent(endpoint) {
     const { endpointData, metaData } = this.props;
     const {
-      name, description, mode, extras,
+      name, description, mode, extras, endpointTitle,
     } = endpoint;
     const { header, body, responses } = endpointData[name];
     const check = el => (el && !objectIsEmpty(el));
@@ -110,16 +110,28 @@ class Step extends Component {
       dataList.push(toData('Responses', code, component));
     }
 
+    let endpointTitleComponent = null;
+
+    if (endpointTitle) {
+      endpointTitleComponent = (
+        <div key={`${keyTitle}-endpoint-title`} className="endpoint-title">
+          {endpointTitle}
+        </div>
+      );
+    }
+
     const out = [];
     if (check(description)) {
       out.push(
         <div key={`${keyTitle}-text-responses`} className="step-text-responses content-text">
+          {endpointTitleComponent}
           <div key={`${keyTitle}-description`} className="step-description content-text">
             <TooltipText input={description} keywordsData={metaData.keywords} />
           </div>
         </div>,
       );
     }
+
     if (dataList.length !== 0) {
       out.push(
         <div key={`${keyTitle}-data`} className="step-data">
