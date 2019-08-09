@@ -1,40 +1,43 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
-import "./flowchart.css"
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './flowchart.css';
 
 const propTypes = {
-    content: PropTypes.object.isRequired,
+  content: PropTypes.object.isRequired,
+  pagewidth: PropTypes.number.isRequired,
 };
 
 class Flowchart extends Component {
-	createImageComponent() {
-		const width = this.props.pagewidth; 
-		if (width <= 812 && this.props.content.mobileImage) {
-			return <img src={this.props.content.mobileImage} alt="flowchart" />;
-		}
-		if (width <= 1100 && this.props.content.tabletImage) {
-			return <img src={this.props.content.tabletImage} alt="flowchart" />;
-		}
-		if (this.props.content.browserImage) {
-			return <img src={this.props.content.browserImage} alt="flowchart" />;
-		}
-		if (this.props.content.tabletImage) {
-			return <img src={this.props.content.tabletImage} alt="flowchart" />;
-		}
-		return <img src={this.props.content.mobileImage} alt="flowchart" />;
-	}
-	render() {
-		return (
-			<div className="flow-wrapper">
-				<div className="step-title">
-					{this.props.content.title}
-				</div>
-				<div className="FlowChart">
-					{this.createImageComponent()}
-				</div>
-			</div>
-		);
-	}
+  createImageComponent() {
+    const { pagewidth, content } = this.props;
+    if (pagewidth <= 812 && content.mobileImage) {
+      return <img src={content.mobileImage} alt="flowchart" />;
+    }
+    if (pagewidth <= 1100 && content.tabletImage) {
+      return <img src={content.tabletImage} alt="flowchart" />;
+    }
+    if (content.browserImage) {
+      return <img src={content.browserImage} alt="flowchart" />;
+    }
+    if (content.tabletImage) {
+      return <img src={content.tabletImage} alt="flowchart" />;
+    }
+    return <img src={content.mobileImage} alt="flowchart" />;
+  }
+
+  render() {
+    const { content } = this.props;
+    return (
+      <div className="flow-wrapper">
+        <div className="step-title">
+          {content.title}
+        </div>
+        <div className="FlowChart">
+          {this.createImageComponent()}
+        </div>
+      </div>
+    );
+  }
 }
 
 Flowchart.propTypes = propTypes;

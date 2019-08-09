@@ -120,6 +120,7 @@ Sections:
             endpoints:
                 - name: "[callbackPrefix]/v2/payments/{orderId}"
                   mode: POST
+                  endpointTitle: Transaction update
                   description: >
                     Gets called when there is an transaction update for an order. 
                     The callback prefix is the endpoint at your backend where Vipps will send this information to. 
@@ -128,6 +129,7 @@ Sections:
                 
                 - name: "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails"
                   mode: POST
+                  endpointTitle: Providing shipping details
                   description: >
                     A way for you to provide shipping details for your orders. 
                     The shipping details prefix is the endpoint at your backend 
@@ -137,6 +139,7 @@ Sections:
                  
                 - name: "[consentRemovalPrefix]/v2/consents/{userId}"
                   mode: DELETE
+                  endpointTitle: Remove user information
                   description: >
                     If the user has notifed Vipps that they want their personal information removed from your site, 
                     their data has to be deleted permanently according to GDPR. 

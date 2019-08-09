@@ -1,34 +1,39 @@
-import React from "react";
-
-
-/* 
+import React from 'react';
+/*
 Adds id to h1 and h2 elements making it possible to href them
 This is because we use ReactMarkdown
 */
-const flatten = (text, child) => {
-  return typeof child === 'string'
-    ? text + child
-    : React.Children.toArray(child.props.children).reduce(flatten, text)
-}
+const flatten = (text, child) => (typeof child === 'string'
+  ? text + child
+  : React.Children.toArray(child.props.children).reduce(flatten, text));
 
-const HeadingRenderer = (props) => {
-  function renderString (string) {
+// Removes special characters and replaces spaces with '-' to make anchor linking work
+const createAnchor = string => (string
+  .replace(new RegExp("[|&;:$%@<>()+,#']", 'g'), '')
+  .trim()
+  .replace(new RegExp(' ', 'g'), '-')
+  .toLowerCase()
+);
+
+const HeadingRenderer = (args) => {
+  const children = React.Children.toArray(args.children);
+  const text = children.reduce(flatten, '');
+  const slug = createAnchor(text);
+  const HeadingTag = `h${args.level}`;
+  // We exclusively link to h1 and h2 tags in the sidebar
+  if (args.level === 1 || args.level === 2) {
     return (
-      string
-        .replace(new RegExp("[|&;:$%@<>()+,#']", "g"), "")
-        .trim()
-        .replace(new RegExp(" ", "g"), "-")
-        .toLowerCase()
-      );
-  };
-  var children = React.Children.toArray(props.children)
-  var text = children.reduce(flatten, '')
-  var slug = renderString(text);
-  if (props.level === 1 || props.level === 2) {
-    return React.createElement('h' + props.level, {id: slug}, props.children)
-  } else {
-    return React.createElement('h' + props.level, {id: "h" + props.level + slug}, props.children)
+      <HeadingTag id={slug}>
+        {args.children}
+      </HeadingTag>
+    );
   }
-}
+  return (
+    // This prefix is needed, as heading titles are not unique in the current documentation
+    <HeadingTag id={`h${args.level}${slug}`}>
+      {args.children}
+    </HeadingTag>
+  );
+};
 
 export default HeadingRenderer;

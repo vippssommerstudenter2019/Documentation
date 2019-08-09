@@ -1,48 +1,51 @@
-import React, {Component} from "react";
-/* import 'rc-tooltip/assets/bootstrap.css';
- */import Tooltip from "rc-tooltip";
-import PropTypes from "prop-types";
-import "./Tooltip.css"
-import { Link } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react';
+import Tooltip from 'rc-tooltip';
+import PropTypes from 'prop-types';
+import './Tooltip.css';
+import { Link } from 'react-router-dom';
 
 const customToolTipPropTypes = {
-    keyword: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    link: PropTypes.string,
-    linkTitle: PropTypes.string,
-}
+  keyword: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
-class CustomTooltip extends Component {
-    render() {
-		const link = (
-		(this.props.link && this.props.linkTitle)? 
-		<Link className="rc-custom-link" to={this.props.link} target="_blank" rel="noopener noreferrer">
-		{this.props.linkTitle}
-		</Link> : null
-		);
-        return (
-            <Tooltip
-                key={this.props.keyword}
-                overlay={
-                    <div className="keyword-overlay tool-tip">
-                        <div className="tool-tip-head">
-                            <b>{this.props.title}</b>
-                        </div>
-                        <br />
-                        <div className="tool-tip-text">
-                            {this.props.description}
-                        </div>
-                        <br />
-                        <br />
-                        {link}
-                    </div>
-                }
-                placement="bottom">
-                <button className="underlined-purple">{this.props.keyword}</button>
-            </Tooltip>
-        );
-    }
+function CustomTooltip(props) {
+  const {
+    title, description, link, linkTitle, keyword,
+  } = props;
+
+  const linkComponent = (
+    (link && linkTitle)
+      ? (
+        <Link className="rc-custom-link" to={link} target="_blank" rel="noopener noreferrer">
+          {linkTitle}
+        </Link>
+      ) : null
+  );
+  return (
+    <Tooltip
+      key={keyword}
+      overlay={(
+        <div className="keyword-overlay tool-tip">
+          <div className="tool-tip-head">
+            <b>{title}</b>
+          </div>
+          <br />
+          <div className="tool-tip-text">
+            {description}
+          </div>
+          <br />
+          <br />
+          {linkComponent}
+        </div>
+      )}
+      placement="bottom"
+    >
+      <button type="button" className="underlined-purple">{keyword}</button>
+    </Tooltip>
+  );
 }
 
 /**
@@ -50,49 +53,51 @@ class CustomTooltip extends Component {
  * @param {*} keywordData The keyword data that should be hoverable and display a tooltip.
  */
 const tooltipTextPropTypes = {
-    input: PropTypes.string.isRequired,
-    keywordsData: PropTypes.object
-}
+  input: PropTypes.string.isRequired,
+};
 
 /**
  * Injects tooltips (popups on hover) for a given input for some keywords.
  */
 class TooltipText extends Component {
+  render() {
+    const { input, keywordsData } = this.props;
 
-    render() {
-        // Find the words in the input which has got square brackets, e.g. [access token]
-        if (!this.props.input) return [];
-        const matches = this.props.input.match(/\[.*?\]/g);
-        let result = [];
+    // Find the words in the input which has got square brackets, e.g. [access token]
+    if (!input) return [];
+    const matches = input.match(/\[.*?\]/g);
+    const result = [];
 
-        if (matches && this.props.keywordsData) {
-            let currentIndex = 0;
+    if (matches && keywordsData) {
+      let currentIndex = 0;
 
-            // Loop through all the matches and inject a tooltip
-            for (const match of matches) {
-                const indexOfMatch = this.props.input.indexOf(match);
-                result.push(this.props.input.substring(currentIndex, indexOfMatch));
+      // Loop through all the matches and inject a tooltip
 
-                const matchWithoutBrackets = match.replace(/[[\]]/g, '');
-                result.push(
-                    <CustomTooltip key={this.props.keywordsData[matchWithoutBrackets].title}
-                                   keyword={matchWithoutBrackets}
-                                   title={this.props.keywordsData[matchWithoutBrackets].title}
-                                   description={this.props.keywordsData[matchWithoutBrackets].description}
-                                   link={this.props.keywordsData[matchWithoutBrackets].link}
-                                   linkTitle={this.props.keywordsData[matchWithoutBrackets].linkTitle} />
-                );
-                currentIndex = indexOfMatch + match.length;
-            }
+      matches.forEach((match) => {
+        const indexOfMatch = input.indexOf(match);
+        result.push(input.substring(currentIndex, indexOfMatch));
 
-            result.push(this.props.input.substring(currentIndex, this.props.input.length));
-        }
-        else {
-            result.push(this.props.input.replace(/[[\]]/g, ''));
-        }
+        const matchWithoutBrackets = match.replace(/[[\]]/g, '');
+        result.push(
+          <CustomTooltip
+            key={keywordsData[matchWithoutBrackets].title}
+            keyword={matchWithoutBrackets}
+            title={keywordsData[matchWithoutBrackets].title}
+            description={keywordsData[matchWithoutBrackets].description}
+            link={keywordsData[matchWithoutBrackets].link}
+            linkTitle={keywordsData[matchWithoutBrackets].linkTitle}
+          />,
+        );
+        currentIndex = indexOfMatch + match.length;
+      });
 
-        return result;
+      result.push(input.substring(currentIndex, input.length));
+    } else {
+      result.push(input.replace(/[[\]]/g, ''));
     }
+
+    return result;
+  }
 }
 
 
@@ -100,6 +105,6 @@ CustomTooltip.propTypes = customToolTipPropTypes;
 TooltipText.propTypes = tooltipTextPropTypes;
 
 export {
-    CustomTooltip,
-    TooltipText
+  CustomTooltip,
+  TooltipText,
 };
