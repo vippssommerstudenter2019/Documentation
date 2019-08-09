@@ -72,20 +72,6 @@ h5 {
 
 
 
-/* Vipps-colors */
-
-:root {
-  --lightgrey: #f6f6f9;
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
-}
-
-
-
 .developerResources {
   border: none !important;
 }
@@ -124,14 +110,14 @@ table code {
   max-width: 100vw;
   margin: 0px;
   display: grid;
-  grid-template-columns:  minmax(25vw, 300px) auto;
+  grid-template-columns:  var(--sidebarwidth) auto;
   grid-template-areas:
     ". content1 "
 }
 .Content {
   padding: 10px;
   grid-area: content1 ;
-  max-width: 50em ;
+  max-width: var(--contentwidth) ;
   margin-bottom: 30vh;
 }
 
@@ -144,7 +130,6 @@ table code {
   height: 2px;
   border: 0;
   border-top: 1px solid black;
-  /* margin: 1em 0; */
   margin-left: inherit;
   margin-top: 1em;
   padding: 0;
@@ -192,7 +177,7 @@ th {
 }
 
 .Tables::-webkit-scrollbar-thumb {
-  background: #c9c6d7;
+  background: var(--ghost);
   border-radius: 5px;
 }
 
@@ -216,7 +201,7 @@ th {
 }
 
 .Content h1 {
-  border-top: 1px solid #c9c6d7;
+  border-top: 1px solid var(--ghost);
   line-height: 58px !important;
 }
 
@@ -266,7 +251,6 @@ h1:first-child, h1:nth-child(2) {
 }
 
 
-/* TODO: Mediaqueries */
 
 .Content ol{
   font-size: 18px !important;
@@ -288,17 +272,9 @@ h1:first-child, h1:nth-child(2) {
   border-radius: 110px;
 }
 
-/* Variables */
+/* Media Queries */
 
-:root {
-  --sidebarwidth: 25vw;
-  --vippsorange: #ff5b24;
-  --lightvippsorange: #fdf4ed;
-  --vippspurple: #4d3280;
-  --vippsblue: #59cbe8;
-  --vippsblack: #161225;
-  --vippsblueberry: #49367e;
-}
+
 
 @media only screen and (max-width: 830px)  {
   .Container {
