@@ -102,8 +102,8 @@ class Step extends Component {
 		var out = [];
 		if (check(description)) {
 			out.push(
-			<div key={keyTitle + "-text-responses"} className="step-text-responses content-text">
-				<div key={keyTitle+"-description"} className="step-description content-text">
+			<div key={keyTitle + "-text-responses"} className="step-text-responses body-text">
+				<div key={keyTitle+"-description"} className="step-description body-text">
 					<TooltipText input={description} keywordsData={this.props.metaData.keywords} />
 				</div>
 			</div>
@@ -137,7 +137,7 @@ class Step extends Component {
 		// Only add the introduction component if there is one provided. This will prevent the extra padding on steps that don't have a introduction.
 		const introductionComponent = (
 		(this.props.metaData.introduction)?
-			<div className="step-introduction content-text">
+			<div className="step-introduction body-text">
 				<TooltipText input={this.props.metaData.introduction} keywordsData={this.props.metaData.keywords} />
 			</div>
 			: null
@@ -149,7 +149,7 @@ class Step extends Component {
 					<div className="step-img">
 						{this.createImageComponent()}
 					</div>
-					<div id={this.props.titleid} key="title" className="step-title">
+					<div id={this.props.titleid} key="title" className="third-headline step-title">
 						{this.props.metaData.title}
 					</div>
 				</div>

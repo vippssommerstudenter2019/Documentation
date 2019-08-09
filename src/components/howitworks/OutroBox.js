@@ -18,11 +18,11 @@ class OutroBox extends React.Component {
 						<img src={this.props.content.imagePath} alt="Springing into action!"/>
 					</div>
 					<div className="outro-text" >
-						<div className="xxlarge-font-size">
+						
 							<div className="outro-title">
 								{this.props.content.title}
 							</div>
-						</div>
+						
 						<div className="outro-sub">
 							{this.props.content.description} 
 						</div>

@@ -148,7 +148,7 @@ html, body {
  */
 
 .intro-wrapper {
-	margin-top: 20px;
+	margin-top: 50px;
 	margin-bottom: 64px
 }
 
@@ -167,37 +167,52 @@ html, body {
 	justify-self: start
 }
 
-.intro-title,
-.sub-section-title {
-	font-family: VippsHeader;
-	color: var(--vippsorange)
+/* headline styling */
+
+.first-headline,
+.second-headline,
+.third-headline {
+	font-family:VippsHeader;
 }
 
-.intro-title,
-.sub-section-title,
-.intro-sub {
-	margin: 2rem 0 2rem 0
+.first-headline { /* h1 */
+	font-size:48px;
+	line-height:58px;
+	letter-spacing:0.2px;
 }
 
-.intro-title {
-	font-size: 40px;
-	line-height: 58px
+.second-headline { /* h2 */
+	font-size:32px;
+	line-height:41px;
+	letter-spacing:0.2px;
+	margin-bottom:30px;
 }
 
-.sub-section-title {
-	font-size: 32px;
-	line-height: 48px
+.third-headline { /* h3 */
+	font-size:21px;
+	line-height:30px;
+	letter-spacing:0.2px;
 }
 
-.intro-sub {
-	font-size: 23px;
-	line-height: 31px
+.preamble { /* styling for preamle */
+	font-size: 28px;
+	line-height: 38px;
+	letter-spacing:0.2px;
+	margin:3rem 0 3rem 0;
 }
 
-.intro-description {
-	font-size: 16px;
-	font-weight:300;
-	line-height: 27px;
+.vippsorange { /* some headlines will be orange */
+	color:var(--vippsorange);
+}
+
+.body-text { /* predefined text style for all body text */
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	line-height: 32px;
+	letter-spacing:0.2px;
+}
+
+.p-spacing { /* own spacing for paragraphs */
 	margin: 1rem 1rem 1rem 0
 }
 
@@ -299,6 +314,42 @@ html, body {
 
 /* mobilie */
 @media (max-width:812px) {
+
+	.first-headline,
+	.second-headline,
+	.third-headline {
+		font-family:VippsHeader;
+	}
+
+	.first-headline {
+		color:var(--vippsorange)!important;
+		font-size:28px;
+		line-height:32px;
+	}
+	
+	.second-headline {
+		color:var(--vippsorange);
+		font-size:24px;
+		line-height:30px;
+	}
+	
+	.third-headline {
+		color:var(--vippsblack);
+		font-size:18px;
+		line-height:26px;
+	}
+
+	.preamble {
+		font-size:20px;
+		line-height:30px;
+	}
+
+	.body-text {
+		font-size:16px;
+		line-height:28px;
+		font-weight:300;
+	}
+
 	.intro-description {
 		font-size:18px;
 		line-height:28px;

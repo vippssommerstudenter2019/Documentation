@@ -20,5 +20,9 @@ export default function ResponseTable(props) {
         );
     }
 
-    return items;
+    return (
+        <div className="response-container">
+            {items}
+        </div>
+        );
 }

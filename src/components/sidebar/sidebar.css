@@ -68,7 +68,9 @@
   width: 186px;
   margin-top: 30px;
 }
-
+li.listEl {
+  line-height:40px;
+}
 
 .listEl a:hover{
   background-color: transparent !important;  
@@ -201,7 +203,7 @@ li > div > a {
   display:inline-block !important;
   width:100% !important;
   height:100% !important;
-  line-height: 19px !important;
+  line-height: 29px !important;
   padding: 5px 10px 5px 5px !important;
   vertical-align: middle;
   color: #161225 !important;

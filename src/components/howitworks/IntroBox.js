@@ -13,19 +13,19 @@ class IntroBox extends React.Component {
         return (
 			<div className="intro-wrapper">
 
-					<div className="intro-title">
+					<div className="first-headline vippsorange">
 						{this.props.content.title}
 					</div>
 
-					<div className="intro-sub">
+					<div className="preamble">
 						{this.props.content.introduction}
 					</div>
 
-					<div className="intro-description content-text">
+					<div className="body-text p-spacing">
 						{this.props.content.description} 
 					</div>
 
-					<div className="intro-description content-text">
+					<div className="body-text p-spacing">
 						{this.props.content.descriptiontwo} 
 					</div>
 			</div>

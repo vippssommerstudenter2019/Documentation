@@ -26,7 +26,7 @@ class Flowchart extends Component {
 	render() {
 		return (
 			<div className="flow-wrapper">
-				<div className="step-title">
+				<div className="second-headline vippsorange">
 					{this.props.content.title}
 				</div>
 				<div className="FlowChart">
